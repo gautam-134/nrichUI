@@ -1,0 +1,165 @@
+<footer class="footer-area">
+  <div class="container cs-padding">
+    <div class="footer-top mb-3">
+      <div class="d-flex flex-row align-items-center">
+        <div *ngIf="instituteId === 1" class="col-md-6 col-4">
+          <a class="ft-logo" [routerLink]="['/']"
+            ><img src="../assets/img/ft-logo.svg" alt="" class="img-fluid"
+          /></a>
+        </div>
+        <div *ngIf="instituteId != 1" class="col-md-6 col-4"></div>
+        <div class="col-md-6 col-8" *ngIf="!isLogin">
+          <div class="ft-top-right">
+            <p>Ready to get started?</p>
+            <a routerLink="/login" class="btn register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-middle-g-wrapper" *ngIf="instituteId === 1">
+      <div class="footer-widget" style="color: whitesmoke">
+        <p style="color: whitesmoke; font: Poppins">
+          <b>NRICH Learning</b> is an education platform that caters to all
+          stakeholders in the system and helps with future preparedness.
+        </p>
+      </div>
+      <div class="footer-widget">
+        <h6>Company</h6>
+        <ul class="ft-links">
+          <li><a [routerLink]="['/about-nrich']">About Us</a></li>
+          <!-- <li><a (click)="commingSoon()">Our Story</a></li> -->
+          <li>
+            <a [routerLink]="['/features-of-management-tool']">All Features</a>
+          </li>
+          <!-- <li><a (click)="commingSoon()">Careers</a></li> -->
+          <li>
+            <a [routerLink]="['/pricing-for-learning-management-system']"
+              >Pricing Plan</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="footer-widget">
+        <h6>Services</h6>
+        <ul class="ft-links">
+          <li>
+            <a [routerLink]="['/management-tools-for-educational-Institutes']"
+              >Institutes</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/online-platform-for-teaching']">Teachers</a>
+          </li>
+          <li>
+            <a [routerLink]="['/Find-courses-for-students-online']">Students</a>
+          </li>
+          <li>
+            <a [routerLink]="['/management-software-for-schools']">School</a>
+            <!-- <a  (click)="commingSoon()">School</a> -->
+          </li>
+        </ul>
+      </div>
+      <div class="footer-widget">
+        <h6>Products</h6>
+        <ul class="ft-links">
+          <!-- <li><a [routerLink]="['/learning-management-software']">LMS</a></li> -->
+          <li><a [routerLink]="['/learning-management-software']">LMS</a></li>
+          <li>
+            <a [routerLink]="['/online-live-streaming-platform-for-teachers']"
+              >Nrich Live</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/get-a-white-labelled-app-for-teaching']"
+              >App & Website</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/social-media-platform']">Social Connect</a>
+          </li>
+          <li>
+            <!-- <a [routerLink]="['/digital-library']">Digital Library</a> -->
+            <!-- <a (click)="commingSoon()">Digital Library</a> -->
+          </li>
+        </ul>
+      </div>
+      <div class="footer-widget">
+        <h6>News & Media</h6>
+        <ul class="ft-links">
+          <li><a [routerLink]="['/blog-list']">Blogs</a></li>
+          <!-- <li><a (click)="commingSoon()">Testimonials</a></li> -->
+          <!-- <li><a (click)="commingSoon()">Awards</a></li> -->
+        </ul>
+      </div>
+      <div class="footer-widget">
+        <h6>Help</h6>
+        <ul class="ft-links">
+          <li>
+            <a [routerLink]="['/connect-with-learning']">Contact Us</a>
+          </li>
+          <li>
+            <a [routerLink]="['/legal-contact', { type: 'privacy-policy' }]"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="[
+                '/legal-contact',
+                { type: 'terms-and-conditions' }
+              ]"
+              >Terms of service</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/legal-contact' , { type: 'refund-policy' }]">Refund Policy</a>
+          </li>
+          <!-- <li><a (click)="commingSoon()">Sitemap</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 order-2 order-md-1">
+        <div class="copyright-text">
+          <p>©{{ getCurrentYear() }} {{ subDomainInstituteName }}</p>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2">
+        <ul class="social-links d-flex align-items-center justify-content-end">
+          <li>
+            <a
+              href="https://www.facebook.com/nrichlearning.edu/"
+              target="_blank"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://mobile.twitter.com/learningnrich" target="_blank"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/nrich.learning/?hl=en"
+              target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/nrich-elearning-platform/?originalSubdomain=in"
+              target="_blank"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@NrichLearning" target="_blank"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

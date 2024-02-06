@@ -1,0 +1,194 @@
+<div *ngIf="selectedValue == 'teacher'" class="minus-margin slider-mobilee">
+  <div
+    class="educator-active gap-35 slider_shadow gray arw-design slick-initialized slick-slider"
+  >
+    <button
+      type="button"
+      class="slick-prev slick-arrow"
+      aria-disabled="true"
+      (click)="prev()"
+      style="display: block !important"
+    >
+      <i class="far fa-angle-left"></i>
+    </button>
+    <div>
+      <div class="slick-track">
+        <ngx-slick-carousel
+          #slickModal="slick-carousel"
+          [config]="slideConfigTeacher"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+        >
+          <div ngxSlickItem *ngFor="let teacher of teacherSlides">
+            <div class="card set-card point" style="border: 0px">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="set-img social_contact">
+                      <img [src]="teacher.img" [alt]="teacher.alt" />
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-8 setPadding2"
+                    style="align-items: flex-start; padding-top: 5.5%"
+                  >
+                    <div class="ca-text">{{ teacher.title }}</div>
+                    <div class="ca-text2">{{ teacher.subTitle }}</div>
+                    <div class="ca-text3">{{ teacher.description }}</div>
+                    <div class="ca-btn1" style="padding: 10.3607px 54.2951px">
+                      <a
+                        [routerLink]="['/learning-management-software']"
+                        style="color: white; text-decoration: none"
+                        >EXPLORE</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="next()"
+      class="slick-next slick-arrow"
+      style="display: block !important"
+      aria-disabled="false"
+    >
+      <i class="far fa-angle-right"></i>
+    </button>
+  </div>
+</div>
+
+<div *ngIf="selectedValue == 'student'" class="minus-margin slider-mobilee">
+  <div
+    class="educator-active gap-35 slider_shadow gray arw-design slick-initialized slick-slider"
+  >
+    <button
+      type="button"
+      class="slick-prev slick-arrow"
+      aria-disabled="true"
+      (click)="prev()"
+      style="display: block !important"
+    >
+      <i class="far fa-angle-left"></i>
+    </button>
+    <div>
+      <div class="slick-track">
+        <ngx-slick-carousel
+          #slickModal="slick-carousel"
+          [config]="slideConfigStudent"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+        >
+          <div ngxSlickItem *ngFor="let student of studentSlide">
+            <div class="card set-card point" style="border: 0px">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="set-img social_contact">
+                      <img [src]="student.img" [alt]="student.alt" />
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-8 setPadding2"
+                    style="align-items: flex-start; padding-top: 5.5%"
+                  >
+                    <div class="ca-text">{{ student.title }}</div>
+                    <div class="ca-text2">{{ student.subTitle }}</div>
+                    <div class="ca-text3">{{ student.description }}</div>
+                    <div class="ca-btn1" style="padding: 10.3607px 54.2951px">
+                      <a
+                        [routerLink]="['/learning-management-software']"
+                        style="color: white; text-decoration: none"
+                        >EXPLORE</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="next()"
+      class="slick-next slick-arrow"
+      style="display: block !important"
+      aria-disabled="false"
+    >
+      <i class="far fa-angle-right"></i>
+    </button>
+  </div>
+</div>
+
+<div *ngIf="selectedValue == 'school'" class="minus-margin slider-mobilee">
+  <div
+    class="educator-active gap-35 slider_shadow gray arw-design slick-initialized slick-slider"
+  >
+    <button
+      type="button"
+      class="slick-prev slick-arrow"
+      aria-disabled="true"
+      (click)="prev()"
+      style="display: block !important"
+    >
+      <i class="far fa-angle-left"></i>
+    </button>
+    <div>
+      <div class="slick-track">
+        <ngx-slick-carousel
+          #slickModal="slick-carousel"
+          [config]="slideConfigSchool"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+        >
+          <div ngxSlickItem *ngFor="let school of schoolSlide">
+            <div class="card set-card point" style="border: 0px">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="set-img social_contact">
+                      <img [src]="school.img" [alt]="school.alt" />
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-8 setPadding2"
+                    style="align-items: flex-start; padding-top: 5.5%"
+                  >
+                    <div class="ca-text">{{ school.title }}</div>
+                    <div class="ca-text2">{{ school.subTitle }}</div>
+                    <div class="ca-text3">{{ school.description }}</div>
+                    <div class="ca-btn1" style="padding: 10.3607px 54.2951px">
+                      <a
+                        [routerLink]="['/learning-management-software']"
+                        style="color: white; text-decoration: none"
+                        >EXPLORE</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="next()"
+      class="slick-next slick-arrow"
+      style="display: block !important"
+      aria-disabled="false"
+    >
+      <i class="far fa-angle-right"></i>
+    </button>
+  </div>
+</div>

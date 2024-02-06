@@ -1,0 +1,101 @@
+<div class="minus-margin">
+  <div
+    class="institue-active gap-35 slider_shadow gray arw-design slick-initialized slick-slider right_shadow_active"
+  >
+    <button type="button" class="slick-prev slick-arrow" (click)="prev()">
+      <i class="far fa-angle-left"></i>
+    </button>
+    <div class="slick-list draggable">
+      <div class="slick-track">
+        <ngx-slick-carousel
+          class="carousel"
+          #slickModal="slick-carousel"
+          [config]="slideConfig"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+        >
+          <div
+            ngxSlickItem
+            *ngFor="let institute of institutes"
+            class="course-item"
+            data-slick-index="0"
+            aria-hidden="false"
+            tabindex="0"
+          >
+            <div
+              class="cmn-wrap institue point setMinHeight"
+              [routerLink]="['/institute-info']"
+              [queryParams]="{ id: institute.id, name: institute.name }"
+            >
+              <div class="top-zone">
+                <div class="institue-lgo">
+                  <img
+                    height="60px"
+                    [attr.src]="
+                      institute?.image && !institute?.image.includes('null')
+                        ? institute?.image
+                        : '../../../assets/images-marketing/institute_shadow.png'
+                    "
+                    alt=""
+                  />
+                </div>
+                <div class="top-zone-right" style="margin-left: 17px">
+                  <h5 *ngIf="(institute?.name + '').length <= 20">
+                    {{ institute?.name }}
+                  </h5>
+                  <h5 *ngIf="(institute?.name + '').length > 20">
+                    {{ institute?.name | slice : 0 : 21 }}...
+                  </h5>
+
+                  <div class="details" style="cursor: default;">
+                    <div class="single">
+                      <h6>
+                        <img
+                          class="follower img-fluid"
+                          src="assets/img/follower.png"
+                          alt=""
+                        />{{ institute.teachersCount }}
+                      </h6>
+                      <p>Teachers</p>
+                    </div>
+                    <div class="single">
+                      <h6>
+                        <img
+                          class="watch-time img-fluid"
+                          src="assets/img/watch-time.png"
+                          alt=""
+                        />{{ institute.courseCount }}
+                      </h6>
+                      <p>Courses</p>
+                    </div>
+                    <!-- <div class="single">
+                                            <h6><img class="watch-time img-fluid" src="assets/img/watch-time.png"
+                                                    alt="">121
+                                            </h6>
+                                            <p>Watch Time</p>
+                                        </div> -->
+                  </div>
+                </div>
+              </div>
+              <p *ngIf="(institute?.description + '').length <= 100">
+                {{ institute?.description }}
+              </p>
+              <p *ngIf="(institute?.description + '').length > 100">
+                {{ institute?.description | slice : 0 : 100 }}...
+              </p>
+              <div class="text-end">
+                <a class="btn style-1 view-courses" tabindex="0"
+                  >view profile<i class="far fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+
+    <button type="button" class="slick-next slick-arrow" (click)="next()">
+      <i class="far fa-angle-right"></i>
+    </button>
+  </div>
+</div>

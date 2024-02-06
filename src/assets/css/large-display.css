@@ -1,0 +1,481 @@
+@keyframes shadow-drop-bottom {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  to {
+    box-shadow: 0 12px 20px -12px rgb(0 0 0/35%);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body {
+  margin: 0;
+  line-height: normal;
+}
+.sign-in-h2 {
+  margin: 0;
+  position: relative;
+  font-size: var(--font-size-13xl);
+  font-weight: 700;
+  font-family: inherit;
+  background: linear-gradient(94.38deg, #008ce4, #00af9e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  display: inline-block;
+}
+.welcome-to {
+  font-family: var(--font-inter);
+}
+.welcome-to-nrich-learning {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.step-into-the-world-of-endless {
+  margin: 0;
+}
+.welcome-to-nrich-learning-step {
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+.description-div {
+  display: flex;
+  flex-direction: column;
+  padding: 5.251776218414307px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter);
+  text-align: center;
+}
+.phone-number {
+  margin: 0;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-9xl);
+  letter-spacing: 0.23px;
+  line-height: 28.61px;
+  font-family: var(--very-small-regular);
+  color: var(--neutral-9001);
+  text-align: left;
+  display: inline-block;
+}
+.component-9-input {
+  /* border: 1.1px solid var(--neutral-3001); */
+  border: none;
+  background-color: var(--color-gray-900);
+  /* position: absolute; */
+  height: 47px;
+  width: 100%;
+  top: 40.67%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 5.91px;
+  box-sizing: border-box;
+}
+/* .form-div6 {
+  position: relative;
+  width: 320.03px;
+  height: 91px;
+  flex-shrink: 0;
+} */
+.form2 {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center; */
+  /* margin-bottom: 20px; */
+}
+.enter-your-otp {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-9xl);
+  letter-spacing: 0.24px;
+  line-height: 30.47px;
+  font-family: var(--very-small-regular);
+  color: var(--neutral-9001);
+  text-align: left;
+  display: inline-block;
+}
+.group-input {
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  height: 54.2%;
+  width: 100%;
+  top: 45.8%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.group-form {
+  position: relative;
+  width: 299.92px;
+  height: 83.84px;
+  flex-shrink: 0;
+}
+.resend-otp-code {
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.2px;
+  line-height: 21.66px;
+  font-weight: 700;
+  color: inherit;
+  display: inline-block;
+}
+.frame-div6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 31.51px;
+  color: var(--color-gray-300);
+}
+.sign-up-div2 {
+  flex: 1;
+  position: relative;
+  font-size: var(--text-large-semibold-size);
+  line-height: 24px;
+  font-weight: 600;
+  font-family: var(--very-small-regular);
+  color: var(--shades-01);
+  text-align: center;
+  display: inline-block;
+}
+.button-signup2{
+  display: flex;
+  box-sizing: border-box;
+}
+.button-signup2 {
+  cursor: pointer;
+  border: 0;
+  padding: 15.755328178405762px var(--padding-xl);
+  background-color: var(--blue);
+  border-radius: 9.85px;
+  width: 355.48px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+.button-signup2:hover,
+.button-signup3:hover {
+  animation: 1s ease 0s infinite normal none shadow-drop-bottom;
+  opacity: 1;
+}
+.form-div5 {
+  display: flex;
+  border-radius: 17.72px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #f6fcff;
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.register-your-instituteschool2 {
+  text-decoration: none;
+  position: relative;
+  line-height: 156.1%;
+  color: inherit;
+  display: inline-block;
+}
+/* .instiute-a2 {
+  text-decoration: none;
+  position: absolute;
+  top: 81%;
+  left: 1.5%;
+  width: 1441px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-xs);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-10xl);
+  color: var(--shades-01);
+  font-family: var(--font-manrope);
+} */
+
+.bottom_link{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+}
+.sign-in-h21 {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+  background: linear-gradient(94.38deg, #008ce4, #00af9e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.description-div1,
+.title-h1 {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-2xs);
+  box-sizing: border-box;
+}
+.title-h1 {
+  margin: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: inherit;
+  font-family: inherit;
+}
+.description-div1 {
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  font-family: var(--font-inter);
+}
+.phone-number1 {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-4xl);
+  letter-spacing: 0.18px;
+  line-height: 22.56px;
+  font-family: var(--very-small-regular);
+  color: var(--neutral-9001);
+  text-align: left;
+  display: inline-block;
+}
+.component-9-input1 {
+  border: 0.9px solid var(--neutral-3001);
+  background-color: var(--color-gray-900);
+  position: absolute;
+  height: 52%;
+  width: 100%;
+  top: 40.67%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 4.66px;
+  box-sizing: border-box;
+}
+.form-div8 {
+  position: relative;
+  width: 252.36px;
+  height: 74.6px;
+  flex-shrink: 0;
+}
+.form-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.enter-your-otp1 {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-4xl);
+  letter-spacing: 0.19px;
+  line-height: 24.03px;
+  font-family: var(--very-small-regular);
+  color: var(--neutral-9001);
+  text-align: left;
+  display: inline-block;
+}
+.group-div3 {
+  position: relative;
+  width: 236.5px;
+  height: 66.11px;
+  flex-shrink: 0;
+}
+.resend-otp-code1 {
+  text-decoration: none;
+  position: relative;
+  font-size: var(--font-size-lg);
+  letter-spacing: 0.16px;
+  line-height: 17.08px;
+  font-weight: 700;
+  font-family: var(--very-small-regular);
+  color: var(--color-gray-300);
+  text-align: left;
+  display: inline-block;
+}
+.frame-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24.85px;
+}
+.button-signup3,
+.form-div7 {
+  box-sizing: border-box;
+  justify-content: center;
+}
+.button-signup3 {
+  cursor: pointer;
+  border: 0;
+  padding: 12.423836708068848px var(--padding-md);
+  background-color: var(--blue);
+  border-radius: 7.76px;
+  width: 280.31px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.form-div7 {
+  position: absolute;
+  top: calc(50% - 218px);
+  left: calc(50% - 164px);
+  border-radius: 13.98px;
+  background-color: var(--light-shade-2);
+  display: none;
+  flex-direction: column;
+  padding: var(--padding-md) 23.812353134155273px;
+  align-items: center;
+  gap: 21.74px;
+  font-size: 20.19px;
+}
+.arrow-forward-icon2 {
+  position: relative;
+  width: 26.35px;
+  height: 26.35px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.go-back2 {
+  position: relative;
+  font-size: var(--font-size-8xl);
+  line-height: 178%;
+  display: inline-block;
+  font-family: var(--font-manrope);
+  color: var(--light-shade-2);
+  text-align: left;
+}
+.view-all-button2 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 663px;
+  left: 57px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--gap-md);
+}
+.section4 {
+  align-self: stretch;
+  position: relative;
+  height: 720px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: var(--font-size-6xl);
+  color: var(--light-grey);
+  font-family: var(--very-small-regular);
+}
+.large-display-section {
+  /* position: relative; */
+  width: 100%;
+  overflow: hidden;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* justify-content: flex-start; */
+  background-image: url(../../assets/Onboarding.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  mix-blend-mode: normal;
+  min-height: 100vh;
+}
+.large-display-section.animate {
+  animation: 1s ease 0s 1 normal forwards fade-in;
+}
+
+.form_box{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+
+}
+
+@media screen and (max-width: 428px) {
+  .sign-in-h2 {
+    font-size: var(--font-size-13xl);
+  }
+  .phone-number,
+  .welcome-to-nrich-learning-step {
+    font-size: var(--font-size-sm);
+  }
+  .enter-your-otp,
+  .resend-otp-code {
+    font-size: var(--font-size-12xl);
+  }
+  .button-signup2 {
+    width: 80%;
+  }
+  .form-div5 {
+    /* display: none; */
+    box-sizing: border-box;
+  }
+  .register-your-instituteschool2 {
+    font-size: var(--font-size-7xl);
+  }
+  .sign-in-h21 {
+    font-size: var(--font-size-13xl);
+  }
+  .phone-number1 {
+    font-size: var(--font-size-sm);
+  }
+  .enter-your-otp1,
+  .resend-otp-code1 {
+    font-size: var(--font-size-12xl);
+  }
+  .button-signup3 {
+    width: 80%;
+  }
+  .form-div7 {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-lg);
+    box-sizing: border-box;
+  }
+  .section4 {
+    width: 428px;
+  }
+  .form-div5 {
+    padding: 40px 20px;
+    width: 90%;
+  }
+  .description-div {
+    text-align: center;
+  }
+  .form-div5.login_box h2 {
+    margin: 0 auto;
+  }
+}

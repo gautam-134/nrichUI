@@ -1,0 +1,86 @@
+<div class="review-slider-box">
+    <div
+      *ngIf="slides.length > 0"
+      class="review-active arw-design slider_shadow gray right_shadow_active vertical slick-initialized slick-slider slick-vertical"
+    >
+      <button
+        type="button"
+        class="slick-prev slick-arrow"
+        style="display: block !important"
+        (click)="prev()"
+      >
+        <i class="far fa-angle-up"></i>
+      </button>
+      <br />
+      <div class="slick-list draggable adjustHeight">
+        <div
+          class="slick-track"
+          style="opacity: 1; height: 515px; transform: translate3d(0px, 0px, 0px)"
+        >
+          <ngx-slick-carousel
+            class="carousel"
+            #slickModal="slick-carousel"
+            [config]="slideConfig"
+            (init)="slickInit($event)"
+            (breakpoint)="breakpoint($event)"
+          >
+            <div
+              ngxSlickItem
+              *ngFor="let member of members; let i = index"
+              class="course-item slick-slide slick-current slick-active"
+              tabindex="0"
+              data-slick-index="0"
+              aria-hidden="false"
+            >
+              <div class="row">
+                <div
+                  class="col-md-4 setMargin"
+                  *ngFor="let m of member; let j = index"
+                  style="padding: 10% 2% 0% 2%"
+                >
+                  <div class="card" style="border-radius: 10px">
+                    <div class="card-body text-center cardBody">
+                      <div class="img-round">
+                        <img
+                          [src]="m.img"
+                          style="display: initial"
+                          [alt]="m.alt"
+                        />
+                      </div>
+                      <div class="round-t">{{ m.role }}</div>
+                      <div class="round-t2" style="margin-top: 10px">
+                        {{ m.name }}
+                      </div>
+                      <div class="round-t3" style="margin-top: 10px">
+                        {{ m.info }}
+                      </div>
+                      <div class="round-t4" style="margin-top: 20px">
+                        View Profile
+                        <span
+                          ><img src="../assets/Keyboard arrow right.png" alt=""
+                        /></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+      <br />
+      <button
+        type="button"
+        class="slick-next slick-arrow"
+        style="display: block !important"
+        aria-disabled="false"
+        (click)="next()"
+      >
+        <i class="far fa-angle-down"></i>
+      </button>
+    </div>
+    <div *ngIf="slides.length <= 0">
+      <h6>Team not available!</h6>
+    </div>
+  </div>
+  

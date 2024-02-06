@@ -1,0 +1,152 @@
+@import url("../../../../assets/css/bootstrap.min.css");
+@import url("../../../../assets/css/all.min.css");
+@import url("../../../../assets/css/slick.css");
+@import url("../../../../assets/css/nice-select.css");
+@import url("../../../../assets/css/main.css");
+@import url("../../../../assets/css/responsive.css");
+
+.c-l {
+  float: left;
+  width: 70%;
+  padding: 10px;
+}
+.c-r {
+  float: right;
+  width: 30%;
+}
+.cblacktext {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+
+  color: #000000;
+}
+.cblacktext2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  /* or 189% */
+
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #4c535d;
+}
+.max-set {
+  max-height: 500px;
+}
+.set-img-card-common {
+  margin-top: -100px;
+  margin-bottom: 0px;
+}
+.set-img-card-common img {
+  width: 100%;
+  max-width: 320px;
+  margin: auto 0;
+}
+
+.set-play-btn {
+  height: 80px;
+}
+.p-set {
+  padding: 80px;
+}
+.img-ac-com {
+  height: 750px;
+}
+
+.setPadding {
+  padding-bottom: 10% !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .alignText {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .set-play-btn {
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .mobile_center.p-set {
+    padding: 57px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .mobile_center.p-set {
+    padding: 30px;
+  }
+  .cblacktext {
+    font-size: 32px;
+    line-height: 45px;
+  }
+  .cblacktext br {
+    display: none;
+  }
+  .cblacktext span {
+    display: inherit;
+  }
+  .cblacktext2 {
+    font-size: 15px;
+  }
+  .set-play-btn {
+    height: 52px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .set-img-card-common {
+    margin-top: 0px;
+    text-align: center;
+  }
+  .set-img-card-common {
+    margin-top: 20px;
+  }
+  .setPadding {
+    padding-bottom: 15% !important;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .setPadding {
+    padding-bottom: 20% !important;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .cblacktext {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: #000000;
+  }
+  .max-set-c {
+    text-align: center;
+    align-items: center;
+  }
+  .cblacktext2 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 24px;
+    font-feature-settings: "salt" on, "liga" off;
+    color: #4c535d;
+  }
+
+  .set-play-btn {
+    height: 40px;
+    margin-left: 10px;
+  }
+}
