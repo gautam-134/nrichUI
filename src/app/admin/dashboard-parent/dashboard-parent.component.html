@@ -1,1 +1,6 @@
-<p>dashboard-parent works!</p>
+<app-admin-dashboard-analytics
+  *ngIf="role == 'Admin'"
+></app-admin-dashboard-analytics>
+<app-institute-admin-dashboard-analytics
+  *ngIf="role != 'Admin'"
+></app-institute-admin-dashboard-analytics>

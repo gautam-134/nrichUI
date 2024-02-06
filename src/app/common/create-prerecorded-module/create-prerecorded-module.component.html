@@ -1,1 +1,105 @@
-<p>create-prerecorded-module works!</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between bg-primary nabvar">
+      <div class="header-title">
+        <h4 class="card-title text-white">Add Details</h4>
+      </div>
+      <div></div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="moduleForm" (ngSubmit)="submitModule()">
+        <div class="row">
+          <div class="col-md-4 col-8">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Module Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Enter Module Name"
+              formControlName="moduleName"
+            />
+            <div *ngIf="getControls['moduleName']?.invalid && submit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['moduleName'].errors?.['required']"
+                >
+                  Module Name is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-4" style="margin-top: 31px">
+            <button type="submit" class="btn btn-primary">{{prerecorded.id ? 'Update':'+Add'}}</button>
+          </div>
+        </div>
+      </form>
+      <div
+        *ngIf="prerecorded.id"
+        style="display: flex; flex-direction: row-reverse"
+        class="mt-2"
+      >
+        <button type="button" (click)="addSection()" class="btn btn-primary">
+          +Add Section
+        </button>
+      </div>
+      <div
+        class="accordion mt-2"
+        id="accordionExample"
+        *ngFor="let section of prerecorded.prerecordedSectionVOs; let i = index"
+      >
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#collapseOne' + i"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+              style="
+                background: aliceblue !important;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <span>Section {{ i + 1 }}</span>
+              <span *ngIf="section.materialUploadingCount">
+                <img
+                  *ngIf="section.materialUploadingCount > 0"
+                  src="../assets/images/page-img/page-load-loader.gif"
+                  alt="loader"
+                  style="height: 40px"
+                  loading="lazy"
+                />
+                {{ section.materialUploadingCount > 0 ? "Uploading.." : "" }}
+              </span>
+            </button>
+          </h2>
+          <div
+            [id]="'collapseOne' + i"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <app-create-prerecorded-sections
+                [module]="prerecorded"
+                [prrecordedSection]="section"
+              ></app-create-prerecorded-sections>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button *ngIf="prerecorded.id"
+        type="button"
+        class="btn btn-primary mt-2"
+        [disabled]="prerecorded.overAllMaterialUploadingCount > 0"
+        (click)="updateModuleStatus(prerecorded.id)"
+      >
+        Submit Module
+      </button>
+    </div>
+  </div>
+  

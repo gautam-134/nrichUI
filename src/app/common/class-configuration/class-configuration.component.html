@@ -1,1 +1,118 @@
-<p>class-configuration works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex bg-primary">
+                <div class="header-title" style="margin-right: auto">
+                    <h4 class="card-title text-white">Class Schedule</h4>
+                </div>
+                <button (click)="addClassConfiguration()" class="btn" style="background: white; color: #50B5FF">
+                    + Create a Class Schedule
+                </button>
+                <app-support [supportDetails]="supportDetails"></app-support>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <div id="user_list_datatable_info" class="dataTables_filter">
+                            <form class="me-3 position-relative">
+                                <div class="form-group mb-0">
+                                    <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                        type="text" placeholder="Search....">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="files-lists table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Class Schedule Name<i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='className' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('className')"></i></th>
+                                <th>Searchable Tags</th>
+                                <th>Created By<i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='teacherName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('teacherName')"></i></th>
+                                <th>Start Date/Time <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='meetingStartDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('meetingStartDate')"></i></th>
+                                <th>End Date/Time <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='meetingEndDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('meetingEndDate')"></i></th>
+                                <!-- <th>Future Class Deleted <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='futureClassesDeleted' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('futureClassesDeleted')" ></i></th> -->
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" *ngIf="classConfiguration.length==0">
+                                    No Record Found.
+                                </td>
+                            </tr>
+                            <tr *ngFor="let class of classConfiguration | short:type:typeOfShorting;let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{class?.className}}</td>
+
+                                <td>{{class?.metaTags}}</td>
+                                <td>{{class?.teacherName}}</td>
+                                <td>
+                                    <div class="font-weight-bold text-muted">
+                                        {{class.meetingStartDate | date}}
+                                    </div>
+                                    <div class="font-weight-bold font-size-lg mb-0"
+                                        style="font-weight: bold;color: #007EF2;">
+                                        {{class.meetingStartDate | date :'shortTime'}}
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="font-weight-bold text-muted">
+                                        {{class.meetingEndDate | date}}
+                                    </div>
+                                    <div class="font-weight-bold font-size-lg mb-0"
+                                        style="font-weight: bold;color: #007EF2;">
+                                        {{class.meetingEndDate | date :'shortTime'}}
+
+                                    </div>
+                                </td>
+                                <!-- <td><span class="badge bg-info"
+                                        [ngClass]="{'badge-danger' : class.futureClassesDeleted , 'badge-info': !class.futureClassesDeleted}">{{class.futureClassesDeleted
+                                        ? 'Deleted' : 'Available'}}</span></td> -->
+                                <td>
+                                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example home icon">menu
+                                    </mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="See All Classes" (click)="seeClasses(class.id)">
+                                            View Classes
+                                        </button>
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Edit"
+                                            (click)="EditClassConfiguration(class)">
+                                            Edit
+                                        </button>
+
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="Map to Batch" (click)="classMapping(class.id)">
+                                            Map Batch
+                                        </button>
+
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="Stop Further Schedules" (click)="onDelete(class,class.id)">Stop
+                                            Further Schedules
+                                        </button>
+                                    </mat-menu>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

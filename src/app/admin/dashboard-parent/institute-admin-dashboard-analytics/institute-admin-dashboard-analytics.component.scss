@@ -1,0 +1,47 @@
+.wh-color {
+    color: white;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0px !important;
+  }
+  
+  .set-img {
+    margin-top: -80px !important;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .set-img {
+      margin-top: 2% !important;
+    }
+  }
+  
+  .change-width {
+    width: 45%;
+  }
+  
+  @media only screen and (max-width: 1338px) {
+    .change-width {
+      width: 59% ;
+    }
+  }
+  
+  @media only screen and (max-width: 1129px) {
+    .change-width {
+      width: 73% ;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .change-width {
+      width: 30% ;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .change-width {
+      width: 50% ;
+    }
+  }
+  
+  

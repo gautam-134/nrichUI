@@ -1,1 +1,82 @@
-<p>roles works!</p>
+<div class="card">
+    <div class="card-header d-flex bg-primary">
+      <div class="header-title" style="margin-right: auto">
+        <h4 class="card-title text-white">Role Management</h4>
+      </div>
+  
+      <button
+        class="btn"
+        (click)="addRole()"
+        style="background: white; color: #50b5ff"
+      >
+        + Create Role
+      </button>
+      <app-support [supportDetails]="supportDetails"></app-support>
+    </div>
+    <div class="card-body">
+      <div class="table">
+        <table class="files-lists table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">
+                Role Name
+                <i
+                  ng-click="typeOfShorting:!typeOfShorting"
+                  [ngClass]="
+                    typeOfShorting && type == 'roleName'
+                      ? 'fa fa-sort-amount-desc'
+                      : 'fa fa-sort-amount-asc'
+                  "
+                  (click)="short('roleName')"
+                ></i>
+              </th>
+              <th scope="col">
+                Role Type
+                <i
+                  ng-click="typeOfShorting:!typeOfShorting"
+                  [ngClass]="
+                    typeOfShorting && type == 'roleType'
+                      ? 'fa fa-sort-amount-desc'
+                      : 'fa fa-sort-amount-asc'
+                  "
+                  (click)="short('roleType')"
+                ></i>
+              </th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let element of roles | short : type : typeOfShorting;
+                let i = index
+              "
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ element.roleName }}</td>
+              <td>{{ element.roleType }}</td>
+              <td>
+                <i
+                  class="fa fa-tags ms-2"
+                  title="screen mapping"
+                  (click)="screenmapping(element)"
+                  aria-hidden="true"
+                  style="cursor: pointer"
+                ></i>
+                <i
+                  *ngIf="checkEditAccess(element)"
+                  (click)="addRole(element)"
+                  class="fa fa-pencil-square-o fa-lg ms-2 update-icon"
+                  title="edit"
+                  aria-hidden="true"
+                  style="cursor: pointer"
+                ></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

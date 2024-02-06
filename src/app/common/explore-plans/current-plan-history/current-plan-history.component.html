@@ -1,1 +1,57 @@
-<p>current-plan-history works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card position-relative inner-page-bg bg-primary" style="height: 57.2px">
+            <div class="inner-page-title">
+                <h5 class="text-white">My Plans</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class='card-body border text-center rounded'>
+                <h4> <b>My Current Plan</b> : {{ currentplan.planName | titlecase }}</h4>
+                <br />
+                <div class="cmn-box z-index-1">
+                    <ul class="hightlight-list">
+
+                        <table>
+                            <tr>
+                                <th style="width: 65%; padding: 4.5% 0%;"><img src="assets/img/h-1.png"
+                                        alt="">&nbsp;&nbsp;<span>Allowed Students :</span>
+                                </th>
+                                <td style="padding: 4.5% 0%;">{{currentplan.allowedStudents}}</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 65%; padding: 4.5% 0%;">
+                                    <img src="assets/img/h-2.png" alt="">&nbsp;&nbsp;<span>Allowed Teachers :</span>
+                                </th>
+                                <td style="padding: 4.5% 0%;">{{currentplan.allowedTeachers}}</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 65%; padding: 4.5% 0%;"><img src="assets/img/h-5.png"
+                                        alt="">&nbsp;&nbsp;<span>Is Zoom Allowed : </span>
+                                </th>
+                                <td style="padding: 4.5% 0%;">{{currentplan.zoomAllowed==true?'Included':'NotIncluded'}}</td>
+                            </tr>
+
+                            <tr>
+                                <th style="width: 65%; padding: 4.5% 0%;"><img src="assets/img/h-1.png"
+                                        alt="">&nbsp;&nbsp;<span>Allowed Storage</span>
+                                </th>
+                                <td style="padding: 4.5% 0%;">{{currentplan.allowedStorage}} GB</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 65%; padding: 4.5% 0%;"><img src="assets/img/h-1.png"
+                                        alt="">&nbsp;&nbsp;<span>Allowed Concurrent Classes</span>
+                                </th>
+                                <td style="padding: 4.5% 0%;">{{currentplan.allowedConcurrentClasses}}</td>
+                            </tr>
+                        </table>
+
+                    </ul>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

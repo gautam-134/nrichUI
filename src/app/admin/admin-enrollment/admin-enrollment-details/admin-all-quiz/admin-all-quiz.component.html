@@ -1,1 +1,56 @@
-<p>admin-all-quiz works!</p>
+<div class="card">
+
+    <div class="card-body">
+       <div id="table" class="table-editable">
+ 
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+             <thead>
+                <tr>
+                   <th>Name <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('name')"></i></th>
+                   <th>Marks <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='marks' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('marks')"></i></th>
+                   <th>Start Date <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='startTime' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('startTime')"></i></th>
+                   <th>End Date <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='endTime' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('endTime')"></i></th>
+                   <th>Exam Duration <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='hour' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('hour')"></i></th>
+                   <th>Teacher Name <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='teacherName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('teacherName')"></i></th>
+                   <th>Action</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr *ngIf="ELEMENT_DATA?.length==0">
+                   <td colspan="7">No Record Found.</td>
+                </tr>
+                <tr class="" *ngFor="let element of ELEMENT_DATA | short:type:typeOfShorting">
+                   <td>{{element.name}} </td>
+                   <td>{{element.marks}}</td>
+                   <td>{{element.startTime | date:'short'}}</td>
+                   <td>{{element.endTime | date:'short'}}</td>
+                   <td> {{element?.hour!=null ?
+                      element?.hour==0 ? element?.minutes + ' minutes' : element?.minutes==0
+                      ?
+                      element?.hour + ' Hour' : element?.hour +' Hour '+ element?.minutes + ' Minutes ' : 'NA'}} </td>
+                   <td> {{element.teacherName}}</td>
+                   <td>
+                      <span class="table-remove"><button type="button" (click)="quizSubmitBy(element.id)"
+                            class="btn btn-danger btn-rounded btn-sm my-0">Submitted By</button></span>
+                   </td>
+                </tr>
+ 
+             </tbody>
+          </table>
+          <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+                   (changeSize)="changeSize($event)"></app-table-paginator>
+       </div>
+    </div>
+ </div>

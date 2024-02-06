@@ -1,1 +1,442 @@
-<p>sign-up-profile works!</p>
+<div
+  class="large-display-section"
+  style="justify-content: center; display: flex"
+>
+  <div
+    class="login_form_wrapper"
+    style="margin: 0; position: absolute; top: 50%; transform: translateY(-50%)"
+  >
+    <div
+      class="form-div5 login_box"
+      style="padding: 24px !important"
+      [ngStyle]="changeHeight ? { height: '80%' } : { height: '96%' }"
+    >
+      <div style="margin-left: auto; margin-right: auto">
+        <h2 class="sign-in-h2 textdec" style="font-size: 25px">
+          Complete Your Profile
+        </h2>
+      </div>
+
+      <div
+        *ngIf="!nextDetails"
+        style="margin-top: 5%; margin-left: auto; margin-right: auto"
+      >
+        <div class="item1" style="position: relative; left: 0; top: 0">
+          <img
+            [src]="
+              imageSrc ? imageSrc : '../../../../assets/images/profile.png'
+            "
+            (click)="fileSelect.click()"
+            class="rounded-circle profilePos"
+            alt="Rounded Image"
+            width="104px"
+            height="104px"
+            style="border: 2px solid #0099ca"
+          />
+          <a class="iq-icons-list" (click)="fileSelect.click()">
+            <img
+              class="Pos"
+              src="../../../../assets/images-marketing/add-icon.png"
+              height="20px"
+              style="border-radius: 50%"
+              alt=""
+            />
+          </a>
+          <input
+            style="display: none"
+            #fileSelect
+            type="file"
+            class="custom-file-input"
+            (change)="onFileChange($event)"
+          />
+        </div>
+      </div>
+
+      <div class="frame-div10 w-100">
+        <form class="form2 w-100" [formGroup]="signupForm">
+          <div *ngIf="!nextDetails">
+            <div class="form-div6" style="margin-top: 5%">
+              <p class="phone-number textdec">
+                Your Name<span class="text-danger">*</span>
+              </p>
+              <input
+                class="component-9-input textdec"
+                formControlName="name"
+                autocomplete="off"
+                type="text"
+                onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 190 || event.charCode == 32"
+                style="
+                  background-color: #efefef;
+                  padding-right: 5%;
+                  padding-left: 5%;
+                "
+              />
+              <div
+                *ngIf="
+                  (submitted && controls['name']?.invalid) ||
+                  controls['name']?.touched
+                "
+              >
+                <div
+                  style="font-size: small"
+                  *ngIf="controls['name']?.errors?.['required']"
+                  class="text-danger textdec"
+                >
+                  Name is required
+                </div>
+                <!-- <div  style="padding-top: 26%; font-size: small"
+                *ngIf="controls['name']?.errors?.['pattern']"
+                class="text-danger textdec">
+
+                  Only Alphabets and dot(.) is allowed
+                </div> -->
+              </div>
+            </div>
+            <div class="form-div6" style="margin-top: 5%">
+              <p class="phone-number textdec">
+                Your Email<span class="text-danger">*</span>
+              </p>
+              <input
+                class="component-9-input textdec"
+                type="email"
+                formControlName="email"
+                style="
+                  background-color: #efefef;
+                  padding-right: 5%;
+                  padding-left: 5%;
+                "
+                autocomplete="off"
+              />
+              <div *ngIf="submitted && controls['email']?.invalid">
+                <div
+                  style="font-size: small"
+                  *ngIf="controls['email']?.errors?.['required']"
+                  class="text-danger textdec"
+                >
+                  Email is required
+                </div>
+                <div
+                  style="font-size: small"
+                  *ngIf="controls['email']?.errors?.['email']"
+                  class="text-danger textdec"
+                >
+                  Email format is not correct
+                </div>
+              </div>
+            </div>
+            <div
+              *ngIf="type == 'admin'"
+              class="form-div6"
+              style="margin-top: 5%"
+            >
+              <p class="phone-number textdec">Referral Code (Optional)</p>
+              <input
+                class="component-9-input textdec"
+                formControlName="code"
+                autocomplete="off"
+                maxlength="6"
+                minlength="6"
+                (keyup)="removeCodeValidation()"
+                type="text"
+                style="
+                  background-color: #efefef;
+                  padding-right: 5%;
+                  padding-left: 5%;
+                "
+              />
+              <div
+                *ngIf="hasCodeError"
+                style="font-size: small"
+                class="text-danger textdec"
+              >
+                Referral Code is invalid!
+              </div>
+            </div>
+            <div style="margin-top: 5%">
+              <button
+                type="submit"
+                class="btn"
+                (click)="checkNameAndEmail()"
+                style="background-color: #008ce4; color: white; width: 100%"
+              >
+                <p class="sign-up-div2 textdec m-0" style="padding: 10px 0">
+                  Continue
+                </p>
+              </button>
+            </div>
+          </div>
+          <div *ngIf="nextDetails">
+            <!-- <div
+              class="form-div6"
+              style="margin-top: 2%"
+              *ngIf="type == 'admin'"
+            >
+              <p class="phone-number textdec">
+                Sub-Domain Name<span class="text-danger" style="margin-right: 4px;">*</span>
+                <i
+                  class="fa fa-info-circle"
+                  aria-hidden="true"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="App name required to create whitelisted sub-domain account for personal access"
+                ></i>
+              </p>
+              <input
+                class="component-9-input textdec"
+                maxlength="20"
+                minlength="1"
+                type="text"
+                formControlName="subDomain"
+                autocomplete="off"
+                (keydown)="onlyAlphabets($event)"
+                style="
+                  background-color: #efefef;
+                  padding-right: 5%;
+                  padding-left: 5%;
+                "
+              />
+              <div
+                *ngIf="
+                  (submitted && controls['subDomain']?.invalid) ||
+                  controls['subDomain']?.touched
+                "
+              >
+                <div
+                  style="font-size: small"
+                  *ngIf="controls['subDomain']?.errors?.['required']"
+                  class="text-danger textdec"
+                >
+                  Sub-Domain is required
+                </div>
+              </div>
+            </div> -->
+            <div class="form-div6" style="margin-top: 2%">
+              <p class="phone-number textdec">
+                Date Of Birth<span class="text-danger">*</span>
+              </p>
+              <input
+                class="component-9-input textdec"
+                [max]="getToday()"
+                type="date"
+                formControlName="dob"
+                autocomplete="off"
+                style="
+                  background-color: #efefef;
+                  padding-right: 5%;
+                  padding-left: 5%;
+                "
+              />
+              <div
+                *ngIf="
+                  (submitted && controls['dob']?.invalid) ||
+                  controls['dob']?.touched
+                "
+              >
+                <div
+                  style="font-size: small"
+                  *ngIf="controls['dob']?.errors?.['required']"
+                  class="text-danger textdec"
+                >
+                  Date of Birth is required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-div6" style="margin-top: 2%">
+              <p class="phone-number textdec">
+                Gender<span class="text-danger">*</span>
+              </p>
+              <div class="row">
+                <div class="col-6">
+                  <div
+                    class="custom_check"
+                    style="background-color: #efefef; border-radius: 5px"
+                    [ngClass]="class1"
+                    (click)="setActiveClass(1)"
+                  >
+                    <div class="male-div">Male</div>
+                    <img
+                      alt=""
+                      [src]="
+                        class1 == 'active'
+                          ? 'assets/images-marketing/group-165.svg'
+                          : 'assets/images-marketing/oval-4.svg'
+                      "
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div
+                    class="custom_check"
+                    style="background-color: #efefef; border-radius: 5px"
+                    [ngClass]="class2"
+                    (click)="setActiveClass(2)"
+                  >
+                    <div class="female-div">Female</div>
+                    <img
+                      alt=""
+                      [src]="
+                        class2 == 'active'
+                          ? 'assets/images-marketing/group-165.svg'
+                          : 'assets/images-marketing/oval-4.svg'
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  submitted && profile.gender != 'M' && profile.gender != 'F'
+                "
+              >
+                <div style="font-size: small" class="text-danger text-dec">
+                  Gender is required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-div6" style="margin-top: 2%">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="phone-number textdec">
+                    Country<span class="text-danger">*</span>
+                  </p>
+                  <div
+                    class="group-div1 item"
+                    style="background-color: #efefef; border-radius: 5px"
+                  >
+                    <select
+                      formControlName="country"
+                      class="form-control"
+                      style="line-height: 2.28; background-color: #efefef"
+                    >
+                      <option *ngFor="let c of countryList" [value]="c">
+                        {{ c }}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && controls['country']?.invalid">
+                      <div
+                        style="font-size: small"
+                        *ngIf="controls['country']?.errors?.['required']"
+                        class="text-danger textdec"
+                      >
+                        Country is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <p class="phone-number textdec" style="left: 52%">
+                    State<span class="text-danger">*</span>
+                  </p>
+                  <div
+                    class="group-div2 item"
+                    style="background-color: #efefef; border-radius: 5px"
+                  >
+                    <select
+                      formControlName="state"
+                      class="form-control"
+                      style="line-height: 2.28; background-color: #efefef"
+                    >
+                      <option *ngFor="let s of stateList" [value]="s">
+                        {{ s }}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && controls['state']?.invalid">
+                      <div
+                        style="font-size: small"
+                        *ngIf="controls['state']?.errors?.['required']"
+                        class="text-danger textdec"
+                      >
+                        State is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="form-div6"
+              style="
+                margin-top: 9%;
+                height: 0%;
+                padding-bottom: 1%;
+                display: flex;
+              "
+            >
+              <input
+                class="form-check-input"
+                formControlName="agree"
+                type="checkbox"
+                id="disabledFieldsetCheck"
+              />
+              <label
+                style="padding-left: 20px"
+                class="phone-number textdec"
+                for="disabledFieldsetCheck"
+              >
+                I agree with the
+                <span class="text-primary"
+                  ><a routerLink="/legal-contact" target="_blank"
+                    >Terms and Conditions</a
+                  ></span
+                >
+              </label>
+            </div>
+            <div
+              *ngIf="
+                (submitted && controls['agree']?.invalid) ||
+                controls['agree']?.touched
+              "
+            >
+              <div
+                style="font-size: small"
+                *ngIf="controls['agree']?.errors?.['required']"
+                class="text-danger textdec"
+              >
+                Please agree terms & conditions
+              </div>
+            </div>
+
+            <div style="margin-top: 2%">
+              <button
+                type="submit"
+                class="btn"
+                (click)="submit()"
+                style="background-color: #008ce4; color: white; width: 100%"
+                id="buttonSignup"
+              >
+                <p class="sign-up-div2 textdec m-0" style="padding: 10px 0">
+                  Submit
+                </p>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- <a class="instiute-a2" style="top: 102%; left: 14%">
+        <a class="register-your-instituteschool2">
+          <span style="color: white" class="textdec"> Register Your </span
+          ><b style="color: white" class="textdec">Institute/School</b
+          ><span class="textdec" style="color: white"> With Us!</span>
+        </a>
+      </a> -->
+      <a
+        *ngIf="nextDetails"
+        class="instiute-a2 item1"
+        style="margin: 3% auto 0 auto"
+        (click)="nextDetails = false; changeHeight = false"
+      >
+        <a class="register-your-instituteschool2">
+          <span class="go-back2 textdec text-white">
+            <b style="color: #008ce4">
+              <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Go Back
+            </b>
+          </span>
+        </a>
+      </a>
+    </div>
+  </div>
+</div>

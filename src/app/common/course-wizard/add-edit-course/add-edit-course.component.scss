@@ -1,0 +1,33 @@
+.mat-form-field-flex:hover .mat-form-field-outline {
+    opacity: 0;
+    transition: none !important;
+ }
+ .mat-label{
+    color: white !important;
+ }
+
+ .customImageSelctor{
+   cursor: pointer;
+   border:2px solid gray;
+   text-align: center;
+   background:rgba(80, 181, 255, 0.2);
+   height: 95px;
+   border-radius: 45px;
+   border-style: dotted !important;
+ }
+
+ .accordion-button:not(.collapsed) {
+   color: #48a3e6;
+   background-color: #eef8ff;
+   box-shadow:none;
+}
+
+.mat-form-field .mat-form-field-wrapper {
+   padding-bottom: 19px !important;
+ }
+
+ .image-preview-container{
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+ }

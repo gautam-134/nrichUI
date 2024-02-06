@@ -1,1 +1,91 @@
-<p>screen-mapping works!</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between bg-primary">
+      <div class="header-title">
+        <h4 class="card-title text-white">Screen Mapping</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <div *ngFor="let element of screenNames; let i = index">
+        <div class="ms-2">
+          <h5>{{ element.name }}</h5>
+        </div>
+        <div class="form-check ms-2" *ngIf="element.url">
+          <input
+            (change)="addMappingIds(element.screenNameId)"
+            [checked]="element.selected"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault1{{ i }}"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            {{ element.name }}
+          </label>
+        </div>
+        <!-- <div class="row">
+          <mat-chip-list  aria-label="Fish selection" *ngFor="let subMenu of element.subSections;let j=index">
+            <mat-chip>{{subMenu.name}}</mat-chip>
+          </mat-chip-list>
+        </div> -->
+        <span
+          class="ms-2"
+          *ngFor="let subMenu of element.subSections; let j = index"
+        >
+          <input
+            (change)="addMappingIds(subMenu.screenNameId)"
+            [checked]="subMenu.selected"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault2{{ j }}"
+          />
+          <label class="form-check-label ms-1" for="flexCheckDefault">
+            {{ subMenu.name }}
+          </label>
+        </span>
+      </div>
+      <!-- <div class="card mt-2">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">App Screen Mapping</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <span
+              class="ms-2 col-md-3"
+              *ngFor="let element of appScreenNames; let i = index"
+            >
+              <h5>{{ element.name }}</h5>
+              <span class="form-check ms-2" *ngIf="element.url">
+                <input
+                  (change)="addAppMappingIds(element.screenNameId)"
+                  [checked]="element.selected"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault1{{ i }}"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{ element.name }}
+                </label>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="card-footer">
+      <button
+        type="button"
+        class="btn btn-sm btn-primary me-2"
+        (click)="submit()"
+      >
+        Submit
+      </button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="back()">
+        Back
+      </button>
+    </div>
+  </div>
+  

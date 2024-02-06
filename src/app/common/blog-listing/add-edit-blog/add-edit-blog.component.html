@@ -1,1 +1,77 @@
-<p>add-edit-blog works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Create Blog</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="BlogForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Blog Title<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Blog Title"
+                                    formControlName="subject" />
+                                <div *ngIf="submitted && form['subject']?.invalid">
+                                    <div class="text-danger" *ngIf="form['subject']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description<span class="text-danger">*</span></label>
+                                <angular-editor [(ngModel)]="htmlContent" [config]="editorConfig"
+                                    formControlName="description">
+                                </angular-editor>
+                                <div *ngIf="submitted && form['description']?.invalid">
+                                    <div class="text-danger" *ngIf="form['description']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Select Cover Image<span class="text-danger">*</span></label>
+                                <input #fileSelect type="file" class="form-control" accept=".jpg,.jpeg,.png,.gif"
+                                    placeholder="Select File" (change)="onFileChange($event)" />
+                            </div>
+                            <div *ngIf="submitted && !this.imageSrc">
+                                <div class="text-danger" *ngIf="!this.imageSrc">
+                                    Above Field Is Required.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-2" style="margin-top: 25px;">
+                            <button (click)="documentPreview(file)" [disabled]="!(file || blogDetails.image )"
+                                class="btn btn-primary"><i _ngcontent-cug-c349="" aria-hidden="true"
+                                    class="fa fa-eye"></i>
+                                Preview</button>
+                        </div> -->
+
+                        <div class="col-md-12" *ngIf="imageSrc">
+                            <div class="form-group">
+                                <img [src]="imageSrc" style="width: 100%;" height="100%">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" (click)="onSubmit()" type="submit" class="btn btn-primary active"
+                    style="margin-right: 20px;">Submit</button>
+
+                <button type="submit" type="submit" (click)="cancel()" class="btn btn-secondary active">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

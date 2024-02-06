@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+} from '@angular/core';
+
 
 @Component({
   selector: 'app-admin',
@@ -7,6 +14,29 @@ import { Component } from '@angular/core';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
+  @Output('desktopHamburgerClick')
+  desktopHamburgerClick: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+  opensidebar!: any;
+  scrHeight!: number;
+  removecss!: boolean;
+  
+  constructor() {}
 
+  ngOnInit(): void {
+    this.getScreenSize();
+  }
+  toggleDesktopSidebarOpen(value: Boolean) {
+    this.opensidebar = value;
+  }
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.scrHeight = window.innerHeight;
+
+    if (window.innerWidth <= 900) {
+      this.removecss = true;
+    } else {
+      this.removecss = false;
+    }
+  }
 }

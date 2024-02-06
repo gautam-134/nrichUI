@@ -1,1 +1,227 @@
-<p>file-management works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card file_manager">
+        <div class="card-header bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">File Management</h4>
+          </div>
+  
+          <div class="d-flex button-box">
+            <button
+              type="button"
+              class="btn btn-danger ml-2 setHeight d-flex align-items-center"
+              style="margin-right: 3px"
+              [disabled]="selectedFiles.length == 0"
+              (click)="deleteFiles()"
+            >
+              <mat-icon aria-hidden="false">delete_forever</mat-icon>
+              Delete ({{ selectedFiles.length }}) Files ({{
+                selectedSize | convertSizeIntoReadableFormat
+              }})
+            </button>
+  
+            <button
+              class="btn btn-secondary ml-2 setHeight d-flex align-items-center"
+              style="margin-right: 3px"
+            >
+              <mat-icon aria-hidden="false">
+                <span class="material-symbols-outlined"> cloud_circle </span>
+              </mat-icon>
+              Total Space {{ bucketSize }} GB
+            </button>
+            <button
+              class="btn btn-light ml-2 setHeight d-flex align-items-center"
+              style="margin-right: 3px"
+            >
+              <mat-icon aria-hidden="false">
+                <span class="material-symbols-outlined"> cloud_circle </span>
+              </mat-icon>
+              Used Space {{ usedSpace | number : ".1-2" }} GB
+              <!-- Used Space 2 GB -->
+            </button>
+          </div>
+        </div>
+  
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        type="text"
+                        #fileSearch
+                        placeholder="Search...."
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col"><b>Select</b></th>
+                  <th scope="col">S.No</th>
+                  <th scope="col">
+                    File Name
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'key'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('key')"
+                    ></i>
+                  </th>
+                  <th scope="col">Material Type</th>
+                  <th scope="col">Preview</th>
+                  <th scope="col">Download</th>
+                  <th scope="col">
+                    Size
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'size'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('size')"
+                    ></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="files?.length == 0">
+                  <td colspan="8">No data found!</td>
+                </tr>
+                <tr
+                  *ngFor="
+                    let element of files | short : type : typeOfShorting;
+                    let i = index
+                  "
+                >
+                  <td>
+                    <input
+                      type="checkbox"
+                      (click)="addToSelected(element, $event)"
+                      [(ngModel)]="element.selected"
+                    />
+                  </td>
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element.key.split("/").pop() }}
+                  </td>
+                  <td>
+                    {{
+                      element.materialType === "MATERIAL"
+                        ? "Batch>Material"
+                        : element.materialType === "SOCIALCONNECT"
+                        ? "Social Connect"
+                        : "Class>LiveRecording"
+                    }}
+                  </td>
+                  <td>
+                    <button
+                      *ngIf="!element.filePath.includes('.xlsx')"
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      style="border-radius: 50%; height: 40px"
+                      (click)="showPreview(element.filePath)"
+                    >
+                      <mat-icon>
+                        {{
+                          imageTypes.includes(
+                            element.key.substring(
+                              element.key.lastIndexOf(".") + 1
+                            )
+                          )
+                            ? "image"
+                            : videoTypes.includes(
+                                element.key.substring(
+                                  element.key.lastIndexOf(".") + 1
+                                )
+                              )
+                            ? "play_circle"
+                            : audioTypes.includes(
+                                element.key.substring(
+                                  element.key.lastIndexOf(".") + 1
+                                )
+                              )
+                            ? "play_circle"
+                            : "file_copy"
+                        }}
+                      </mat-icon>
+                    </button>
+                  </td>
+                  <td>
+                    <a
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title=""
+                      data-bs-original-title="Download"
+                      (click)="downloadFile(element.key, element.etag)"
+                    >
+                      <i class="material-symbols-outlined text-primary"
+                        >file_download</i
+                      >
+                    </a>
+                  </td>
+                  <td>
+                    {{ element.size | convertSizeIntoReadableFormat }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav aria-label="...">
+              <ul class="pagination" style="justify-content: end">
+                <li class="page-item">
+                  <span class="page-link bg-primary">
+                    <select
+                      class="form-select-sm"
+                      style="padding-top: 0; padding-bottom: 0"
+                      (change)="changeSize($event)"
+                      [(ngModel)]="size"
+                    >
+                      <option selected value="5">5</option>
+                      <option value="20">20</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                      <option value="seeAll">See All</option>
+                    </select>
+                  </span>
+                </li>
+                <li class="page-item">
+                  <button
+                    class="page-link"
+                    (click)="nextAndPrev(false)"
+                    [disabled]="currentTokens.length <= 1"
+                  >
+                    Previous
+                  </button>
+                </li>
+                <li class="page-item">
+                  <button
+                    class="page-link"
+                    (click)="nextAndPrev(true)"
+                    [disabled]="
+                      currentTokens.length >= 1 &&
+                      s3StorageDetails.nextContinuationToken == null
+                    "
+                  >
+                    Next
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

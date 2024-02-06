@@ -1,1 +1,181 @@
-<p>admin-classes works!</p>
+<mat-tab-group mat-align-tabs="vertical">
+    <mat-tab label="Today's Schedule">
+       <div class="card">
+          <div class="card-body p-0">
+             <div id="table" class="table-editable">
+                <div class="table-responsive">
+                   <table class="table table-bordered table-responsive-lg table-striped text-center">
+                      <thead>
+                         <tr>
+                            <th>Title <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('name')"></i></th>
+                            <th>Teacher <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='teacher_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('teacher_name')"></i></th>
+                            <th>Start Time <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='start_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('start_date')"></i></th>
+                            <th>End Time <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='end_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('end_date')"></i></th>
+                            <th>Action</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngIf="liveClassesVO?.length==0">
+                            <td colspan="5">No Record Found.</td>
+                         </tr>
+                         <tr class="" *ngFor="let live of liveClassesVO  | short:type:typeOfShorting">
+                            <td>{{ live?.name }}</td>
+                            <td>{{ live?.teacher_name }}</td>
+                            <td>
+                               <div class="font-weight-bolder font-size-lg mb-0">
+                                  {{ live?.start_date | date }}
+                               </div>
+                               <div class="font-weight-bold text-muted">
+                                  {{ live?.start_date | date: "h:mm a" }}
+                               </div>
+                            </td>
+                            <td>
+                               <div class="font-weight-bolder font-size-lg mb-0">
+                                  {{ live?.end_date | date }}
+                               </div>
+                               <div class="font-weight-bold text-muted">
+                                  {{ live?.end_date | date: "h:mm a" }}
+                               </div>
+                            </td>
+                            <td>
+                               <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" (click)="joinClass(live.id)">Join</button></span>
+                            </td>
+                         </tr>
+ 
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </mat-tab>
+    <mat-tab label="Upcoming">
+       <div class="card">
+ 
+          <div class="card-body">
+             <div id="table" class="table-editable">
+ 
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+                         <th>Title <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('name')"></i></th>
+                         <th>Teacher <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='teacher_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('teacher_name')"></i></th>
+                         <th>Start Time <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='start_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('start_date')"></i></th>
+                         <th>End Time <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='end_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('end_date')"></i></th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr *ngIf="futureClassesVO?.length==0">
+                         <td colspan="5">No Record Found.</td>
+                      </tr>
+                      <tr class="" *ngFor="let element of futureClassesVO  | short:type:typeOfShorting">
+                         <td>{{ element?.name }}</td>
+                         <td>{{ element?.teacher_name }}</td>
+                         <td>
+                            <div class="font-weight-bolder font-size-lg mb-0">
+                               {{ element?.start_date | date }}
+                            </div>
+                            <div class="font-weight-bold text-muted">
+                               {{ element?.start_date | date: "h:mm a" }}
+                            </div>
+                         </td>
+                         <td>
+                            <div class="font-weight-bolder font-size-lg mb-0">
+                               {{ element?.end_date | date }}
+                            </div>
+                            <div class="font-weight-bold text-muted">
+                               {{ element?.end_date | date: "h:mm a" }}
+                            </div>
+                         </td>
+ 
+                     
+                      </tr>
+ 
+                   </tbody>
+ 
+                </table>
+                <app-table-paginator [size]="FutureSize" [totalElements]="FutureTotalCount"
+                (pageChange)="changeFutureClassesPage($event)" (changeSize)="changeFutureClassesSize($event)">
+             </app-table-paginator>
+             </div>
+          </div>
+       </div>
+    </mat-tab>
+    <mat-tab label="Completed">
+       <div class="card">
+ 
+          <div class="card-body">
+             <div id="table" class="table-editable">
+ 
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+                         <th>Title <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('name')"></i></th>
+                         <th>Teacher <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='teacher_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('teacher_name')"></i></th>
+                         <th>Start Time <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='start_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('start_date')"></i></th>
+                         <th>End Time <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='end_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('end_date')"></i></th>
+                         <th>Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+ 
+                      <tr *ngIf="recordedClassesVO?.length==0">
+                         <td colspan="5">No Record Found.</td>
+                      </tr>
+                      <tr class="" *ngFor="let element of recordedClassesVO  | short:type:typeOfShorting">
+                         <td>{{ element?.name }}</td>
+                         <td>{{ element?.teacher_name }}</td>
+                         <td>
+                            <div class="font-weight-bolder font-size-lg mb-0">
+                               {{ element?.start_date | date }}
+                            </div>
+                            <div class="font-weight-bold text-muted">
+                               {{ element?.start_date | date: "h:mm a" }}
+                            </div>
+                         </td>
+                         <td>
+                            <div class="font-weight-bolder font-size-lg mb-0">
+                               {{ element?.end_date | date }}
+                            </div>
+                            <div class="font-weight-bold text-muted">
+                               {{ element?.end_date | date: "h:mm a" }}
+                            </div>
+                         </td>
+                         <td><span class="table-remove"><a (click)="showDetails(element.id)">SHOW
+                                  DETAILS</a></span></td>
+                      </tr>
+                   </tbody>
+                </table>
+                <app-table-paginator [size]="size" [totalElements]="totalCount"
+                   (pageChange)="changeRecordedClassesPage($event)" (changeSize)="changeRecordedClassesSize($event)">
+                </app-table-paginator>
+             </div>
+          </div>
+       </div>
+    </mat-tab>
+ </mat-tab-group>
+ 

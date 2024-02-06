@@ -1,1 +1,36 @@
-<p>batches works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div id="content-page" class="content-page">
+        <div class="row">
+          <div class="mb-2">
+            <h4>Live Schedules</h4>
+          </div>
+          <div></div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"
+            *ngFor="let batch of batches"
+            (click)="navigateToEnrollmentDetails(batch.courseId, batch.idBatch)"
+          >
+            <div class="card mb-3 point item">
+              <div class="card-header bg-primary text-white">
+                {{ batch?.startDate | date }}&nbsp;-
+                {{ batch?.endDate | date }}
+              </div>
+              <div class="card-body">
+                <div class="single-class">
+                  <div class="class-thumb" style="height: 90px; width: 90px">
+                    {{ getFirstChar(batch?.batchName) }}
+                  </div>
+                  <div class="class-intro-content">
+                    <h6 style="font-weight: 500;word-break: break-all;">{{ batch?.batchName }}</h6>
+                    <!-- <p class="card-text">{{batch?.batchDescription | slice:0:35}}</p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="batches.length == 0">No Batches Found.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

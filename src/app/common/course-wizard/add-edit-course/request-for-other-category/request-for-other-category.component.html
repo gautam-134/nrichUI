@@ -1,1 +1,79 @@
-<p>request-for-other-category works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Request for New Category</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="CategoryRequestForm">
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Category Name<span class="text-danger">*</span></label>
+                            <input type="text" formControlName="categoryName" autocomplete="off" placeholder="Enter Category Name"
+                                class="form-control" />
+                            <div *ngIf="
+                              (isSubmit && controls['categoryName'].invalid)
+                            ">
+                                <div *ngIf="controls['categoryName'].errors?.['required']" class="text-danger">
+                                    Category Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="exampleFormControlSelect1">Sub Category Name<span
+                                    class="text-danger">*</span></label>
+                            <input type="subCategoryName" class="form-control" id="exampleInputEmail3" formControlName="subCategoryName" placeholder="Enter Sub Category Name"
+                                 />
+
+                            <div *ngIf="(isSubmit && controls['subCategoryName'].invalid) ||
+                            controls['subCategoryName']?.touched">
+                                <div *ngIf="controls['subCategoryName'].errors?.['required']" class="text-danger">
+                                    Sub Category Name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="exampleFormControlSelect1">Sub-Sub Category Name<span
+                                    class="text-danger">*</span></label>
+                            <input  class="form-control" id="exampleInputEmail3" formControlName="subSubCategoryName" placeholder="Enter Sub Sub Category Name"
+                                 />
+
+                            <div *ngIf="(isSubmit && controls['subSubCategoryName'].invalid) ||
+                            controls['subSubCategoryName']?.touched">
+                                <div *ngIf="controls['subSubCategoryName'].errors?.['required']" class="text-danger">
+                                    Sub-Sub Category Name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </form>
+                <div class="mb-3">
+                    <button
+                      *ngIf="!disableField"
+                      type="button"
+                      style="margin-right: 5px"
+                      type="submit"
+                      class="btn btn-primary active"
+                      (click)="onSubmit()"
+                    >
+                      Submit
+                    </button>
+        
+                    <button
+                      mat-button
+                      type="button"
+                      class="btn btn-secondary active"
+                      mat-button
+                      (click)="closeDialog()"
+                    >
+                      Close
+                    </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

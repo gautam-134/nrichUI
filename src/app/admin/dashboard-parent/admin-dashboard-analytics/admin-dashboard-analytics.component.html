@@ -1,1 +1,470 @@
-<p>admin-dashboard-analytics works!</p>
+<div style="padding-top: 7%">
+    <div
+      class="row wh-color"
+      style="
+        padding: 2% 5% 0% 9%;
+        background: linear-gradient(95.13deg, #ed7c58 -19.76%, #f56666 108.11%);
+        box-shadow: 6.01153px 6.01153px 30.0576px rgba(0, 0, 0, 0.06);
+        border-radius: 36.0692px;
+      "
+    >
+      <div class="col-md-6">
+        <h2 class="wh-color">Welcome, {{ name | titlecase }}</h2>
+        <h4 class="wh-color">
+          You've learned 80% of your goal this week! Keep it up and improve your
+          results!
+        </h4>
+        <div style="margin-top: 5%">
+          <h4 class="wh-color">{{ d | date : "mediumDate" }}</h4>
+          <br />
+          <h4 class="wh-color">{{ adminAnalytics.instituteName }}</h4>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="set-img">
+          <img
+            [src]="
+              gender === 'M'
+                ? '../../../assets/teacherDashboard/sir.png'
+                : '../../../assets/teacherDashboard/madam.png'
+            "
+            class="img-fluid change-width"
+          />
+        </div>
+      </div>
+    </div>
+  
+    <ul class="list-unstyled row mb-0 mt-2">
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card" style="max-height: 118px">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">Total Courses</div>
+              <div class="col-sm-4">
+                <h4>{{ adminAnalytics.totalCourses }}</h4>
+              </div>
+              <div class="col-sm-8">
+                <h5>
+                  <small class="text-success"
+                    >+{{ adminAnalytics.recentlyAddedCourses }} Recently
+                    Added</small
+                  >
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card" style="max-height: 118px">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">Total Teachers</div>
+              <div class="col-sm-4">
+                <h4>{{ adminAnalytics.totalTeachers }}</h4>
+              </div>
+              <div class="col-sm-8">
+                <h5>
+                  <small class="text-danger"
+                    >+{{ adminAnalytics.recentlyAddedTeachers }} Recently
+                    Added</small
+                  >
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card" style="max-height: 118px">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">Total Students</div>
+              <div class="col-sm-4">
+                <h4>{{ adminAnalytics.totalStudents }}</h4>
+              </div>
+              <div class="col-sm-8">
+                <h5>
+                  <small class="text-success"
+                    >+{{ adminAnalytics.recentlyAddedStudents }} Recently
+                    Added</small
+                  >
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card" style="max-height: 118px">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">Offline Enrollment Requests</div>
+              <div class="col-md-12">
+                <h4>{{ adminAnalytics.totalOfflineEnrollments }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card card-block card-stretch card-height">
+          <div class="card-header">
+            <div class="d-flex justify-content-between flex-wrap">
+              <h4 class="card-title">Learner Stats</h4>
+            </div>
+          </div>
+          <div class="card-body" style="overflow: auto">
+            <apx-chart
+              #chartObj
+              [series]="series"
+              [chart]="apexChart"
+              [title]="title"
+              [xaxis]="xAxix"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card" style="height: 96%">
+          <div class="card-header">
+            <div class="header-title">
+              <h3 class="card-title">Storage Analytics</h3>
+            </div>
+          </div>
+          <div
+            class="card-body"
+            style="overflow: scroll; max-height: 330px; min-height: 330px"
+          >
+            <div class="row">
+              <div
+                class="col-6"
+                style="
+                  background-color: #f4f4f4;
+                  padding: 5px 10px;
+                  border-radius: 15px;
+                "
+              >
+                <h6>Total Storage</h6>
+                <h6 style="font-weight: 600">{{ totalSpace }} GB</h6>
+              </div>
+              <div
+                class="col-6"
+                style="
+                  background-color: #50b5ff;
+                  padding: 5px 10px;
+                  border-radius: 15px;
+                "
+              >
+                <h6 class="text-white">Consumed Storage</h6>
+                <h6 class="text-white" style="font-weight: 600">
+                  {{ usedSpace }} GB
+                </h6>
+              </div>
+            </div>
+            <div class="row">
+              <apx-chart
+                [series]="radialBarSeries"
+                [chart]="radialBar"
+                [plotOptions]="radialplotOptions"
+                [labels]="radiallabels"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 col-md-6">
+        <div class="card" style="max-height: 280px; min-height: 280px">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Assignments & Quiz</h4>
+            </div>
+          </div>
+          <div class="card-body p-0" style="overflow: auto">
+            <ul class="todo-task-lists m-0 p-0">
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of assignments"
+              >
+                <div class="schedule-icon">
+                  <i class="material-symbols-outlined text-primary md-18"
+                    >fiber_manual_record</i
+                  >
+                </div>
+                <div class="ms-3 w-100">
+                  <h6 class="mb-0">{{ element.name }} [Assignment]</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span
+                      >{{ element?.publishedDate | date : "medium" }} to
+                      {{ element?.submissionFrom | date : "medium" }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of quizs"
+              >
+                <div class="schedule-icon">
+                  <i class="material-symbols-outlined text-primary md-18"
+                    >fiber_manual_record</i
+                  >
+                </div>
+                <div class="ms-3 w-100">
+                  <h6 class="mb-0">{{ element.name }} [Assignment]</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span
+                      >{{ element?.startTime | date : "medium" }} to
+                      {{ element?.endTime | date : "medium" }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-3"
+                *ngIf="assignments.length == 0 && quizs.length == 0"
+              >
+                No records found.
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="card" style="max-height: 280px; min-height: 280px">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Total Courses</h4>
+            </div>
+          </div>
+          <div class="card-body p-0" style="overflow: auto">
+            <ul class="todo-task-lists m-0 p-0">
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of courses; let i = index"
+              >
+                <div class="w-100">
+                  <div class="d-flex justify-content-between mt-2 text-dark">
+                    <h6>{{ element.courseName }}</h6>
+                    <small>{{ element.completeness }}</small>
+                  </div>
+                  <div
+                    class="shadow-none progress w-100 mt-2"
+                    style="height: 6px"
+                  >
+                    <div
+                      class="progress-bar"
+                      [ngClass]="
+                        i == 0
+                          ? 'bg-danger'
+                          : i % 2 == 0
+                          ? 'bg-primary'
+                          : 'bg-info'
+                      "
+                      data-toggle="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="62"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      [ngStyle]="{
+                        width: element.completeness,
+                        transition: 'width 2s ease 0s'
+                      }"
+                    ></div>
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-3"
+                *ngIf="courses.length == 0"
+              >
+                No course found.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 col-md-6">
+        <div class="card" style="max-height: 280px; min-height: 280px">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Live/Upcoming Classes</h4>
+            </div>
+          </div>
+          <div class="card-body p-0" style="overflow: auto">
+            <ul class="todo-task-lists m-0 p-0">
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of liveClasses"
+              >
+                <div class="schedule-icon">
+                  <i class="material-symbols-outlined text-success md-18"
+                    >fiber_manual_record</i
+                  >
+                </div>
+                <div class="ms-3 w-100">
+                  <h6 class="mb-0">{{ element.name }}</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span
+                      >{{ element?.start_date | date : "medium" }} to
+                      {{ element?.end_date | date : "h:mm a" }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of futureClasses"
+              >
+                <div class="schedule-icon">
+                  <i class="material-symbols-outlined text-success md-18"
+                    >fiber_manual_record</i
+                  >
+                </div>
+                <div class="ms-3 w-100">
+                  <h6 class="mb-0">{{ element.name }}</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span
+                      >{{ element?.start_date | date : "medium" }} to
+                      {{ element?.end_date | date : "h:mm a" }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-3"
+                *ngIf="liveClasses.length == 0 && futureClasses.length == 0"
+              >
+                No classes found.
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="card" style="max-height: 280px; min-height: 280px">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Webinar & Demo</h4>
+            </div>
+          </div>
+          <div class="card-body p-0" style="overflow: auto">
+            <ul class="todo-task-lists m-0 p-0">
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of liveDemo"
+              >
+                <div class="schedule-icon">
+                  <i class="material-symbols-outlined text-success md-18"
+                    >fiber_manual_record</i
+                  >
+                </div>
+                <div class="ms-3 w-100">
+                  <h6 class="mb-0">{{ element.name }} [Demo]</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span
+                      >{{ element?.start_date | date : "medium" }} to
+                      {{ element?.end_date | date : "h:mm a" }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-2"
+                *ngFor="let element of liveWebinar"
+              >
+                <div class="schedule-icon">
+                  <div class="schedule-icon">
+                    <i class="material-symbols-outlined text-success md-18"
+                      >fiber_manual_record</i
+                    >
+                  </div>
+                </div>
+                <div class="ms-3 w-100">
+                  <h6 class="mb-0">{{ element.name }} [Webinar]</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span
+                      >{{ element?.start_date | date : "medium" }} to
+                      {{ element?.end_date | date : "h:mm a" }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="d-flex align-items-center p-3"
+                *ngIf="liveDemo.length == 0 && liveWebinar.length == 0"
+              >
+                No record found.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 col-md-6">
+        <div class="card" style="max-height: 575px; min-height: 575px">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Notifications</h4>
+            </div>
+          </div>
+          <div
+            class="card-body p-0"
+            style="overflow: auto; max-height: 500px; min-height: 500px"
+            (scroll)="onScroll($event)"
+          >
+            <ul class="todo-task-lists m-0 p-0">
+              <li
+                class="d-flex align-items-center p-3"
+                *ngFor="let element of notifications"
+              >
+                <div class="user-img img-fluid">
+                  <img
+                    src="../../../../assets/images-marketing/bell.jpg"
+                    alt="story-img"
+                    class="rounded-circle avatar-40"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  class="d-flex align-items-center justify-content-between w-100 active-task"
+                  (click)="updateNotificationStatus(element)"
+                >
+                  <div class="ms-3">
+                    <h6 class="d-inline-block">{{ element.name }}</h6>
+                    <span
+                      class="badge bg-success ms-0 ms-md-3 my-1 my-md-0 text-white"
+                      *ngIf="element.viewed == 'false'"
+                      >New</span
+                    >
+                    <p class="mb-0">{{ element.notification }}</p>
+                  </div>
+                </div>
+              </li>
+              <li
+                *ngIf="notifications.length != totalNotifications"
+                class="col-12 text-center"
+              >
+                <img
+                  src="../assets/images/page-img/page-load-loader.gif"
+                  alt="loader"
+                  style="height: 72px"
+                  loading="lazy"
+                />
+              </li>
+              <li
+                class="d-flex align-items-center p-3"
+                *ngIf="notifications.length == 0"
+              >
+                No Notifications Found.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

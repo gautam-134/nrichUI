@@ -1,1 +1,137 @@
-<p>courses works!</p>
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-header d-flex bg-primary">
+             <div class="header-title" style="margin-right: auto">
+                <h4 class="card-title text-white">Course Listing</h4>
+             </div>
+             <button class="btn btn-primary" (click)="addCourse()" style="background: white; color: #50B5FF">
+                + Add New Course
+             </button>
+ 
+             <app-support [supportDetails]="supportDetails"></app-support>
+          </div>
+          <div class="card-body">
+ 
+             <div class="row justify-content-between d-flex">
+                <div class="col-sm-12 col-md-6">
+                   <div id="user_list_datatable_info" class="dataTables_filter">
+                      <form class="me-3 position-relative">
+                         <div class="form-group mb-0">
+                            <input class="form-control" #courseSearch type="text"
+                               placeholder="Type in this field for quick filter">
+                         </div>
+                      </form>
+                   </div>
+                </div>
+ 
+                <!-- <div class="col-sm-12 col-md-6">
+                   <div class="user-list-files d-flex justify-content-end">
+                   </div>
+                </div> -->
+             </div>
+             <ul class="nav nav-pills text-center" style="border-color: #007EF2;" id="myTab" role="tablist"
+                style="margin-top: 2%;">
+                <li class="nav-item" role="presentation">
+                   <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                      type="button" role="tab" aria-controls="home" aria-selected="true">Live Courses</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                      role="tab" aria-controls="profile" aria-selected="false">Disabled Courses</button>
+                </li>
+             </ul>
+             <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                   <table class="files-lists table table-striped mt-4">
+                      <thead>
+                         <tr>
+                            <!-- <th scope="col">No.</th> -->
+                            <th scope="col">S.No</th>
+                            <th>Course Code</th>
+                            <th scope="col">Course Name <i ng-click="typeOfShorting:!typeOfShorting"
+                                  [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                  (click)="short('name')"></i></th>
+                            <th scope="col">Live Status <i ng-click="typeOfShorting:!typeOfShorting"
+                                  [ngClass]=" typeOfShorting && type =='instituteIsFeatured' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                  (click)="short('instituteIsFeatured')"></i></th>
+                            <th scope="col">Display Order <i ng-click="typeOfShorting:!typeOfShorting"
+                                  [ngClass]=" typeOfShorting && type =='instituteDisplayOrder' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                  (click)="short('instituteDisplayOrder')"></i></th>
+                            <th scope="col">Actions Or Manage</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngIf="courses.length==0">
+                            <td colspan="6">No Course Found</td>
+                         </tr>
+                         <tr *ngFor="let element of courses  | short:type:typeOfShorting; let i = index">
+                            <!-- <td>
+                            {{i+1}}
+                         </td> -->
+                            <td>
+                               {{i+1}}
+                            </td>
+                            <td>{{element?.courseCode}}</td>
+                            <td>
+                               {{ element?.name }}
+                            </td>
+                            <td>
+                               <div class="form-check form-switch">
+                                  <input class="form-check-input" [(ngModel)]="element.instituteIsFeatured"
+                                     (change)="featured(element,$event)" type="checkbox" id="flexSwitchCheckChecked"
+                                     [checked]="element?.instituteIsFeatured">
+ 
+                                  <label class="form-check-label" Style="pointer-events: none;"
+                                     for="flexSwitchCheckChecked">{{element?.instituteIsFeatured ?
+                                     'Enable':'Disable'}}</label>
+ 
+                               </div>
+                            </td>
+                            <td>
+                               <input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;"
+                                  #displayOrder (change)="changeDisplayOrder(displayOrder.value,element.id)"
+                                  [value]="element?.instituteDisplayOrder">
+                            </td>
+                            <td>
+                               <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                  aria-label="Example home icon">menu
+                               </mat-icon>
+                               <mat-menu #menu="matMenu">
+                                  <button mat-menu-item style="cursor: pointer" (click)="editCourse(element.id)"
+                                     data-toggle="tooltip" title="Edit Course">
+                                     Edit Record
+                                  </button>
+                                  <button mat-menu-item style="cursor: pointer" (click)="enrolledStudents(element.id)"
+                                     data-toggle="tooltip" title="Enrolled Students">
+                                     View Students
+                                  </button>
+                                  <button mat-menu-item style="cursor: pointer" (click)="deleteCourse(element.id)"
+                                     data-toggle="tooltip" title="Delete">
+                                     Suspend
+                                  </button>
+                               </mat-menu>
+                               <!--<button mat-menu-item (click)="editMapping(element)" data-toggle="tooltip"
+                                    title="Edit class Mapping">
+                                    Edit Class Mapping
+                                 </button>
+                                 <button mat-menu-item style="cursor: pointer" (click)="newMapMaterial(element)"
+                                    data-toggle="tooltip" title="Map material">
+                                    Map Material
+                                 </button>
+                              </mat-menu> -->
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                   <app-table-paginator [size]="size" [totalElements]="totalCourses" (pageChange)="pageChange($event)"
+                      (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                   <app-disabled-courses [events]="eventsSubject.asObservable()"
+                      (newItemEvent)="addItem($event)"></app-disabled-courses>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>

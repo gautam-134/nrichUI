@@ -1,1 +1,182 @@
-<p>offline-enrollment works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">
+              Offline Enrollment Application Listing
+            </h4>
+          </div>
+        </div>
+  
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        (keyup)="search($event)"
+                        [(ngModel)]="searchParam"
+                        type="text"
+                        placeholder="Search...."
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div
+                class="col-sm-12 col-md-6"
+                style="justify-content: end; display: flex"
+              >
+                <button class="btn btn-success" [disabled]="!enrollmentSelected" (click)="acceptOrRejectAll()">
+                  Accept All / Reject All
+                </button>
+              </div>
+            </div>
+  
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="selectAll" (click)="toggleSelectAll()">
+                  </th>
+                  <th scope="col">No.</th>
+                  <th scope="col">
+                    Name
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'name'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('name')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Batch Name
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'batchName'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('batchName')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Course Name
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'courseName'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('courseName')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Mobile Number
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'mobileNumber'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('mobileNumber')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Email
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'email'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('email')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Requested Date
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'email'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('createdDate')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Amount
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'amount'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('amount')"
+                    ></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="offlineEnrollmentsList.length == 0">
+                  <td colspan="9">No data found!</td>
+                </tr>
+                <tr
+                  *ngFor="
+                    let element of offlineEnrollmentsList
+                      | short : type : typeOfShorting;
+                    let i = index
+                  "
+                >
+                  <td>
+                    <input [(ngModel)]="element.selected"
+                      type="checkbox"
+                      (click)="selectedEnrollments(element, $event)"
+                    />
+                  </td>
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element?.name }}
+                  </td>
+                  <td>
+                    {{ element?.batchName }}
+                  </td>
+                  <td>{{ element?.courseName }}</td>
+                  <td>
+                    {{ element?.mobileNumber }}
+                  </td>
+                  <td>{{ element?.email }}</td>
+                  <td>{{ element?.createdDate | date : "medium" }}</td>
+                  <td>{{ element?.amount }}</td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <app-table-paginator
+              [size]="size"
+              [pagenumber]="page"
+              [totalElements]="applicationCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,36 @@
+#top-tab-list li.active a {
+    background: #007EF2;
+    color: #fff;
+}
+
+#top-tab-list li#confirm.active a {
+    background: #007EF2;
+}
+
+#top-tab-list li a {
+    background: #dddddd;
+    color: #50b5ff;
+    height: 100%;
+}
+
+#top-tab-list li a:hover{
+    color: #007EF2;
+}
+#top-tab-list li.active a{
+    color: #fff;
+}
+
+#top-tab-list li a i.hover{
+    background: #007EF2;
+}
+
+@media (min-width: 992px){
+.col-lg-3 {
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 32%;
+}
+}
+
+

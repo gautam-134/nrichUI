@@ -1,1 +1,110 @@
-<p>prerecorded-material-listing works!</p>
+<div *ngIf="prerecordedMaterialVO.length > 0" class="card material-card">
+    <div class="card-header bg-primary text-white">Material Listing</div>
+    <div class="card-body">
+      <table class="files-lists table table-striped">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Material Name</th>
+            <th>Display Order</th>
+            <th>Type</th>
+            <th>Preview</th>
+            <th>Progress</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of prerecordedMaterialVO; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ element.name }}</td>
+            <td>{{ element.displayOrder }}</td>
+            <td>{{ element.type }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                style="border-radius: 50%; height: 40px"
+                [disabled]="
+                  !(
+                    element.progress == 'completed' ||
+                    element.progress == 'uploaded'
+                  )
+                "
+                (click)="showPreview(element.fileName, element.type)"
+              >
+                <mat-icon>
+                  {{
+                    element.type == "image"
+                      ? "image"
+                      : element.type == "video" || element.type == "audio"
+                      ? "play_circle"
+                      : "file_copy"
+                  }}
+                </mat-icon>
+              </button>
+            </td>
+            <td>
+              <span style="width: 100%;"
+                class="badge"
+                [ngClass]="
+                  element.progress == 'uploaded'
+                    ? 'bg-success'
+                    : element.progress == 'updating'
+                    ? 'bg-warning'
+                    : element.progress == 'failed'
+                    ? 'bg-danger'
+                    : 'bg-primary'
+                "
+                >{{ element.progress }}</span
+              >
+            </td>
+            <td>
+              <mat-icon
+                aria-hidden="false"
+                mat-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example home icon"
+                >menu
+              </mat-icon>
+              <mat-menu #menu="matMenu">
+                <button
+                  mat-menu-item
+                  style="cursor: pointer"
+                  data-toggle="tooltip"
+                  *ngIf="element.progress != 'failed'"
+                  title="Edit"
+                  [disabled]="
+                    !(
+                      element.progress == 'completed' ||
+                      element.progress == 'failed' ||
+                      element.progress == 'uploaded'
+                    )
+                  "
+                  (click)="edit(element, i)"
+                >
+                  Edit
+                </button>
+                <button
+                  mat-menu-item
+                  style="cursor: pointer"
+                  data-toggle="tooltip"
+                  title="Remove"
+                  [disabled]="
+                    !(
+                      element.progress == 'completed' ||
+                      element.progress == 'failed' ||
+                      element.progress == 'uploaded'
+                    )
+                  "
+                  (click)="removeMaterial(element)"
+                >
+                  Remove
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

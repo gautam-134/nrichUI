@@ -1,1 +1,78 @@
-<p>disabled-courses works!</p>
+<table class="files-lists table table-striped mt-4">
+    <thead>
+       <tr>
+          <!-- <th scope="col">No.</th> -->
+          <th scope="col">S.No</th>
+          <th scope="col">Course Name <i ng-click="typeOfShorting:!typeOfShorting"
+                [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                (click)="short('name')"></i></th>
+          <th scope="col">Live Status <i ng-click="typeOfShorting:!typeOfShorting"
+                [ngClass]=" typeOfShorting && type =='instituteIsFeatured' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                (click)="short('instituteIsFeatured')"></i></th>
+          <th scope="col">Display Order <i ng-click="typeOfShorting:!typeOfShorting"
+                [ngClass]=" typeOfShorting && type =='instituteDisplayOrder' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                (click)="short('instituteDisplayOrder')"></i></th>
+          <th scope="col">Actions Or Manage</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr *ngIf="courses.length==0">
+          <td colspan="5">No Course Found</td>
+       </tr>
+       <tr *ngFor="let element of courses  | short:type:typeOfShorting; let i = index">
+          <!-- <td>
+       {{i+1}}
+    </td> -->
+          <td>
+             {{i+1}}
+          </td>
+          <td>
+             {{ element?.name }}
+          </td>
+          <td>
+             <div class="form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="element.instituteIsFeatured"
+                   (change)="featured(element,$event)" type="checkbox" id="flexSwitchCheckChecked"
+                   [checked]="element?.instituteIsFeatured">
+                <label class="form-check-label" for="flexSwitchCheckChecked">{{element?.instituteIsFeatured ?
+                   'Enable':'Disable'}}</label>
+             </div>
+          </td>
+          <td>
+             <input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;"
+                #displayOrder (change)="changeDisplayOrder(displayOrder.value,element.id)"
+                [value]="element?.instituteDisplayOrder">
+          </td>
+          <td>
+             <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                aria-label="Example home icon">menu
+             </mat-icon>
+             <mat-menu #menu="matMenu">
+                <!-- <button mat-menu-item style="cursor: pointer" (click)="editCourse(element.id)"
+                   data-toggle="tooltip" title="Edit Course">
+                   Edit Course
+                </button>
+                <button mat-menu-item style="cursor: pointer" (click)="enrolledStudents(element.id)"
+                   data-toggle="tooltip" title="Enrolled Students">
+                   Enrolled Students
+                </button> -->
+                <button mat-menu-item style="cursor: pointer" (click)="deleteCourse(element.id)"
+                   data-toggle="tooltip" title="Enable">
+                   Enable
+                </button>
+             </mat-menu>
+             <!--<button mat-menu-item (click)="editMapping(element)" data-toggle="tooltip"
+               title="Edit class Mapping">
+               Edit Class Mapping
+            </button>
+            <button mat-menu-item style="cursor: pointer" (click)="newMapMaterial(element)"
+               data-toggle="tooltip" title="Map material">
+               Map Material
+            </button>
+         </mat-menu> -->
+          </td>
+       </tr>
+    </tbody>
+ </table>
+ <app-table-paginator [size]="size" [totalElements]="totalCourses" (pageChange)="pageChange($event)"
+    (changeSize)="changeSize($event)"></app-table-paginator>

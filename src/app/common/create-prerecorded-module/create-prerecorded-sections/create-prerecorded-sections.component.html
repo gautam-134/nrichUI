@@ -1,1 +1,81 @@
-<p>create-prerecorded-sections works!</p>
+<div class="card mt-2">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title">Section Name</h5>
+        <button
+          (click)="deleteSection()"
+          class="btn btn-sm btn-danger"
+          style="font-size: 14px; width: 36px"
+        >
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </div>
+  
+      <form [formGroup]="sectionForm" (ngSubmit)="savePrerecordedSection()">
+        <div class="row">
+          <div class="col-md-4 col-12">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Section Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Enter Section Name"
+              formControlName="sectionName"
+            />
+            <div *ngIf="getControls['sectionName']?.invalid && isSubmit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['sectionName'].errors?.['required']"
+                >
+                  Section Name is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-12">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Display Order</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Enter Display Order"
+              formControlName="displayOrder"
+            />
+            <div *ngIf="getControls['displayOrder']?.invalid && isSubmit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['displayOrder'].errors?.['required']"
+                >
+                  Display order is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-12" style="margin-top: 31px">
+            <button type="submit" class="btn btn-primary">
+              {{
+                prrecordedSection.id
+                  ? "Update section"
+                  : "Proceed to add materials"
+              }}
+            </button>
+          </div>
+        </div>
+      </form>
+      <div *ngIf="prrecordedSection?.id">
+        <app-prerecorded-materials
+          [id]="prrecordedSection.id"
+        ></app-prerecorded-materials>
+        <app-prerecorded-material-listing
+          [id]="prrecordedSection.id"
+        ></app-prerecorded-material-listing>
+      </div>
+    </div>
+  </div>
+  

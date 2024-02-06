@@ -1,1 +1,124 @@
-<p>manage-institute-blogs works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Institute Blogs</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table">
+                    <div class="row justify-content-between d-flex">
+                        <div class="col-sm-12 col-md-6">
+                            <div id="user_list_datatable_info" class="dataTables_filter">
+                                <form class="me-3 position-relative">
+                                    <div class="form-group mb-0">
+                                        <input class="form-control" #blogSearch type="text"
+                                            placeholder="Type in this field for quick filter" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-sm-12 col-md-6">
+                            <div class="user-list-files d-flex justify-content-end">
+                                <a (click)="addBlog()" class="chat-icon-delete btn bg-soft-primary">
+                                    + Create Blog
+                                </a>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Blog Title<i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='subject' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('subject')"></i></th>
+                                <th>Created Date <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='createdDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('createdDate')"></i></th>
+                                <th>Auther<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='email' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('email')" ></i></th>
+                                <th>Display Order <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='display_Order' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('display_Order')" ></i></th>
+                                  <th>Private <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='is_private' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('is_private')" ></i></th>
+                                
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngIf="blogsList?.length==0">
+                                <td colspan="7">No Record Found.</td>
+                            </tr>
+                            <tr class="" *ngFor="let element of blogsList  | short:type:typeOfShorting ; let i=index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ element?.subject }}</td>
+                                <td>
+                                    <div class="font-weight-bold text-muted">
+                                        {{element.createdDate | date}}
+                                    </div>
+                                    <div class="font-weight-bolder font-size-lg mb-0">
+                                        {{element.createdDate | date :'shortTime'}}
+
+                                    </div>
+                                </td>
+                                <td>
+                                    {{element.firstName}}
+                                </td>
+                                <td><input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;" #instituteDisplayOrder
+                                    (change)="changeDisplayOrder(instituteDisplayOrder.value,element.idBlog)" [value]="element?.instituteDisplayOrder">
+                                </td>
+                                <td>
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" [(ngModel)]="element.instituteIsFeatured"
+                                      (change)="updateFeatured(element.idBlog)" type="checkbox" id="flexSwitchCheckChecked"
+                                      [checked]="element.instituteIsFeatured">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">{{ element.instituteIsFeatured ? "Enable" :
+                                      "Disable"}}</label>
+                                  </div>
+                                </td>
+                                <td>
+                                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example home icon">menu
+                                    </mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                        title="View Blog" [routerLink]="['/blog-details']"
+                                        [queryParams]="{id: element?.idBlog}">
+                                        View Blog
+                                    </button>
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="Edit Blog" (click)="editBlog(element)">
+                                            Edit Blog
+                                        </button>
+                                        <!-- <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="Delete Blog" (click)="onDelete(element.idBlog)">Delete Blog
+                                        </button> -->
+                                    </mat-menu>
+
+                                </td>
+                                <!-- <td>
+                                      {{element?.email}}
+                                  </td> -->
+                                <!-- <td> <div class="form-check form-switch">
+                                      <input class="form-check-input" [(ngModel)]="element.is_private"
+                                         (change)="featured(element,$event)" type="checkbox" id="flexSwitchCheckChecked"
+                                         [checked]="element?.is_private">
+                                      <label class="form-check-label" for="flexSwitchCheckChecked">{{element?.is_private ?
+                                         'Enable':'Disable'}}</label>
+                                   </div></td>
+                                  <td><input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;" #displayOrder
+                                      (change)="changeDisplayOrder(displayOrder.value,element.id_teacher)"
+                                      [value]="element?.display_Order"></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

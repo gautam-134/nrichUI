@@ -1,0 +1,14 @@
+.form-container {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    align-items: flex-end; /* Align items at the bottom of the container */
+    margin-bottom: 20px; /* Set the margin from the bottom for the entire container */
+  }
+  
+  /* Optionally, add media queries for responsiveness */
+  @media (max-width: 768px) {
+    .form-container {
+      flex-direction: column; /* Stack the form divs vertically on smaller screens */
+    }
+  }

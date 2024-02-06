@@ -1,1 +1,37 @@
-<p>select-institute works!</p>
+<form class="form2">
+    <div class="form-group col-md-12">
+      <!-- <h3>Select Institute</h3> -->
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Select Institute</mat-label>
+        <mat-select #ref>
+          <ng-container *ngFor="let institute of institutes">
+            <mat-option [value]="institute.instituteId">
+              <div class="row">
+                <div class="col-9">{{ institute.instituteName }}</div>
+                <div class="col-3">
+                  <img
+                    class="avatar"
+                    [src]="
+                      institute?.instituteImage
+                        ? institute?.instituteImage
+                        : '../../../assets/insitutedefaultLogo.png'
+                    "
+                  />
+                </div>
+              </div>
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+  
+      <hr />
+      <button
+        type="button mt-2"
+        (click)="submit(ref.value)"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+  

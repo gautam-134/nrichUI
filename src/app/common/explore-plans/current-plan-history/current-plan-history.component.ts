@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Currentplan } from 'src/app/model/current-plan.model';
+import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
 
 @Component({
   selector: 'app-current-plan-history',
@@ -7,6 +9,20 @@ import { Component } from '@angular/core';
   templateUrl: './current-plan-history.component.html',
   styleUrl: './current-plan-history.component.scss'
 })
-export class CurrentPlanHistoryComponent {
+export class CurrentPlanHistoryComponent implements OnInit {
+  currentplan!: Currentplan;
+  plan: Currentplan[] = [];
+  addons: any[] = [];
 
+  currentPlanFeatures: any[] = [];
+  constructor(private subscriptionService: SubscriptionService) {}
+
+  ngOnInit(): void {
+    this.fetchCurrentPlan();
+  }
+  fetchCurrentPlan() {
+    this.subscriptionService.getCurrentActiveplan().subscribe((data: any) => {
+      this.currentplan = data.activeplan.currentPlan;
+    });
+  }
 }

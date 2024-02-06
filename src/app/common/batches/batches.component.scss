@@ -1,0 +1,12 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/main.css");
+
+.item:hover {
+  border: 2px solid #50b5ff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.class-intro-content h6 {
+  word-wrap: break-word;
+}

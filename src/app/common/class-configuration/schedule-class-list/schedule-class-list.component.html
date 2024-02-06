@@ -1,1 +1,139 @@
-<p>schedule-class-list works!</p>
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-header d-flex justify-content-between bg-primary">
+             <div class="header-title">
+                <span>
+                   <h4 class="card-title text-white">Schedule Management </h4>
+                </span>
+             </div>
+             <button (click)="addClassInConfiguration()" class="btn" style="background: white; color: #50B5FF">
+                 + Add Class In this Configuration
+             </button>
+             <!-- <app-support [supportDetails]="supportDetails"></app-support> -->
+         </div>
+          <div class="card-body">
+             <div class="table">
+                <div class="row justify-content-between d-flex">
+                   <div class="col-sm-12 col-md-6">
+                      <div id="user_list_datatable_info" class="dataTables_filter">
+                         <form class="me-3 position-relative">
+                            <div class="form-group mb-0">
+                               <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                                  placeholder="Search....">
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                </div>
+                <table class="files-lists table table-striped mt-4">
+                   <thead>
+                      <tr>
+                         <th>S.No</th>
+                         <th scope="col">Class Name <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='classTitle' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('classTitle')"></i></th>
+                         <th>Searchable Tags</th>
+                         <!-- <th scope="col">Class Subject</th> -->
+                         <th scope="col">Teacher <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='teacherName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('teacherName')"></i></th>
+                         <th scope="col">Start Date <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='startDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('startDate')"></i></th>
+                         <th scope="col">End By Date <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='endDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('endDate')"></i></th>
+                         <th scope="col">Status <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='active' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('active')"></i></th>
+                         <th scope="col">Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td colspan="7" *ngIf="classScheduledList.length==0">
+                            No Record Found.
+                         </td>
+                      </tr>
+                      <tr *ngFor="let class of classScheduledList | short:type:typeOfShorting; let i = index">
+                         <td>{{i+1}}</td>
+                         <td>
+                            {{class.classTitle}}
+                         </td>
+ 
+                         <td>
+                            {{class.metaTags}}
+                         </td>
+                         <td>
+                            {{class.teacherName}}
+                         </td>
+                         <td>
+                            <div class="font-weight-bolder font-size-lg mb-0">
+                               {{class.startDate | date}}
+ 
+                            </div>
+                            <div class="font-weight-bolder font-size-lg mb-0" style="font-weight: bold;color: #007EF2;">
+                               {{class.startDate | date :'shortTime'}}
+ 
+                            </div>
+ 
+                         </td>
+                         <td>
+                            <div class="font-weight-bold text-muted">
+                               {{class.endDate | date}}
+                            </div>
+                            <div class="font-weight-bolder font-size-lg mb-0" style="font-weight: bold;color: #007EF2;">
+                               {{class.endDate | date :'shortTime'}}
+ 
+                            </div>
+                         </td>
+                         <td><span class="badge bg-info">{{class.active
+                               ? 'Scheduled' : 'Suspended'}}</span></td>
+ 
+                         <td>
+                            <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                               aria-label="Example home icon">menu
+                            </mat-icon>
+                            <mat-menu #menu="matMenu">
+                               <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Edit"
+                                  (click)="EditClassConfiguration(class)">
+                                  Edit
+                               </button>
+                               <button *ngIf="class.endDate > now" mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Map To class"
+                                  (click)="classMapping(class.idClassSchedule)">
+                                  Assign a Batch
+                               </button>
+                               <button mat-menu-item data-toggle="tooltip" title="Delete"
+                                  (click)="delete(class.idClassSchedule)">
+                                  Delete
+                               </button>
+ 
+                               <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Cancel"
+                                  (click)="cancel(class.idClassSchedule,class?.active ? false : true)">
+                                  {{class?.active ? 'Cancel Class':'Reschedule Class'}}
+                               </button>
+                            </mat-menu>
+                         </td>
+                      </tr>
+ 
+                   </tbody>
+                </table>
+                <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+                   (changeSize)="changeSize($event)"></app-table-paginator>
+             </div>
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="d-flex justify-content-start">
+                      <button type="button" *ngIf="!disabledOnAllClasses" class="btn btn-primary"
+                         (click)="backToLastPage()" style="background-color: #007EF2;width: 120px;">
+                         << Back</button>
+                   </div>
+                </div>
+ 
+             </div>
+          </div>
+ 
+       </div>
+    </div>
+ </div>

@@ -1,1 +1,50 @@
-<p>admin-all-assignments works!</p>
+<div class="card">
+
+    <div class="card-body">
+       <div id="table" class="table-editable">
+ 
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+             <thead>
+                <tr>
+                   <th>S.No </th>
+                   <th>
+                      Name <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('name')"></i></th>
+                   <th>
+                      Submission Type <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='submissiontype' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('submissiontype')"></i></th>
+                   <th>
+                      Evaluation <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='gradeType' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('gradeType')"></i></th>
+ 
+                   <th>Action</th>
+                </tr>
+             </thead>
+             <tbody>
+               <tr *ngIf="assignments?.length == 0">
+                  <td colspan="5">No Record Found.</td>
+               </tr>
+                <tr class="" *ngFor="let element of assignments | short:type:typeOfShorting ;let i = index">
+                   <td >{{ i+1}}</td>
+                   <td > {{ element?.name }}</td>
+                   <td > {{ element?.submissiontype }}</td>
+                   <td > {{ element?.gradeType | uppercase }} </td>
+ 
+ 
+                   <td>
+                      <span class="table-remove"><button type="button"
+                            class="btn btn-success btn-rounded btn-sm my-0" (click)="assignmentSubmitBy(element)">View Submissions
+                           </button></span>
+                   </td>
+                </tr>
+ 
+             </tbody>
+          </table>
+       </div>
+       <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+       (changeSize)="changeSize($event)"></app-table-paginator>
+    </div>
+ </div>

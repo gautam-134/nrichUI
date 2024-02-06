@@ -1,1 +1,485 @@
-<p>add-edit-institute works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Edit Institute Details</h4>
+          </div>
+          <div>
+            <app-support [supportDetails]="supportDetails"></app-support>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="instituteForm">
+            <div class="row" style="margin-bottom: 6rem !important">
+              <div class="setPadding" style="position: absolute; left: 0">
+                <img
+                  [src]="
+                    coverImageSrc
+                      ? coverImageSrc
+                      : '../../../assets/img/banner.webp'
+                  "
+                  class="institue-lgo"
+                  style="width: 100%; height: 225px"
+                />
+                <a
+                  class="iq-icons-list red-tooltip"
+                  (click)="coverSelect.click()"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="Give some care to select a proper photo because this will be the image Students browsing through the NRICH Marketplace will be viewing first. So get the best and right photograph that conveys your Institute"
+                >
+                  <i
+                    class="fa fa-camera Pos1"
+                    style="color: #cbe2ff"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+                <input
+                  style="display: none"
+                  #coverSelect
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.gif"
+                  class="custom-file-input"
+                  (change)="onCoverImageChange($event)"
+                />
+              </div>
+              <div style="position: relative; left: 36%; top: 35px">
+                <img
+                  [src]="
+                    imageSrc
+                      ? imageSrc
+                      : '../../../assets/images-marketing/institute_shadow.png'
+                  "
+                  class="institue-lgo"
+                  style="width: 30%; height: 150px"
+                />
+                <a class="iq-icons-list" (click)="fileSelect.click()">
+                  <i
+                    class="fa fa-camera Pos"
+                    style="color: #cbe2ff"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+                <input
+                  style="display: none"
+                  #fileSelect
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.gif"
+                  class="custom-file-input"
+                  (change)="onFileChange($event)"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Institute Name<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  formControlName="instituteName"
+                  autocomplete="off"
+                  placeholder="Institute Name"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    (isSubmit && controls['instituteName'].invalid) ||
+                    controls['instituteName']?.touched
+                  "
+                >
+                  <div
+                    *ngIf="controls['instituteName'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Institute Name is required !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Owner Name</label>
+                <input
+                  type="text"
+                  formControlName="ownerName"
+                  autocomplete="off"
+                  placeholder="Owner Name"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-4 mb-3">
+                <div>
+                  <label class="form-label" for="exampleFormControlSelect1">
+                    Sub-Domain<span class="text-danger" style="margin-right: 4px;">*</span>
+                    <i
+                    class="fa fa-info-circle"
+                    aria-hidden="true"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="App name required to create whitelisted sub-domain account for personal access"
+                  ></i>
+                  </label>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="subDomain"
+                  formControlName="subDomain"
+                  autocomplete="off"
+                  (keydown)="onlyAlphabets($event)"
+                  (input)="setSubDomainUrl($event)"
+                  [readOnly]="hasSubDomain"
+                />
+                <div *ngIf="isSubmit && controls['subDomain'].invalid">
+                  <div
+                    *ngIf="controls['subDomain'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Sub-Domain is required !
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mb-3">
+                <label class="form-label" for="exampleFormControlSelect1"
+                  >Email<span class="text-danger">*</span
+                  ><span
+                    *ngIf="
+                      instituteFormVO.isEmailVerifiedForSMTP == 'Success' ||
+                      emailStatus == 'Success'
+                    "
+                    style="margin-left: 3px"
+                    class="text-success"
+                    >(Verified)</span
+                  ></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail3"
+                  formControlName="email"
+                  [readonly]="
+                    instituteFormVO.isEmailVerifiedForSMTP == 'Pending' || 
+                    instituteFormVO.isEmailVerifiedForSMTP == 'Success' ||
+                    emailStatus == 'Pending' ||
+                    emailStatus == 'Success'
+                  "
+                  placeholder="Email"
+                />
+                <div
+                  *ngIf="
+                    emailStatus == 'Failed' ||
+                    emailStatus == 'NotStarted' ||
+                    emailStatus == 'TemporaryFailure' || instituteFormVO.isEmailVerifiedForSMTP == null
+                  "
+                >
+                  <button
+                    class="btn btn-secondary mt-2 text-white"
+                    style="width: 92px"
+                    [disabled]="controls['email'].errors?.['emailvalidate']"
+                    (click)="verifyEmail()"
+                  >
+                    Verify
+                  </button>
+                </div>
+                <div class="text-primary mt-2" *ngIf="emailStatus == 'Pending'">
+                  <a (click)="checkStatus()">Check Verification Status</a>
+                </div>
+                <div *ngIf="isSubmit && controls['email'].invalid">
+                  <div
+                    *ngIf="controls['email'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Email is required !
+                  </div>
+                  <div
+                    *ngIf="controls['email'].errors?.['email']"
+                    class="text-danger"
+                  >
+                    Please enter valid email !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label" for="exampleFormControlSelect1"
+                  >Contact Number<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail3"
+                  placeholder="XXXXXXXXXX"
+                  formControlName="mobileNumber"
+                  maxlength="10"
+                  minlength="10"
+                  (keydown)="onlyNumeric($event)"
+                  autocomplete="off"
+                  [readonly]="disableField"
+                />
+                <div *ngIf="isSubmit && controls['mobileNumber'].invalid">
+                  <div
+                    *ngIf="controls['mobileNumber'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Contact Number is required !
+                  </div>
+                </div>
+                <div *ngIf="isSubmit && controls['mobileNumber'].invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="controls['mobileNumber'].errors?.['maxlength'] || controls['mobileNumber'].errors?.['minlength']"
+                  >
+                    Contact Number should be of 10 numbers !
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="controls['subDomain'].invalid"
+                class="col-md-4 mb-3"
+              ></div>
+              <div *ngIf="controls['subDomain'].valid" class="col-md-4 mb-3">
+                <div>
+                  <label class="form-label" for="exampleFormControlSelect1">
+                    Sub-Domain Url
+                  </label>
+                  &nbsp;&nbsp;
+                  <i
+                    class="fa fa-clone"
+                    aria-hidden="true"
+                    style="cursor: pointer"
+                    (click)="copyToClipboard()"
+                  ></i>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="subDomainUrl"
+                  formControlName="subDomainUrl"
+                  autocomplete="off"
+                  readonly="true"
+                />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Bank Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  formControlName="bankName"
+                  autocomplete="off"
+                  placeholder="Bank Name"
+                  class="form-control"
+                />
+                <div *ngIf="isSubmit && controls['bankName'].invalid">
+                  <div
+                    *ngIf="controls['bankName'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Bank Name is required !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Account Number<span class="text-danger">*</span></label
+                >
+                <input
+                  type="number"
+                  formControlName="accountNumber"
+                  autocomplete="off"
+                  placeholder="Account Number"
+                  class="form-control"
+                />
+                <div *ngIf="isSubmit && controls['accountNumber'].invalid">
+                  <div
+                    *ngIf="controls['accountNumber'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Account Number is required !
+                  </div>
+                  <div
+                    *ngIf="controls['accountNumber'].errors?.['pattern']"
+                    class="text-danger"
+                  >
+                    Account Number is invalid !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >IFSC Code<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  formControlName="ifscCode"
+                  autocomplete="off"
+                  placeholder="IFSC Code"
+                  class="form-control"
+                />
+                <div *ngIf="isSubmit && controls['ifscCode'].invalid">
+                  <div
+                    *ngIf="controls['ifscCode'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    IFSC Code is required !
+                  </div>
+                  <div
+                    *ngIf="controls['ifscCode'].errors?.['pattern']"
+                    class="text-danger"
+                  >
+                    IFSC Code is invalid !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="exampleInputEmail1" class="form-label text-dark"
+                  >Address<span class="text-danger">*</span></label
+                >
+                <textarea
+                  class="form-control"
+                  id="address"
+                  rows="3"
+                  formControlName="address"
+                ></textarea>
+                <div
+                  *ngIf="
+                    (isSubmit && controls['address'].invalid) ||
+                    controls['address']?.touched
+                  "
+                >
+                  <div
+                    *ngIf="controls['address'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Address is required !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="exampleInputEmail1" class="form-label text-dark"
+                  >Country<span class="text-danger">*</span></label
+                >
+                <select formControlName="country" class="form-control">
+                  <option *ngFor="let country of countryList" [value]="country">
+                    {{ country }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="
+                    (isSubmit && controls['country'].invalid) ||
+                    controls['country']?.touched
+                  "
+                >
+                  <div
+                    *ngIf="controls['country'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Country is required !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="exampleInputEmail1" class="form-label text-dark"
+                  >State<span class="text-danger">*</span></label
+                >
+                <select formControlName="state" class="form-control">
+                  <option *ngFor="let state of stateList" [value]="state">
+                    {{ state }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="
+                    (isSubmit && controls['state'].invalid) ||
+                    controls['state']?.touched
+                  "
+                >
+                  <div
+                    *ngIf="controls['state'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    State is required !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="exampleInputEmail1" class="form-label text-dark"
+                      >Mark your location<span class="text-danger">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-6">
+                    <button
+                      class="btn btn-primary btn-sm"
+                      style="height: 27px"
+                      (click)="getGeoLocation()"
+                    >
+                      <i class="fa fa-map-marker" aria-hidden="true"></i
+                      >&nbsp;Locate
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      formControlName="latitude"
+                      autocomplete="off"
+                      placeholder="Latitude"
+                      class="form-control"
+                      readonly
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      formControlName="longitude"
+                      autocomplete="off"
+                      placeholder="Longitude"
+                      class="form-control"
+                      readonly
+                    />
+                  </div>
+                </div>
+  
+                <div *ngIf="isSubmit && controls['latitude'].invalid">
+                  <div
+                    *ngIf="controls['latitude'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Latitude & Longitude are required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="exampleInputEmail1" class="form-label text-dark"
+                  >About Institute</label
+                >
+                <textarea
+                  class="form-control"
+                  id="aboutUs"
+                  rows="3"
+                  formControlName="aboutUs"
+                ></textarea>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button
+                *ngIf="!disableField"
+                type="button"
+                style="margin-right: 5px"
+                type="submit"
+                class="btn btn-primary active"
+                (click)="onSubmit()"
+              >
+                Submit
+              </button>
+              <!-- <button  mat-button type="button" class="btn btn-secondary active">Cancel</button> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

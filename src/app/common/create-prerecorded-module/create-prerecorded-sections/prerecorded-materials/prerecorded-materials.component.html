@@ -1,1 +1,126 @@
-<p>prerecorded-materials works!</p>
+<div class="card material-card" style="margin-bottom: 0.5rem !important">
+    <div class="card-header bg-primary text-white">Material Details</div>
+    <div class="card-body">
+      <form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-3 col-12 mb-2">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              formControlName="name"
+              placeholder="Enter Material Name"
+            />
+            <div *ngIf="getControls['name']?.invalid && submit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['name'].errors?.['required']"
+                >
+                  Material Name is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-12 mb-2">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Display Order</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              formControlName="displayOrder"
+              id="exampleFormControlInput1"
+              placeholder="Enter Display Order"
+            />
+            <div *ngIf="getControls['displayOrder']?.invalid && submit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['displayOrder'].errors?.['required']"
+                >
+                  Display Order is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-12 mb-2">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Material Type</label
+            >
+            <select
+              class="form-select"
+              formControlName="type"
+              aria-label="Default select example"
+            >
+              <option selected disabled>Select material type</option>
+              <option value="image">Image</option>
+              <option value="video">Video</option>
+              <option value="pdf">Pdf</option>
+              <option value="audio">Audio</option>
+            </select>
+            <div *ngIf="getControls['type']?.invalid && submit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['type'].errors?.['required']"
+                >
+                  File Type is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-12 mb-2">
+            <label for="formFile" class="form-label">Select File</label>
+            <input
+              class="form-control"
+              formControlName="fileName"
+              type="file"
+              id="formFile"
+              #fileSelect
+              (change)="onFileSelect($event)"
+            />
+            <div *ngIf="getControls['fileName']?.invalid && submit">
+              <div class="alert-custom alert-light-danger alert-dismissible">
+                <div
+                  class="text-danger"
+                  *ngIf="getControls['fileName'].errors?.['required']"
+                >
+                  File is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 mb-2">
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Topic Description</label
+              >
+              <textarea
+                class="form-control"
+                formControlName="description"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                appCharacterLimit="500"
+              ></textarea>
+              <div *ngIf="getControls['description']?.invalid && submit">
+                <div class="alert-custom alert-light-danger alert-dismissible">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['description'].errors?.['required']"
+                  >
+                    Description is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-12 mb-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,1 +1,151 @@
-<p>edit-class-configuration works!</p>
+<div class="card card-custom gutter-b">
+    <div class="card-header bg-primary">
+        <div class="card-title">
+            <h3 class="card-label text-white" style="margin-bottom: -1%">
+                Edit Class Schedule
+            </h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <form class="form" id="kt_form" [formGroup]="form">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="form-label">Class Schedule Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Class Title"
+                            formControlName="classTitle" />
+                        <ng-container *ngIf="isSubmit && f['classTitle'].invalid">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['classTitle']?.errors?.['required']">
+                                    Above field is required.
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="f['classTitle'].invalid && f['classTitle'].value">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['classTitle'].errors?.['validateCharctersInput']">
+                                    Class Schedule Name must not contain more than 28 characters.
+                                </div>
+                                <div class="alert-text" *ngIf="f['classTitle'].errors?.['validateInputWords']">
+                                    Class Schedule Name not contain more than 5 words.
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="col-md-4" *ngIf="isFieldsDisabled">
+                    <div class="form-group">
+                        <label class="form-label">Class Type<span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="classType" >
+                            <option value="">Select Class Type</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Demo">Demo</option>
+                            <option value="Webinar">Webinar</option>
+                        </select>
+                        <ng-container *ngIf="isSubmit && f['classType'].invalid">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['classType']?.errors?.['required']">
+                                    Above field is required.
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-4" *ngIf="isFieldsDisabled">
+                    <div class="form-group">
+                        <label class="form-label">Start Date<span class="text-danger">*</span></label>
+                        <input type="date" [min]="now" class="form-control" placeholder="" formControlName="start" />
+                        <ng-container *ngIf="isSubmit && f['start'].invalid">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['start']?.errors?.['required']">
+                                    Above field is required.
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="col-md-4" *ngIf="isFieldsDisabled">
+                    <div class="form-group">
+                        <label>Start Time<span class="text-danger">*</span></label>
+                        <input type="time" formControlName="starttime" class="form-control" id="exampleInputtime" />
+                        <ng-container *ngIf="isSubmit && f['starttime'].invalid">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['starttime']?.errors?.['required']">
+                                    Above field is required.
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-4" *ngIf="isFieldsDisabled">
+                    <div class="form-group">
+                        <label>End Time<span class="text-danger">*</span></label>
+                        <input type="time" formControlName="endtime" class="form-control" id="exampleInputtime" />
+                        <ng-container *ngIf="isSubmit && f['endtime'].invalid">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['endtime']?.errors?.['required']">
+                                    Above field is required.
+                                </div>
+                            </div>
+                        </ng-container>
+                        <div style="margin-top: 1%">
+                            <h6 style="color: red">{{ timeCompareMsg }}</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <label>Searchable Tags<span class="text-danger">*</span></label>
+                    <tag-input [(ngModel)]="new" placeholder="Meta Tags" formControlName="metaTags"></tag-input>
+                    <mat-hint> Hint:- Write a word & Press ENTER to add a Tag. </mat-hint>
+                    <div *ngIf="isSubmit && f['metaTags'].invalid">
+                        <div *ngIf="f['metaTags'].errors?.['required']" class="text-danger">
+                            Searchable Tags are required
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" *ngIf="isFieldsDisabled">
+                    <div class="form-group">
+                        <label>Class Details<span class="text-danger">*</span></label>
+                        <textarea class="form-control" placeholder="Class Details"
+                            formControlName="classDescription"></textarea>
+                        <ng-container *ngIf="isSubmit && f['classDescription'].invalid">
+                            <div class="text-danger">
+                                <div class="alert-text" *ngIf="f['classDescription']?.errors?.['required']">
+                                    Above field is required.
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="
+                  f['classDescription'].invalid && f['classDescription'].value
+                ">
+                            <div class="text-danger">
+                                <div class="alert-text"
+                                    *ngIf="f['classDescription'].errors?.['validateDetailsCharctersInput']">
+                                    Class Details must not contain more than 151 characters.
+                                </div>
+                                <div class="alert-text"
+                                    *ngIf="f['classDescription'].errors?.['validateDetailsInputWords']">
+                                    Class Details must not contain more than 25 words.
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex">
+            <button type="reset" *ngIf="data.isEdit" class="btn btn-primary"
+                style="margin-right: 15px; background-color: #007ef2" (click)="onEdit()">
+                Save
+            </button>
+            <button type="reset" class="btn btn-outline-primary" mat-button mat-dialog-close>
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

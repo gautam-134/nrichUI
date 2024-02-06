@@ -1,0 +1,23 @@
+
+.Pos {
+    position: absolute;
+    top: 84%;
+    left: 28%;
+  }
+  
+  .Pos1 {
+    position: absolute;
+    top: 87%;
+    left: 95%;
+  }
+  
+  .setPadding {
+    top: 8% !important;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .setPadding {
+      top: 5% !important;
+    }
+  }
+  

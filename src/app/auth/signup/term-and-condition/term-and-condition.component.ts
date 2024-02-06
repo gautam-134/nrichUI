@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './term-and-condition.component.html',
   styleUrl: './term-and-condition.component.scss'
 })
-export class TermAndConditionComponent {
+export class TermAndConditionComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

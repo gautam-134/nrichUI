@@ -1,0 +1,49 @@
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .overlay-icon {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: larger;
+  }
+  .overlay-icon:hover {
+    position: absolute;
+    top: 2%;
+    cursor: pointer;
+    right: 1%;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: larger;
+  }
+  /* Target full-screen button in WebKit-based browsers (e.g. Chrome, Safari) */
+  video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+  }
+  
+  /* Target full-screen button in Firefox */
+  video::-moz-full-screen-controls {
+    display: none !important;
+  }
+  
+  /* Target full-screen button in Edge */
+  video::-webkit-media-controls-overlay-play-button::part(mediaFullscreenButton) {
+    display: none !important;
+  }
+  
+  video::-moz-full-screen-ancestor::-moz-full-screen-button {
+    display: none;
+  }
+  
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+  }
+  

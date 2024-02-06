@@ -1,1 +1,179 @@
-<p>new-login works!</p>
+<div
+  class="large-display-section d-flex flex-column justify-content-center p-2"
+>
+  <div class="login_form_wrapper">
+    <div class="form-div5 login_box">
+      <div class="d-flex justify-content-between w-100">
+        <h2 class="sign-in-h2 textdec" style="font-size: 25px">Sign In</h2>
+        
+      </div>
+      <div class="description-div">
+        <p class="welcome-to-nrich-learning-step"></p>
+        <p class="welcome-to-nrich-learning textdec" style="color: #7f8487">
+          <span class="welcome-to">Welcome to </span
+          ><b>{{ subDomainInstituteName }}</b>
+        </p>
+        <p
+          class="step-into-the-world-of-endless textdec"
+          style="color: #7f8487"
+        >
+          <span>Step Into The World Of Endless Possibilities</span>
+        </p>
+      </div>
+
+      <div class="form_box">
+        <form class="form2">
+          <div class="">
+            <div style="display: flex; justify-content: space-between">
+              <p class="phone-number textdec">
+                {{ isMobileLogin ? "Phone Number" : "Email" }}
+              </p>
+              <div *ngIf="enterOtp" class="text-right">
+                <a (click)="enterOtp = false" class="text-primary item1"
+                  >Edit</a
+                >
+              </div>
+            </div>
+
+            <input
+              class="component-9-input textdec"
+              type="text"
+              onselectstart="return false"
+              onpaste="return false;"
+              #emailValue
+              [(ngModel)]="mobileNo"
+              [maxlength]="isMobileLogin ? 10 : 50"
+              [minlength]="isMobileLogin ? 10 : 5"
+              style="padding-right: 15px; padding-left: 15px"
+              [ngStyle]="{
+                'background-color': enterOtp ? '#C7D0DA' : '#EFEFEF'
+              }"
+              (keydown)="onlyNumeric($event)"
+              [placeholder]="
+                isMobileLogin ? 'Enter Phone Number' : 'Enter Email'
+              "
+              (keyup.enter)="sendOtp(emailValue.value)"
+              [readonly]="enterOtp"
+            />
+          </div>
+        </form>
+
+        <form class="form2">
+          <div class="form-div6">
+            <p class="phone-number textdec">Enter Your OTP</p>
+
+            <input
+              class="component-9-input textdec"
+              [(ngModel)]="Otp"
+              maxlength="4"
+              minlength="4"
+              (keypress)="numberOnly($event)"
+              type="text"
+              placeholder="Enter OTP"
+              style="
+                padding-right: 15px;
+                padding-left: 15px;
+                -webkit-text-security: disc;
+              "
+              [ngStyle]="{
+                'background-color': !enterOtp ? '#C7D0DA' : '#EFEFEF'
+              }"
+              (keyup.enter)="Login()"
+              [readonly]="!enterOtp"
+            />
+          </div>
+        </form>
+        <div *ngIf="enterOtp">
+          <a
+            *ngIf="counter > 0"
+            class="resend-otp-code textdec"
+            style="color: #c7d0e1"
+            >RESEND OTP CODE AFTER {{ transform(counter) }}</a
+          >
+          <a
+            *ngIf="counter == 0"
+            class="resend-otp-code textdec"
+            style="color: #c7d0e1"
+            (click)="resendOtp()"
+            >RESEND OTP CODE</a
+          >
+        </div>
+
+        <div *ngIf="!enterOtp">
+          <button
+            class="btn"
+            style="background-color: #008ce4; color: white; width: 100%"
+            id="buttonSignup"
+            (click)="sendOtp(emailValue.value)"
+            [disabled]="isMobileLogin ? !(mobileNo.length == 10) : false"
+          >
+            <div class="sign-up-div2 textdec" style="padding: 7px">
+              Send OTP
+            </div>
+          </button>
+        </div>
+        <div *ngIf="enterOtp">
+          <button
+            type="submit"
+            class="btn"
+            [disabled]="Otp.length != 4"
+            (click)="Login()"
+            style="background-color: #008ce4; color: white; width: 100%"
+            id="buttonSignup"
+          >
+            <div class="sign-up-div2 textdec" style="padding: 7px">
+              Submit OTP
+            </div>
+          </button>
+        </div>
+        <div class="text-center" style="margin-top: -25px">
+          <p
+            class="text-primary"
+            style="cursor: pointer"
+            *ngIf="!isMobileLogin"
+            (click)="mobileNo = ''; isMobileLogin = true"
+          >
+            Login with Mobile No. ->
+          </p>
+          <p
+            class="text-primary"
+            style="cursor: pointer"
+            *ngIf="isMobileLogin"
+            (click)="mobileNo = ''; isMobileLogin = false"
+          >
+            Login with Email ->
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="bottom_link">
+      <a class="instiute-a2">
+        <a
+          class="register-your-instituteschool2"
+          routerLink="/connect-with-learning"
+        >
+          <span style="color: white" class="textdec"> Register Your </span
+          ><b style="color: white" class="textdec">Institute/School</b
+          ><span class="textdec" style="color: white"> With Us!</span>
+        </a>
+      </a>
+
+      <a class="instiute-a2 item1">
+        <a
+          class="register-your-instituteschool2"
+          (click)="navigateToInstitute()"
+        >
+          <span class="go-back2 textdec text-white">
+            <b>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;
+              <span *ngIf="this.subDomainInstitute == 1">Nrich Learning</span>
+              <span *ngIf="this.subDomainInstitute !== 1"
+                >Back To Institute</span
+              >
+            </b>
+          </span>
+        </a>
+      </a>
+    </div>
+  </div>
+</div>

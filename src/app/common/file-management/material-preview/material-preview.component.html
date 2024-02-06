@@ -1,1 +1,39 @@
-<p>material-preview works!</p>
+<mat-dialog-content style="max-height: 85vh">
+    <div *ngIf="type == 'image'" id="imagePreview">
+      <img
+        src="{{ path }}"
+        class="w-100"
+        alt="Image Preview"
+        [class.fullscreen]="isFullScreen"
+        (dblclick)="showVideoInFullScreen('imagePreview')"
+      />
+    </div>
+  
+    <div *ngIf="type === 'video'">
+      <app-material-video-player [videoResumeTime]="videoResumeTime" [path]="path" [materialId]="selectedMaterialId"  (videoStopped)="onVideoStopped($event)"></app-material-video-player>
+    </div>
+    
+  
+    <div *ngIf="type == 'audio'" id="audio">
+      <audio controls (dblclick)="showVideoInFullScreen('audio')">
+        <source [src]="path" type="audio/mpeg" />
+      </audio>
+    </div>
+  
+    <div *ngIf="type == 'file' || type == 'pdf'" id="pdfPreview">
+      <pdf-viewer
+        src="{{ path }}"
+        [render-text]="true"
+        [original-size]="false"
+        [ngStyle]="{ width: isFullScreen ? '100%' : '600px' }"
+        style="height: 900px"
+        [class.fullscreen]="isFullScreen"
+        (dblclick)="showVideoInFullScreen('pdfPreview')"
+      >
+      </pdf-viewer>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions *ngIf="data">
+    <button mat-dialog-close class="btn btn-sm btn-danger mt-2">Close</button>
+  </mat-dialog-actions>
+  
