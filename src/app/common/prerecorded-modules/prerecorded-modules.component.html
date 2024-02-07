@@ -1,1 +1,117 @@
-<p>prerecorded-modules works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex bg-primary">
+          <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Prerecorded Modules</h4>
+          </div>
+          <a
+            class="btn"
+            routerLink="../create-modules"
+            style="background: white; color: #50b5ff"
+          >
+            + Create Prerecorded Modules
+          </a>
+        </div>
+        <div class="card-body">
+          <div id="table">
+            <div class="col-sm-12 col-md-6 mb-2">
+              <div id="user_list_datatable_info" class="dataTables_filter">
+                <form class="me-3 position-relative">
+                  <div class="form-group mb-0">
+                    <input
+                      class="form-control"
+                      (keyup)="search($event)"
+                      [(ngModel)]="searchParam"
+                      type="text"
+                      placeholder="Search...."
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Module Name</th>
+                  <th>Created Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    class="text-center"
+                    colspan="5"
+                    *ngIf="prerecordedModules.length == 0"
+                  >
+                    No Record Found.
+                  </td>
+                </tr>
+                <tr
+                  *ngFor="
+                    let module of prerecordedModules
+                      | short : type : typeOfShorting;
+                    let i = index
+                  "
+                >
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ module.moduleName }}</td>
+                  <td>{{ module.createdDate | date : "medium" }}</td>
+                  <td>{{ module.submitted ? "Submitted" : "Draft" }}</td>
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                      >menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        (click)="mapToBatch(module.id)"
+                        [disabled]="!module.submitted"
+                        mat-menu-item
+                        style="cursor: pointer"
+                        data-toggle="tooltip"
+                        title="Map to batch"
+                      >
+                        Map to Batch
+                      </button>
+                      <button
+                        (click)="editModule(module.id)"
+                        mat-menu-item
+                        style="cursor: pointer"
+                        data-toggle="tooltip"
+                        title="Edit"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        (click)="deleteModule(module.id)"
+                        mat-menu-item
+                        style="cursor: pointer"
+                        data-toggle="tooltip"
+                        title="Delete"
+                      >
+                        Delete
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

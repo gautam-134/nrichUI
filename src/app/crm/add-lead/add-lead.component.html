@@ -1,1 +1,340 @@
-<p>add-lead works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Add Lead</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="leadForm" *ngIf="formFields">
+            <div class="row mb-3">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Name<span class="text-danger">*</span></label>
+                <input type="text" formControlName="name" autocomplete="off" placeholder="Enter Name"
+                  class="form-control" />
+                <div *ngIf="
+                    (submitted && controls['name']?.invalid) ||
+                    controls['name']?.touched
+                  ">
+                  <div *ngIf="controls['name']?.errors?.['required']" class="text-danger">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number<span class="text-danger">*</span></label>
+                <input type="text" formControlName="mobileNumber" (keypress)="onlyNumeric($event)" autocomplete="off"
+                  placeholder="+91" [minlength]="10" [maxlength]="10" class="form-control" />
+                <div *ngIf="
+                    (submitted && controls['mobileNumber']?.invalid) ||
+                    controls['mobileNumber']?.touched
+                  ">
+                  <div *ngIf="controls['mobileNumber'].errors?.['required']" class="text-danger">
+                    Phone Number is required.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Organisation<span class="text-danger">*</span></label>
+                <input type="text" formControlName="organisation" autocomplete="off" placeholder="Enter Organisation Name"
+                  class="form-control" />
+                <div *ngIf="
+                  (submitted && controls['organisation']?.invalid) ||
+                  controls['organisation']?.touched
+                ">
+                  <div *ngIf="controls['organisation'].errors?.['required']" class="text-danger">
+                    Please Enter your Organisation Name.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-3 mb-3">
+                    <div class="container">
+                      <label class="form-label" for="validationCustom04"> </label>
+                      <br />
+                      <div class="form-check custom-radio form-check-inline">
+                        <input type="radio" id="customRadio13" formControlName="role" value="student" name="customRadio-7"
+                          class="form-check-input" />
+                        <label class="form-check-label" for="customRadio13">
+                          Student
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="form-label" for="validationCustom04"> </label>
+                    <br />
+                    <div class="form-check custom-radio form-check-inline">
+                      <input type="radio" id="customRadio14" formControlName="role" value="employee" name="customRadio-7"
+                        class="form-check-input" />
+                      <label class="form-check-label" for="customRadio14">
+                        Working
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="
+                  (submitted && controls['role']?.invalid) ||
+                  controls['role']?.touched
+                ">
+                  <div *ngIf="controls['role'].errors?.['required']" class="text-danger">
+                    Please select role.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label for="exampleInputEmail1 " class="form-label text-dark">Email ID<span
+                    class="text-danger">*</span></label>
+                <input type="email" formControlName="email" class="form-control" id="exampleFormControlInput1"
+                  placeholder="Enter Email ID" autocomplete="off" />
+  
+                <div *ngIf="
+                    (submitted && controls['email']?.invalid) ||
+                    controls['email']?.touched
+                  ">
+                  <div *ngIf="controls['email']?.errors?.['required']" class="text-danger">
+                    Email is required.
+                  </div>
+  
+                  <div *ngIf="controls['email']?.errors?.['email']" class="text-danger">
+                    Invalid Email !
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Source</label>
+                <input type="text" formControlName="source" autocomplete="off" placeholder="Enter Source Link"
+                  class="form-control" />
+  
+              </div>
+              <div class="col-md-4 mb-3">
+                <p class="phone-number textdec">
+                  Country<span class="text-danger">*</span>
+                </p>
+                <div class="group-div1 item" style="border-radius: 5px">
+                  <select formControlName="country" class="form-control" style="line-height: 2.28"
+                    (change)="onCountryChange($event)" autocomplete="off">
+                    <option value="" disabled selected>Select Country</option>
+                    <option *ngFor="let c of countryList" [value]="c.idCountry">
+                      {{ c.country }}
+                    </option>
+                  </select>
+                  <div *ngIf="submitted && controls['country']?.invalid">
+                    <div style="font-size: small" *ngIf="controls['country']?.errors?.['required']"
+                      class="text-danger textdec">
+                      Country is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <p class="phone-number textdec" style="left: 52%">
+                  State<span class="text-danger">*</span>
+                </p>
+                <div class="group-div2 item" style="border-radius: 5px">
+                  <select formControlName="state" class="form-control" style="line-height: 2.28" autocomplete="off">
+                    <option value="" *ngIf="stateList.length !=0" selected>Select State</option>
+                    <option *ngIf="stateList.length ==0">No States found</option>
+                    <option *ngFor="let s of stateList" [value]="s.idState">
+                      {{ s.state }}
+                    </option>
+                  </select>
+                  <div *ngIf="submitted && controls['state']?.invalid">
+                    <div style="font-size: small" *ngIf="controls['state']?.errors?.['required']"
+                      class="text-danger textdec">
+                      State is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <p class="phone-number textdec" style="left: 52%">
+                  City<span class="text-danger">*</span>
+                </p>
+                <div class="group-div2 item" style="border-radius: 5px">
+                  <input type="text" formControlName="city" autocomplete="off" placeholder="Enter city Name"
+                    style="line-height: 2.28" class="form-control" />
+                  <div *ngIf="
+                    (submitted && controls['city']?.invalid) ||
+                    controls['city']?.touched
+                  ">
+                    <div *ngIf="controls['city']?.errors?.['required']" class="text-danger">
+                      City is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion mt-2" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" style="background: aliceblue" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                      aria-controls="panelsStayOpen-collapseOne">
+                      Product Details
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="row mt-2">
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Product Name</label>
+                        <mat-form-field appearance="outline" style="width: 100%; margin-bottom: -17px">
+                          <mat-select formControlName="courseId" (openedChange)="onSelectionChange($event)">
+                            <ng-container *ngFor="let element of courseList">
+                              <mat-option [value]="+element.idCourse" *ngIf="element != null">
+                                <div class="row">
+                                  <div class="col-9">{{ element.courseName }}</div>
+                                  <div class="col-3">
+                                    <img class="avatar" [src]="
+                                  element?.courseImage
+                                    ? element?.courseImage
+                                    : '../../../assets/images/profile.png'
+                                " />
+                                  </div>
+                                </div>
+                              </mat-option>
+                              <mat-select-trigger *ngIf="element == null">
+                                No Item Found
+                              </mat-select-trigger>
+                            </ng-container>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+  
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Product Cost</label>
+                        <mat-form-field appearance="outline" style="width: 100%; margin-bottom: -17px">
+                          <mat-select formControlName="pricingPlanId">
+                            <ng-container *ngFor="let element of pricingPlans">
+                              <mat-option [value]="+element.idPricingPlan" *ngIf="element != null">
+                                <div class="row">
+                                  <div class="col-9">{{ element.pricingPlanName }}</div>
+                                  <div class="col-3">
+                                    {{element.price}}
+                                  </div>
+                                </div>
+                              </mat-option>
+                              <mat-select-trigger *ngIf="element == null">
+                                No Item Found
+                              </mat-select-trigger>
+                            </ng-container>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Status</label>
+  
+                        <select class="form-select" #status style="line-height: 2.28" id="exampleFormControlSelect1"
+                          formControlName="status" (change)="statusChange($event)">
+                          <option *ngIf="crmStatus.length == 0" disabled>
+                            No Status Found
+                          </option>
+                          <option *ngIf="crmStatus.length != 0" value="" selected>
+                            Select Status
+                          </option>
+                          <option *ngFor="let status of crmStatus" [value]="status.status">
+                            {{ status.status }}
+                          </option>
+                        </select>
+  
+                        <div *ngIf="
+                    (submitted && controls['status']?.invalid) ||
+                    controls['status']?.touched
+                    ">
+                          <div *ngIf="controls['status'].errors?.['required']" class="text-danger">
+                            Status is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Sub Status</label>
+                        <select class="form-select" style="line-height: 2.28" id="exampleFormControlSelect1"
+                        formControlName="subStatus">
+                        <option value="" *ngIf="crmSubStatus.length == 0" selected>
+                          No Sub-Status Found
+                        </option>
+                        <option *ngIf="crmSubStatus.length != 0" value="" selected>
+                          Select Sub-Status
+                        </option>
+                        <option *ngFor="let subStatus of crmSubStatus" [value]="subStatus.subStatus">
+                          {{ subStatus.subStatus }}
+                        </option>
+                      </select>
+                        <div *ngIf="
+                    (submitted && controls['subStatus']?.invalid) ||
+                    controls['subStatus']?.touched
+                   ">
+                          <div *ngIf="controls['subStatus'].errors?.['required']" class="text-danger">
+                            Sub Status is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label" for="validationCustom02">Follow-Up Date</label>
+                        <input type="datetime-local" [min]="now" class="form-control" id="exampleInputdatetime"
+                          formControlName="followUpDate" />
+  
+                      </div>
+  
+  
+                      <div class="col-md-12 mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Initial Notes</label>
+                        <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1"
+                          placeholder="add your note here ...." rows="3"></textarea>
+                      </div>
+  
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="formFields.length > 0" class="accordion mt-2" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                      <button class="accordion-button" style="background: aliceblue" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Add Other Components
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
+                      aria-labelledby="panelsStayOpen-headingTwo">
+                      <div class="row mt-2" formGroupName="leadFormFields">
+                        <div *ngFor="let field of formFields" class="col-md-6 mb-3">
+                          <label class="form-label">{{ field?.fieldName
+                            }}<span *ngIf="field?.required" class="text-danger">*</span></label>
+                          <input type="text" [formControlName]="field.id" autocomplete="off"
+                            placeholder="Enter {{ field?.fieldName }}" class="form-control" />
+  
+                          <div *ngIf="
+                            (submitted && groupControls[field.id].invalid) ||
+                            groupControls[field.id]?.touched
+                          ">
+                            <div *ngIf="groupControls[field.id].errors?.['required']" class="text-danger">
+                              {{ field?.fieldName }} is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button type="button" style="margin-right: 5px" type="submit" class="btn btn-primary active"
+                (click)="onSubmit()">
+                Submit
+              </button>
+              <button type="button" style="margin-right: 5px" type="submit" class="btn btn-secondary" (click)="goBack()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

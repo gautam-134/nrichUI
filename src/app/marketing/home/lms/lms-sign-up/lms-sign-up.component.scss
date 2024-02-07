@@ -1,0 +1,63 @@
+@import url("../../../../../assets/css/bootstrap.min.css");
+@import url("../../../../../assets/css/all.min.css");
+@import url("../../../../../assets/css/slick.css");
+@import url("../../../../../assets/css/nice-select.css");
+@import url("../../../../../assets/css/main.css");
+@import url("../../../../../assets/css/responsive.css");
+
+.hero-area {
+    background: url(../../../../../assets/lms/lms1.svg);
+    padding-top: 124px;
+    padding-bottom: 60px;
+    height: calc(80vh - 140.25px);
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-color: #fff;
+    background-size: contain;
+}
+.hero-left-content .section-title h2 {
+    font-size: 36px;
+    line-height: 50px;
+  }
+
+@media only screen and (max-width: 1200px) {
+   
+    .hero-left-content {
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .hero-g-wrapper{
+        grid-template-columns: 70% 1fr;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .hero-area {
+        height: calc(100vh - 140.25px);
+        align-items: flex-start;
+    }
+    .hero-left-content {
+       text-align: center;
+    }
+    .learning_mangement{
+        padding: 100px 0;
+    }
+    .hero-left-content .section-title  h2 {
+        font-size: 32px;
+        line-height: 50px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

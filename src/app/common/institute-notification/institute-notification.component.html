@@ -1,1 +1,128 @@
-<p>institute-notification works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Notification Listing</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #notificationSearch
+                        type="text"
+                        placeholder="Type in this field for quick filter"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+  
+              <div class="col-sm-12 col-md-6">
+                <div class="user-list-files d-flex justify-content-end">
+                  <a
+                    routerLink="/master/create-notification"
+                    class="chat-icon-delete btn bg-soft-primary"
+                  >
+                    + Create Notification
+                  </a>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Name <i ng-click="typeOfShorting:!typeOfShorting"
+                    [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                    (click)="short('name')"></i></th>
+                  <th scope="col">Date & Time <i ng-click="typeOfShorting:!typeOfShorting"
+                    [ngClass]=" typeOfShorting && type =='scheduledDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                    (click)="short('scheduledDate')"></i></th>
+                  <th scope="col">Status <i ng-click="typeOfShorting:!typeOfShorting"
+                    [ngClass]=" typeOfShorting && type =='status' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                    (click)="short('status')"></i></th>
+                  <th scope="col">Type <i ng-click="typeOfShorting:!typeOfShorting"
+                    [ngClass]=" typeOfShorting && type =='type' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                    (click)="short('type')"></i></th>
+                  <th scope="col">Receiver Type <i ng-click="typeOfShorting:!typeOfShorting"
+                    [ngClass]=" typeOfShorting && type =='receiverType' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                    (click)="short('receiverType')"></i></th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="notifications.length == 0">
+                  <td colspan="7">No Notifications Found</td>
+                </tr>
+                <tr *ngFor="let element of notifications | short:type:typeOfShorting; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element.name }}
+                  </td>
+                  <td>
+                    {{ element?.scheduledDate | date: "medium" }}
+                  </td>
+                  <td>
+                    {{ element?.status }}
+                  </td>
+                  <td>
+                    {{ element?.type }}
+                  </td>
+                  <td>
+                    {{ element?.receiverType }}
+                  </td>
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                      >menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        [routerLink]="['/master/notified-institutes']"
+                        [queryParams]="{
+                          id: element.id
+                        }"
+                        data-toggle="tooltip"
+                        title="Notified Institutes"
+                      >
+                        Notified Institutes
+                      </button>
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                      title="Edit Faq" (click)="editNotification(element)">
+                      Edit Notification
+                  </button>
+                  <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                  title="Delete Faq" (click)="deleteNotification(element.id)">
+                  Delete Notification
+              </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

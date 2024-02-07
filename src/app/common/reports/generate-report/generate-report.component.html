@@ -1,1 +1,187 @@
-<p>generate-report works!</p>
+<div class="card">
+    <div class="card-header" style="font-weight: bold">Generate Report</div>
+    <div class="card-body">
+      <div id="table">
+        <div class="row">
+          <div class="col-md-4 mt-2">
+            <label style="font-weight: bold"
+              >Select Reports<span class="text-danger">*</span></label
+            >
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              (change)="onReportSelection(report.value)"
+              #report
+            >
+              <option disabled selected>Select Report</option>
+              <option
+                *ngFor="let report of reportingNameList"
+                [value]="report.id"
+              >
+                {{ report.reportingName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <fieldset style="margin-top: 15px" *ngIf="showSelectedFields">
+          <legend style="font-size: 17px">Select Criteria :</legend>
+          <div *ngFor="let criteria of reportName?.criteria; let i = index">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                (change)="fetchCriteriaFields($event, criteria.id, i)"
+                id="inlineCheckbox{{ i }}"
+                [value]="criteria.id"
+              />
+              <label
+                style="font-weight: bold"
+                class="form-check-label"
+                for="inlineCheckbox{{ i }}"
+                >{{ criteria.criteriaName }}
+                <span class="text-danger" *ngIf="criteria.required"
+                  >*</span
+                ></label
+              >
+            </div>
+            <div
+              class="alert-custom alert-light-danger alert-dismissible"
+              *ngIf="criteria.error"
+            >
+              <div class="text-danger">{{ criteria.error }}.</div>
+            </div>
+          </div>
+        </fieldset>
+        <div
+          class="row"
+          *ngFor="let criteria of reportName?.criteria; let i = index"
+        >
+          <div
+            class="col-md-4"
+            *ngFor="let element of criteria?.fields; let i = index"
+          >
+            <div *ngIf="element.fieldType == 'text'">
+              <label
+                for="exampleFormControlInput1"
+                style="font-weight: bold"
+                class="form-label"
+                >{{ element.fieldLabel
+                }}<span class="text-danger" *ngIf="element.required"
+                  >*</span
+                ></label
+              >
+              <input
+                type="text"
+                [(ngModel)]="element.value"
+                class="form-control"
+                id="exampleFormControlInput{{ i }}"
+                placeholder="enter {{ element.fieldLabel }}"
+              />
+            </div>
+            <div *ngIf="element.fieldType == 'date'">
+              <label
+                style="font-weight: bold"
+                for="exampleFormControlInput1"
+                class="form-label"
+                >{{ element.fieldLabel
+                }}<span class="text-danger" *ngIf="element.required"
+                  >*</span
+                ></label
+              >
+              <input
+                type="datetime-local"
+                [(ngModel)]="element.value"
+                class="form-control"
+                id="exampleFormControlInput{{ i }}"
+                placeholder="enter {{ element.fieldLabel }}"
+              />
+            </div>
+            <div *ngIf="element.fieldType == 'dropdown'">
+              <label
+                style="font-weight: bold"
+                for="exampleFormControlInput1"
+                class="form-label"
+                >Select {{ element.fieldLabel
+                }}<span class="text-danger" *ngIf="element.required"
+                  >*</span
+                ></label
+              >
+              <select
+                class="form-select"
+                [(ngModel)]="element.value"
+                (change)="fetchSubValuesOfField(element.value)"
+                aria-label="Default select example"
+              >
+                <option disabled selected value="">Open this select menu</option>
+                <option
+                  *ngFor="let dropdownValue of element.criteriaFieldValues"
+                  [value]="dropdownValue.id"
+                >
+                  {{ dropdownValue.value }}
+                </option>
+              </select>
+              <ng-container *ngFor="let values of element.criteriaFieldValues">
+                <ng-container class="mt-2" *ngIf="values.criterialFieldSubValues.length != 0">
+                  <label
+                    style="font-weight: bold"
+                    for="exampleFormControlInput1"
+                    class="form-label"
+                    >Select SubStatus</label
+                  >
+                  <select
+                    class="form-select"
+                    [(ngModel)]="element.subValue"
+                    aria-label="Default select example"
+                  >
+                    <option disabled selected value="">
+                      Open this select menu
+                    </option>
+                    <option
+                      *ngFor="let dropdownValue of values.criterialFieldSubValues"
+                      [value]="dropdownValue.id"
+                    >
+                      {{ dropdownValue.value }}
+                    </option>
+                  </select></ng-container
+                >
+              </ng-container>
+              <!--sub status-->
+              <!-- <div
+                class="col-md-4"
+                *ngFor="let field of criteria?.fields; let i = index"
+              >
+                <ng-container *ngFor="let el of field.criteriaFieldValues">
+                  <select
+                    class="form-select"
+                    [(ngModel)]="element.subValue"
+                    (change)="fetchSubValuesOfField(element.value)"
+                    aria-label="Default select example"
+                  >
+                    <option disabled selected value="">
+                      Open this select menu
+                    </option>
+                    <option
+                      *ngFor="let dropdownValue of el.criterialFieldSubValues"
+                      [value]="dropdownValue.id"
+                    >
+                      {{ dropdownValue.value }}
+                    </option>
+                  </select>
+                </ng-container>
+              </div> -->
+            </div>
+            <div
+              class="alert-custom alert-light-danger alert-dismissible"
+              *ngIf="element.error && element.value == ''"
+            >
+              <div class="text-danger">{{ element.error }}.</div>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="submit()" class="btn btn-primary mt-2">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+  

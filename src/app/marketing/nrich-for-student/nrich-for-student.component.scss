@@ -1,0 +1,40 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/all.min.css");
+@import url("../../../assets/css/slick.css");
+@import url("../../../assets/css/nice-select.css");
+@import url("../../../assets/css/main.css");
+@import url("../../../assets/css/responsive.css");
+
+.textdec {
+    font-family: poppins;
+}
+
+.set-padding{
+  padding: 100px;
+  padding-top: 0px; padding-bottom: 2%
+}
+
+
+@media screen and (max-width: 390px){
+  .set-padding{
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 2%
+  }
+}
+
+.setPadding1 {
+  padding: 80px 0 !important;
+}
+
+@media screen and (max-width: 1346px){
+  .setPadding1 {
+    padding: 25px 0 !important;
+  }
+}
+
+@media screen and (max-width: 1070px){
+  .setPadding1 {
+    padding: 0px 0 !important;
+  }
+}

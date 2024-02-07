@@ -1,1 +1,84 @@
-<p>assign-lead works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <div class="header-title">
+            <h4 class="card-title">Assign Lead</h4>
+          </div>
+          <div class="hand" mat-dialog-close>
+            <img src="assets/icons/Cross.svg" alt="" />
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="assignLeadForm">
+            <div class="row mb-3">
+              <div class="form-group col-md-12">
+                <span class="d-flex justify-content-between">
+                  <label class="form-label" for="validationCustom02">Assign it to Self or Other<span
+                      class="text-danger">*</span>
+                  </label>
+                </span>
+                <!-- <select formControlName="assignedTo" class="form-control">
+                  <option *ngFor="let user of users" [value]="user">
+                    {{ user }}
+                  </option>
+                </select> -->
+                <mat-form-field appearance="outline" style="width: 100%; margin-bottom: -17px">
+                  <mat-select formControlName="assignedTo">
+  
+                    <ng-container *ngFor="let element of users">
+                      <mat-option [value]="+element.id" *ngIf="element != null" [disabled]="element.id == assignedUser">
+                        <div class="row">
+                          <div class="col-9">{{ element.firstName }}</div>
+                          <div class="col-3">
+                            <img class="avatar" [src]="
+                                element?.userImage
+                                  ? element?.userImage
+                                  : '../../../assets/images/profile.png'
+                              " />
+                          </div>
+                        </div>
+                      </mat-option>
+                      <mat-select-trigger *ngIf="element == null">
+                        No Item Found
+                      </mat-select-trigger>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <div class="text-danger" *ngIf="users?.length == 0">
+                  No User Found.
+                </div>
+                <div *ngIf="
+                    (isSubmit && controls['assignedTo'].invalid)
+                  ">
+                  <div *ngIf="controls['assignedTo'].errors?.['required']" class="text-danger">
+                    Above field is required !
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="col-md-12 mb-3">
+                <label for="exampleInputEmail1" class="form-label text-dark">Initial Notes</label>
+                <textarea class="form-control" id="aboutUs" placeholder="add your notes here .." rows="3"
+                  formControlName="comment"></textarea>
+                <div *ngIf="
+                  (isSubmit && controls['comment'].invalid)
+                ">
+                  <div *ngIf="controls['comment'].errors?.['required']" class="text-danger">
+                    Above field is required !
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button type="button" style="margin-right: 5px" type="submit" class="btn btn-primary active"
+                (click)="onSubmit()">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

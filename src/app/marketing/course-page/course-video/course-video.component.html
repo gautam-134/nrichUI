@@ -1,0 +1,125 @@
+<div class="helper-div position-relative">
+    <div
+      class="v-type position-absolute"
+      *ngIf="courseDetails?.liveOrRecordedLectures === 'recordedLectures'"
+    >
+      Recorded
+    </div>
+  
+    <div
+      class="v-type position-absolute"
+      *ngIf="courseDetails?.liveOrRecordedLectures === 'both'"
+    >
+      Live and Recorded
+    </div>
+    <img src="assets/img/move-1.png" alt="" class="position-absolute move-1" />
+    <div class="cmn-box z-index-1">
+      <div class="video position-relative" *ngIf="courseDetails">
+        <video
+          *ngIf="!courseDetails?.courseVideoPath && !youTubeLink"
+          controls
+          controlsList="nodownload"
+          oncontextmenu="return false;"
+          class="v-bg img-fluid w-100"
+          src="https://nrichvideo.s3.ap-south-1.amazonaws.com/bydefaultcourse.mp4"
+        ></video>
+        <video
+          *ngIf="courseDetails?.courseVideoPath && !youTubeLink"
+          controls
+          controlsList="nodownload"
+          oncontextmenu="return false;"
+          class="v-bg img-fluid w-100"
+          [src]="courseDetails.courseVideoPath"
+        ></video>
+  
+        <iframe
+          *ngIf="!courseDetails?.courseVideoPath && youTubeLink"
+          class="v-bg img-fluid w-100"
+          style="height: 217px"
+          [src]="youTubeLink | safe"
+        >
+        </iframe>
+      </div>
+  
+      <div class="course-price-wrapper position-relative">
+        <!-- <span class="position-absolute badge cat-btn discount">₹10,500</span> -->
+        <div class="plan-price type-6">
+          <!-- <span class="sm-ttl">Course Price</span>
+                  <h6><span class="g-text">₹{{courseDetails?.coursePrice}}/-</span>
+                  
+                  </h6> -->
+        </div>
+      </div>
+      <ul class="hightlight-list">
+        <table>
+          <tr>
+            <th style="width: 65%; padding: 1.5% 0%">
+              <img src="assets/img/h-1.png" alt="" />&nbsp;&nbsp;<span
+                >Assignments :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%">
+              {{
+                courseDetails?.whetherAssignmentTestIncluded == "true"
+                  ? "Included"
+                  : "Not Included"
+              }}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 65%; padding: 1.5% 0%">
+              <img src="assets/img/h-2.png" alt="" />&nbsp;&nbsp;<span
+                >Duration :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%">
+              {{ courseDetails?.timePeriodCourse }}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 65%; padding: 1.5% 0%">
+              <img src="assets/img/h-4.png" alt="" />&nbsp;&nbsp;<span
+                >Language :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%">English, Hindi</td>
+          </tr>
+          <tr>
+            <th style="width: 65%; padding: 1.5% 0%">
+              <img src="assets/img/h-5.png" alt="" />&nbsp;&nbsp;<span
+                >Certificate :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%">
+              {{
+                courseDetails?.hasCertificate == "true"
+                  ? "Included"
+                  : "Not Included"
+              }}
+            </td>
+          </tr>
+  
+          <tr>
+            <th style="width: 65%; padding: 1.5% 0%">
+              <img src="assets/img/h-1.png" alt="" />&nbsp;&nbsp;<span
+                >Test :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%">
+              {{
+                courseDetails?.has_test == "true" ? "Included" : "Not Included"
+              }}
+            </td>
+          </tr>
+        </table>
+      </ul>
+  
+      <a
+        class="btn box-btn fill-blue w-100"
+        style="margin-top: 30px"
+        (click)="addNewItem()"
+        >Enroll Now</a
+      >
+    </div>
+  </div>
+  

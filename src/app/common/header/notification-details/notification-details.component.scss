@@ -1,0 +1,42 @@
+/* notification.component.css */
+
+.notification-dialog {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    width: 400px; /* Set the desired fixed width for the dialog */
+  }
+  
+  /* Adjust the width for smaller screens */
+  @media (max-width: 768px) {
+    .notification-dialog {
+      width: 90%; /* Set a percentage width for smaller screens */
+      max-width: 400px; /* Limit the maximum width for very large screens */
+    }
+  }
+  
+  .notification-image {
+    width: 40px;
+    height: 40px; /* Set the desired fixed size for the image */
+    border-radius: 50%;
+  }
+  
+  .notification-title {
+    font-weight: 500;
+  }
+  
+  .notification-content-wrapper {
+    height: 100%;
+  }
+  
+  .notification-content {
+    max-height: 200px; /* Set the desired maximum height for the content */
+    overflow-y: auto; /* Add a vertical scrollbar if the content exceeds the max height */
+  }
+  
+  .notification-buttons {
+    /* Add your custom styles for the button section */
+    display: flex;
+    justify-content: flex-end;
+  }
+  

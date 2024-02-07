@@ -1,1 +1,147 @@
-<p>follow-up-listing works!</p>
+<div class="card">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card-header d-flex bg-primary">
+          <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Follow-Up Leads</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="table">
+            <div class="row">
+              <div class="col-md-4 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                        placeholder="Search...." />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-3 mb-2" style="margin-left: auto;">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <select (change)="onStatusChange($event)" class="form-select" aria-label="Default select example"
+                    [(ngModel)]="selectedStatus">
+                    <option value='' selected>All Follow-up Leads</option>
+                    <option *ngFor="let status of crmStatus" [value]="status.status">
+                      {{ status.status }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-3 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <select (change)="onSubStatusChange($event)" class="form-select" aria-label="Default select example"
+                    [(ngModel)]="selectedSubStatus">
+                    <option value="" *ngIf="crmSubStatus?.length == 0" selected>
+                      No Sub-Status Found
+                    </option>
+                    <option value="" *ngIf="crmSubStatus?.length != 0" selected>All Leads</option>
+                    <option *ngFor="let subStatus of crmSubStatus" [value]="subStatus.subStatus">
+                      {{ subStatus.subStatus }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-2 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <select (change)="onFilterChange($event)" class="form-select" aria-label="Default select example">
+                    <Option value="" selected>Today</Option>
+                    <Option value="WEEK">Last 7 Days</Option>
+                    <option value="MONTH">Last 30 Days</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>
+                    Name<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                          typeOfShorting && type == 'name'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        " (click)="short('name')"></i>
+                  </th>
+                  <th>
+                    Mobile Number<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                          typeOfShorting && type == 'mobileNumber'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        " (click)="short('mobileNumber')"></i>
+                  </th>
+                  <th>
+                    Source<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                          typeOfShorting && type == 'source'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        " (click)="short('source')"></i>
+                  </th>
+                  <th>
+                    Status<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'status'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('status')"></i>
+                  </th>
+                  <th>
+                    Sub-Status<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'subStatus'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('subStatus')"></i>
+                  </th>
+                  <th>
+                    Follow-up Date<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                          typeOfShorting && type == 'followUpDate'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        " (click)="short('followUpDate')"></i>
+                  </th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="10" *ngIf="instituteLeads.length == 0">
+                    No Record Found.
+                  </td>
+                </tr>
+                <tr *ngFor="
+                      let lead of instituteLeads | short : type : typeOfShorting;
+                      let i = index
+                    ">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ lead?.name }}</td>
+                  <td>{{ lead?.mobileNumber }}</td>
+                  <td>
+                    <b>{{
+                      (lead?.source==null ? "mannual" : lead?.source) | uppercase
+                      }}</b>
+                  </td>
+                  <td>{{lead?.status}}</td>
+                  <td>{{lead?.subStatus ? lead?.subStatus:'NA'}}</td>
+                  <td>{{ lead?.followUpDate | date : "medium" }}</td>
+                  <td>
+                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon">menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="editLead"
+                        (click)="editLead(lead.id)">
+                        Edit
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator [size]="size" [pagenumber]="page" [totalElements]="totalCount"
+              (pageChange)="pageChange($event)" (changeSize)="changeSize($event)"></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

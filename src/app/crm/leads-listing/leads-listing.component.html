@@ -1,1 +1,212 @@
-<p>leads-listing works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex bg-primary">
+          <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Leads Listing</h4>
+          </div>
+          <button type="button" class="btn" style="background: white; color: #50b5ff;margin-right:5px;"
+            [disabled]="selectedLeads.length == 0" (click)="deleteAllLeads()">
+            Delete Selected Leads
+          </button>
+          <button type="button" class="btn" style="background: white; color: #50b5ff;margin-right:5px;"
+            [disabled]="selectedLeads.length == 0" (click)="assignAllLeads()">
+            Assign Selected Leads
+          </button>
+          <div class="btn-group"  *ngIf="roleType == 'InstituteAdmin' || roleType == 'SuperAdmin'">
+            <button type="button" class="btn btn-danger" (click)="openDropDown($event)">More Options</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+              aria-expanded="false" (click)="openDropDown($event)">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="sub-drop dropdown-menu" [ngClass]="showDropDown?'show':'hide'" style="left:-67px"
+              aria-labelledby="drop-down-arrow" data-bs-popper="static" >
+              <li><a class="dropdown-item"
+                  (click)="addLead()">Add Lead</a></li>
+              <li><a class="dropdown-item"
+                  (click)="addField()">Add Fields</a></li>
+              <li><a class="dropdown-item"
+                  (click)="openFacebookDialog()">Import Facebook Leads</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="table">
+            <div class="row">
+              <div class="col-md-3 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                        placeholder="Search...." />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-3 mb-2" *ngIf="roleType == 'InstituteAdmin' || roleType == 'SuperAdmin'">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <div class="form-group">
+                    <select class="form-select" aria-label="Default select example" (change)="onAssignToChange($event)">
+                      <option value='' selected>Assigned to Anyone</option>
+                      <ng-container *ngFor="let element of users">
+                        <option [value]="+element.id" *ngIf="element != null">
+                          <div class="row">
+                            <div class="col-9">{{ element.firstName }}</div>
+                            <div class="col-3">
+                              <img class="avatar" [src]="element?.userImage ? element?.userImage : '../../../assets/images/profile.png'" />
+                            </div>
+                          </div>
+                        </option>
+                        <optgroup *ngIf="element == null">
+                          <option>No User Found.</option>
+                        </optgroup>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-3 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <select (change)="onStatusChange($event)" class="form-select" aria-label="Default select example"
+                    [(ngModel)]="selectedStatus">
+                    <option value='' selected>All Leads</option>
+                    <option *ngFor="let status of crmStatus" [value]="status.status">
+                      {{ status.status }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <select (change)="onSubStatusChange($event)" class="form-select" aria-label="Default select example"
+                    [(ngModel)]="selectedSubStatus">
+                    <option value="" *ngIf="crmSubStatus?.length == 0" selected>
+                      No Sub-Status Found
+                    </option>
+                    <option value="" *ngIf="crmSubStatus?.length != 0" selected>All Leads</option>
+                    <option *ngFor="let subStatus of crmSubStatus" [value]="subStatus.subStatus">
+                      {{ subStatus.subStatus }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>
+  
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="selectAll" (click)="toggleSelectAll()">
+  
+                  </th>
+                  <th>S.No</th>
+                  <th>
+                    Name<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'name'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('name')"></i>
+                  </th>
+                  <th>
+                    Mobile Number<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'mobileNumber'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('mobileNumber')"></i>
+                  </th>
+                  <th>
+                    Source<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'source'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('source')"></i>
+                  </th>
+                  <th>
+                    Status<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'status'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('status')"></i>
+                  </th>
+                  <th>
+                    Sub-Status<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'subStatus'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('subStatus')"></i>
+                  </th>
+                  <th>
+                   Assigned To<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'assigneeName'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('assigneeName')"></i>
+                  </th>
+                  <th>
+                    Date<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]="
+                        typeOfShorting && type == 'createdDate'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      " (click)="short('createdDate')"></i>
+                  </th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="10" *ngIf="instituteLeads.length == 0">
+                    No Record Found.
+                  </td>
+                </tr>
+                <tr *ngFor="
+                    let lead of instituteLeads | short : type : typeOfShorting;
+                    let i = index
+                  ">
+                  <td> <input type="checkbox" [(ngModel)]="lead.selected" (click)="toggleRowSelection(lead)"></td>
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ lead?.name }}</td>
+                  <td>{{ lead?.mobileNumber }}</td>
+                  <td>
+                    <b>{{
+                      (lead?.source==null ? "mannual" : lead?.source) | uppercase
+                      }}</b>
+                  </td>
+                  <td>{{ lead?.status }}</td>
+                  <td>{{lead?.subStatus ? lead?.subStatus:'NA'}}</td>
+                  <td>{{lead?.assigneeName?lead?.assigneeName:'Not Assigned'}}</td>
+                  <td>{{ lead?.createdDate | date : "medium" }}</td>
+                  <td>
+                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon">menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="editLead"
+                        (click)="editLead(lead.id)">
+                        Edit
+                      </button>
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Assign Lead"
+                        (click)="assignLead(lead)">
+                        Assign Lead
+                      </button>
+  
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title=" Lead History"
+                        (click)="viewLeadHistory(lead.id)">
+                        Lead History
+                      </button>
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="editLead"
+                        (click)="deleteLead(lead)">
+                        Delete
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

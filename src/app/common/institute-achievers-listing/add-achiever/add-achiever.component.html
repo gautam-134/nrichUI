@@ -1,1 +1,97 @@
-<p>add-achiever works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Add Achiever</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="AchieverForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Achiever Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Achiever Name"
+                                    formControlName="name" />
+                                <div *ngIf="submitted && form['name']?.invalid">
+                                    <div class="text-danger" *ngIf="form['name']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Description<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Short Description"
+                                    formControlName="description" />
+                                <div *ngIf="submitted && form['description']?.invalid">
+                                    <div class="text-danger" *ngIf="form['description']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Display Order<span class="text-danger">*</span></label>
+                                <input type="number" min="0" (keypress)="numberOnly($event)" class="form-control" placeholder=""
+                                    formControlName="displayOrder" />
+                                <div *ngIf="submitted && form['displayOrder']?.invalid">
+                                    <div class="text-danger" *ngIf="form['displayOrder']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Is Featured<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="Enter Achiever Name"
+                                    formControlName="name" />
+                                <div *ngIf="submitted && form['name']?.invalid">
+                                    <div class="text-danger" *ngIf="form['name']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                       
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <label for="">Select Achiever Image</label>
+                                    <input #fileSelect type="file" class="form-control" accept=".jpg,.jpeg,.png,.gif"
+                                        placeholder="Enter File Name" (change)="onFileChange($event)" />
+                                </div>
+                                <div class="col-md-2" style="margin-top: 25px;">
+                                <button (click)="documentPreview(file)" [disabled]="!(file || achieverDetails.profileImage )"
+                                            class="btn btn-primary"><i _ngcontent-cug-c349="" aria-hidden="true"
+                                                class="fa fa-eye"></i> Preview</button>
+                                </div>
+                                <div *ngIf="submitted && !this.file && !this.achieverDetails.profileImage">
+                                    <div class="text-danger">
+                                        Achiever Image is required.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label>{{ this.achieverDetails.profileImage }}</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" (click)="onSubmit()" type="submit" class="btn btn-primary active"
+                    style="margin-right: 20px;">Submit</button>
+
+                <button type="submit" type="submit" (click)="cancel()" class="btn btn-secondary active">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

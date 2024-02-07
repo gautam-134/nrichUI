@@ -1,0 +1,118 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/all.min.css");
+@import url("../../../assets/css/slick.css");
+@import url("../../../assets/css/nice-select.css");
+@import url("../../../assets/css/main.css");
+@import url("../../../assets/css/responsive.css");
+
+.nav-back {
+    background: transparent;
+}
+::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .ins-element {
+    width: 50%;
+    text-align: left; /* Align the content to the left */
+  }
+  
+  .ins-el-inner {
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 18px;
+  }
+  
+  .ins-el-inner h5 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: left; /* Align the heading text to the left */
+  }
+  
+  .ins-el-inner p {
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: left; /* Align the paragraph text to the left */
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 60px;
+    transition: background-color 0.3s ease;
+    text-align: left; /* Align the button text to the left */
+  }
+
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .image-container {
+    position: relative;
+    flex-basis: 100%;
+  }
+  
+  .image-container img {
+    width: 100%;
+    border-radius: 18px;
+  }
+  
+  .content-container {
+    position: relative;
+    flex-basis: 100%;
+    margin-top: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .image-container {
+      flex-basis: 40%;
+    }
+  
+    .content-container {
+      flex-basis: 60%;
+      margin-top: 0;
+    }
+  }
+  
+  .ins-element {
+    width: 100%;
+  }
+  
+  .ins-el-inner {
+    padding: 10px;
+  }
+  
+  .short-description {
+    margin-bottom: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .ins-el-inner {
+      padding: 20px;
+    }
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .fill-white {
+    background-color: white;
+    color: black;
+  }
+  
+  .round-60 {
+    border-radius: 60px;
+  }
+  

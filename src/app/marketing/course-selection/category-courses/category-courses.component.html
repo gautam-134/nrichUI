@@ -1,1 +1,148 @@
-<p>category-courses works!</p>
+<div class="course-item" *ngFor="let course of categoryCourses">
+    <div class="cmn-wrap educator">
+      <div class="edu-left">
+        <div
+          class="thumb-part position-relative"
+          [routerLink]="['/course-info']"
+          [queryParams]="{ id: course.idCourse, name: course?.courseTitle }"
+          style="height: 27vh"
+        >
+          <img
+            [src]="course?.courseImage"
+            style="height: 27vh; width: 100%"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="edu-right mt-2">
+        <h5>{{ course?.courseName }}</h5>
+        <p
+          style="
+            font-family: Manrope;
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 14px;
+            letter-spacing: 0em;
+            text-align: left;
+          "
+        >
+          {{ course?.courseTitle }}
+        </p>
+        <div class="row" style="margin-top: 8px">
+          <div class="col-md-8">
+            <div style="display: flex">
+              <img
+                *ngIf="course?.teacherImage !== null"
+                [src]="course.teacherImage"
+                style="width: 90px; border-radius: 50%"
+                alt=""
+              />
+              <img
+                *ngIf="course?.teacherImage == null"
+                [src]="'../../../assets/images/profile.png'"
+                style="width: 90px; border-radius: 50%"
+                alt=""
+              />
+              <span style="margin-left: 8px">
+                <p>
+                  Instructor <b>{{ course?.teacherName }}</b>
+                </p>
+                <h6>{{ course?.courseName }}</h6>
+                <div>
+                  <h5 *ngIf="course.weightedAverage != null" class="author">
+                    <span class="d-block">Rating</span>
+                    <span class="rt"
+                      ><img class="img-fluid" src="assets/img/sss.png" />{{
+                        course.weightedAverage | number : "1.0-0"
+                      }}/5</span
+                    >
+                  </h5>
+                  <h5 *ngIf="course.weightedAverage == null" class="author">
+                    <span class="d-block">Rating</span>
+                    <span class="rt"
+                      ><img class="img-fluid" src="assets/img/sss.png" />0/5</span
+                    >
+                  </h5>
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-12 col-6 col-lg-12">
+                <p style="font-weight: bold; margin-bottom: 4px">
+                  <img
+                    src="assets/img/h-1.png"
+                    width="25px"
+                    alt=""
+                    class="me-2"
+                  /><span>Certificate </span>
+                  <br />
+                  <span style="color: #000000; padding-left: 33px">{{
+                    course?.hasCertificate == "true" ? "Included" : "Not Included"
+                  }}</span>
+                </p>
+              </div>
+              <div class="col-md-12 col-6 col-lg-12">
+                <p style="font-weight: bold; margin-bottom: 4px">
+                  <img
+                    src="assets/img/h-2.png"
+                    width="25px"
+                    alt=""
+                    class="me-2"
+                  /><span>Duration</span>
+                  <br />
+                  <span style="color: #000000; padding-left: 33px">{{
+                    course.timePeriodCourse
+                  }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 5%">
+          <div class="col-6">
+            <a
+              [routerLink]="['/course-info']"
+              [queryParams]="{ id: course.idCourse, name: course?.courseTitle }"
+              type="button"
+              class="btn btn-outline-primary"
+            >
+              Enroll Now
+            </a>
+          </div>
+          <div class="col-6">
+            <p style="font-weight: bold">
+              <img
+                src="assets/img/h-4.png"
+                alt=""
+                style="width: 25px"
+                class="me-2"
+              /><span>Language </span><br />
+              <span style="color: #000000; padding-left: 33px"
+                >English, Hindi</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+  <p *ngIf="categoryCourses.length == 0 && isCategoryLoaded">No Courses Found.</p>
+  <div class="col-md-12" *ngIf="!isCategoryLoaded" style="text-align: center">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <br />
+  <app-table-paginator
+    [size]="size"
+    [totalElements]="totalElement"
+    (pageChange)="pageChange($event)"
+    [disableSize]="true"
+  ></app-table-paginator>
+  

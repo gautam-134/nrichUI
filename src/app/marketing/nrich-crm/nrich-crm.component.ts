@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nrich-crm',
@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './nrich-crm.component.html',
   styleUrl: './nrich-crm.component.scss'
 })
-export class NrichCrmComponent {
+export class NrichCrmComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

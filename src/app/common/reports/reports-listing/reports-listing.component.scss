@@ -1,0 +1,18 @@
+.firstRow {
+    background: white;
+    -webkit-animation: firstRowAnimation 2s infinite; /* Safari 4+ */
+    -moz-animation: firstRowAnimation 2s infinite; /* Fx 5+ */
+    -o-animation: firstRowAnimation 2s infinite; /* Opera 12+ */
+    animation: firstRowAnimation 2s infinite; /* IE 10+, Fx 29+ */
+  }
+  @keyframes firstRowAnimation {
+    0%,
+    49% {
+      background-color: lightgreen
+    }
+    50%,
+    100% {
+      background-color: lightblue;
+    }
+  }
+  

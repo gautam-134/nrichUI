@@ -1,1 +1,97 @@
-<p>create-institute-notification works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Create Notification</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="NotificationForm">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label style="padding-bottom: 3px">Notification Name<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter Notification Name" formControlName="name"
+                  style="height: 51.5px" />
+                <div *ngIf="submitted && form['name']?.invalid">
+                  <div class="text-danger" *ngIf="form['name']?.errors?.['required']">
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <span class="d-flex justify-content-between">
+                  <label>Select Institute<span class="text-danger">*</span></label>
+                </span>
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <mat-select #ref multiple formControlName="toIds">
+                    <!-- <mat-optgroup>
+                      <mat-form-field style="width: 100% !important" appearance="legacy">
+                        <mat-label>Search..</mat-label>
+                        <mat-icon matSuffix>search</mat-icon>
+                        <input matInput type="text" (keyup)="search($event)" [(ngModel)]="searchParam" />
+                      </mat-form-field>
+                    </mat-optgroup> -->
+                    <div class="card-body p-0" style="overflow: scroll; max-height: 198px" (scroll)="onScrollOfInstitutes($event.target)">
+                      <ng-container *ngFor="let institute of institutes">
+                        <mat-option [value]="+institute.instituteId" [disabled]="institute.instituteName === 'Nrich Learning'">
+                          <div class="row">
+                            <div class="col-9">{{ institute.instituteName }}</div>
+                            <div class="col-3">
+                              <img
+                                class="avatar-40 rounded"
+                                [src]="institute?.instituteImage ? institute?.instituteImage : '../../../assets/insitutedefaultLogo.png'"
+                              />
+                            </div>
+                          </div>
+                        </mat-option>
+                        <mat-select-trigger *ngIf="institutes == null">No Item Found.</mat-select-trigger>
+                      </ng-container>
+                      <div *ngIf="institutes?.length != totalInstitutes" class="col-12 text-center">
+                        <img src="assets/images/page-img/page-load-loader.gif" alt="loader" style="height: 72px" loading="lazy" />
+                      </div>
+                    </div>
+                  </mat-select>
+                </mat-form-field>
+                
+                <div *ngIf="submitted && form['toIds'].invalid">
+                  <div *ngIf="form['toIds'].errors?.['required']" class="text-danger">
+                    Please select institute !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Notification<span class="text-danger">*</span></label>
+                  <textarea class="form-control" placeholder="" formControlName="notification"></textarea>
+                  <div *ngIf="submitted && form['notification']?.invalid">
+                    <div class="text-danger" *ngIf="form['notification']?.errors?.['required']">
+                      Above Field Is Required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-12">
+                <label>Meta Tags</label>
+                <tag-input [(ngModel)]="tags" placeholder="Meta Tags" formControlName="metaTags">
+                </tag-input>
+                <mat-hint> Hint:- Press enter for add tags. </mat-hint>
+              </div>
+            </div>
+          </form>
+        </div>
+  
+        <div class="card-footer">
+          <button type="submit" (click)="onSubmit()" type="submit" class="btn btn-primary active"
+            style="margin-right: 20px">
+            Send Notification
+          </button>
+  
+          <button type="submit" type="submit" (click)="cancel()" class="btn btn-secondary active">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

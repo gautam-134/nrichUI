@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-common',
@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './common.component.html',
   styleUrl: './common.component.scss'
 })
-export class CommonComponent {
+export class CommonComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

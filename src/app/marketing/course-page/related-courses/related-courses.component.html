@@ -1,0 +1,36 @@
+<div class="cmn-box">
+    <h3 class="tertiary-title">Related Course</h3>
+    <div *ngFor="let course of relatedCourses;let i = index;" class="sd-wrapper">
+        <div *ngIf=" i < 3" class="single-sd">
+            <div class="sd-img">
+                <img [src]="course?.courseImage" class="img-fluid w-100" alt="">
+            </div>
+            <div class="sd-content">
+                <h6>{{course?.courseName}}</h6>
+                <div class="rt">
+                    <!-- <img src="assets/img/Rating.png" alt=""> -->
+                    <span class="text-warning d-flex align-items-center mt-2">
+                        <i [ngClass]="course.weightedAverage >= 1 ? '' : 'text-gray'"
+                            class="fa fa-star checked md-18 me-1"></i>
+                        <i [ngClass]="course.weightedAverage >= 2 ? '' : 'text-gray'"
+                            class="fa fa-star checked md-18 me-1"></i>
+                        <i [ngClass]="course.weightedAverage >= 3 ? '' : 'text-gray'"
+                            class="fa fa-star checked md-18 me-1"></i>
+                        <i [ngClass]="course.weightedAverage >= 4 ? '' : 'text-gray'"
+                            class="fa fa-star checked md-18 me-1"></i>
+                        <i [ngClass]="course.weightedAverage >= 5 ? '' : 'text-gray'"
+                            class="fa fa-star md-18 text-gray me-1"></i>
+                        <!-- <small style="padding-top: 5px;" class="text-dark me-1">{{course.weightedAverage ?
+                           course.weightedAverage : '0.0'}}/5</small> -->
+                    </span>
+                </div>
+                <a [routerLink]="['/course-info']" [queryParams]="{id: course.idCourse,name:course?.courseTitle}"
+                    class="link_w_icon">View Course<i class="far fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="relatedCourses.length <= 0" class="sd-wrapper">
+        <h6>No related courses found!</h6>
+    </div>
+    <a *ngIf="relatedCourses.length > 3" class="btn box-btn w-100" (click)="viewRelatedCourses()">view all courses</a>
+</div>

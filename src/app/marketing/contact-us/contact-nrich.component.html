@@ -1,1 +1,288 @@
-<p>contact-us works!</p>
+<main class="fix">
+    <div class="teachers-area product-pge gray-bg position-relative fix">
+      <div>
+        <img src="assets/img/g-1.svg" alt="" class="g-1 position-absolute" />
+        <img src="assets/img/g-2.svg" alt="" class="g-2 position-absolute" />
+        <div class="container">
+          <div class="text-center">
+            <h3>Contact us</h3>
+            <div style="width: 70%; margin-left: auto; margin-right: auto">
+              <div class="c-t">
+                We are always available for any questions,
+                 doubts or suggestions you might have when 
+                 it comes to your business needs
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 60px; width: 100%">
+            <div class="col-md-5">
+              <div class="card cont-ca" style="border: 0px;">
+                <div class="card-body" style="padding: 40px">
+                  <div class="c-us">Head Office</div>
+                  <div style="display: flex; align-items: center; color: white; margin-top: 10px">
+                    <img
+                        src="../assets/images-marketing/Location on.png"
+                        alt="" style="margin-right: 10px;"/><p style="color: white">
+                      SCO 128-129, Sector - 8C,<br>
+                      Madhya Marg, Chandigarh - 160009
+                    </p>
+                  </div>
+                  <h6 style="color: white; margin-top: 25px" class="o-t">
+                    Support enquiries
+                  </h6>
+                  <p style="color: white; margin-top: 10px">
+                    <span><img src="../assets/images-marketing/Email.png" /></span
+                    >&nbsp;&nbsp; support@nrichlearning.com
+                  </p>
+                  <p style="color: white; margin-top: 5px">
+                    <span
+                      ><img src="../assets/images-marketing/Call.png" alt=""
+                    /></span>
+                    &nbsp;&nbsp; +91 79425 30235
+                  </p>
+                  <!-- <h6 style="color: white; margin-top: 25px" class="o-t">
+                    Sales inquiries
+                  </h6>
+                  <p style="color: white; margin-top: 10px">
+                    <span><img src="../assets/images-marketing/Email.png" /></span>
+                    &nbsp;&nbsp; sales@nrichlearning.com
+                  </p>
+                  <p style="color: white; margin-top: 5px">
+                    <span
+                      ><img src="../assets/images-marketing/Call.png" alt=""
+                    /></span>
+                    &nbsp;&nbsp; +91 70090 76565
+                  </p> -->
+                  <!-- <h6 style="color: white; margin-top: 25px" class="o-t">
+                    General inquiries
+                  </h6>
+                  <p style="color: white; margin-top: 10px">
+                    <span><img src="../assets/images-marketing/Email.png" /></span>
+                    &nbsp;&nbsp; general@nrichlearning.co.in
+                  </p>
+                  <p style="color: white; margin-top: 5px">
+                    <span
+                      ><img src="../assets/images-marketing/Call.png" alt=""
+                    /></span>
+                    &nbsp;&nbsp; +91 70090 76565
+                  </p> -->
+                  <p style="color: white; margin-top: 25.42px">Follow Us</p>
+                    <span>
+                      <span style="padding: 15px">
+                        <a
+                          href="https://mobile.twitter.com/learningnrich"
+                          target="_blank"
+                        >
+                          <img src="../assets/Vector-2.png" alt=""
+                        /></a>
+                      </span>
+                      <span style="padding: 15px"
+                        ><a
+                          href="https://www.facebook.com/nrichlearning.edu/"
+                          target="_blank"
+                        >
+                          <img src="../assets/Vector-5.png" alt=""
+                        /></a>
+                      </span>
+                      <span style="padding: 15px"
+                        ><a
+                          href="https://www.instagram.com/nrich.learning/?hl=en"
+                          target="_blank"
+                        >
+                          <img src="../assets/Vector.png" alt=""
+                        /></a>
+                      </span>
+                      <span style="padding: 15px"
+                        ><a
+                          href="https://www.linkedin.com/company/nrich-elearning-platform/?originalSubdomain=in"
+                          target="_blank"
+                        >
+                          <img
+                            src="../assets/Vector@2x.png"
+                            style="height: 20px"
+                            alt=""
+                        /></a>
+                      </span>
+                    </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="card" style="border-radius: 15px; border: 0px;">
+                <div class="card-body" style="padding: 40px">
+                  <form [formGroup]="enquiry">
+                    <div class="row">
+                      <div class="col-md-12 mt-2">
+                        <label
+                          for="exampleFormControlInput1"
+                          class="c-t"
+                          [ngStyle]="
+                            isSubmit && controls['name'].invalid
+                              ? { color: 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                        >
+                          Full Name<span class="text-danger">*</span></label
+                        >
+                        <input
+                          [ngStyle]="
+                            isSubmit && controls['name'].invalid
+                              ? { 'border-color': 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                          type="text"
+                          class="form-control i-d"
+                          formControlName="name"
+                          id="exampleFormControlInput1"
+                          onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 46 || event.charCode == 32"
+                          placeholder="Enter Full Name here..."
+                        />
+                        <div *ngIf="
+                        (isSubmit && controls['name']?.invalid) ||
+                        controls['name']?.touched
+                      ">
+                      <div *ngIf="controls['name']?.errors?.['required']" class="text-danger">
+                        Please fill in your name.
+                      </div>
+                    </div>
+                      </div>
+                      <div class="col-md-12 mt-2" >
+                        <label
+                          for="exampleFormControlInput1"
+                          class="c-t"
+                          [ngStyle]="
+                            isSubmit && controls['email'].invalid
+                              ? { color: 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {} 
+                          "
+                          style="margin-top: 20px"
+                          >Email address<span class="text-danger">*</span></label
+                        >
+                        <input
+                          [ngStyle]="
+                            isSubmit && controls['email'].invalid
+                              ? { 'border-color': 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                          type="email"
+                          class="form-control i-d"
+                          formControlName="email"
+                          id="exampleFormControlInput1"
+                          placeholder="Enter Email here..."
+                        />
+                        <div *ngIf="
+                    (isSubmit && controls['email']?.invalid) ||
+                    controls['email']?.touched
+                  ">
+                  <div *ngIf="controls['email']?.errors?.['required']" class="text-danger">
+                    Please fill in your Email.
+                  </div>
+                  <div *ngIf="controls['email']?.errors?.['email']" class="text-danger">
+                    Invalid Email !
+                  </div>
+                </div>
+                      </div>
+                      <div class="col-md-12 mt-2">
+                        <label
+                          for="exampleFormControlInput1"
+                          class="c-t"
+                          [ngStyle]="
+                            isSubmit && controls['mobileNumber'].invalid
+                              ? { color: 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                          style="margin-top: 20px"
+                          >Phone Number<span class="text-danger">*</span></label
+                        >
+                        <input
+                          [ngStyle]="
+                            isSubmit && controls['mobileNumber'].invalid
+                              ? { 'border-color': 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                          type="text"
+                          class="form-control i-d"
+                          formControlName="mobileNumber"
+                          autocomplete="off"
+                          minlength="10"
+                          maxlength="10"
+                          (keydown)="onlyNumeric($event)"
+                          id="exampleFormControlInput1"
+                          placeholder="Enter Phone Number here..."
+                        />
+                        <div *ngIf="
+                        (isSubmit && controls['mobileNumber']?.invalid) ||
+                        controls['mobileNumber']?.touched
+                      ">
+                      <div *ngIf="controls['mobileNumber']?.errors?.['required']" class="text-danger">
+                        Mobile Number is required
+                      </div>
+                    </div>
+                      </div>
+                      <div class="col-md-12 mt-2">
+                        <label
+                          for="exampleFormControlTextarea1"
+                          class="c-t"
+                          [ngStyle]="
+                            isSubmit && controls['message'].invalid
+                              ? { color: 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                          style="margin-top: 20px"
+                          >Message<span class="text-danger">*</span></label
+                        >
+                        <textarea
+                          [ngStyle]="
+                            isSubmit && controls['message'].invalid
+                              ? { 'border-color': 'red' }
+                              : isSubmit
+                              ? { 'border-color': '#007EF2' }
+                              : {}
+                          "
+                          class="form-control i-d"
+                          formControlName="message"
+                          id="exampleFormControlTextarea1"
+                          style="height: 185px; padding: 12px 20px 12px 20px"
+                          placeholder="Type your message here..."
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div style="margin-top: 40px">
+                      <button class="btn btn-primary" (click)="submit()">
+                        Request Callback
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <app-faq [selectedValue]="selectedValue"></app-faq>
+            <!-- <div class="faq-area gray-bg">
+              <div class="container cs-padding z-index-1">
+                <div class="section-title">
+                  <h2>Other Contacts <span class="title-pole sign position-relative">( FAQ’s
+                      )</span></h2>
+                </div>
+  
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  

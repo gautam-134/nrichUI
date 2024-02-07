@@ -1,0 +1,102 @@
+<div class="section-cover" id="hero-area">
+    <div class="hero-area fix position-relative">
+      <img src="assets/img/g-1.svg" alt="" class="g-1 position-absolute" />
+      <img src="assets/img/g-2.svg" alt="" class="g-2 position-absolute" />
+      <div class="container cs-padding">
+        <div class="hero-g-wrapper">
+          <div class="hero-left-content">
+            <div class="section-title">
+              <h2>
+                Make your teaching,
+                <span class="title-pole position-relative"
+                  >Cutting 
+                  <img
+                    class="text-btm-line position-absolute"
+                    src="assets/img/line-1.png"
+                    alt=""
+                /></span>
+                <span class="title-pole" style="padding-left: 8px">Edge</span>
+              </h2>
+            </div>
+            <p style="line-height: 23px">
+              Learning Management System to Teach at Scale <br/>
+              <strong style="color: #007ef2"> Grab a free demo right now !</strong>
+            </p>
+  
+            <form class="search position-relative">
+              <button class="btn box-btn fill-blue position-absolute">
+                SIGN UP
+              </button>
+              <input
+                (keyup)="search($event)"
+                type="text"
+                placeholder="Phone Number "
+              />
+              <ul
+                *ngIf="searchRes"
+                class="suggetions position-absolute global-search-dropdown-alignment"
+              >
+                <ng-container *ngFor="let element of searchRes | keyvalue">
+                  <ol>
+                    <div class="d-flex justify-content-between">
+                      <b> {{ element.key | uppercase }}</b>
+                      <a
+                        [routerLink]="
+                          element.key.toString() == 'courses'
+                            ? '/course-list'
+                            : element.key.toString() == 'institutions'
+                            ? '/institute-list'
+                            : '/educator-list'
+                        "
+                        [queryParams]="
+                          element.key.toString() == 'courses'
+                            ? { search: 'allCourses', name: searchedText }
+                            : { name: searchedText }
+                        "
+                        >View All</a
+                      >
+                    </div>
+                    <li
+                      *ngFor="let res of element.value"
+                      (click)="redirect(res.type, res.id, res.name)"
+                    >
+                      <a> {{ res.name }}</a>
+                    </li>
+                  </ol>
+                </ng-container>
+              </ul>
+            </form>
+          </div>
+  
+          <div
+            class="hero-right-content"
+            style="
+              position: absolute;
+              width: 100%;
+              height: 3%;
+              left: 38%;
+              top: 5%;
+  
+              background: linear-gradient(
+                  0deg,
+                  #f6fcff 0%,
+                  rgba(246, 252, 255, 0) 43.4%
+                ),
+                url(ilkls.png);
+              mix-blend-mode: multiply;
+            "
+          >
+            <div class="hero-main-img-wrap position-relative">
+              <!-- <img
+                class="hero-main-img z-index-1"
+                src="../../../../../assets/lms/lms1.svg"
+                alt=""
+                style="width: 160%"
+              /> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,65 @@
-<p>prerecordedpreview works!</p>
+<div class="d-flex">
+    <a class="text-primary me-3" (click)="back()">
+      <i class="fa fa-arrow-left" aria-hidden="true" style="cursor: pointer"></i>
+    </a>
+    <h6 style="font-weight: 500">{{ moduleName }}</h6>
+  </div>
+  <div class="row">
+    <div class="col-md-4 order-md-1 order-3 mt-1" style="height: 50vh; overflow: auto; scrollbar-width: none;">
+      <div class="accordion mt-1" id="accordionExample" style="border: 1px solid lightgray" *ngFor="
+          let section of prerecordedModule.prerecordedSectionVOs;
+          let i = index
+        ">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button accordion-color" [ngClass]="i == 0 ? '' : 'collapsed'" type="button"
+              data-bs-toggle="collapse" [attr.data-bs-target]="'#sectionOne' + i" aria-expanded="true"
+              aria-controls="collapseOne">
+              {{ i + 1 }}. {{ section.sectionName }}
+            </button>
+          </h2>
+          <div [id]="'sectionOne' + i" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample" [ngClass]="i == 0 ? 'show' : ''">
+            <div class="mt-2" style="padding: 4px">
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start"
+                  *ngFor="let material of section.prerecordedMaterialVOs" [ngClass]="
+                    selectedMaterialId == material.id ? 'selectedMaterial' : ''
+                  " (click)="
+                    selectedMaterialId = material.id;
+                    description = material.description;
+                    topicName=material.name;
+                    path = material.fileName;
+                    type = material.type
+                  ">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{ material.name }}</div>
+                    {{ material.description | slice : 0 : 25 }}...
+                  </div>
+                  <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 order-md-2 order-1 mt-1" style="height: 50vh; overflow: auto; scrollbar-width: none;">
+      <div class="card card-block card-stretch card-height">
+        <div class="card-body p-0">
+          <app-preview [path]="path" [type]="type" [selectedMaterialId]="selectedMaterialId"
+            (videoStopped)="storeVideoTime($event)"></app-preview>
+          <a *ngIf="!(path && type)"><img src="../assets/images/page-img/48.jpg" alt="story-img"
+              class="img-fluid rounded h-100 w-100" loading="lazy" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 order-md-3 order-2 mt-1">
+      <div class="card card-block card-stretch card-height">
+        <div class="card-body p-0">
+          <b>Topic Name:</b>{{topicName}}<br>
+          <b>Description:</b> {{ description }}
+        </div>
+      </div>
+    </div>
+  </div>

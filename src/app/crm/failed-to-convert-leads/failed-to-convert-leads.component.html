@@ -1,1 +1,147 @@
-<p>failed-to-convert-leads works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex bg-primary">
+          <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Incomplete Leads Listing</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="table">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        (keyup)="search($event)"
+                        [(ngModel)]="searchParam"
+                        type="text"
+                        placeholder="Search...."
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>
+                    Name<i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'name'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('name')"
+                    ></i>
+                  </th>
+                  <th>
+                    Mobile Number<i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'mobileNumber'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('mobileNumber')"
+                    ></i>
+                  </th>
+                  <th>
+                    Source<i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'source'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('source')"
+                    ></i>
+                  </th>
+                  <th>
+                    Status<i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'status'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('status')"
+                    ></i>
+                  </th>
+                  <th>
+                    Date<i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'createdDate'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('createdDate')"
+                    ></i>
+                  </th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="10" *ngIf="instituteLeads.length == 0">
+                    No Record Found.
+                  </td>
+                </tr>
+                <tr
+                  *ngFor="
+                    let lead of instituteLeads | short : type : typeOfShorting;
+                    let i = index
+                  "
+                >
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ lead?.name }}</td>
+                  <td>{{ lead?.mobileNumber }}</td>
+                  <td>
+                    <b>{{
+                      (lead?.source == null ? "mannual" : lead?.source)
+                        | uppercase
+                    }}</b>
+                  </td>
+                  <td>{{ lead?.status }}</td>
+                  <td>{{ lead?.createdDate | date : "medium" }}</td>
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                      >menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        data-toggle="tooltip"
+                        title="editLead"
+                        (click)="editLead(lead.id)"
+                      >
+                        Edit
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nrich-digital-library',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './nrich-digital-library.component.html',
   styleUrl: './nrich-digital-library.component.scss'
 })
-export class NrichDigitalLibraryComponent {
+export class NrichDigitalLibraryComponent implements OnInit {
+
+  selectedValue:string="DigitalLibrary";
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

@@ -1,0 +1,237 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/all.min.css");
+@import url("../../../assets/css/slick.css");
+@import url("../../../assets/css/nice-select.css");
+@import url("../../../assets/css/main.css");
+@import url("../../../assets/css/responsive.css");
+.fea-t {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  color: black;
+}
+.fea-t-2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #616161;
+}
+.ms-t {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  /* or 189% */
+
+  text-align: center;
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #8491a5;
+}
+.ms-t2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  /* or 189% */
+
+  text-align: center;
+  font-feature-settings: "salt" on, "liga" off;
+
+  /* light grey */
+
+  color: #8491a5;
+}
+.btn-1 {
+  padding: 20.3607px 42px;
+  gap: 9.05px;
+
+  width: 231px;
+  height: 68.72px;
+  left: 524px;
+  top: 7140px;
+
+  /* Blue */
+  color: #007ef2;
+  border: 3px solid #007ef2;
+  border-radius: 6.78689px;
+}
+.set-img {
+  margin-top: -100px;
+}
+.set-card {
+  background: rgba(0, 126, 242, 0.1);
+  border-radius: 20px;
+  max-height: 400px;
+  width: 100%;
+}
+@media only screen and (max-width: 992px) {
+  .set-card {
+    max-height: 100%;
+  }
+  .set-img {
+    margin-top: 0px;
+  }
+}
+.ca-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  letter-spacing: 0.145em;
+
+  color: #4c535d;
+}
+.ca-text2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 57px;
+  /* identical to box height */
+
+  /* Blue */
+
+  color: #007ef2;
+}
+.ca-text3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 39px;
+  /* or 219% */
+
+  letter-spacing: 0.015em;
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #4c535d;
+}
+.ca-btn1 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20.3607px 54.2951px;
+  gap: 9.05px;
+
+  position: absolute;
+  width: 198.59px;
+  height: 68.72px;
+  color: white;
+
+  /* Blue */
+
+  background: #007ef2;
+  border-radius: 6.78689px;
+}
+.bg-setimg {
+  margin-bottom: -155px;
+  height: 100%;
+}
+.sText {
+  line-height: 24px;
+}
+.core_feature .f {
+  display: flex;
+  gap: 10px;
+  margin-top: 35px;
+  font-family: poppins;
+  font-size: 20px;
+}
+
+.setFontSize {
+  font-size: 40px;
+}
+
+@media screen and (max-width: 1006px) {
+  .setFontSize {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 848px) {
+  .setFontSize {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .setFontSize {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 312px) {
+  .setFontSize {
+    font-size: 24px;
+  }
+}
+
+.mobilePadding {
+  padding: 80px 0px 96px 0px !important;
+}
+
+.headerPadding {
+  padding: 80px 0px 80px 0px !important;
+}
+
+@media screen and (max-width: 1365px) {
+  .mobilePadding {
+    padding: 80px 0px 21px 0px !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .mobilePadding {
+    padding: 80px 0px 29px 0px !important;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .mobilePadding {
+    padding: 80px 0px 0px 0px !important;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  .mobilePadding {
+    padding: 80px 0px 0px 0px !important;
+  }
+  .headerPadding {
+    padding: 0px 0px 60px 0px !important;
+  }
+}
+
+.setBottomMargin {
+  margin-bottom: 60px !important;
+}
+
+@media screen and (max-width: 1100px) {
+  .setBottomMargin {
+    margin-bottom: 32px !important;
+  }
+}
+
+@media screen and (max-width: 985px) {
+  .setBottomMargin {
+    margin-bottom: 10px !important;
+  }
+}
+
+// .setPadding{
+//   padding: 100px;
+// }
+
+// @media screen and (max-width: 390px) {
+//   .setPadding{
+//     padding-top: 80px;
+//   }
+
+// }

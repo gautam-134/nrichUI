@@ -1,1 +1,97 @@
-<p>reports-listing works!</p>
+<div class="card">
+    <div class="card-header" style="font-weight: bold">Reports</div>
+    <div class="card-body">
+      <table class="files-lists table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>
+              File Name
+              <i
+                ng-click="typeOfShorting:!typeOfShorting"
+                [ngClass]="
+                  typeOfShorting && type == 'reportFileName'
+                    ? 'fa fa-sort-amount-desc'
+                    : 'fa fa-sort-amount-asc'
+                "
+                (click)="short('reportFileName')"
+              ></i>
+            </th>
+            <th>
+              Report Type
+              <i
+                ng-click="typeOfShorting:!typeOfShorting"
+                [ngClass]="
+                  typeOfShorting && type == 'reportType'
+                    ? 'fa fa-sort-amount-desc'
+                    : 'fa fa-sort-amount-asc'
+                "
+                (click)="short('reportType')"
+              ></i>
+            </th>
+            <th>
+              Date
+              <i
+                ng-click="typeOfShorting:!typeOfShorting"
+                [ngClass]="
+                  typeOfShorting && type == 'createdAt'
+                    ? 'fa fa-sort-amount-desc'
+                    : 'fa fa-sort-amount-asc'
+                "
+                (click)="short('createdAt')"
+              ></i>
+            </th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" *ngIf="reportingRecordsVOList?.length == 0">
+              No Report Found
+            </td>
+          </tr>
+          <tr
+            *ngFor="
+              let element of reportingRecordsVOList
+                | short : type : typeOfShorting;
+              let i = index
+            "
+            [ngClass]="i == 0 && isFirstRowColored ? 'firstRow' : ''"
+          >
+            <td>
+              {{ i + 1 }}
+            </td>
+            <td>
+              {{ element.reportFileName }}
+            </td>
+            <td>
+              {{ element?.reportType }}
+              {{
+                element?.reportType == "INVOICE REPORT" ||
+                element?.reportType == "STUDENT INVOICE REPORT"
+                  ? element.criteriaNames
+                  : ""
+              }}
+            </td>
+            <td>{{ element.createdAt | date : "medium" }}</td>
+            <td>
+              <a>
+                <i
+                  class="material-symbols-outlined text-primary"
+                  (click)="download(element, i)"
+                  >file_download</i
+                ></a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-table-paginator
+        [size]="size"
+        [totalElements]="totalElements"
+        (pageChange)="pageChange($event)"
+        (changeSize)="changeSize($event)"
+      ></app-table-paginator>
+    </div>
+  </div>
+  

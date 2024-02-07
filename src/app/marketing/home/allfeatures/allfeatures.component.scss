@@ -1,0 +1,363 @@
+html,
+body {
+  min-width: fit-content !important;
+}
+.container-fluid {
+  max-width: 1200px;
+  padding: 0 15px;
+}
+img {
+  max-width: 100%;
+  width: auto;
+}
+.common-pd {
+  padding: 50px 0;
+}
+.sec_heading h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.sec_heading p {
+  font-size: 18px;
+  line-height: 33px;
+  color: #8491a5;
+}
+.sec_heading span {
+  background: linear-gradient(95.63deg, #008ce4 68.76%, #00af9e 102.5%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+.sec_heading span img {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+}
+
+.hero_section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+.learners-faces img {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  margin-left: -20px;
+}
+.learners-faces img:first-child {
+  margin-left: 0px;
+}
+.text-gradient {
+  background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.blue_btn {
+  font-weight: 800;
+  font-size: 16px;
+  background: #007ef2;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  margin-bottom: 40px;
+}
+/**hero section end**/
+
+/**tell more section start**/
+.tell_more_sec {
+  background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+  padding: 40px 0;
+}
+.tell_more_sec .sec_heading h1 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 0;
+}
+.tell_more_sec .sec_heading p {
+  color: #fff;
+  margin-bottom: 0;
+}
+.tell_more_sec button {
+  border: 0.760012px solid #f6f8ff;
+  border-radius: 56px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #f6fcff;
+  padding: 15px 30px;
+}
+/**tell more  section end**/
+
+.type_box h1 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  margin-bottom: 0;
+}
+.type_box p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: #8491a5;
+}
+.type_box img {
+  height: 132px;
+}
+
+/**edu section start**/
+.edu_box {
+  padding: 10px 20px 10px 155px;
+  border-radius: 20px;
+  position: relative;
+  min-height: 241px;
+  height: 100%;
+}
+.edu_box img {
+  max-height: 220px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+.edu_box .content {
+  color: #fff;
+}
+.content p.sub-title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 5px;
+}
+.edu_box .content h4 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+.edu_box .content p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+}
+.edu_box .content a {
+  color: #fff;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 20px;
+  display: inline-block;
+}
+/**edu section end**/
+
+/****edutech_platform section start****/
+.edutech_platform .content h4 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+}
+.edutech_platform .content p {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 42px;
+}
+.edutech_platform .content .sub-title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+.edutech_platform .content a {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+  color: #007ef2;
+  margin-top: 30px;
+  display: inline-block;
+}
+/****edutech_platform section start****/
+
+/****powerfull_sec section start****/
+.powerfull_sec .box img {
+  margin-bottom: 15px;
+}
+.powerfull_sec .box h3 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 33px;
+}
+/****powerfull_sec section end****/
+
+/**leadership platform start**/
+.leadership_platform_sec .content p {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.170048px;
+}
+.leadership_platform_sec .content h4 {
+  font-weight: 600;
+  font-size: 38.9565px;
+  line-height: 58px;
+  letter-spacing: 0.170048px;
+  text-transform: capitalize;
+  color: #007ef2;
+}
+.leadership_platform_sec .content p.sub-title {
+  font-weight: 400;
+  font-size: 17.0048px;
+  line-height: 21px;
+  letter-spacing: 0.170048px;
+  text-transform: capitalize;
+  color: #8491a5;
+}
+
+/**leadership platform end**/
+
+/**what client says start**/
+.why_client_say_sec .content h3 {
+  font-size: 24px;
+  line-height: 48px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: #212121;
+}
+.why_client_say_sec .content p {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+}
+/**what client says end**/
+
+/**responsive start here**/
+
+@media only screen and (max-width: 1200px) {
+  .tell_more_sec button {
+    padding: 10px 15px;
+  }
+  .tell_more_sec .sec_heading h1 {
+    font-size: 26px;
+  }
+  .tell_more_sec .sec_heading p {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .edu_box {
+    padding: 10px 20px 10px 127px;
+  }
+  .edu_box img {
+    max-height: 170px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .sec_heading p br {
+    display: none;
+  }
+  .edu_box {
+    padding: 20px 20px 0px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .edu_box .content {
+    height: auto !important;
+  }
+  .edu_box img {
+    position: inherit;
+    left: inherit !important;
+    width: fit-content;
+    margin: 20px auto 0 auto;
+  }
+  .edutech_platform .content p {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .edutech_platform .content a {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .common-pd {
+    padding: 0px;
+  }
+  .order_change {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .hero_section {
+    text-align: center;
+    padding-top: 120px;
+  }
+  .hero_section .learners-faces {
+    justify-content: center;
+  }
+  .hero_section .hero-left-content {
+    margin-bottom: 30px;
+  }
+  .tell_more_sec .sec_heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .user_type .type_box {
+    margin-bottom: 30px;
+  }
+
+  .edu_box {
+    height: inherit;
+    margin-bottom: 20px;
+  }
+
+  .edutech_platform .box_img {
+    margin-bottom: 30px;
+  }
+  .edutech_platform .content {
+    text-align: center !important;
+  }
+  .edutech_platform .content h4 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 40px;
+  }
+
+  .leadership_platform_sec .content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .why_client_say_sec .content {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .powerfull_sec .box {
+    margin-bottom: 30px;
+  }
+  .why_client_say_sec .content h3 {
+    font-size: 20px;
+    line-height: 35px;
+  }
+  .why_client_say_sec .content p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .tell_more_sec .button_box {
+    flex-direction: column;
+  }
+  .tell_more_sec .button_box button {
+    margin-bottom: 10px;
+  }
+}
+
+/**responsive end here**/

@@ -1,1 +1,202 @@
-<p>home works!</p>
+<main>
+    <app-home-search></app-home-search>
+    <div id="contact">
+      <app-contact-us></app-contact-us>
+    </div>
+    <app-categories [bannerType]="'Home'"></app-categories>
+    <app-home-courses></app-home-courses>
+  
+    <div class="section-cover" id="step-area">
+      <div class="step-area gray-bg position-relative section">
+        <img
+          src="assets/img/s-t-1.png"
+          alt=""
+          class="st-1 position-absolute start-0"
+        />
+        <div class="container cs-padding z-index-1">
+          <div class="section-title text-center">
+            <h2>
+              In 3 steps become
+              <span class="title-pole sign position-relative">The Leader </span>
+            </h2>
+          </div>
+          <div class="step-g-wrapper">
+            <div class="step-left">
+              <img
+                src="assets/img/frame.png"
+                class="img-fluid"
+                alt="course online"
+              />
+            </div>
+            <div class="step-right">
+              <div class="single-step">
+                <div class="numbering">
+                  <img
+                    src="assets/img/1.png"
+                    alt="course online"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="content">
+                  <h5>Search Resources</h5>
+                  <p>
+                    Visit our Directory page to search for any resources related
+                    to your learning needs. Select from the wide choice of
+                    Schools, Institutes, Teachers, Course Materials, Workshops to
+                    enrich your knowledge
+                  </p>
+                </div>
+              </div>
+              <div class="single-step">
+                <div class="numbering">
+                  <img src="assets/img/2.png" alt="" class="img-fluid" />
+                </div>
+                <div class="content">
+                  <h5>Compare Choice</h5>
+                  <p>
+                    Make sure you are making the right decision. Compare the
+                    available choices, read through the reviews and book for a
+                    Demo session, wherever available to get all your concerns
+                    addressed.
+                  </p>
+                </div>
+              </div>
+              <div class="single-step">
+                <div class="numbering">
+                  <img src="assets/img/3.png" alt="" class="img-fluid" />
+                </div>
+                <div class="content">
+                  <h5>Enrich Learning</h5>
+                  <p>
+                    Learn through NRICH Live integrated with Learning Management
+                    System. Convenience of Online Learning plus the advantages of
+                    classroom experience with our Digital Board, Chat & Assessment
+                    tools
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./step-area -->
+    </div>
+  
+    <div class="learn-more-area fix position-relative section" style="background-color: white;">
+      <div class="container type-2 cs-padding z-index-1">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="lm-content">
+              <div class="lf">
+                <h2><span>Nrich Learning For</span>TEACHERS</h2>
+                <a
+                  routerLink="/online-platform-for-teaching"
+                  class="btn learn-more two"
+                  >Learn more<img
+                    class="img-fluid"
+                    src="assets/img/at-1.svg"
+                    alt=""
+                /></a>
+              </div>
+  
+              <div class="rg">
+                <img src="../../../assets/Home_Page/Teacher image.webp" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="lm-content white">
+              <div class="lf">
+                <h2><span class="text-white">Nrich Learning For</span>STUDENT</h2>
+                <a
+                  routerLink="/Find-courses-for-students-online"
+                  class="btn learn-more two"
+                  ><img class="img-fluid" src="assets/img/at-2.svg" alt="" />Learn
+                  more</a
+                >
+              </div>
+  
+              <div class="rg">
+                <img src="../../../assets/Home_Page/Stdent Image.webp" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <app-educators></app-educators>
+  
+    <app-institutes></app-institutes>
+  
+    <app-experts></app-experts>
+  
+    <div class="choose-area fix" style="background-color: white;">
+      <div class="container cs-padding">
+        <div class="choose-g-wrapper">
+          <div class="section-title">
+            <h2>
+              Why Choose <br />
+              <span class="title-pole sign position-relative">
+                Nrich Learning</span
+              >
+            </h2>
+          </div>
+          <div class="choose-item">
+            <div class="ch-icn">
+              <img src="assets/img/ch-1.png" class="img-fluid" alt="" />
+            </div>
+            <div class="ch-content">
+              <h6>Marketplace</h6>
+              <p>The largest marketplace for any resources in Education.</p>
+            </div>
+          </div>
+          <div class="choose-item">
+            <div class="ch-icn">
+              <img src="assets/img/ch-2.png" class="img-fluid" alt="" />
+            </div>
+            <div class="ch-content">
+              <h6>LMS</h6>
+              <p>Learn, interact and take exams all from one place.</p>
+            </div>
+          </div>
+          <div class="choose-item">
+            <div class="ch-icn">
+              <img src="assets/img/video.png" class="img-fluid" alt="" />
+            </div>
+            <div class="ch-content">
+              <h6>NRICH Live</h6>
+              <p>Attend classes from anywhere with Zoom-enabled NRICH Meet.</p>
+            </div>
+          </div>
+          <div class="choose-item">
+            <div class="ch-icn">
+              <img src="assets/img/crm.png" class="img-fluid" alt="" />
+            </div>
+            <div class="ch-content">
+              <h6>CRM</h6>
+              <p>Efficiently manage leads with CRM for streamlined sales process.</p>
+            </div>
+          </div>
+          <div class="choose-item">
+            <div class="ch-icn">
+              <img src="assets/img/ch-4.png" class="img-fluid" alt="" />
+            </div>
+            <div class="ch-content">
+              <h6>Social Connect</h6>
+              <p>
+                Social Media is not a distraction, it is a learning experience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <app-blogs></app-blogs>
+  
+    <app-faq [selectedValue]="selectedValue"></app-faq>
+  
+    <!-- <app-teacher-registration (scrolltocontact)=scrolltop($event)> </app-teacher-registration> -->
+  </main>
+  

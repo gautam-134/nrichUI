@@ -1,1 +1,171 @@
-<p>institute-admin-dashboard works!</p>
+<div class="row mb-3">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header bg-primary">
+          <div class="d-flex button-box gap-1 align-items-center">
+            <button (click)="bulkUpload()" class="btn" style="background: white; color: #50b5ff; margin-bottom: 1%">
+              + Csv Upload</button>
+            <button routerLink="/crm/addLead" class="btn" style="background: white; color: #50b5ff; margin-bottom: 1%">
+              + Add Lead
+            </button>
+          </div>
+        </div>
+        <div class="card-body" style="background-color: #f2f3f4">
+          <ul class="list-unstyled row mb-0 mt-2">
+            <li class="col-lg-3 col-md-6 col-sm-6" (click)="openAllNewLeads()" style="cursor:pointer;">
+              <div class="card">
+                <div class="card-body">
+                  <div class="points">
+                    <span>New Leads</span>
+                    <div class="d-flex align-items-center">
+                      <h3>{{ analytics.newLeads }}</h3>
+                      <h5>
+                        <small *ngIf="analytics.recentlyAddedNewLeadsAmount !=null" class="text-success ms-3">{{
+                          analytics.recentlyAddedNewLeadsAmount }}
+                        </small>
+                        <small *ngIf="analytics.recentlyAddedNewLeadsAmount ==null" class="text-success ms-3">0
+                        </small>
+                      </h5>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-lg-3 col-md-6 col-sm-6"  (click)="openAllClosedLeads()" style="cursor:pointer;">
+              <div class="card">
+                <div class="card-body">
+                  <div class="points">
+                    <span>Closed Leads</span>
+                    <div class="d-flex align-items-center">
+                      <h3>{{ analytics.closedLeads }}</h3>
+                      <h5>
+                        <small class="text-danger ms-3" *ngIf="analytics.recentlyClosedLeadsAmount !=null">₹{{
+                          analytics.recentlyClosedLeadsAmount }}
+                        </small>
+                        <small *ngIf="analytics.recentlyClosedLeadsAmount ==null" class="text-danger ms-3">₹{{ 0 }}
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-lg-3 col-md-6 col-sm-6"  (click)="openAllConvertedLeads()" style="cursor:pointer;">
+              <div class="card">
+                <div class="card-body">
+                  <div class="points">
+                    <span>Converted Leads</span>
+                    <div class="d-flex align-items-center">
+                      <h3>{{ analytics.convertedLeads }}</h3>
+                      <h5>
+                        <small class="text-success ms-3" *ngIf="analytics.recentlyConvertedLeadsAmount !=null">₹{{
+                          analytics.recentlyConvertedLeadsAmount }}
+                        </small>
+                        <small *ngIf="analytics.recentlyConvertedLeadsAmount ==null" class="text-danger ms-3">₹{{ 0 }}
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-lg-3 col-md-6 col-sm-6"  (click)="openAllPossibleLeads()" style="cursor:pointer;">
+              <div class="card">
+                <div class="card-body">
+                  <div class="points">
+                    <span>Prospective Leads</span>
+                    <div class="d-flex align-items-center">
+                      <h3>{{ analytics.possibleLeads }}</h3>
+                      <h5>
+                        <small class="text-success ms-3" *ngIf="analytics.recentlyPosibleLeadsAmount !=null">₹{{
+                          analytics.recentlyPosibleLeadsAmount }}
+                        </small>
+                        <small *ngIf="analytics.recentlyPosibleLeadsAmount ==null" class="text-danger ms-3">₹{{ 0 }}
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+  
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card card-block card-stretch card-height">
+                <div class="card-header">
+                  <div class="d-flex justify-content-between flex-wrap">
+                    <h4 class="card-title">Total Leads</h4>
+                    <div id="user_list_datatable_info" class="dataTables_filter">
+                      <select (change)="onValueChange($event)" class="form-select" aria-label="Default select example">
+                        <option value="Month" selected>Month</option>
+                        <option value="Year">Year</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body" style="overflow: auto;">
+                  <apx-chart #chartObj [series]="series" [chart]="apexChart"  [title]="title" [xaxis]="xAxix"></apx-chart>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card" style="height: 96%">
+                <div class="card-header">
+                  <div class="header-title">
+                    <div class="d-flex justify-content-between flex-wrap">
+                      <h3 class="card-title">Call Not Picked</h3>
+                      <div id="user_list_datatable_info" class="dataTables_filter">
+                        <select (change)="onFilterChange($event)" class="form-select" aria-label="Default select example">
+                          <Option value="Today" selected>Today</Option>
+                          <Option value="Week">Last 7 Days</Option>
+                          <option value="Month">Last 30 Days</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body" style="max-height: 330px; min-height: 330px">
+                  <div class="row">
+                    <div class="col-5" style="
+                        background-color: #f4f4f4;
+                        padding: 5px 10px;
+                        border-radius: 15px;
+                      ">
+                      <h6>Total Leads</h6>
+                      <h6 style="font-weight: 600">
+                        {{ this.totalLeads }}
+                      </h6>
+                    </div>
+                    <div class="col-5" style="
+                        background-color: #50b5ff;
+                        padding: 5px 10px;
+                        border-radius: 15px;
+                        margin-left: 15px;
+                      ">
+                      <h6 class="text-white">CNP</h6>
+                      <h6 class="text-white" style="font-weight: 600">
+                        {{ this.cnpLeads }}
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <apx-chart [series]="radialBarSeries" [chart]="radialBar" [plotOptions]="radialplotOptions"
+                      [labels]="radiallabels"></apx-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <app-follow-up-listing></app-follow-up-listing>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

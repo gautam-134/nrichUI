@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let course of courseList; let i = index">
+      <div class="course-item s" style="margin-top: 15px">
+        <div
+          class="card single-course"
+          style="cursor: pointer"
+          [routerLink]="['/course-info']"
+          [queryParams]="{ id: course.idCourse, name: course?.courseTitle }"
+        >
+          <div class="thumb-part position-relative">
+            <img
+              [src]="course?.courseImage"
+              style="height: 100%; width: 100%"
+              alt=""
+            />
+          </div>
+          <div
+            class="content-part"
+            style="overflow: auto; max-height: fit-content; min-height: 185px"
+          >
+            <div class="up-bar">
+              <p class="status">
+                <img
+                  class="img-fluid"
+                  src="../assets/img/beginner-graph.svg"
+                  alt=""
+                />
+                {{ course?.level }}
+              </p>
+              <p>{{ course?.status }}</p>
+            </div>
+            <div class="middle-content">
+              <div
+                class="ttl-content"
+                style="overflow: auto; max-height: fit-content; min-height: 64px"
+              >
+                <h4>{{ course?.courseTitle }}</h4>
+  
+                <div class="rating-wrap">
+                  <div class="rat-o">
+                    {{
+                      course.weightedAverage
+                        ? (course.weightedAverage | number : "1.1-1")
+                        : "0"
+                    }}<span>/5</span>
+                  </div>
+                  <img
+                    class="img-fluid"
+                    src="../assets/img/rate-star.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+  
+            <div class="bottom-content">
+              <h5 class="author">
+                <span class="d-block">Instructor</span>
+                {{ course?.teacherName }}
+              </h5>
+              <a class="know-more">Know More<i class="far fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <app-table-paginator
+    [size]="10"
+    [totalElements]="config"
+    [pagenumber]="pageNumber"
+    (pageChange)="nextPage.emit($event)"
+    [disableSize]="true"
+  ></app-table-paginator>
+  

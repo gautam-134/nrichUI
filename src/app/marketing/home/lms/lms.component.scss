@@ -1,0 +1,671 @@
+@import url("../../../../assets/css/bootstrap.min.css");
+@import url("../../../../assets/css/all.min.css");
+@import url("../../../../assets/css/slick.css");
+@import url("../../../../assets/css/nice-select.css");
+@import url("../../../../assets/css/main.css");
+@import url("../../../../assets/css/responsive.css");
+
+
+img {
+  max-width: 100%;
+}
+.pad-set {
+  padding: 48px;
+}
+.category-item-nr {
+  grid-gap: 0px;
+}
+
+
+.dark-text-l {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 57px;
+  color: #8491a5;
+}
+.blue-ligt {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+  color: #007ef2;
+}
+
+.features-card {
+  background-color: white;
+  border: 0px;
+  box-shadow: 4px 4px 20px #d8d8d8;
+}
+
+.t-black1 {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 178%;
+  /* or 28px */
+
+  text-align: center;
+
+  color: #000000;
+}
+.a-t-center {
+  width: 688px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.t-h {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 37.55px;
+  line-height: 56.33px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Black */
+
+  color: #1f1f1f;
+}
+
+.mini {
+  /* Vector */
+  background-color: white;
+}
+
+.p {
+  color: #4c535d;
+
+  font-family: "Manrope";
+  font-style: normal;
+}
+.button {
+  /* Frame 39249 */
+
+  align-items: flex-start;
+  padding: 20.3607px 54.2951px;
+  gap: 9.05px;
+
+  /* Linear */
+  background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+  border-radius: 100px;
+}
+
+.removeMargin {
+  margin-bottom: 18% !important;
+}
+
+
+/**images slider start here**/
+
+.image_slider{
+  margin: 100px 0;
+}
+.image_slider .sec_title h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.image-container {
+  position: relative;
+  max-width: 966px;
+  width: 100%;
+  height: 619px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 300ms ease;
+  margin:auto;
+}
+.image-container:after {
+  content: "offline";
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  font-size: 35px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.image-container:before {
+  content: "online";
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  font-size: 35px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  z-index: 9;
+}
+.image-container .image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: 100%;
+  background-position: center;
+}
+.image-container .image:first-child {
+  background: url("../../../../assets/lms/Group 39385.svg");
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+  background-size: cover;
+}
+.image-container .image:nth-child(2) {
+  background: url("../../../../assets/lms/Group 39385.svg");
+  background-repeat: no-repeat;
+  width: 50%;
+  background-size: cover;
+}
+.image-container .slider {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: rgba(242, 242, 242, 0.3);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  z-index: 2;
+  transition: all 200ms linear;
+}
+.image-container .slider:hover {
+  background: rgba(242, 242, 242, 0.1);
+}
+.image-container .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 6px;
+  height: 800px;
+  background: white;
+  cursor: move;
+  transition: all 300ms ease;
+}
+
+.buttonRange {
+  z-index: 0;
+  position: relative;
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: white;
+  top: 97%;
+  left: 50%;
+  transform: translate(-60%, -50%);
+  cursor: drag;
+  z-index: 999;
+}
+.buttonRange::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 7px;
+  top: 8px;
+  border-radius: 100%;
+  background: linear-gradient(94.38deg, #008CE4 -1.08%, #00AF9E 96.88%);
+}
+
+
+/**images slider end here**/
+
+/**learning management start**/
+.learning_mangement {
+  background: url(../../../../assets/lms/Rectangle4303.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 200px 0;
+  position: relative;
+}
+
+.sec_heading p {
+  font-size: 18px;
+  line-height: 30px;
+  margin-top: 20px;
+}
+.learning_mangement button{
+  background-color: white;
+  border-color: #007ef2;
+  margin-top: 5%;
+  padding: 1%;
+  border: 2.01119px solid #007ef2;
+  border-radius: 8.04476px;
+  font-size: 32px;
+}
+/**learning management end**/
+
+/**the future section start here**/
+.future_here {
+  position: relative;
+  min-height: 50vh;
+  padding: 300px 0;
+}
+.sec_title h2 {
+  line-height: 50px;
+}
+.future_here .hand_image{
+  position: absolute;
+  right: 0;
+  width: 35%;
+  bottom: 0;
+}
+.icon_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/**the future section end here**/
+
+
+/**unlock future section start here**/
+.sec_heading {
+  text-align: center;
+}
+.sec_heading h1{
+  font-size: 36px;
+}
+.sec_heading span {
+  color: #007EF2;
+}
+.sec_heading span.big {
+  font-size: 60px;
+}
+
+
+
+
+
+.tab_list .nav-tabs{
+  background: transparent;
+  width: 100%;
+  display: block;
+}
+.tab_list .nav-link {
+  padding: 30px 0;
+  border: none;
+  border-bottom: 1px solid rgba(132, 145, 165, 0.4);
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+.tab_list .nav-link h3 {
+  color: #8491A5;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+.tab_list .nav-link p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.tab_list .nav-link p{
+  display: none;
+}
+.tab_list .nav-link.active{
+  background: transparent;
+  border-bottom: 1px solid rgba(132, 145, 165, 0.4);
+}
+.tab_list .nav-link.active p{
+  display: block;
+  color: #4C535D;
+}
+.tab_list .nav-link.blue.active h3{
+  color: #007EF2;
+}
+.tab_list .nav-link.red.active h3{
+  color: #FF635F;
+}
+.tab_list .nav-link.green.active h3{
+  color: #00ACA5;
+}
+.tab_list .nav-link.yellow.active h3{
+  color: #FFA92C;
+}
+/**unlock future section end here**/
+
+
+/**performance dashboard section start here**/
+.sub_heading h2{
+  color: #007EF2;
+}
+.sub_heading p{
+  font-size: 16px;
+  line-height: 31px;
+  color: #4C535D;
+}
+.content ul li {
+  font-size: 24.0597px;
+  line-height: 30px;
+  color: #545353;
+  padding: 15px 0;
+}
+.content ul li .check{
+  color: #00ACA5;
+}
+.performance_dashbaord .left_img img{
+  box-shadow: 6.20708px 10.8624px 11.6383px rgb(0 0 0 / 8%);
+}
+
+/**performance dashboard section end here**/
+
+
+.make_leader_sec{
+  background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+  padding: 70px 0;
+}
+.make_leader_sec .sec_heading{
+  text-align: left;
+}
+.make_leader_sec .sec_heading p{
+  color: #fff;
+}
+.course-active .slick-list{
+  padding-top: 0;
+}
+.choose-area {
+  padding: 50px 0;
+  padding-bottom: inherit
+}
+
+
+
+//Teach-Online Slider css start
+.tech_online_sec {
+  padding-top: 100px;
+  background: #f6fcff;
+}
+.tech_online_sec .sec_heading h1{
+  color: #007ef2;
+}
+.tech_online_sec .sec_heading p{
+  color: #4C535D;
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+.sldier_wrapper{
+  position: relative;
+  padding: 50px 0 0;
+}
+.sldier_wrapper:after {
+  position: absolute;
+  content: "";
+  width: 410px;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background: linear-gradient(111.03deg, rgba(255, 255, 255, 0.8) 0.07%, rgba(246, 252, 255, 0) 66.37%);
+}
+
+.sldier_wrapper:before {
+  position: absolute;
+  content: "";
+  width: 410px;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  background: linear-gradient(111.03deg, rgba(255, 255, 255, 0.8) 13.8%, rgba(246, 252, 255, 0) 80.1%);
+transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.sliderr_box {
+  background: #FFFFFF;
+  box-shadow: 3.87575px 3.87575px 19.3787px rgba(0, 0, 0, 0.06);
+  border-radius: 7.73891px;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+.sliderr_box .icon {
+  border-radius: 4.75556px;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+  width: 108.59px;
+  height: 100.66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.sliderr_box h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27.1302px;
+  color: #1F1F1F;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+  margin: 0;
+}
+.sliderr_box p {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4676px;
+  color: #4C535D;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+}
+
+.rtl_slider .content{
+  text-align: left;
+}
+//Teach-Online Slider css end
+
+
+@media only screen and (max-width: 1200px) {
+  .hero-g-wrapper{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left-content .section-title h2 {
+    font-size: 32px;
+  }
+  .future_here {
+      padding: 100px 0 200px;
+  }
+  .future_here .hand_image{
+      width: 45%;
+  }
+  .learning_mangement {
+    padding: 200px 0 100px;
+  }
+  .tech_online_sec .sec_heading p{
+    max-width: 90%;
+  }
+  .be_leader .blue-ligt {
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .be_leader .dark-text-l{
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+
+}
+
+
+@media only screen and (max-width: 991px){
+  .teachers-area {
+    padding-top: 70px;
+}
+  .category-g-wrapper{
+      grid-template-columns: 1fr;
+  }
+  .tab_list {
+    margin-bottom: 30px;
+  }
+  .performance_dashbaord .left_img img{
+      max-width: 50%;
+      margin-bottom: 30px;
+  }
+  .future_here .img_box{
+    text-align: right;
+    display: none;
+  }
+  .future_here .hand_image{
+    width: 45%;
+    position: inherit;
+  }
+  .future_here {
+      padding: 70px 0;
+  }
+  .tab_list button.nav-link {
+    text-align: center;
+  }
+  .text-center-mobile{
+    text-align: center;
+  }
+
+  // .image-container {
+  //   height: 473px;
+  // }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  .sec_heading h1, .sub_heading h2, .be_leader .dark-text-l, .sec_title h2  {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .sec_heading span.big{
+    font-size: 50px;
+  }
+  .image_slider .sec_title h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+  .make_leader_sec {
+    text-align: center;
+  }
+  .make_leader_sec .arrow_box img {
+    margin: 50px auto 0;
+  }
+  .learning_mangement {
+      padding: 100px 0;
+  }
+  .learning_mangement {
+    background-size: cover;
+    background-position: 100%;
+  }
+  .performance_dashbaord .content ul li {
+    font-size: 20px;
+    padding: 10px 0;
+  }
+  .learning_mangement button {
+    padding: 10px;
+    font-size: 20px;
+  }
+  .make_leader_sec .sec_heading{
+    text-align: center;
+  }
+  .future_here {
+    min-height: initial;
+  }
+  .performance_dashbaord .content ul li {
+    text-align: left;
+ }
+ .sldier_wrapper:before, .sldier_wrapper:after {
+  display: none;
+}
+
+}
+
+@media only screen and (max-width: 600px) {
+  .sec_title h2 br{
+      display: none;
+  }
+  .performance_dashbaord .left_img img {
+    max-width: 100%;
+  }
+  .pad-set{
+    text-align: center;
+  }
+
+
+  .image-container{
+    height: 330px;
+  }
+  .image-container .image:first-child {
+    background-size: cover;
+  }
+  .image-container .image:nth-child(2) {
+    background-size: cover;
+  }
+
+  .image-container:before {
+    right: 20px;
+    top: 10px;
+    font-size: 20px;
+  }
+  .image-container:after {
+    left: 20px;
+    top: 10px;
+    font-size: 20px;
+  }
+
+}
+.addtext {
+  position: absolute;
+  bottom: 77%; /* Adjust the position as needed */
+  right: 14%; /* Adjust the position as needed */
+  font-weight: 700;
+  color: #007EF2; /* Optional styling */
+}
+
+
+  /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .tab-pane {
+      height: auto; /* Adjust height as needed for smaller screens */
+    }
+
+    .tab-pane img {
+      width: 100%; /* Make the image fill the container width */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    .tab-pane .row {
+      position: static; /* Remove absolute positioning for the row on smaller screens */
+      flex-direction: column; /* Stack the items vertically */
+      align-items: flex-start; /* Align items to the start */
+    }
+
+    .tab-pane .row img {
+      width: 100%; /* Make the Eclipse image fill the container width */
+      margin-right: 0; /* Remove margin on smaller screens */
+      margin-bottom: -56%; /* Add margin between elements on smaller screens */
+    }
+
+    .addtext{
+      position: absolute;
+      bottom: 66%; /* Adjust the position as needed */
+      right: 11%; /* Adjust the position as needed */
+      font-weight: 700;
+      color: #007EF2; 
+    }
+
+    /* Add more styles or adjustments as needed for smaller screens */
+  }
+
+

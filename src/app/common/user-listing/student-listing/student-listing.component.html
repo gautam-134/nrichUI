@@ -1,1 +1,175 @@
-<p>student-listing works!</p>
+<div class="table-responsive">
+    <div class="row justify-content-between d-flex">
+      <div class="col-sm-12 col-md-6">
+        <div id="user_list_datatable_info" class="dataTables_filter">
+          <form class="me-3 position-relative">
+            <div class="form-group mb-0">
+              <input
+                class="form-control"
+                (keyup)="search($event)"
+                [(ngModel)]="searchParam"
+                type="text"
+                placeholder="Search...."
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <table class="files-lists table table-striped mt-4" style="display: table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">
+            Name
+            <i
+              ng-click="typeOfShorting:!typeOfShorting"
+              [ngClass]="
+                typeOfShorting && type == 'name'
+                  ? 'fa fa-sort-amount-desc'
+                  : 'fa fa-sort-amount-asc'
+              "
+              (click)="short('name')"
+            ></i>
+          </th>
+          <th scope="col">
+            Phone Number
+            <i
+              ng-click="typeOfShorting:!typeOfShorting"
+              [ngClass]="
+                typeOfShorting && type == 'mobileNumber'
+                  ? 'fa fa-sort-amount-desc'
+                  : 'fa fa-sort-amount-asc'
+              "
+              (click)="short('mobileNumber')"
+            ></i>
+          </th>
+          <!-- <th scope="col">Registration By <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='registrationUser' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('registrationUser')"></i></th> -->
+          <th scope="col">
+            Registration Mode
+            <i
+              ng-click="typeOfShorting:!typeOfShorting"
+              [ngClass]="
+                typeOfShorting && type == 'registrationMode'
+                  ? 'fa fa-sort-amount-desc'
+                  : 'fa fa-sort-amount-asc'
+              "
+              (click)="short('registrationMode')"
+            ></i>
+          </th>
+          <th scope="col">
+            Date
+            <i
+              ng-click="typeOfShorting:!typeOfShorting"
+              [ngClass]="
+                typeOfShorting && type == 'registrationDate'
+                  ? 'fa fa-sort-amount-desc'
+                  : 'fa fa-sort-amount-asc'
+              "
+              (click)="short('registrationDate')"
+            ></i>
+          </th>
+          <th scope="col">
+            Enable/Disable
+            <i
+              ng-click="typeOfShorting:!typeOfShorting"
+              [ngClass]="
+                typeOfShorting && type == 'disabled'
+                  ? 'fa fa-sort-amount-desc'
+                  : 'fa fa-sort-amount-asc'
+              "
+              (click)="short('disabled')"
+            ></i>
+          </th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="students.length == 0">
+          <td colspan="7">No students found!</td>
+        </tr>
+        <tr
+          *ngFor="
+            let element of students | short : type : typeOfShorting;
+            let i = index
+          "
+        >
+          <td>
+            {{ i + 1 }}
+          </td>
+          <td>
+            {{ element?.name }}
+          </td>
+          <td>{{ element?.mobileNumber }}</td>
+          <!-- <td>{{ element?.registrationUser }}</td> -->
+          <td>{{ element?.registrationMode }}</td>
+          <td>{{ element?.registrationDate | date : "dd/MM/yyyy" }}</td>
+          <td>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                (change)="disableUser(element, $event)"
+                type="checkbox"
+                [id]="'flexSwitchCheckChecked' + 'disable' + i"
+                [checked]="!element?.disabled"
+              />
+              <label
+                class="form-check-label"
+                [for]="'flexSwitchCheckChecked' + 'disable' + i"
+                >{{ element?.disabled ? "Disable" : "Enable" }}</label
+              >
+            </div>
+          </td>
+          <td>
+            <mat-icon
+              aria-hidden="false"
+              mat-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example home icon"
+            >
+              menu
+            </mat-icon>
+            <mat-menu #menu="matMenu">
+              <button
+                mat-menu-item
+                style="cursor: pointer"
+                data-toggle="tooltip"
+                (click)="editDetails(element.id)"
+              >
+                Edit
+              </button>
+              <button
+                mat-menu-item
+                style="cursor: pointer"
+                data-toggle="tooltip"
+                (click)="deleteStudent(element.id)"
+              >
+                Delete
+              </button>
+              <button
+                *ngIf="!element?.disabled"
+                mat-menu-item
+                data-toggle="tooltip"
+                title="Manage Enrollment"
+                (click)="mapStudent(element.id)"
+              >
+                Map to Batch
+              </button>
+              <!-- <button mat-menu-item data-toggle="tooltip" (click)="disableUser(element.id)">
+                              Delete
+                          </button> -->
+            </mat-menu>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-table-paginator
+      [size]="size"
+      [totalElements]="totalStudents"
+      (pageChange)="pageChange($event)"
+      (changeSize)="changeSize($event)"
+    ></app-table-paginator>
+  </div>
+  

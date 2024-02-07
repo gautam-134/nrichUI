@@ -1,0 +1,34 @@
+@import url("../../../../assets/css/bootstrap.min.css");
+@import url("../../../../assets/css/all.min.css");
+@import url("../../../../assets/css/slick.css");
+@import url("../../../../assets/css/nice-select.css");
+@import url("../../../../assets/css/main.css");
+@import url("../../../../assets/css/responsive.css");
+
+.resize-img {
+  height: "250px !important";
+  width: "450px !important";
+}
+
+@media screen and (max-width: 767px) {
+  .resize-img {
+    height: "250px !important";
+    width: "450px !important";
+  }
+}
+
+
+.ins_logo{
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.ins_logo img{
+  max-height: 250px;
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+                      

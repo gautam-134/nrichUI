@@ -1,1 +1,148 @@
-<p>create-student-teacher-notification works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Create Notification</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="notificationForm">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label style="padding-bottom: 3px"
+                  >Notification Name<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Notification Name"
+                  formControlName="name"
+                />
+                <div *ngIf="submitted && form['name']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="form['name']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label style="padding-bottom: 3px"
+                  >Notification For<span class="text-danger">*</span></label
+                >
+                <select
+                  class="form-control"
+                  (change)="updateUsers($event)"
+                  formControlName="role"
+                >
+                  <option value="" selected disabled>Notification For</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Teacher">Teacher</option>
+                  <option value="Student">Student</option>
+                </select>
+                <div *ngIf="submitted && form['role']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="form['role']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <span class="d-flex justify-content-between">
+                  <label>Select User<span class="text-danger">*</span></label>
+                </span>
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <mat-select multiple formControlName="toIds">
+                    <mat-optgroup>
+                      <mat-form-field
+                        style="width: 100% !important"
+                        appearance="legacy"
+                      >
+                        <mat-label>Search..</mat-label>
+                        <mat-icon matSuffix>search</mat-icon>
+                        <input matInput type="text" #searchUser />
+                      </mat-form-field>
+                    </mat-optgroup>
+                    <ng-container
+                      *ngFor="let element of users | filter : searchUser.value"
+                    >
+                      <mat-option [value]="+element.id" *ngIf="element != null">
+                        <div class="row">
+                          <div class="col-12">{{ element.name }}</div>
+                        </div>
+                      </mat-option>
+                      <mat-select-trigger *ngIf="element == null">
+                        No Item Found.
+                      </mat-select-trigger>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <div *ngIf="submitted && form['toIds'].invalid">
+                  <div
+                    *ngIf="form['toIds'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Please select user !
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label>Meta Tags</label>
+                <tag-input
+                  [(ngModel)]="tags"
+                  placeholder="Meta Tags"
+                  formControlName="metaTags"
+                >
+                </tag-input>
+                <mat-hint> Hint:- Press enter for add tags. </mat-hint>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Notification<span class="text-danger">*</span></label>
+                  <textarea
+                    class="form-control"
+                    placeholder=""
+                    formControlName="notification"
+                  ></textarea>
+                  <div *ngIf="submitted && form['notification']?.invalid">
+                    <div
+                      class="text-danger"
+                      *ngIf="form['notification']?.errors?.['required']"
+                    >
+                      Above Field Is Required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+  
+        <div class="card-footer">
+          <button
+            type="submit"
+            (click)="onSubmit()"
+            type="submit"
+            class="btn btn-primary active"
+            style="margin-right: 20px"
+          >
+            Send Notification
+          </button>
+  
+          <button
+            type="submit"
+            type="submit"
+            (click)="cancel()"
+            class="btn btn-secondary active"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,145 @@
-<p>blog-info works!</p>
+<main>
+    <div class="teachers-area course-listing-area header-size-adjust gray-bg position-relative fix">
+      <img src="assets/img/gg-3.png" alt="" class="gg-3 position-absolute" />
+      <div class="container cs-padding">
+        <nav aria-label="breadcrumb" class="breadcrumb-wrapper">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a routerLink="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ blogDetails.subject }}
+            </li>
+          </ol>
+        </nav>
+  
+        <div class="row align-items-center" style="padding-bottom: 1.5%">
+          <div class="col-md-6 col-4">
+            <h4 style="color: #000000">
+              {{ blogDetails.subject }}
+            </h4>
+          </div>
+          <div class="col-md-6 col-8">
+            <div class="ft-top-right">
+              <span>
+                <p style="color: black">
+                  <img src="assets/img/h-4.png" alt="" /><span class="text-muted">Language</span>
+                  &nbsp; English
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+  
+        <div>
+          <img [src]="
+              blogDetails.coverImagePath
+                ? blogDetails.coverImagePath
+                : '../../../../assets/images/Rectangle 2.png'
+            " style="width: 100%; border-radius: 18px" />
+        </div>
+        <div class="row align-items-center" style="margin-top: 40px">
+          <div class="col-md-6 col-4">
+            <div class="artist-wrapper d-flex align-items-center">
+              <div class="artist-thumb">
+                <img [src]="blogDetails.userImage ? blogDetails.userImage : '../../../assets/images/profile.png'" alt="" />
+              </div>
+              <h5 class="author">
+                <span class="d-block">Writer</span>{{ blogDetails.firstName }} {{ blogDetails.lastName }}&nbsp;&nbsp;&nbsp;&nbsp;
+              </h5>
+              <h5 class="author">
+                <span class="d-block">Last Update</span>
+                {{ blogDetails.createdDate | date }}
+              </h5>
+            </div>
+            
+          </div>
+  
+          <div class="col-md-6 col-8">
+            <div class="ft-top-right">
+              <ul class="social-links d-flex align-items-center justify-content-end">
+                <li>
+                  <a [href]="blogDetails.facebookPageLink ? blogDetails.facebookPageLink : 'https://www.facebook.com/nrichlearning.edu/'"
+                    target="_blank"><i class="fab fa-facebook-f" style="color: #7a7a7a"></i></a>
+                </li>
+                <!-- <li>
+                  <a href="https://mobile.twitter.com/learningnrich" target="_blank"><i class="fab fa-twitter" style="color: #7a7a7a"></i></a>
+                </li> -->
+                <li>
+                  <a [href]="blogDetails.instaPageLink ? blogDetails.instaPageLink : 'https://www.instagram.com/nrich.learning/?hl=en'"
+                    target="_blank"><i class="fab fa-instagram" style="color: #7a7a7a"></i></a>
+                </li>
+                <li>
+                  <a [href]="blogDetails.linkedInPageLink ? blogDetails.linkedInPageLink : 'https://www.linkedin.com/company/nrich-elearning-platform/?originalSubdomain=in'"
+                    target="_blank"><i class="fab fa-linkedin-in" style="color: #7a7a7a"></i></a>
+                </li>
+                <!-- <li>
+                  <a><i class="fa fa-share-alt" style="color: #7a7a7a"></i></a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 30px"></div>
+        <div style="margin-top: 40px">
+          <p class="text-desgin"></p>
+          <p [innerHTML]="blogDetails.description"></p>
+        </div>
+  
+        <div class="row" #target style="margin-top: 40px; margin-bottom: 3%">
+          <div class="col-lg-4" style="margin-top: 20px" *ngFor="let blog of blogsList">
+            <div class="course-item">
+              <div class="card single-course" [routerLink]="['/blog-details']"
+                [queryParams]="{ id: blog.idBlog, instituteId: instituteId }">
+                <div class="thumb-part position-relative">
+                  <img *ngIf="blog?.coverImagePath" [src]="blog?.coverImagePath" style="height: 100%; width: 100%"
+                    alt="" />
+                  <img *ngIf="!blog?.coverImagePath" src="assets/img/v-1.png" style="height: 100%; width: 100%" alt="" />
+                </div>
+                <div class="content-part" style="
+                    overflow: auto;
+                    max-height: fit-content;
+                    min-height: 185px;
+                  ">
+                  <div class="up-bar">
+                    <p class="status">
+                      <img class="img-fluid" src="assets/img/beginner-graph.svg" alt="" />
+                      Categories
+                    </p>
+                    <p>
+                      <img src="../../../assets/images/Vector (2).png" alt="" />
+                    </p>
+                  </div>
+                  <div class="middle-content">
+                    <div class="ttl-content" style="overflow: auto; max-height: 20px; min-height: 73px">
+                      <h4>{{ blog.subject }}</h4>
+                    </div>
+                    <p *ngIf="(blog?.description + '').length <= 80" class="short-description">
+                      {{ blog?.description | innerhtmltoplaintext }}
+                    </p>
+                    <p *ngIf="(blog?.description + '').length > 80" class="short-description">
+                      {{
+                      blog?.description | innerhtmltoplaintext | slice : 0 : 80
+                      }}...
+                    </p>
+                  </div>
+  
+                  <div class="bottom-content" style="margin-top: -10%">
+                    <h5 class="author">
+                      <span class="d-block">Author</span>{{ blog.firstName }}
+                    </h5>
+                    <a class="know-more" tabindex="0">Know More<i class="far fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <app-table-paginator [size]="size" [totalElements]="totalCount" [pagenumber]="page"
+          (pageChange)="nextPage($event, target)" [disableSize]="true"></app-table-paginator>
+      </div>
+    </div>
+  
+    <app-teacher-registration></app-teacher-registration>
+  </main>

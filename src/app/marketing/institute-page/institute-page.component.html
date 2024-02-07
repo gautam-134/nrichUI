@@ -1,1 +1,357 @@
-<p>institute-page works!</p>
+<main class="fix institue-pge">
+    <div class="institue-page-area gray-bg position-relative">
+      <div
+        *ngIf="!coverImage"
+        class="gradient-banner"
+        style="background-image: url(assets/img/banner.webp)"
+      ></div>
+      <div *ngIf="coverImage">
+        <img
+          [src]="coverImage"
+          style="width: 100%; max-height: 350px; min-height: 207px"
+          alt=""
+        />
+      </div>
+      <img src="assets/img/gg-3.png" alt="" class="gg-3 position-absolute" />
+      <div class="container cs-padding">
+        <div class="one-third-g-wrapper">
+          <div class="one-third-left">
+            <div class="gap-38">
+              <div class="teacher-short-info-wrap">
+                <div class="theader-thumb">
+                  <img
+                    class="img-fluid w-100"
+                    [src]="instituteImageSrc"
+                    alt=""
+                  />
+                </div>
+                <div class="teacher-short-info">
+                  <h2 class="teacher-name">
+                    <span class="desination d-block">Institute</span
+                    >{{ instituteName || instituteDetails?.instituteName }}
+                  </h2>
+                  <div class="badge-showcase d-flex align-items-center"></div>
+  
+                  <div class="info-rw">
+                    <div class="details plc-2">
+                      <div class="single">
+                        <h6>
+                          <img
+                            class="follower img-fluid"
+                            src="assets/img/te.svg"
+                            alt=""
+                          />{{ instituteDetails?.teachersCount }}
+                        </h6>
+                        <p>Teachers</p>
+                      </div>
+                    </div>
+  
+                    <a
+                      (click)="scroll(target)"
+                      class="btn box-btn border-style-medium blue"
+                      >View Courses</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="gap-38">
+              <div class="bio">
+                <h3 class="tertiary-title text-start">About Institute</h3>
+                <p appscrollablediv heightinpx="126px">
+                  {{ instituteDetails?.description }}
+                </p>
+  
+                <div class="experties">
+                  <button
+                    *ngFor="let tag of instituteDetails?.tags; let i = index"
+                    [ngClass]="{
+                      '': (i < 4 ? i : i % 4) == 0,
+                      blue: (i < 4 ? i : i % 4) == 1,
+                      red: (i < 4 ? i : i % 4) == 2,
+                      yellow: (i < 4 ? i : i % 4) == 3
+                    }"
+                  >
+                    {{ tag }}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="gap-38">
+              <div class="one-third-blk">
+                <div class="flex-title">
+                  <h3 class="tertiary-title m-0">Our Methodology</h3>
+                  <a
+                    (click)="scroll(target)"
+                    class="btn box-btn border-style-small blue"
+                    >Book A Demo</a
+                  >
+                </div>
+  
+                <p>
+                  Hello students! I am a self-driven, motivated entrepreneur with
+                  a proven track record of success with extraordinary
+                  achievements.
+                </p>
+  
+                <video
+                  controls
+                  controlsList="nodownload"
+                  oncontextmenu="return false;"
+                  controlsList="nodownload"
+                  oncontextmenu="return false;"
+                  poster="assets/Nrich_For_Institute/thumbnail.png"
+                  class="v-bg img-fluid w-100"
+                  src="https://nrichvideo.s3.ap-south-1.amazonaws.com/bydefaultinstitute.mp4"
+                ></video>
+              </div>
+            </div>
+            <div class="course-blk type-2 orange">
+              <h5>
+                Still Confused About <br />
+                What To Do ?
+              </h5>
+              <a (click)="scroll(target)" class="btn box-btn fill-blue small"
+                >GRAB A FREE DEMO</a
+              >
+            </div>
+          </div>
+          <div class="one-third-right">
+            <div
+              class="helper-div position-relative margin-top paddingTop"
+              style="padding-top: 5%"
+            >
+              <app-inquiry-form
+                [type]="'institute'"
+                [courses]="courseList"
+              ></app-inquiry-form>
+            </div>
+            <app-highlights
+              [instituteDetails]="instituteDetails"
+            ></app-highlights>
+  
+            <!-- <app-review-slider></app-review-slider> -->
+  
+            <app-institute-achievers-slider></app-institute-achievers-slider>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./instructor-area -->
+  
+    <div #target class="section-cover" id="course-area">
+      <div
+        *ngIf="courseList.length > 0"
+        class="teachers-course-area gray-bg position-relative"
+      >
+        <div class="container cs-padding">
+          <div class="title-wrap">
+            <h3 class="secondary-title mb-0">Our Courses</h3>
+            <a (click)="viewAllCourses()" class="link_w_icon"
+              >View All Courses<i class="far fa-arrow-right"></i
+            ></a>
+          </div>
+          <app-course-slider [courses]="courseList"></app-course-slider>
+        </div>
+      </div>
+    </div>
+  
+    <div class="section-cover fix" id="educator-area">
+      <div *ngIf="teacherlist.length > 0" class="educator-area gray-bg">
+        <div class="container cs-padding">
+          <div class="title-wrap">
+            <h3 class="secondary-title mb-0">Our Tutors</h3>
+            <a (click)="viewAllTutors()" class="link_w_icon"
+              >View All Tutors<i class="far fa-arrow-right"></i
+            ></a>
+          </div>
+          <app-educator-slider [teacherList]="teacherlist"></app-educator-slider>
+        </div>
+      </div>
+      <!-- ./educator-area -->
+    </div>
+  
+    <div class="section-cover" id="explore-area" *ngIf="blogsList.length >= 5">
+      <div class="explore-area position-relative">
+        <img
+          src="assets/img/tile-1.png"
+          alt=""
+          class="tile-1 img-fluid position-absolute"
+        />
+        <img
+          src="assets/img/tile-2.png"
+          alt=""
+          class="tile-2 img-fluid position-absolute"
+        />
+        <div class="container cs-padding z-index-1">
+          <div class="title-wrap">
+            <div class="section-title">
+              <h2>
+                Explore <br />
+                <span class="title-pole sign position-relative">
+                  Latest Insights</span
+                >
+              </h2>
+            </div>
+            <a
+              [routerLink]="['/blog-list']"
+              [queryParams]="{ instituteId: this.id }"
+              class="link_w_icon"
+              >View All Blogs<i class="far fa-arrow-right"></i
+            ></a>
+          </div>
+  
+          <div class="row" #target style="margin-top: 40px">
+            <div
+              class="col-lg-4"
+              style="margin-top: 20px"
+              *ngFor="let blog of blogsList"
+            >
+              <div class="course-item">
+                <div
+                  class="card single-course"
+                  [routerLink]="['/blog-details']"
+                  [queryParams]="{ id: blog.idBlog }"
+                >
+                  <div class="thumb-part position-relative">
+                    <img
+                      *ngIf="blog?.coverImagePath"
+                      [src]="blog?.coverImagePath"
+                      style="height: 100%; width: 100%"
+                      alt=""
+                    />
+                    <img
+                      *ngIf="!blog?.coverImagePath"
+                      src="assets/img/v-1.png"
+                      style="height: 100%; width: 100%"
+                      alt=""
+                    />
+                    <!-- <a class="position-absolute play" tabindex="0"
+                      ><img src="assets/img/play.svg" alt="" class="img-fluid"
+                    /></a> -->
+                  </div>
+                  <div
+                    class="content-part"
+                    style="
+                      overflow: auto;
+                      max-height: fit-content;
+                      min-height: 185px;
+                    "
+                  >
+                    <!-- <div class="up-bar">
+                          <p class="status">
+                            <img class="img-fluid" src="assets/img/beginner-graph.svg" alt="" />
+                            Beginner
+                          </p>
+                          <p>
+                            <img src="../../../assets/images/Vector (2).png" alt="" />
+                          </p>
+                        </div> -->
+                    <div class="middle-content">
+                      <div
+                        class="ttl-content"
+                        style="overflow: auto; max-height: 20px; min-height: 73px"
+                      >
+                        <h4>{{ blog.subject }}</h4>
+                      </div>
+                      <p
+                        *ngIf="(blog?.description + '').length <= 80"
+                        class="short-description"
+                      >
+                        {{ blog?.description | innerhtmltoplaintext }}
+                      </p>
+                      <p
+                        *ngIf="(blog?.description + '').length > 80"
+                        class="short-description"
+                      >
+                        {{
+                          blog?.description
+                            | innerhtmltoplaintext
+                            | slice : 0 : 80
+                        }}...
+                      </p>
+                    </div>
+  
+                    <div class="bottom-content" style="margin-top: -10%">
+                      <h5 class="author">
+                        <span class="d-block">Author</span>{{ blog.firstName }}
+                      </h5>
+                      <a class="know-more" tabindex="0"
+                        >Know More<i class="far fa-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <app-table-paginator [size]="size" [totalElements]="totalCount" [pagenumber]="page" (pageChange)="nextPage($event,target)"
+              [disableSize]="true"></app-table-paginator> -->
+          <div *ngIf="blogsList.length == 0">
+            <h6>No Blogs found!</h6>
+          </div>
+        </div>
+      </div>
+      <!-- ./explore-area -->
+    </div>
+    <!-- ./explore-area -->
+  
+    <app-faq [selectedValue]="selectedValue"></app-faq>
+    <!-- ./faq-area -->
+  
+    <!-- <div class="section-cover" id="apply-area">
+      <div class="ins-area fix bg-white">
+        <div class="container type-2 cs-padding">
+          <div class="row ins-row-type-three">
+            <div class="col-md-6 mt-2 ins-el-box position-relative">
+              <img
+                class="img-fluid position-absolute bottom-0 ins-t-1"
+                src="assets/img/ip-1.png"
+                alt=""
+              />
+              <div class="ins-element blue">
+                <div class="ins-el-inner">
+                  <h5>Become An Instructor</h5>
+                  <p>
+                    Promote your teaching skills & publish your<br /><b
+                      >profile in our Directory</b
+                    >
+                  </p>
+                  <a
+                    [routerLink]="['/connect-with-learning']"
+                    class="btn box-btn fill-white small round-60"
+                    ><i class="far fa-plus-circle"></i>Apply Now</a
+                  >
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-6 mt-2 ins-el-box position-relative">
+              <img
+                class="img-fluid position-absolute bottom-0 ins-t-1 two"
+                src="assets/img/ins-t-3.png"
+                alt=""
+              />
+              <div class="ins-element green">
+                <div class="ins-el-inner">
+                  <h5>Register Your Institute</h5>
+                  <p>
+                    Advertise your Institute in our Marketplace and<br /><b
+                      >get more Students</b
+                    >
+                  </p>
+                  <a
+                    [routerLink]="['/login']"
+                    class="btn box-btn fill-white small round-60"
+                    ><i class="far fa-plus-circle"></i>Register Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </main>
+  

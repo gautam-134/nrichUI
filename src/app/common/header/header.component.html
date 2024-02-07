@@ -1,1 +1,958 @@
-<p>header works!</p>
+<div class="iq-top-navbar" style="position: fixed">
+    <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar p-lg-0">
+      <div
+        class="container-fluid navbar-inner"
+        style="box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5)"
+      >
+        <div class="d-flex align-items-center gap-3">
+          <a
+            class="d-flex align-items-center gap-2 iq-header-logo d-none d-md-flex" style="cursor:default"
+          >
+            <img [src]="instituteImageSrc" style="height: 50px; width: 100px" />
+          </a>
+          <a
+            *ngIf="hidesidebar"
+            id="toggleMenu"
+            class="sidebar-toggle"
+            data-toggle="sidebar"
+            data-active="true"
+            (click)="openslider()"
+          >
+            <div class="icon material-symbols-outlined iq-burger-menu">menu</div>
+          </a>
+        </div>
+  
+        <div class="d-block d-md-none">
+          <a class="d-flex align-items-center gap-2 iq-header-logo">
+            <img [src]="instituteImageSrc" style="height: 50px; width: 100px" />
+          </a>
+        </div>
+        <a
+          class="d-lg-none d-flex"
+          href="javascript:void(0);"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          <span class="material-symbols-outlined">tune</span>
+        </a>
+        <div
+          class="offcanvas offcanvas-end iq-profile-menu-responsive"
+          tabindex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+          style="width: 550px"
+        >
+          <div class="offcanvas-header" style="justify-content: flex-start">
+            <img
+              *ngIf="!hasImage"
+              src="assets/images/profile.png"
+              class="img-fluid rounded-circle me-3"
+              alt="user"
+              width="10%"
+              height="10%"
+              loading="lazy"
+            />
+            <img
+              *ngIf="hasImage"
+              [src]="authService.profileImageSubjectObs$ | async"
+              class="img-fluid rounded-circle me-3"
+              alt="user"
+              width="8%"
+              height="8%"
+              loading="lazy"
+            />
+            <div style="width: 100%">
+              <h5 id="offcanvasRightLabel">
+                Hi, {{ authService.nameSubjectObs$ | async }}
+              </h5>
+            </div>
+  
+            <!-- <a
+              (click)="routeToDashboard()"
+              class="d-flex align-items-center"
+              id="notification-drop1"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                style="height: 50px; width: 50px"
+                src="../../../assets/Line.svg"
+              />
+            </a> -->
+            <div class="dropdown">
+              <a
+                class="d-flex align-items-center"
+                id="notification-drop1"
+                data-bs-toggle="dropdown"
+              >
+                <img
+                  style="height: 50px; width: 50px"
+                  src="../../../assets/Line.svg"
+                />
+              </a>
+              <div
+                class="sub-drop dropdown-menu"
+                aria-labelledby="notification-drop1"
+              >
+                <div class="card shadow-none m-0">
+                  <div
+                    class="card-header d-flex justify-content-between bg-primary"
+                  >
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="header-title bg-primary">
+                          <h5 class="mb-0 text-white">
+                            All Notifications
+                            <small class="badge bg-light text-dark">
+                              {{ unseenNotificationsCount }}
+                            </small>
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <button
+                          (click)="readAllNotifications()"
+                          class="btn btn-sm btn-outlined-primary text-primary"
+                          style="background-color: white"
+                        >
+                          Read All
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="card-body p-0"
+                    style="max-height: 292px; min-height: 250px; overflow: scroll"
+                    (scroll)="onScroll($event)"
+                  >
+                    <a
+                      *ngFor="let notification of notifications"
+                      style="padding: 0px"
+                      class="iq-sub-card"
+                      [ngStyle]="{
+                        'background-color':
+                          notification.viewed == 'true' ? '' : '#00afff26'
+                      }"
+                    >
+                      <!-- <p style="font-size: 10px; margin: 0px; text-align: end">
+                        {{ notification.createdDate | date }}
+                        {{ notification.createdDate | date : "shortTime" }}
+                      </p> -->
+  
+                      <div
+                        class="d-flex align-items-center"
+                        (click)="updateNotificationStatus(notification)"
+                      >
+                        <div class="">
+                          <img
+                            class="avatar-40 rounded"
+                            src="../../../../assets/images-marketing/bell.jpg"
+                            alt=""
+                            style="border-radius: 50% !important"
+                          />
+                        </div>
+                        <div class="ms-3 w-100">
+                          <h6 class="mb-0">{{ notification.name }}</h6>
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <p
+                              *ngIf="notification.notification.length > 40"
+                              class="mb-0"
+                              style="line-height: 28px"
+                            >
+                              {{ notification.notification | slice : 0 : 40 }}
+                              ...
+                            </p>
+                            <p
+                              *ngIf="notification.notification.length < 40"
+                              class="mb-0"
+                              style="line-height: 28px"
+                            >
+                              {{ notification.notification }}
+                            </p>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="notification.viewed == 'false'"
+                          style="
+                            text-align: center;
+                            height: 0.6rem;
+                            width: 0.9rem;
+                            background-color: #e40000;
+                            border-radius: 50%;
+                            display: inline-block;
+                          "
+                        >
+                          <span class="dot"></span>
+                        </div>
+                      </div>
+                    </a>
+                    <div
+                      *ngIf="notifications.length != totalNotifications"
+                      class="col-12 text-center"
+                    >
+                      <img
+                        src="assets/images/page-img/page-load-loader.gif"
+                        alt="loader"
+                        style="height: 72px"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <a
+              class="search-toggle dropdown-toggle d-flex align-items-center"
+              id="notification-drop1"
+              data-bs-toggle="dropdown"
+              style="padding: 0px"
+            >
+              <img
+                style="height: 50px; width: 50px"
+                src="../../../assets/Line.svg"
+              />
+            </a> -->
+            <div
+              class="sub-drop dropdown-menu"
+              aria-labelledby="notification-drop1"
+            >
+              <div class="card shadow-none m-0">
+                <div
+                  class="card-header d-flex justify-content-between bg-primary"
+                >
+                  <div class="header-title bg-primary">
+                    <h5 class="mb-0 text-white">
+                      All Notifications
+                      <small class="badge bg-light text-dark">
+                        {{ unseenNotificationsCount }}
+                      </small>
+                    </h5>
+                  </div>
+                  <button
+                    (click)="readAllNotifications()"
+                    class="btn btn-sm btn-outlined-primary text-primary"
+                    style="background-color: white"
+                  >
+                    Read All
+                  </button>
+                </div>
+                <div
+                  class="card-body p-0"
+                  style="max-height: 292px; min-height: 250px; overflow: scroll"
+                  (scroll)="onScroll($event)"
+                >
+                  <a
+                    *ngFor="let notification of notifications"
+                    style="padding: 0px"
+                    class="iq-sub-card"
+                    [ngStyle]="{
+                      'background-color':
+                        notification.viewed == 'true' ? '' : '#00afff26'
+                    }"
+                  >
+                    <p style="font-size: 10px; margin: 0px; text-align: end">
+                      {{ notification.createdDate | date }}
+                      {{ notification.createdDate | date : "shortTime" }}
+                    </p>
+  
+                    <div
+                      class="d-flex align-items-center"
+                      (click)="updateNotificationStatus(notification)"
+                    >
+                      <div class="">
+                        <img
+                          class="avatar-40 rounded"
+                          src="../../../../assets/images-marketing/bell.jpg"
+                          alt=""
+                          style="border-radius: 50% !important"
+                        />
+                      </div>
+                      <div class="ms-3 w-100">
+                        <h6 class="mb-0">{{ notification.name }}</h6>
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <p
+                            *ngIf="notification.notification.length > 40"
+                            class="mb-0"
+                          >
+                            {{ notification.notification | slice : 0 : 40 }}
+                            ...
+                          </p>
+                          <p
+                            *ngIf="notification.notification.length < 40"
+                            class="mb-0"
+                          >
+                            {{ notification.notification }}
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="notification.viewed == 'false'"
+                        style="
+                          text-align: center;
+                          height: 0.6rem;
+                          width: 0.9rem;
+                          background-color: #e40000;
+                          border-radius: 50%;
+                          display: inline-block;
+                        "
+                      >
+                        <span class="dot"></span>
+                      </div>
+                    </div>
+                  </a>
+                  <div
+                    *ngIf="notifications.length != totalNotifications"
+                    class="col-12 text-center"
+                  >
+                    <img
+                      src="assets/images/page-img/page-load-loader.gif"
+                      alt="loader"
+                      style="height: 72px"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div
+              *ngIf="hasMultipleRoles && subDomainInstitute == 1"
+              class="nav-item dropdown d-lg-block"
+              style="padding-right: 2%"
+            >
+              <a
+                class="d-flex align-items-center dropdown-toggle"
+                id="drop-down-arrow"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                style="padding: 0px"
+              >
+                <img
+                  style="height: 40px; width: 40px"
+                  src="../../../assets/data.png"
+                />
+              </a>
+              <div
+                class="sub-drop dropdown-menu"
+                aria-labelledby="drop-down-arrow"
+                data-bs-popper="static"
+              >
+                <div class="card shadow-none m-0">
+                  <div
+                    *ngIf="!isSearchInputVisible"
+                    class="card-header d-flex justify-content-between bg-primary"
+                  >
+                    <div class="header-title bg-primary">
+                      <h5 class="mb-0 text-white">Enrolled Institutes</h5>
+                    </div>
+                    <div class="header-title bg-primary">
+                      <button
+                        class="search-icon"
+                        (click)="toggleSearchInput($event)"
+                      >
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="isSearchInputVisible"
+                    class="card-header d-flex justify-content-between bg-primary"
+                  >
+                    <input
+                      class="form-control"
+                      (keyup)="search($event)"
+                      [(ngModel)]="searchParam"
+                      type="text"
+                      placeholder="Search...."
+                    />
+                    <div class="header-title bg-primary">
+                      <button
+                        class="search-icon"
+                        (click)="toggleSearchInput($event)"
+                      >
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+  
+                  <div
+                    *ngIf="institutes?.length == 0"
+                    class="card-body p-0"
+                    style="max-height: 292px; min-height: 250px; overflow: auto"
+                  >
+                    <p style="margin-left: 20px">No Institute Found</p>
+                  </div>
+                  <div
+                    *ngIf="institutes?.length != 0"
+                    class="card-body p-0"
+                    style="max-height: 292px; min-height: 250px; overflow: auto"
+                  >
+                    <a
+                      href="javascript:void(0);"
+                      class="iq-sub-card"
+                      *ngFor="let institute of institutes"
+                      (click)="selectInstitute(institute.instituteId)"
+                    >
+                      <div class="d-flex align-items-center">
+                        <div class="">
+                          <img
+                            *ngIf="!institute.instituteImage"
+                            class="avatar-40 rounded"
+                            src="../../../assets/insitutedefaultLogo-PhotoRoom.png"
+                            alt=""
+                          />
+                          <img
+                            *ngIf="institute.instituteImage"
+                            class="avatar-40 rounded"
+                            [src]="institute.instituteImage"
+                            alt=""
+                          />
+                        </div>
+                        <div class="ms-3 w-100">
+                          <h6 class="mb-0">{{ institute.instituteName }}</h6>
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          ></div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body pt-0">
+            <ul class="navbar-nav ms-auto navbar-list">
+              <div class="hide-display">
+                <li class="nav-item" *ngIf="role == 'InstituteAdmin'">
+                  <div class="plan">
+                    <h6 class="planDec">Plan &nbsp;&nbsp; : {{ planName }}</h6>
+                    <h6 class="planDec">Expiry : {{ daysLeft }}</h6>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="d-flex align-items-center"
+                    (click)="openProfile()"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
+                    <img
+                      style="height: 50px; width: 50px"
+                      src="../../../assets/profile.svg"
+                    />
+                    <span
+                      class="mobile-text d-lg-none ms-3"
+                      style="color: lightslategrey"
+                      >Profile</span
+                    >
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    (click)="openReferralDetails()"
+                    class="d-flex align-items-center"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                    *ngIf="
+                      loginUserRole == 'InstituteAdmin' && planName != 'Trial'
+                    "
+                  >
+                    <img
+                      style="height: 50px; width: 50px"
+                      src="../../../assets/couponicon.svg"
+                    />
+                    <span
+                      class="mobile-text d-lg-none ms-3"
+                      style="color: lightslategrey"
+                      >Referral Details</span
+                    >
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    (click)="openPurchaseHistory()"
+                    class="d-flex align-items-center"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                    *ngIf="loginUserRole == 'Student'"
+                  >
+                    <img
+                      style="height: 50px; width: 50px"
+                      src="../../../assets/setting.svg"
+                    />
+                    <span
+                      class="mobile-text d-lg-none ms-3"
+                      style="color: lightslategrey"
+                      >Purchase History</span
+                    >
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    (click)="openSettings()"
+                    class="d-flex align-items-center"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                    *ngIf="loginUserRole == 'InstituteAdmin'"
+                  >
+                    <img
+                      style="height: 50px; width: 50px"
+                      src="../../../assets/setting.svg"
+                    />
+                    <span
+                      class="mobile-text d-lg-none ms-3"
+                      style="color: lightslategrey"
+                      >Settings</span
+                    >
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="d-flex align-items-center"
+                    (click)="logout()"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
+                    <img src="../../../assets/logout.svg" />
+                    <span
+                      class="mobile-text d-lg-none ms-3"
+                      style="color: lightslategrey"
+                      >Sign Out</span
+                    >
+                  </a>
+                </li>
+              </div>
+  
+              <li
+                *ngIf="role == 'InstituteAdmin'"
+                class="nav-item dropdown d-none d-lg-block"
+                style="padding-top: 2.5%"
+              >
+                <div
+                  class="plan"
+                  title="Allowed Storage : {{ myPlanDetails?.allowedStorage }} GB
+  Allowed Students : {{ myPlanDetails?.allowedStudents }}
+  Allowed Teachers : {{ myPlanDetails?.allowedTeachers }}
+  Allowed Concurrent Classes : {{ myPlanDetails?.allowedConcurrentClasses }}
+  Zoom Allowed : {{ myPlanDetails?.isZoomAllowed ? 'Yes' : 'No' }}
+                  "
+                >
+                  <h6 class="planDec">
+                    Plan &nbsp;&nbsp; : {{ planName | titlecase }}
+                  </h6>
+                  <h6 class="planDec">Expiry : {{ daysLeft }}</h6>
+                </div>
+              </li>
+              <li class="nav-item dropdown d-none d-lg-block">
+                <a
+                  class="search-toggle dropdown-toggle d-flex align-items-center"
+                  id="notification-drop"
+                  data-bs-toggle="dropdown"
+                  style="padding: 0px"
+                >
+                  <img
+                    style="height: 50px; width: 50px"
+                    src="../../../assets/Line.svg"
+                  />
+                </a>
+                <div
+                  class="sub-drop dropdown-menu"
+                  aria-labelledby="notification-drop"
+                >
+                  <div class="card shadow-none m-0">
+                    <div
+                      class="card-header d-flex justify-content-between bg-primary"
+                    >
+                      <div class="header-title bg-primary">
+                        <h5 class="mb-0 text-white">
+                          All Notifications
+                          <small class="badge bg-light text-dark">
+                            {{ unseenNotificationsCount }}
+                          </small>
+                        </h5>
+                      </div>
+                      <button
+                        (click)="readAllNotifications()"
+                        class="btn btn-sm btn-outlined-primary text-primary"
+                        style="background-color: white"
+                      >
+                        Read All
+                      </button>
+                    </div>
+                    <div
+                      class="card-body p-0"
+                      style="
+                        max-height: 292px;
+                        min-height: 250px;
+                        overflow: scroll;
+                      "
+                      (scroll)="onScroll($event)"
+                    >
+                      <a
+                        *ngFor="let notification of notifications"
+                        style="padding: 0px"
+                        class="iq-sub-card"
+                        [ngStyle]="{
+                          'background-color':
+                            notification.viewed == 'true' ? '' : '#00afff26'
+                        }"
+                      >
+                        <p style="font-size: 10px; margin: 0px; text-align: end">
+                          {{ notification.createdDate | date }}
+                          {{ notification.createdDate | date : "shortTime" }}
+                        </p>
+  
+                        <div
+                          class="d-flex align-items-center"
+                          (click)="updateNotificationStatus(notification)"
+                        >
+                          <div class="">
+                            <img
+                              class="avatar-40 rounded"
+                              src="../../../../assets/images-marketing/bell.jpg"
+                              alt=""
+                              style="border-radius: 50% !important"
+                            />
+                          </div>
+                          <div class="ms-3 w-100">
+                            <h6 class="mb-0">{{ notification.name }}</h6>
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <p
+                                *ngIf="notification.notification.length > 40"
+                                class="mb-0"
+                              >
+                                {{ notification.notification | slice : 0 : 40 }}
+                                ...
+                              </p>
+                              <p
+                                *ngIf="notification.notification.length < 40"
+                                class="mb-0"
+                              >
+                                {{ notification.notification }}
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            *ngIf="notification.viewed == 'false'"
+                            style="
+                              text-align: center;
+                              height: 0.6rem;
+                              width: 0.9rem;
+                              background-color: #e40000;
+                              border-radius: 50%;
+                              display: inline-block;
+                            "
+                          >
+                            <span class="dot"></span>
+                          </div>
+                        </div>
+                      </a>
+                      <div
+                        *ngIf="notifications.length != totalNotifications"
+                        class="col-12 text-center"
+                      >
+                        <img
+                          src="assets/images/page-img/page-load-loader.gif"
+                          alt="loader"
+                          style="height: 72px"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li
+                *ngIf="hasMultipleRoles && subDomainInstitute == 1"
+                class="nav-item dropdown d-none d-lg-block"
+              >
+                <a
+                  class="d-flex align-items-center dropdown-toggle"
+                  id="drop-down-arrow"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="padding: 0px"
+                >
+                  <img
+                    style="height: 40px; width: 40px"
+                    src="../../../assets/data.png"
+                  />
+                </a>
+                <div
+                  class="sub-drop dropdown-menu"
+                  aria-labelledby="drop-down-arrow"
+                  data-bs-popper="static"
+                >
+                  <div class="card shadow-none m-0">
+                    <div
+                      *ngIf="!isSearchInputVisible"
+                      class="card-header d-flex justify-content-between bg-primary"
+                    >
+                      <div class="header-title bg-primary">
+                        <h5 class="mb-0 text-white">Enrolled Institutes</h5>
+                      </div>
+                      <div class="header-title bg-primary">
+                        <button
+                          class="search-icon"
+                          (click)="toggleSearchInput($event)"
+                        >
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="isSearchInputVisible"
+                      class="card-header d-flex justify-content-between bg-primary"
+                    >
+                      <input
+                        class="form-control"
+                        (keyup)="search($event)"
+                        [(ngModel)]="searchParam"
+                        type="text"
+                        placeholder="Search...."
+                      />
+                      <div class="header-title bg-primary">
+                        <button
+                          class="search-icon"
+                          (click)="toggleSearchInput($event)"
+                        >
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="!isInstituteListLoaded"
+                      class="col-12 text-center"
+                    >
+                      <img
+                        src="../assets/images/page-img/page-load-loader.gif"
+                        alt="loader"
+                        style="height: 72px"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div
+                      *ngIf="isInstituteListLoaded"
+                      class="card-body p-0"
+                      style="
+                        max-height: 292px;
+                        min-height: 250px;
+                        overflow: scroll;
+                      "
+                      (scroll)="onScrollOfInstitutes($event)"
+                    >
+                      <div
+                        *ngIf="institutes?.length == 0"
+                        class="card-body p-0"
+                        style="
+                          max-height: 292px;
+                          min-height: 250px;
+                          overflow: auto;
+                        "
+                      >
+                        <p style="margin-left: 20px">No Institute Found</p>
+                      </div>
+                      <a
+                        href="javascript:void(0);"
+                        class="iq-sub-card"
+                        *ngFor="let institute of institutes"
+                        (click)="selectInstitute(institute.instituteId)"
+                        style="
+                          background-color: #f8f9fa;
+                          border: 1px solid #dee2e6;
+                          padding: 10px;
+                          display: block;
+                          text-decoration: none;
+                          color: #212529;
+                          transition: background-color 0.2s ease,
+                            transform 0.2s ease;
+                        "
+                      >
+                        <div class="d-flex align-items-center">
+                          <div
+                            class="avatar-container"
+                            style="
+                              width: 50%; /* Adjust the width to your desired value */
+                              height: 40px; /* Adjust the height to your desired value */
+                              overflow: hidden;
+                              border-radius: 8px; /* Keep rounded corners */
+                            "
+                          >
+                            <img
+                              *ngIf="!institute.instituteImage"
+                              class="avatar-40 rounded"
+                              src="../../../assets/insitutedefaultLogo-PhotoRoom.png"
+                              alt="Default Logo"
+                              style="width: 100%; height: 100%; object-fit: cover"
+                            />
+                            <img
+                              *ngIf="institute.instituteImage"
+                              class="avatar-40 rounded"
+                              [src]="institute.instituteImage"
+                              alt="Institute Logo"
+                              style="width: 100%; height: 100%; object-fit: cover"
+                            />
+                          </div>
+  
+                          <div class="ms-3 w-100" style="width: 100%">
+                            <h6 class="mb-0" style="margin-bottom: 0">
+                              {{ institute.instituteName }}
+                            </h6>
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <!-- Additional content can be added here if needed -->
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+  
+                      <div
+                        *ngIf="institutes?.length != totalInstitutes"
+                        class="col-12 text-center"
+                      >
+                        <img
+                          src="assets/images/page-img/page-load-loader.gif"
+                          alt="loader"
+                          style="height: 72px"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown d-none d-lg-block">
+                <a
+                  class="d-flex align-items-center dropdown-toggle"
+                  id="drop-down-arrow"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="padding: 0px 0px 0px 12px"
+                >
+                  <img
+                    *ngIf="!hasImage"
+                    src="assets/images/profile.png"
+                    class="img-fluid rounded-circle me-3"
+                    alt="user"
+                    loading="lazy"
+                  />
+                  <img
+                    *ngIf="hasImage"
+                    [src]="authService.profileImageSubjectObs$ | async"
+                    class="img-fluid rounded-circle me-3"
+                    alt="user"
+                    loading="lazy"
+                  />
+  
+                  <div class="caption">
+                    <h6 class="mb-0 line-height">
+                      Hi, {{ authService.nameSubjectObs$ | async }}
+                    </h6>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div></div>
+                </a>
+                <div
+                  class="sub-drop dropdown-menu caption-menu"
+                  aria-labelledby="drop-down-arrow"
+                >
+                  <div class="card shadow-none m-0">
+                    <div class="card-header">
+                      <div class="header-title">
+                        <h5 class="mb-0">Hi, {{ userName }}</h5>
+                      </div>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="d-flex align-items-center iq-sub-card border-0">
+                        <img
+                          style="height: 50px; width: 50px"
+                          src="../../../assets/profile.svg"
+                        />
+                        <div class="ms-3">
+                          <a (click)="openProfile()" class="mb-0 h6">
+                            My Profile
+                          </a>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex align-items-center iq-sub-card border-0"
+                        *ngIf="
+                          loginUserRole == 'InstituteAdmin' && planName != 'Trial'
+                        "
+                      >
+                        <img
+                          style="width: 18%"
+                          src="../../../assets/couponicon.svg"
+                        />
+                        <div class="ms-3">
+                          <a (click)="openReferralDetails()" class="mb-0 h6">
+                            Referral Details</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="loginUserRole == 'Student'"
+                        class="d-flex align-items-center iq-sub-card border-0"
+                      >
+                        <img
+                          style="height: 50px; width: 50px"
+                          src="../../../assets/profile.svg"
+                        />
+                        <div class="ms-3">
+                          <a (click)="openPurchaseHistory()" class="mb-0 h6">
+                            Purchase History
+                          </a>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex align-items-center iq-sub-card border-0"
+                        *ngIf="loginUserRole == 'InstituteAdmin'"
+                      >
+                        <img
+                          style="width: 18%"
+                          src="../../../assets/setting.svg"
+                        />
+                        <div class="ms-3">
+                          <a (click)="openSettings()" class="mb-0 h6">
+                            Settings
+                          </a>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center iq-sub-card">
+                        <img
+                          style="width: 18%"
+                          src="../../../assets/logout.svg"
+                        />
+                        <div class="ms-3">
+                          <a (click)="logout()" class="mb-0 h6"> Sign out </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  

@@ -1,1 +1,55 @@
-<p>table-paginator works!</p>
+<div class="row d-flex" *ngIf="totalElements && totalElements != 0">
+    <div class="col-md-3 setContent1">
+      <p>{{ page + 1 }} of {{ getTotalPages }} pages</p>
+    </div>
+    <div class="col-md-9 setContent2">
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item">
+            <span class="page-link bg-primary" *ngIf="!disableSize">
+              <select
+                class="form-select-sm"
+                style="padding-top: 0; padding-bottom: 0"
+                (change)="change()"
+                [(ngModel)]="size"
+              >
+                <option selected value="5">5</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="5000">See All</option>
+              </select>
+            </span>
+          </li>
+          <li class="page-item">
+            <button class="page-link" [disabled]="page <= 0" (click)="previous()">
+              Previous
+            </button>
+          </li>
+          <li
+            *ngFor="let index of totalElements | tablePaginator : size : page : 3"
+            [ngClass]="page + 1 == index ? 'active' : ''"
+            class="page-item"
+          >
+            <button
+              class="page-link"
+              style="z-index: 0"
+              (click)="onPageChange(index)"
+            >
+              {{ index }}
+            </button>
+          </li>
+          <li class="page-item">
+            <button
+              class="page-link"
+              [disabled]="page + 1 >= getTotalPages"
+              (click)="next()"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  

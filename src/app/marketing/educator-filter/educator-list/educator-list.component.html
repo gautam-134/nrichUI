@@ -1,0 +1,91 @@
+<div class="row" *ngIf="teachersList.length > 0">
+    <div
+      class="course-item col-md-6"
+      style="margin-top: 15px"
+      *ngFor="let teacher of teachersList"
+    >
+      <div
+        class="cmn-wrap educator"
+        style="cursor: pointer"
+        [routerLink]="['/teacher-profile']"
+        [queryParams]="{ id: teacher.id, name: teacher.name }"
+      >
+        <div class="edu-left">
+          <img
+            *ngIf="teacher?.teacherImage !== null"
+            class="img-fluid w-100 h-75"
+            style="border-radius: 15px"
+            [attr.src]="teacher?.teacherImage"
+            alt=""
+          />
+          <img
+            *ngIf="teacher?.teacherImage == null"
+            class="img-fluid w-100 h-75"
+            style="border-radius: 15px"
+            [attr.src]="'../../../assets/squareProfile.png'"
+            alt=""
+          />
+        </div>
+        <div class="edu-right">
+          <h5 *ngIf="(teacher?.name + '').length <= 24">{{ teacher?.name }}</h5>
+          <h5 *ngIf="(teacher?.name + '').length > 24">
+            {{ teacher?.name | slice : 0 : 21 }}...
+          </h5>
+          <p
+            *ngIf="(teacher?.description + '').length <= 120"
+            class="short-description"
+          >
+            {{ teacher?.description }}
+          </p>
+          <p
+            *ngIf="(teacher?.description + '').length > 120"
+            class="short-description"
+          >
+            {{ teacher?.description | slice : 0 : 120 }}...
+          </p>
+          <a class="btn vew-profiles" tabindex="0"
+            >view profiles<i class="far fa-arrow-right"></i
+          ></a>
+  
+          <div class="details">
+            <div class="single">
+              <h6>
+                <img
+                  class="follower img-fluid"
+                  src="assets/img/h-1.png"
+                  alt=""
+                />{{ teacher?.experience ? teacher?.experience : "-" }}
+              </h6>
+              <p>Experience</p>
+            </div>
+            <div class="single">
+              <h6>
+                <img
+                  class="watch-time img-fluid"
+                  src="assets/img/star-5.png"
+                  alt=""
+                />{{
+                  teacher.weightedAverage == null
+                    ? "0.0"
+                    : teacher.weightedAverage
+                }}
+              </h6>
+              <p>Reviews</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <!-- <app-paginations *ngIf="config > 10" [totalItems]="config" [pageSize]="10" [maxPages]="maxPages"
+      (nextPage)="nextPage.emit($event)">
+  </app-paginations> -->
+  <app-table-paginator
+    [size]="10"
+    [totalElements]="config"
+    [pagenumber]="pageNumber"
+    (pageChange)="nextPage.emit($event)"
+    [disableSize]="true"
+  ></app-table-paginator>
+  

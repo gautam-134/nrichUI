@@ -1,0 +1,55 @@
+@import url("../../../../assets/css/bootstrap.min.css");
+@import url("../../../../assets/css/all.min.css");
+@import url("../../../../assets/css/slick.css");
+@import url("../../../../assets/css/nice-select.css");
+@import url("../../../../assets/css/main.css");
+@import url("../../../../assets/css/responsive.css");
+
+.textdec {
+    font-family: poppins;
+}
+
+
+.hero-g-wrapper {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2%;
+  }
+  .hero-main-img-wrap {
+    max-width: 560px;
+    margin-right: 0;
+    width: 100%;
+  }
+  .accordion-button {
+  align-self: start;
+  padding: 15px 45px 15px 15px;
+  }
+  
+  @media only screen and (max-width:1200px) {
+  
+    .hero-g-wrapper {
+        grid-template-columns: 54% 44%;
+    }
+    .hero-left-content .section-title h2 {
+        font-size: 32px;
+    }
+    .hero-left-content{
+        max-width: 100%;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .setPadding {
+      padding: 1% 1% !important;
+    }
+  }
+  
+  @media only screen and (max-width:600px) {
+  
+    .hero-g-wrapper {
+        grid-template-columns: 100%;
+    }
+    .hero-left-content .section-title h2 {
+        font-size: 27px;
+    }
+  }

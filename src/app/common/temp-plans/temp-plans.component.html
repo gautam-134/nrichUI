@@ -1,1 +1,202 @@
-<p>temp-plans works!</p>
+<div class="col-lg-12">
+    <div class="card cardnavbar">
+      <div class="user-tabing">
+        <ul class="nav nav-pills d-flex profile-feed-items p-0 m-0 round">
+          <!-- <li class="nav-item col-12 col-sm-2 p-0">
+              <a
+                class="nav-link active"
+                href="#pills-current-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-current-tab"
+                role="button"
+                >Current Plans</a
+              >
+            </li> -->
+          <li class="nav-item col-12 col-sm-3 p-0">
+            <a
+              class="nav-link active"
+              href="#pills-sale-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-sale-tab"
+              role="button"
+              >Available Plans</a
+            >
+          </li>
+          <li class="nav-item col-12 col-sm-3 p-0">
+            <a
+              class="nav-link"
+              href="#pills-collection-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-collection-tab"
+              role="button"
+              >Billing History</a
+            >
+          </li>
+          <li class="nav-item col-12 col-sm-3 p-0">
+            <a
+              class="nav-link"
+              href="#pills-addons-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-addons-tab"
+              role="button"
+              >Addons</a
+            >
+          </li>
+          <!-- <li class="nav-item col-12 col-sm-3 p-0">
+              <a
+                class="nav-link"
+                href="#pills-current-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-current-tab"
+                role="button"
+                >My Current Plan</a
+              >
+            </li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="tab-content forum-content">
+      <!-- <div class="tab-pane fade active show" id="pills-current-tab">
+          <app-purchased-plans></app-purchased-plans>
+        </div> -->
+      <div class="tab-pane fade active show" id="pills-sale-tab">
+        <div class="row">
+          <div class="col-sm-12">
+            <div
+              class="card position-relative inner-page-bg bg-primary"
+              style="height: 57.2px"
+            >
+              <div class="inner-page-title">
+                <h5 class="text-white">Explore Plans</h5>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-4"
+            *ngFor="let element of annualPlans; let i = index"
+          >
+            <div class="card">
+              <div
+                [ngClass]="
+                  i === 1
+                    ? 'card-body border text-center rounded bg-primary'
+                    : 'card-body border text-center rounded'
+                "
+              >
+                <h4>{{ element?.pricingPlanName | titlecase }}</h4>
+                <br />
+                <div class="d-flex align-items-center justify-content-center">
+                  <h1
+                    class="mb-4 display-3"
+                    style="font-size: calc(1.5rem + 2.5vw)"
+                  >
+                    &#8377;{{ element?.price }}
+                  </h1>
+                  <small class="text-muted">/ Year</small>
+                </div>
+                <br />
+                <ul
+                  class="line-height-4 mb-0"
+                  style="text-align: left; display: table-cell"
+                  style="
+                    overflow: auto;
+                    max-height: 220px;
+                    min-height: 220px;
+                    margin-top: -10%;
+                  "
+                >
+                  <li
+                    class="ul.b"
+                    style="text-align: left"
+                    *ngFor="let feature of element.features"
+                  >
+                    {{ feature?.featureDescription }}
+                  </li>
+                </ul>
+                <a
+                  style="width: 30%"
+                  (click)="purchase(element?.id, element?.price)"
+                  [ngClass]="
+                    i == 1
+                      ? 'btn btn-primary mt-5 nrichbtn'
+                      : 'btn btn-primary mt-5'
+                  "
+                  >Buy</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-collection-tab">
+        <app-user-transaction-history></app-user-transaction-history>
+      </div>
+      <div class="tab-pane fade" id="pills-addons-tab">
+        <div class="row">
+          <div class="col-sm-12">
+            <div
+              class="card position-relative inner-page-bg bg-primary"
+              style="height: 57.2px"
+            >
+              <div class="inner-page-title">
+                <h5 class="text-white">Addons</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" *ngFor="let element of addons; let i = index">
+            <div class="card">
+              <div
+                [ngClass]="
+                  i === 1
+                    ? 'card-body border text-center rounded bg-primary'
+                    : 'card-body border text-center rounded'
+                "
+              >
+                <h4>{{ element?.addOnPlanName | titlecase }}</h4>
+                <br />
+                <div class="d-flex align-items-center justify-content-center">
+                  <h1
+                    class="mb-4 display-3"
+                    style="font-size: calc(1.5rem + 2.5vw)"
+                  >
+                    &#8377;{{ element?.price }}
+                  </h1>
+                  <!-- <small class="text-muted">/ Year</small> -->
+                </div>
+                <br />
+                <ul
+                  class="line-height-4 mb-0"
+                  style="text-align: left; display: table-cell"
+                  style="
+                    overflow: auto;
+                    max-height: 220px;
+                    min-height: 220px;
+                    margin-top: -10%;
+                  "
+                >
+                  <li
+                    class="ul.b"
+                    style="text-align: left"
+                    *ngFor="let feature of element.features"
+                  >
+                    {{ feature?.featureDescription }}
+                  </li>
+                </ul>
+                <a
+                  style="width: 30%"
+                  (click)="purchaseAddon(element.id, element.price)"
+                  [ngClass]="
+                    i == 1
+                      ? 'btn btn-primary mt-5 nrichbtn'
+                      : 'btn btn-primary mt-5'
+                  "
+                  >Buy</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,261 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/all.min.css");
+@import url("../../../assets/css/slick.css");
+@import url("../../../assets/css/nice-select.css");
+@import url("../../../assets/css/main.css");
+@import url("../../../assets/css/responsive.css");
+
+.box-1 {
+  padding: 60px;
+  min-height: 250px;
+  background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+  border-radius: 20px;
+}
+.box-1-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 57.7778px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.box-1-text2 {
+  margin-top: -12px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26.6667px;
+  line-height: 38px;
+  text-align: center;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.digital-library-card {
+  background: white;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.ng {
+  background: rgba(0, 126, 242, 0.1);
+  border-radius: 22px;
+}
+
+.ng-img {
+  margin-bottom: -100px;
+  margin-top: -70px;
+  width: 100%;
+}
+
+.future_here_sec .phone_img {
+  width: 84%;
+  margin-top: 50px;
+}
+
+.sec-pd {
+  padding: 70px 0;
+}
+
+.digital-library-card {
+  box-shadow: 10px 10px 5px lightgray;
+  gap: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .ng-img {
+    height: 100%;
+    margin-top: 0px;
+    width: 100%;
+  }
+  .ng {
+    background: rgba(0, 126, 242, 0.1);
+    border-radius: 22px;
+    max-height: 100%;
+  }
+}
+
+.tu {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
+  color: #8491a5;
+}
+
+.b-t {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 63px;
+
+  color: #000000;
+}
+
+.ap2-t {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #4c535d;
+}
+
+.removeMargin {
+  margin-top: -100px !important;
+}
+
+.alignItems {
+  text-align: right !important;
+}
+
+.changeTop {
+  top: 13% !important;
+}
+
+@media screen and (max-width: 1040px) {
+  .changeTop {
+    top: 12.6% !important;
+  }
+}
+
+@media screen and (max-width: 977px) {
+  .changeTop {
+    top: 12.3% !important;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .changeTop {
+    top: 12% !important;
+  }
+}
+
+@media screen and (max-width: 869px) {
+  .changeTop {
+    top: 11.7% !important;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .changeTop {
+    top: 11.3% !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .changeTop {
+    top: 11% !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .changeTop {
+    top: 10.7% !important;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .changeTop {
+    top: 4.6% !important;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .changeTop {
+    top: 4.5% !important;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .changeTop {
+    top: 4.4% !important;
+  }
+}
+
+@media screen and (max-width: 579px) {
+  .changeTop {
+    top: 4.3% !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .changeTop {
+    top: 4.2% !important;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .changeTop {
+    top: 4.1% !important;
+  }
+}
+
+@media screen and (max-width: 505px) {
+  .changeTop {
+    top: 4% !important;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .changeTop {
+    top: 3.8% !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .changeTop {
+    top: 3.7% !important;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .changeTop {
+    top: 3.6% !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .changeTop {
+    top: 3.5% !important;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .changeTop {
+    top: 3.4% !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .alignItems {
+    text-align: left !important;
+  }
+  .removeMargin {
+    margin-top: 0px !important;
+  }
+
+  .future_here_sec,
+  .learn_grow_sec,
+  .be_leader_sec,
+  .world_window,
+  .social_contect_sec {
+    text-align: center;
+  }
+  .future_here_sec .phone_img {
+    width: 30%;
+  }
+  .learn_grow_sec .phone_img {
+    width: 55%;
+    margin-bottom: 20px;
+  }
+}

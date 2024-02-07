@@ -1,0 +1,104 @@
+@import url("../../../../assets/css/bootstrap.min.css");
+@import url("../../../../assets/css/all.min.css");
+@import url("../../../../assets/css/slick.css");
+@import url("../../../../assets/css/nice-select.css");
+@import url("../../../../assets/css/main.css");
+@import url("../../../../assets/css/responsive.css");
+
+.c-l {
+  float: left;
+  width: 70%;
+  padding: 10px;
+}
+.c-r {
+  float: right;
+  width: 30%;
+}
+.cblacktext {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+
+  color: #000000;
+}
+.cblacktext2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  /* or 189% */
+
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #4c535d;
+}
+.max-set {
+  max-height: 500px;
+}
+.set-img-card-common {
+  margin-top: -100px;
+  margin-bottom: 0px;
+}
+.set-play-btn {
+  width: 258.71px;
+  height: 80.87px;
+}
+.p-set {
+  padding: 80px;
+}
+.img-ac-com {
+  height: 750px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .cblacktext {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: #000000;
+  }
+  .max-set-c {
+    text-align: center;
+    align-items: center;
+  }
+  .cblacktext2 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 24px;
+    /* or 189% */
+
+    font-feature-settings: "salt" on, "liga" off;
+
+    color: #4c535d;
+  }
+
+  .set-img-card-common {
+    margin-top: 20px;
+  }
+  .set-play-btn {
+    width: 60.71px;
+    height: 20.87px;
+    margin-left: 10px;
+  }
+  .p-set {
+    padding: 0px;
+    align-items: center;
+    text-align: center;
+  }
+  .img-ac-com {
+    height: 350px;
+  }
+  .set-img-card-common {
+    margin-top: 0px !important;
+    text-align: center;
+  }
+}

@@ -1,1 +1,114 @@
-<p>institute-achievers-listing works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Achievers Listing</h4>
+          </div>
+          <button type="submit" (click)="addAchiever()" type="submit" style="background: white; color: #50B5FF"
+            class="btn btn-primary">
+            + Add Acheiver
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input class="form-control" #achieverSearch type="text"
+                        placeholder="Type in this field for quick filter" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+  
+              <!-- <div class="col-sm-12 col-md-6">
+                <div class="user-list-files d-flex justify-content-end">
+                  <a (click)="addAchiever()" class="chat-icon-delete btn bg-soft-primary">
+                    + Add Acheiver
+                  </a>
+                </div>
+              </div> -->
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Name <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('name')"></i></th>
+                  <th scope="col">Description <i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='description' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('description')"></i></th>
+                  <th scope="col" *ngIf="roleType =='SuperAdmin'">Institute Name <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='instituteName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('instituteName')"></i>
+                  </th>
+                  <th scope="col" *ngIf="roleType =='SuperAdmin'">Display Order <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='displayOrder' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('displayOrder')"></i></th>
+                  <th scope="col" *ngIf="roleType =='SuperAdmin'">Featured<i ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]=" typeOfShorting && type =='isFeatured' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                      (click)="short('isFeatured')"></i></th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="experts.length == 0">
+                  <td colspan="7">No Notifications Found</td>
+                </tr>
+                <tr *ngFor="let element of experts | short:type:typeOfShorting; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element.name }}
+                  </td>
+                  <td>
+                    {{ element?.description }}
+                  <td *ngIf="roleType =='SuperAdmin'">
+                    {{element?.instituteName}}
+                  </td>
+  
+                  <td *ngIf="roleType =='SuperAdmin'"><input type="text" (keypress)="numberOnly($event)" min="0"
+                      style="width: 55px;" #displayOrder
+                      (change)="changeDisplayOrder(displayOrder.value,element.idExpert)" [value]="element?.displayOrder">
+                  </td>
+                  <td *ngIf="roleType =='SuperAdmin'">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" [(ngModel)]="element.isFeatured"
+                        (change)="updateFeatured(element.idExpert)" type="checkbox" id="flexSwitchCheckChecked"
+                        [checked]="element.isFeatured">
+                      <label class="form-check-label" for="flexSwitchCheckChecked">{{ element.isFeatured ? "Enable" :
+                        "Disable"}}</label>
+                    </div>
+                  </td>
+                  <td>
+                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu" aria-label="Example home icon">
+                      menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Edit Achiever"
+                        (click)="editAchiever(element)">
+                        Edit Achiever Details
+                      </button>
+                      <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Delete Achiever"
+                        (click)="deleteAchiever(element.idExpert)">
+                        Delete Achiever
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

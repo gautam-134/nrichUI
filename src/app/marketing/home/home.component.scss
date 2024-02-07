@@ -1,0 +1,23 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/all.min.css");
+@import url("../../../assets/css/slick.css");
+@import url("../../../assets/css/nice-select.css");
+@import url("../../../assets/css/main.css");
+@import url("../../../assets/css/responsive.css");
+
+
+// .btn learn-more two{
+//     cursor: none;
+// }
+
+
+@media screen and (max-width: 767px){
+    .choose-g-wrapper{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 600px){
+    .choose-g-wrapper{
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,20 @@
+.setContent1 {
+    display: flex;
+    justify-content: left !important;
+  }
+  .setContent2 {
+    display: flex;
+    justify-content: end !important;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .setContent1 {
+      display: flex;
+      justify-content: center !important;
+    }
+    .setContent2 {
+      display: flex;
+      justify-content: center !important;
+    }
+  }
+  

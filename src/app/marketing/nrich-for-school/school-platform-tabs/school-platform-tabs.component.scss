@@ -1,0 +1,21 @@
+@import url("../../../../assets/css/bootstrap.min.css");
+@import url("../../../../assets/css/all.min.css");
+@import url("../../../../assets/css/slick.css");
+@import url("../../../../assets/css/nice-select.css");
+@import url("../../../../assets/css/main.css");
+@import url("../../../../assets/css/responsive.css");
+
+.docs-code-group .nav-link.active {
+    border-bottom: 2px solid #cf2f4c;
+}
+.docs-code-group .nav-link {
+    border: 0;
+    margin: 0 1rem;
+    padding: 0.5rem 0.25rem;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: .85em;
+    line-height: 1.4;
+    color: #ffffffe6;
+    font-weight: 600;
+}

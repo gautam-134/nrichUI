@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sms',
@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './sms.component.html',
   styleUrl: './sms.component.scss'
 })
-export class SmsComponent {
+export class SmsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

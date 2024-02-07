@@ -1,1 +1,25 @@
-<p>notification-details works!</p>
+<div class="notification-dialog">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3 text-center mt-2">
+          <img src="../../../../assets/images-marketing/bell.jpg" class="notification-image" alt="" />
+        </div>
+        <div class="col-12 col-sm-9 mt-2">
+          <div class="d-flex align-items-center h-100">
+            <div class="notification-content-wrapper">
+              <h4 class="notification-title" style="font-weight: 500;">{{ title }}</h4>
+              <div mat-dialog-content>
+                {{ notification }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 text-center mt-2">
+          <button mat-dialog-close class="btn btn-success btn-sm ok-button">
+            <b>OK</b>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

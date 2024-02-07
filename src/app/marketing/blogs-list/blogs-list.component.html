@@ -1,1 +1,149 @@
-<p>blogs-list works!</p>
+<main>
+    <div
+      class="teachers-area course-listing-area header-size-adjust gray-bg position-relative fix"
+    >
+      <img src="assets/img/gg-3.png" alt="" class="gg-3 position-absolute" />
+      <div class="container cs-padding">
+        <nav aria-label="breadcrumb" class="breadcrumb-wrapper">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a routerLink="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Blogs List</li>
+          </ol>
+        </nav>
+  
+        <div style="padding-bottom: 2%">
+          <h2 style="color: #000000"><b>Featured Articles</b></h2>
+        </div>
+        <div class="row">
+          <div style="position: relative">
+            <img
+              [src]="
+                blogsList[0].coverImagePath
+                  ? blogsList[0].coverImagePath
+                  : '../../../assets/images/Blogs_1.svg'
+              "
+              style="width: 100%; border-radius: 18px"
+              alt=""
+            />
+          </div>
+          <div style="position: absolute">
+            <div class="ins-element" style="width: 50%">
+              <div class="ins-el-inner">
+                <h5>{{ blogsList[0].subject }}</h5>
+                <p
+                  *ngIf="(blogsList[0]?.description + '').length <= 180"
+                  class="short-description"
+                >
+                  {{ blogsList[0].description | innerhtmltoplaintext }}
+                </p>
+                <p
+                  *ngIf="(blogsList[0]?.description + '').length > 180"
+                  class="short-description"
+                >
+                  {{
+                    blogsList[0].description
+                      | innerhtmltoplaintext
+                      | slice : 0 : 180
+                  }}...
+                </p>
+                <p>
+                  Author <br />
+                  <b>{{ blogsList[0].firstName }} {{ blogsList[0].lastName }}</b>
+                </p>
+                <a
+                  class="btn box-btn fill-white small round-60"
+                  [routerLink]="['/blog-details']"
+                  [queryParams]="{
+                    id: blogsList[0].idBlog,
+                    instituteId: this.id
+                  }"
+                  >View Blog</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row" #target style="margin-top: 40px;margin-bottom: 3%">
+          <div
+            class="col-lg-4"
+            style="margin-top: 20px"
+            *ngFor="let blog of blogsList | slice : 1"
+          >
+            <div class="course-item">
+              <div
+                class="card single-course"
+                [routerLink]="['/blog-details']"
+                [queryParams]="{ id: blog.idBlog }"
+              >
+                <div class="thumb-part position-relative">
+                  <img
+                    *ngIf="blog?.coverImagePath"
+                    [src]="blog?.coverImagePath"
+                    style="height: 100%; width: 100%"
+                    alt=""
+                  />
+                  <img
+                    *ngIf="!blog?.coverImagePath"
+                    src="assets/img/v-1.png"
+                    style="height: 100%; width: 100%"
+                    alt=""
+                  />
+                </div>
+                <div
+                  class="content-part"
+                  style="
+                    overflow: auto;
+                    max-height: fit-content;
+                    min-height: 185px;
+                  "
+                >
+                  <div class="middle-content">
+                    <div
+                      class="ttl-content"
+                      style="overflow: auto; max-height: 20px; min-height: 73px"
+                    >
+                      <h4>{{ blog.subject }}</h4>
+                    </div>
+                    <p
+                      *ngIf="(blog?.description + '').length <= 80"
+                      class="short-description"
+                    >
+                      {{ blog?.description | innerhtmltoplaintext }}
+                    </p>
+                    <p
+                      *ngIf="(blog?.description + '').length > 80"
+                      class="short-description"
+                    >
+                      {{
+                        blog?.description | innerhtmltoplaintext | slice : 0 : 80
+                      }}...
+                    </p>
+                  </div>
+  
+                  <div class="bottom-content" style="margin-top: -10%">
+                    <h5 class="author">
+                      <span class="d-block">Author</span>{{ blog.firstName }}
+                    </h5>
+                    <a class="know-more" tabindex="0"
+                      >Know More<i class="far fa-arrow-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-table-paginator
+          [size]="size"
+          [totalElements]="totalCount"
+          [pagenumber]="page"
+          (pageChange)="nextPage($event, target)"
+          [disableSize]="true"
+        ></app-table-paginator>
+      </div>
+    </div>
+  </main>
+  

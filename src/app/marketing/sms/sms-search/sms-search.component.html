@@ -1,0 +1,78 @@
+<div class="gfg" style="background: #f6fcff">
+    <img src="../../../assets/images-marketing/Rectangle 4301.png" width="100%" />
+    <div class="text-position text-center w-100" style="padding: 0% 5%">
+      <h2 style="font-size: 42px; padding-bottom: 1%" class="text-white">
+        Expand your
+        <span class="position-relative">
+          Horizon
+          <img
+            class="text-btm-line position-absolute"
+            src="assets/img/line-1.png"
+            alt=""
+        /></span>
+      </h2>
+      <p class="text-white" style="line-height: 25px">
+        Kickstart your Digital Campus in <b>3 minutes</b>
+      </p>
+      <p class="text-white" style="line-height: 25px">
+        Create your Account TODAY. <b>Free Trial No Credit Card</b>
+      </p>
+      <div class="row" style="padding-top: 3%">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4" style="padding: 0% 3%">
+          <form class="search position-relative">
+            <button class="btn box-btn fill-blue position-absolute">
+              SEARCH
+            </button>
+            <input
+              (keyup)="search($event)"
+              type="text"
+              placeholder="What Do You Want To Learn ?"
+            />
+            <ul
+              *ngIf="searchRes"
+              class="suggetions position-absolute global-search-dropdown-alignment"
+            >
+              <ng-container *ngFor="let element of searchRes | keyvalue">
+                <ol>
+                  <div class="d-flex justify-content-between">
+                    <b> {{ element.key | uppercase }}</b>
+                    <a
+                      [routerLink]="
+                        element.key.toString() == 'courses'
+                          ? '/course-list'
+                          : element.key.toString() == 'institutions'
+                          ? '/institute-list'
+                          : '/educator-list'
+                      "
+                      [queryParams]="
+                        element.key.toString() == 'courses'
+                          ? { search: 'allCourses', name: searchedText }
+                          : { name: searchedText }
+                      "
+                      >View All</a
+                    >
+                  </div>
+                  <li
+                    *ngFor="let res of element.value"
+                    (click)="redirect(res.type, res.id, res.name)"
+                  >
+                    <a> {{ res.name }}</a>
+                  </li>
+                </ol>
+              </ng-container>
+            </ul>
+          </form>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div>
+        <img
+          src="../../../../assets/images-marketing/Group 39377.svg"
+          class="img-fluid w-100"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+  

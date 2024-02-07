@@ -1,0 +1,88 @@
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .item:hover {
+    border: 1px solid #0d4c92;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .hide-on-hover {
+    display: none;
+  }
+  
+  .plan {
+    background-color: #eff5f5;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  .planDec {
+    color: #0d4c92;
+    font-weight: 500;
+  }
+  
+  .hide-display {
+    display: none;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .hide-display {
+      display: block;
+    }
+  }
+  .fontawesomeicon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .Bell::before {
+    font: var(--fa-font-solid);
+    content: " \f0f3";
+  }
+  
+  ::ng-deep .custom-style {
+    background-color: #50b5ff;
+    color: white;
+    border-radius: 20px !important;
+  }
+  
+  .search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button i {
+    color: #ffffff;
+    font-size: 18px;
+  }
+  
+  .header-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .search-input {
+    display: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

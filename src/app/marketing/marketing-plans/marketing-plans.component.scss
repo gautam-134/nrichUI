@@ -1,0 +1,278 @@
+@import url("../../../assets/css/bootstrap.min.css");
+@import url("../../../assets/css/all.min.css");
+@import url("../../../assets/css/slick.css");
+@import url("../../../assets/css/nice-select.css");
+@import url("../../../assets/css/main.css");
+@import url("../../../assets/css/responsive.css");
+
+.rotate-up {
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.title1 {
+  color: #1f1f1f;
+  font-weight: 500;
+  font-size: 20.5954px;
+  line-height: 31px;
+}
+
+.subTitle1 {
+  color: #6a6a6a;
+  font-weight: 400;
+  font-size: 14.212px;
+  line-height: 21px;
+}
+
+.price1 {
+  font-weight: 700;
+  font-size: 30.5002px;
+  line-height: 37px;
+}
+
+.discount1 {
+  font-weight: 700;
+  font-size: 11.4376px;
+  line-height: 14px;
+  color: #8491a5;
+}
+
+.button1 {
+  font-weight: 700;
+  font-size: 14.212px;
+  line-height: 17px;
+}
+
+.setPadding {
+  padding-top: 0% !important;
+}
+
+@media screen and (max-width: 772px) {
+  .setPadding {
+    padding-top: 3% !important;
+  }
+}
+
+.removePadding {
+  padding-left: 3% !important;
+}
+
+.setMargin {
+  margin-top: 0% !important;
+}
+
+.addBorder {
+  border-right: 2px solid #8491a5;
+  border-bottom: 0px;
+}
+
+@media screen and (max-width: 575px) {
+  .addBorder {
+    border-right: 0px;
+    border-bottom: 2px solid #8491a5;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .setMargin {
+    margin-top: 10% !important;
+  }
+  .removePadding {
+    padding-left: 0% !important;
+  }
+}
+
+
+.discountMargin {
+  margin-right: -2.3% !important;
+}
+
+@media screen and (max-width: 767px) {
+  .discountMargin {
+    margin-right: -2.3% !important;
+  }
+}
+
+
+.heading {
+  font-weight: 700;
+  font-size: 15.0383px;
+  line-height: 24px;
+}
+
+.subHeading {
+  font-weight: 400;
+  font-size: 12.7471px;
+  line-height: 173.9%;
+  color: #8491a5;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+
+
+//Teach-Online Slider css start
+.sldier_wrapper{
+  position: relative;
+  padding: 150px 0;
+}
+.sldier_wrapper:after {
+  position: absolute;
+  content: "";
+  width: 410px;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background: linear-gradient(111.03deg, rgba(255, 255, 255, 0.8) 0.07%, rgba(246, 252, 255, 0) 66.37%);
+}
+
+.sldier_wrapper:before {
+  position: absolute;
+  content: "";
+  width: 410px;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  background: linear-gradient(111.03deg, rgba(255, 255, 255, 0.8) 13.8%, rgba(246, 252, 255, 0) 80.1%);
+transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.sliderr_box {
+  background: #FFFFFF;
+  box-shadow: 3.87575px 3.87575px 19.3787px rgba(0, 0, 0, 0.06);
+  border-radius: 7.73891px;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+.sliderr_box .icon {
+  border-radius: 4.75556px;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+  width: 108.59px;
+  height: 100.66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.sliderr_box h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27.1302px;
+  color: #1F1F1F;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+  margin: 0;
+}
+.sliderr_box p {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4676px;
+  color: #4C535D;
+  transform: matrix(1, -0.04, 0, 1, 0, 0);
+}
+
+.rtl_slider .content{
+  text-align: left;
+}
+//Teach-Online Slider css end
+
+.section_heading h1{
+  font-weight: 700;
+  font-size: 35.929px;
+  line-height: 54px;
+  color: #1f1f1f;
+}
+.section_heading h1 span{
+  background: linear-gradient(94.38deg, #008CE4 -1.08%, #00AF9E 96.88%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.section_heading p{
+  font-weight: 400;
+  font-size: 21.9566px;
+  line-height: 32px;
+  text-align: center;
+  color: #545353;
+}
+
+
+.edutech_platform{
+  padding : 150px 0;
+  background: #f6fcff;
+} 
+.edutech_platform img{
+  max-width: 100%;
+}
+
+.edutech_platform .edutech_details h3{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 48px;
+  color: #000;
+}
+.edutech_platform .edutech_details p{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #8491A5;
+}
+.edutech_platform .edutech_details p span{
+  font-weight: 700;
+}
+
+.edutech_platform .row{
+  margin-bottom: 70px;
+}
+.edutech_platform .row:last-child{
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 767px) {
+  .sldier_wrapper{
+    padding: 150px 0 50px 0;
+  }
+  .edutech_platform{
+    padding : 70px 0;
+  } 
+
+  .platform_img, .edutech_details{
+    text-align: center;
+  }
+  .platform_img img{
+    width: 70%;
+  }
+  .edutech_platform .order-1{
+    order: 2 !important;
+  }
+  .edutech_platform .order-2{
+    order: 1 !important;
+  }
+
+  .sldier_wrapper:after,.sldier_wrapper:before  {
+    display: none;
+  }
+
+  .edutech_platform .edutech_details h3{
+    font-size: 26px;
+    line-height: 40px;
+  }
+  .edutech_platform .edutech_details p{
+    font-weight: 400;
+    font-size: 18px;
+  }
+  .edutech_platform .row{
+    margin-bottom: 50px;
+  }
+
+}

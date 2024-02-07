@@ -1,1 +1,187 @@
-<p>facebook-leads works!</p>
+<div *ngIf="!loading">
+    <div class="container" *ngIf="!user">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="signInWithFacebook()"
+      >
+        <i class="fa fa-facebook-square" aria-hidden="true"></i> Sign In With
+        Facebook
+      </button>
+    </div>
+  
+    <div class="row" style="align-items: center" *ngIf="user">
+      <div class="col-md-8">
+        <h5>Import Facebook Leads</h5>
+      </div>
+      <div class="col-md-4">
+        <div class="container1">
+          <img
+            alt="user"
+            width="20%"
+            height="20%"
+            loading="lazy"
+            class="img-fluid rounded-circle me-3"
+            [src]="user.photoUrl"
+          />
+          <h5>{{ user.firstName }} {{ user.lastName }}</h5>
+        </div>
+      </div>
+      <div class="col-12 mt-2">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Select Page</mat-label>
+          <mat-select (selectionChange)="fetchAds($event)">
+            <mat-optgroup>
+              <mat-form-field
+                style="width: 100% !important"
+                class="example-form-field"
+                appearance="legacy"
+              >
+                <mat-label>Search..</mat-label>
+                <mat-icon matSuffix>search</mat-icon>
+                <input matInput type="text" #searchPages />
+              </mat-form-field>
+            </mat-optgroup>
+            <ng-container
+              *ngFor="let page of myPages | filter : searchPages.value"
+            >
+              <mat-select-trigger *ngIf="page == null">
+                No Pages Found.
+              </mat-select-trigger>
+              <mat-option *ngIf="page" [value]="page">
+                {{ page?.name }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12 mt-1" *ngIf="adds.length != 0">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Select Ads</mat-label>
+          <mat-select (selectionChange)="fetchLeads($event)">
+            <mat-optgroup>
+              <mat-form-field
+                style="width: 100% !important"
+                class="example-form-field"
+                appearance="legacy"
+              >
+                <mat-label>Search..</mat-label>
+                <mat-icon matSuffix>search</mat-icon>
+                <input matInput type="text" #addSearch />
+              </mat-form-field>
+            </mat-optgroup>
+            <ng-container *ngFor="let add of adds | filter : addSearch.value">
+              <mat-select-trigger *ngIf="add == null">
+                No Ads Found.
+              </mat-select-trigger>
+              <mat-option *ngIf="add" [value]="add">
+                {{ add?.name }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12 mt-1" *ngIf="formId">
+        <mat-form-field appearance="fill" style="width: 100%">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Start date"
+              [(ngModel)]="startDate"
+            />
+            <input
+              matEndDate
+              placeholder="End date"
+              [(ngModel)]="endDate"
+              (ngModelChange)="onDateSelection()"
+            />
+          </mat-date-range-input>
+          <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 mt-1" *ngIf="!subLoading && endDate">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Total Leads</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ leads.length }}</td>
+              <td>
+                <button
+                  type="button"
+                  (click)="importLeads()"
+                  [disabled]="leads.length == 0"
+                  class="btn btn-primary btn-sm"
+                >
+                  Import Leads
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12 mt-1" *ngIf="response">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Saved Leads</th>
+              <th scope="col">Failed Leads(Duplicate Leads)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="badge bg-success">{{ response.success }}</span>
+              </td>
+              <td>
+                <span class="badge bg-danger">{{ response.failed }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12 text-center" *ngIf="subLoading">
+        <div class="col-12 text-center">
+          <img
+            src="../assets/images/page-img/page-load-loader.gif"
+            alt="loader"
+            style="height: 72px"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- loader -->
+  <div *ngIf="loading">
+    <div class="col-12 text-center">
+      <img
+        src="../assets/images/page-img/page-load-loader.gif"
+        alt="loader"
+        style="height: 72px"
+        loading="lazy"
+      />
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button
+      type="button"
+      *ngIf="user"
+      (click)="signOut()"
+      class="btn btn-primary"
+    >
+      <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+    </button>
+    <button type="button" class="btn btn-danger ms-2" (click)="closeDialog()">
+      Close
+    </button>
+  </div>
+  
+  

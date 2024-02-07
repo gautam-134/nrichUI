@@ -1,1 +1,118 @@
-<p>add-field works!</p>
+<div class="row mb-3">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex bg-primary">
+          <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Add Field</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-sm-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  placeholder="Enter Field Name"
+                  formControlName="fieldName"
+                />
+                <div
+                  *ngIf="
+                    (submitted && controls['fieldName']?.invalid) ||
+                    controls['fieldName']?.touched
+                  "
+                >
+                  <div
+                    *ngIf="controls['fieldName']?.errors?.['required']"
+                    class="text-danger"
+                  >
+                    Field Name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <input type="checkbox" formControlName="required" />
+                Required
+              </div>
+              <div class="col-sm-3">
+                <button class="btn btn-primary" (click)="addField()">
+                  <span>{{ isUpdate ? "Update" : "+ Add" }}</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex bg-primary">
+          <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Additional Fields</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="table">
+            <table class="files-lists table table-striped">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Field Name</th>
+                  <th>Required</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="additionalFields.length <= 0">
+                  <td colspan="4">No additional fields found!</td>
+                </tr>
+                <tr *ngFor="let element of additionalFields; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>{{ element?.fieldName }}</td>
+                  <td>
+                    {{ element?.required ? "Yes" : "No" }}
+                  </td>
+  
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                      >menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        data-toggle="tooltip"
+                        title="Map To class"
+                        (click)="editField(element)"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        data-toggle="tooltip"
+                        title="Map To class"
+                        (click)="deleteField(element)"
+                      >
+                        Delete
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

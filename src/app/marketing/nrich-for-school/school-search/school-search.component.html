@@ -1,0 +1,96 @@
+<div class="section-cover" id="hero-area" style="background-color: white">
+    <div class="hero-area fix position-relative">
+      <img src="assets/img/g-1.svg" alt="" class="g-1 position-absolute" />
+      <img src="assets/img/g-2.svg" alt="" class="g-2 position-absolute" />
+      <div class="container cs-padding">
+        <div class="hero-g-wrapper">
+          <div class="hero-left-content">
+            <div class="section-title">
+              <h2 style="font-size: 38px">
+                Get your school <br />
+                <span class="title-pole">Future &nbsp;</span>
+                <span class="title-pole position-relative"
+                  >Ready
+                  <img
+                    style="bottom: 0px"
+                    class="text-btm-line position-absolute"
+                    src="assets/img/line-1.png"
+                    alt=""
+                /></span>
+              </h2>
+            </div>
+            <p>
+              Elevate your SCHOOL Digitally Powerful.<br />
+              Access our Technology.
+              <span style="color: #007ef2"><b>Free Trial No Credit Card</b></span>
+            </p>
+            <!-- <form class="search position-relative">
+              <button class="btn box-btn fill-blue position-absolute">
+                SEARCH
+              </button>
+              <input
+                (keyup)="search($event)"
+                type="text"
+                placeholder="What Do You Want To Learn ?"
+              />
+              <ul
+                *ngIf="searchRes"
+                class="suggetions position-absolute global-search-dropdown-alignment"
+              >
+                <ng-container *ngFor="let element of searchRes | keyvalue">
+                  <ol>
+                    <div class="d-flex justify-content-between">
+                      <b> {{ element.key | uppercase }}</b>
+                      <a
+                        [routerLink]="
+                          element.key.toString() == 'courses'
+                            ? '/course-list'
+                            : element.key.toString() == 'institutions'
+                            ? '/institute-list'
+                            : '/educator-list'
+                        "
+                        [queryParams]="
+                          element.key.toString() == 'courses'
+                            ? { search: 'allCourses', name: searchedText }
+                            : { name: searchedText }
+                        "
+                        >View All</a
+                      >
+                    </div>
+                    <li
+                      *ngFor="let res of element.value"
+                      (click)="redirect(res.type, res.id, res.name)"
+                    >
+                      <a> {{ res.name }}</a>
+                    </li>
+                  </ol>
+                </ng-container>
+              </ul>
+            </form> -->
+            <!-- <div class="learners-wrap d-flex align-items-center">
+                          <div class="learners-faces d-flex align-items-center">
+                              <img src="assets/img/st-1.png" alt="" />
+                              <img src="assets/img/st-2.png" alt="" />
+                              <img src="assets/img/st-3.png" alt="" />
+                              <img src="assets/img/st-4.png" alt="" />
+                          </div>
+                          <p style="font-size: 14px">
+                              <strong class="text-gradient">2,147+ Active</strong> Tutors
+                              Across &amp; The Globe
+                          </p>
+                      </div> -->
+          </div>
+          <div class="hero-right-content">
+            <div class="hero-main-img-wrap position-relative">
+              <img
+                class="hero-main-img img-fluid w-100 z-index-1 setMargin"
+                src="../../../../assets/images-marketing/nrich-for-school.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

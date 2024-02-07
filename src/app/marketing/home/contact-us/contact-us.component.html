@@ -1,1 +1,105 @@
-<p>contact-us works!</p>
+<form [formGroup]="form">
+    <div class="cta-area position-relative z-index-2">
+      <div class="container type-2 cs-padding">
+        <div class="cta-g-wrapper">
+          <h2>Book a Demo Class</h2>
+          <fieldset>
+            <legend>Full Name</legend>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="name"
+              placeholder="John Smith"
+              id="fullname"
+              onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 46 || event.charCode == 32"
+              autocomplete="off"
+            />
+            <div *ngIf="isSubmit && controls['name']?.invalid">
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['name']?.errors?.['required']"
+              >
+                Full name is required.
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Contact Number</legend>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="mobileNumber"
+              placeholder="Contact Number"
+              id="number"
+              minlength="10"
+              maxlength="10"
+              autocomplete="off"
+              (keydown)="onlyNumeric($event)"
+            />
+            <div *ngIf="isSubmit && controls['mobileNumber']?.invalid">
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['mobileNumber']?.errors?.['required']"
+              >
+                Contact number is required.
+              </div>
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['mobileNumber']?.errors?.['minlength'] || controls['mobileNumber']?.errors?.['maxlength']"
+              >
+                Contact number is invalid.
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Courses</legend>
+            <input
+              class="form-control"
+              type="text"
+              list="codes"
+              formControlName="id"
+              placeholder="Search and select course"
+              [(ngModel)]="courseName"
+              (input)="getCourses($event)"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete
+              autoActiveFirstOption
+              #auto="matAutocomplete"
+              (optionSelected)="updateCourseId()"
+            >
+              <mat-option
+                *ngFor="let option of courses"
+                [value]="option.courseName"
+              >
+                {{ option.courseName }}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="isSubmit && controls['id']?.invalid">
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['id']?.errors?.['required']"
+              >
+                Course name is required.
+              </div>
+            </div>
+            <div
+              class="text-danger p-absoulte"
+              *ngIf="isSubmit && inqueryForm.id == undefined"
+            >
+              Course name is required.
+            </div>
+          </fieldset>
+          <div class="action h-100 w-100">
+            <button
+              (click)="submit()"
+              class="btn btn-medium_round d-flex align-items-center justify-content-center text-uppercase h-100 w-100"
+            >
+              <span class="text-gradient">Book Now</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
