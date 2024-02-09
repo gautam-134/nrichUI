@@ -1,1 +1,116 @@
-<p>coupon-code works!</p>
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-header d-flex justify-content-between bg-primary">
+             <div class="header-title">
+                <h4 class="card-title text-white">Coupon Code</h4>
+             </div>
+             <button type="submit" (click)="addcoupen()" type="submit" style="background: white; color: #50B5FF"
+                class="btn btn-primary">
+                + Add Coupon
+             </button>
+          </div>
+          <div class="card-body">
+             <div class="table-editable">
+                <div class="row justify-content-between d-flex">
+                   <div class="col-sm-12 col-md-6">
+                      <div id="user_list_datatable_info" class="dataTables_filter">
+                         <form class="me-3 position-relative">
+                            <div class="form-group mb-0">
+                               <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                                  placeholder="Search....">
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                   <!-- <div class="col-sm-12 col-md-6">
+                      <div class="user-list-files d-flex justify-content-end">
+ 
+                         <a (click)="addcoupen()" class="chat-icon-delete btn bg-soft-primary" style="margin-bottom: 1%;">
+                            + Add Coupon
+                         </a>
+                      </div>
+                   </div> -->
+                </div>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+ 
+                         <th scope="col">No.</th>
+                         <th scope="col">Type <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='type' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('type')"></i>
+                         </th>
+                         <th scope="col">Discount <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='discount' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('discount')"></i>
+                         </th>
+ 
+                         <th scope="col">No. Of Coupons <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='noOfCoupens' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('noOfCoupens')"></i>
+                         </th>
+                         <th scope="col">Start Date <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='startDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('startDate')"></i>
+                         </th>
+                         <th scope="col">End Date <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='endDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('endDate')"></i>
+                         </th>
+                         <th scope="col">Coupon For <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='couponFor' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('couponFor')"></i>
+                         </th>
+                         <th scope="col">Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr *ngFor="let  element of  couponlist  | short:type:typeOfShorting
+                      ;  let i = index">
+                         <td>
+                            {{i+1}}
+                         </td>
+                         <td>
+                            {{ element.type | titlecase }}
+                         </td>
+                         <td>
+                            {{ element.discountType === 'percentage' ? element.discount + '%' : '₹ ' + element.discount }}
+                         </td>
+                         <td>
+                            {{ element.noOfCoupens }}
+                         </td>
+                         <td>
+                            {{ element.startDate | date }}
+                         </td>
+                         <td> {{ element.endDate | date }}</td>
+                         <td> {{ element.couponFor | titlecase }}</td>
+ 
+                         <td>
+                            <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                               aria-label="Example home icon">menu
+                            </mat-icon>
+                            <mat-menu #menu="matMenu">
+ 
+                               <button mat-menu-item data-toggle="tooltip" title="Edit class Mapping"
+                                  (click)="edit(element)">
+                                  Edit
+                               </button>
+ 
+                               <button mat-menu-item style="cursor: pointer" (click)="view(element?.id)"
+                                  data-toggle="tooltip" title="Map material">
+                                  View Coupon
+                               </button>
+                            </mat-menu>
+                         </td>
+                      </tr>
+                   </tbody>
+                </table>
+                <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                   (changeSize)="changeSize($event)">
+                </app-table-paginator>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

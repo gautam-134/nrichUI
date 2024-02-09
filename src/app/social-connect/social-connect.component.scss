@@ -1,0 +1,19 @@
+.setWidth {
+    width: 79%;
+  }
+  @media only screen and (max-width: 1183px) {
+    .setWidth {
+      width: 74%;
+    }
+  }
+  @media only screen and (max-width: 1100px) {
+    .setWidth {
+      width: 72%;
+    }
+  }
+  @media only screen and (max-width: 1070px) {
+    .setWidth {
+      width: 100%;
+    }
+  }
+  

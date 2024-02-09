@@ -1,1 +1,403 @@
-<p>quiz-question works!</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between bg-primary nabvar">
+      <div class="header-title">
+        <h4 class="card-title text-white">
+          {{ isUpdate ? "Update Quiz" : "Create Quiz" }}
+        </h4>
+      </div>
+      <div>
+        <button (click)="addSection()" class="btn" style="background: white; color: #50b5ff">
+          + Add Section
+        </button>
+      </div>
+    </div>
+    <div class="card-body setquiz">
+      <form [formGroup]="form">
+        <div class="row">
+          <!-- <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label" for="exampleInputText1">Teacher Name<span
+                                  class="text-danger">*</span></label>
+                          <input type="text" class="form-control" id="exampleInputText1" formControlName="teacherName"
+                              placeholder="Enter Name">
+                          <div *ngIf="(isSubmit && controls['teacherName'].invalid)">
+                              <div *ngIf="controls['teacherName'].errors?.['required']" class="text-danger">
+                                  Teacher Name is required
+                              </div>
+                          </div>
+                      </div>
+                  </div> -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleInputEmail3">Exam Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Exam Name"
+                formControlName="name" />
+              <div *ngIf="isSubmit && controls['name']?.invalid">
+                <div *ngIf="controls['name'].errors?.['required']" class="text-danger">
+                  Exam Name is required
+                </div>
+  
+              </div>
+              <div *ngIf="
+                      controls['name'].invalid &&
+                      controls['name'].value
+                    ">
+                <div *ngIf="controls['name'].errors?.['validateCharctersInput']" class="text-danger">
+                  Exam name must not contain more than 25 characters.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleInputEmail3">Marks<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="exampleInputEmail3" maxlength="4"
+                (keypress)="numberOnly($event)" placeholder="Enter Marks" formControlName="marks" />
+              <div *ngIf="isSubmit && controls['marks']?.invalid">
+                <div *ngIf="controls['marks'].errors?.['required']" class="text-danger">
+                  Marks are required
+                </div>
+                <div class="text-danger" *ngIf="controls['marks'].errors?.['validateDigitInput']">
+                  Input value must not contain more than 4 Digits.
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleFormControlSelect1">OverAll Negative Marking<span
+                  class="text-danger">*</span></label>
+              <select class="form-select" id="exampleFormControlSelect1" formControlName="negtiveMarking" #overAllNegMarks
+                (change)="isNegtiveMarksForQuiz(overAllNegMarks.value)">
+                <option selected="" disabled="">
+                  Select OverAll Negative Marking
+                </option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+              <div *ngIf="isSubmit && controls['negtiveMarking']?.invalid">
+                <div *ngIf="controls['negtiveMarking'].errors?.['required']" class="text-danger">
+                  Negative Marking is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="negativeMarksForQuiz">
+            <div class="form-group">
+              <label class="form-label" for="exampleFormControlSelect1">Negative Marks % per question<span
+                  class="text-danger">*</span></label>
+              <input type="number" class="form-control" id="exampleInputEmail3" placeholder="Enter Percentage"
+                formControlName="negtiveMarks" />
+              <div *ngIf="isSubmit && controls['negtiveMarks']?.invalid">
+                <div *ngIf="controls['negtiveMarks'].errors?.['required']" class="text-danger">
+                  Negative Marks Percentage is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleInputDuration">Exam Duration<span class="text-danger">*</span></label>
+              <div class="d-flex">
+                <select class="form-select" id="exampleInputDurationHours" formControlName="hour">
+                  <option value="" disabled selected>Select Hours</option>
+                  <option value="0">0 Hour</option>
+                  <option *ngFor="let hourOption of hourOptions" [value]="hourOption">{{ hourOption }} hour{{ hourOption !== 1 ? 's' : '' }}</option>
+                </select>
+                <select class="form-select ms-2" id="exampleInputDurationMinutes" formControlName="minutes">
+                  <option value="" disabled selected>Select Minutes</option>
+                  <option *ngFor="let minuteOption of minuteOptions" [value]="minuteOption">{{ minuteOption }} minute{{ minuteOption !== 1 ? 's' : '' }}</option>
+                </select>
+              </div>
+              <div *ngIf="isSubmit && controls['hour']?.invalid">
+                <div *ngIf="controls['hour'].errors?.['required']" class="text-danger">
+                  Exam Duration (Hours) is required
+                </div>
+              </div>
+              <div *ngIf="isSubmit && controls['minutes']?.invalid">
+                <div *ngIf="controls['minutes'].errors?.['required']" class="text-danger">
+                  Exam Duration (Minutes) is required
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          
+          
+          
+          <!-- <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleInputNumber1">Exam Duration(Hour)<span
+                  class="text-danger">*</span></label>
+              <input type="text" (keypress)="numberOnly($event)" class="form-control" id="exampleInputNumber1" formControlName="hour" />
+              <div *ngIf="isSubmit && controls['hour']?.invalid">
+                <div *ngIf="controls['hour'].errors?.['required']" class="text-danger">
+                  Exam Duration(Hour) is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label"  for="exampleInputNumber1">Exam Duration(Minutes)<span
+                  class="text-danger">*</span></label>
+              <input type="text" (keypress)="numberOnly($event)" #data (ngModelChange)="maximumMinutesCheck(data.value)" maxlength="2" class="form-control" id="exampleInputNumber1" formControlName="minutes" />
+              <div *ngIf="isSubmit && controls['minutes']?.invalid">
+                <div *ngIf="controls['minutes'].errors?.['required']" class="text-danger">
+                  Exam Duration(Minutes) is required
+                </div>
+              </div>
+              <div *ngIf="minutesError" >
+                <div class="alert-custom alert-light-danger alert-dismissible">
+                  <div class="text-danger">
+                    Minutes should not be greater than 59 .
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleInputdatetime">Start Date<span class="text-danger">*</span></label>
+              <input type="datetime-local" [min]="now" #startDate (click)="showPicker(true)" class="form-control" id="exampleInputdatetime"
+                formControlName="startTime" />
+              <div *ngIf="isSubmit && controls['startTime']?.invalid">
+                <div *ngIf="controls['startTime'].errors?.['required']" class="text-danger">
+                  Start Date & Time is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="exampleInputdatetime">End Date<span class="text-danger">*</span></label>
+              <input type="datetime-local" [min]="now" #endDate (click)="showPicker(false)"  class="form-control" id="exampleInputdatetime"
+                formControlName="endTime" />
+              <div *ngIf="isSubmit && controls['endTime']?.invalid">
+                <div *ngIf="controls['endTime'].errors?.['required']" class="text-danger">
+                  End Date & Time is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div formArrayName="sections">
+          <div class="card" *ngFor="let section of getSections(); let i = index"
+            style="box-shadow: none; border: 2px solid gainsboro">
+            <div class="card-header d-flex justify-content-between">
+              <div class="header-title">
+                <h4 class="card-title">Section {{ i + 1 }}</h4>
+              </div>
+              <div>
+                <button type="button" class="btn btn-outline-danger rounded-pill mb-1" (click)="removeSection(i)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Remove
+                  Section
+                </button>
+              </div>
+            </div>
+            <div class="card-body" [formGroupName]="i">
+              <div class="form-group">
+                <label class="form-label" for="exampleInputText1">Section Title
+                </label>
+                <input type="text" formControlName="sectionTitle" class="form-control" id="exampleInputText1"
+                  placeholder="Enter Section Title" />
+                <div *ngIf="isSubmit && section.get('sectionTitle')?.invalid">
+                  <div *ngIf="section.get('sectionTitle')?.errors?.['required']" class="text-danger">
+                    Section Title is required.
+                  </div>
+                 
+                </div>
+                <div *ngIf="
+                section.get('sectionTitle')?.invalid &&
+                section.get('sectionTitle')?.value
+              ">
+              <div *ngIf="section.get('sectionTitle')?.errors?.['validateCharctersInput']" class="text-danger">
+                Section Title must not contain more than 25 characters.
+              </div>
+        </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="exampleInputText1">Display Order</label>
+                <input type="text" formControlName="displayOrder" class="form-control" id="exampleInputText1"
+                  placeholder="Enter Display Order" />
+                <div *ngIf="isSubmit && section.get('displayOrder')?.invalid">
+                  <div *ngIf="section.get('displayOrder')?.errors?.['required']" class="text-danger">
+                    Display Order is required.
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                <label class="form-label" for="exampleInputText1">Section Description</label>
+                <angular-editor [config]="editorConfig" formControlName="sectionDescription">
+                </angular-editor>
+                <div class="mt-2" *ngIf="isSubmit && section.get('sectionDescription')?.invalid">
+                  <div *ngIf="section.get('sectionDescription')?.errors?.['required']" class="text-danger">
+                    Section Description is required.
+                  </div>
+                </div>
+              </div> -->
+              <button type="button" class="btn btn-secondary rounded-pill mb-1" (click)="addQuestion(section)">
+                + Add Question
+              </button>
+              <div class="card" formArrayName="questions" *ngFor="let question of getQuestions(section); let j = index"
+                style="box-shadow: none">
+                <div class="card-body" [formGroupName]="j" [id]="'question' + i + j">
+                  <div class="card-header d-flex justify-content-between">
+                    <div>Question {{ j + 1 }}</div>
+                    <div>
+                      <button type="button" (click)="removeQuestion(section, j)"
+                        class="btn btn-outline-danger rounded-pill mb-1">
+                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Remove
+                        Question
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Select File</label>
+                    <input type="file" [id]="'ques' + i + j" #fileSelect (change)="onQuestionFileChange($event, i, j)"
+                      class="form-control" />
+                  </div>
+                  <table class="table" *ngIf="question?.value?.questionImage">
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{ question?.value?.questionImage }}</th>
+                        <th>
+                          <button class="btn btn-primary" (click)="preview(question?.value?.questionImage)">
+                            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;View
+                          </button>
+                        </th>
+                        <th>
+                          <button class="btn btn-secondary" (click)="
+                              removeQuestionImage(
+                                question?.value?.questionImage,
+                                i,
+                                j
+                              )
+                            ">
+                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Remove
+                          </button>
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="form-group">
+                    <label class="form-label" for="exampleInputphone">Question Title</label>
+                    <angular-editor [config]="editorConfig" formControlName="questionTitle">
+                    </angular-editor>
+                    <div *ngIf="isSubmit && question.get('questionTitle')?.invalid">
+                      <div *ngIf="question.get('questionTitle')?.errors?.['required']" class="text-danger">
+                        Question Title is required.
+                      </div>
+                      <!-- <div *ngIf="question.get('questionTitle')?.errors?.['maxlength']"
+                                              class="text-danger">
+                                              Question title must not contain more than 151 characters.
+                                          </div> -->
+                      <!-- <div *ngIf="question.get('questionTitle')?.errors?.['validateQuestionCharctersInput']"
+                                          class="text-danger">
+                                          Question title must not contain more than 65 characters.
+                                      </div> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="exampleInputEmail3">Marks</label>
+                    <input type="text" formControlName="marks" class="form-control" id="exampleInputEmail3" maxlength="4"
+                    (keypress)="numberOnly($event)" placeholder="Enter Marks" />
+                    <div *ngIf="isSubmit && question.get('marks')?.invalid">
+                      <div *ngIf="question.get('marks')?.errors?.['required']" class="text-danger">
+                        Marks required.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="exampleInputText1">Display Order</label>
+                    <input type="number" formControlName="displayOrder" class="form-control" id="exampleInputText1"
+                      placeholder="Enter Display Order" />
+                    <div *ngIf="isSubmit && question.get('displayOrder')?.invalid">
+                      <div *ngIf="question.get('displayOrder')?.errors?.['required']" class="text-danger">
+                        Display order is required.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" formArrayName="answers" style="box-shadow: none">
+                    <div class="card-body">
+                      <div>
+                        <button type="button" (click)="addOption(question)" class="btn btn-warning rounded-pill mb-1">
+                          Add Option
+                        </button>
+                      </div>
+                      <div class="mt-2" [formGroupName]="k" *ngFor="let option of getanswers(question); let k = index">
+                        <div class="form-group row">
+                          <label class="control-label text-center col-sm-1 align-self-center mb-0">
+                            <input [id]="'option' + k" [name]="'right' + j + k + i" [checked]="option?.value?.right"
+                              value="true" (change)="updateOptionValue(question, k)" class="form-check-input"
+                              type="radio" /></label>
+                          <div class="col-sm-11">
+                            <input type="text" [id]="'optionTitle' + i + j + k" formControlName="optionTitle"
+                              class="form-control" id="email" [appDisableControls]="
+                                option?.value?.optionType === 'image'
+                                  ? true
+                                  : false
+                              " placeholder="Enter your option" />
+                            <div *ngIf="
+                                isSubmit && option.get('optionTitle')?.invalid
+                              ">
+                              <div *ngIf="option.get('optionTitle')?.errors?.['required']" class="text-danger">
+                                Option is required.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="upload-btn-wrapper">
+                            <button type="button" class="btn btn-soft-secondary rounded-pill">
+                              <i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Upload File
+                            </button>
+                            <input type="file" [id]="'opt' + i + j + k" #answerfile
+                              (change)="onOptionFileChange($event, i, j, k)" name="myfile" />
+                          </div>
+                          <div class="upload-btn-wrapper">
+                            <button type="button" (click)="removeOption(question, k)"
+                              class="btn btn-soft-danger rounded-pill" style="margin-left: 5px">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                              Remove Option
+                            </button>
+                          </div>
+                          <div class="upload-btn-wrapper" *ngIf="option?.value?.optionImage">
+                            <button style="margin-left: 5px" type="button" (click)="preview(option?.value?.optionImage)"
+                              class="btn btn-soft-primary rounded-pill">
+                              <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Preview
+                              {{ option?.value?.optionImage }}&nbsp;
+                            </button>
+                          </div>
+                          <div class="upload-btn-wrapper" *ngIf="option?.value?.optionImage">
+                            <button style="margin-left: 5px" (click)="
+                                removeOptionImage(
+                                  option?.value?.optionImage,
+                                  i,
+                                  j,
+                                  k
+                                )
+                              " type="button" class="btn btn-soft-danger rounded-pill">
+                              <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;
+                              Remove File
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary active" (click)="submit()" data-bs-toggle="button"
+          aria-pressed="true">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>

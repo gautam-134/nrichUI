@@ -1,1 +1,43 @@
-<p>report-abuse-on-post works!</p>
+<div class="card">
+    <div class="card-header d-flex bg-primary">
+        <div class="header-title text-center" style="margin-right: auto">
+            <h4 class="card-title text-white">Report</h4>
+        </div>
+        <button type="button" class="close-button" mat-button aria-label="Close" (click)="closeDialog()"></button>
+    </div>
+</div>
+<div class="container">
+    <hr>
+    <h6>Why are you reporting this post?</h6>
+    <form style="margin-top: 7%;" [formGroup]="form">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="reason" type="radio" value="Inappropriate content" name="reason" id="reason1">
+                    <label class="form-check-label" value="Inappropriate content" for="reason1">Inappropriate content</label>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="reason" value="Spam or advertisement" type="radio" name="reason" id="reason2">
+                    <label class="form-check-label" for="reason2">Spam or advertisement</label>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="reason" value="Harassment or bullying" type="radio" name="reason" id="reason3">
+                    <label class="form-check-label" for="reason3">Harassment or bullying</label>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="reason" value="False information" type="radio" name="reason" id="reason4">
+                    <label class="form-check-label" for="reason4">False information</label>
+                </div>
+            </li>
+        </ul>
+    
+        <button type="submit" class="btn btn-primary mt-4" (click)="submitReport()">Submit Report</button>
+    </form>
+    
+</div>

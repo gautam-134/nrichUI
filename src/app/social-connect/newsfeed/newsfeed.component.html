@@ -1,1 +1,15 @@
-<p>newsfeed works!</p>
+<div class="row">
+    <div class="col-lg-8 order-2 order-lg-1">
+      <app-create-post
+        [userProfile]="userProfile"
+        (refreshNewsfeed)="refreshNewsfeed($event)"
+      ></app-create-post>
+      <app-newsfeed-posts
+        [posts]="posts"
+        [postsCount]="postsCount"
+        (refreshNewsfeed)="refreshNewsfeed($event)"
+      ></app-newsfeed-posts>
+    </div>
+    <div app-stories class="col-lg-4 order-1 order-lg-2"></div>
+  </div>
+  

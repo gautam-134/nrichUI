@@ -1,0 +1,14 @@
+.err {
+    color: red;
+  }
+  
+  .setPadding {
+    padding: 0% 15%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .setPadding {
+      padding: 0% 3%;
+    }
+  }
+  

@@ -1,1 +1,173 @@
-<p>chat-room works!</p>
+<header
+  class="d-flex justify-content-between align-items-center bg-white pt-3 ps-3 pe-3 pb-3"
+  style="width: 100%"
+>
+  <div class="d-flex align-items-center">
+    <div class="d-block">
+      <i
+        class="fa fa-arrow-left"
+        aria-hidden="true"
+        (click)="location.back()"
+        style="
+          cursor: pointer;
+          font-size: 19px;
+          color: #50b5ff;
+          margin-right: 10px;
+          margin-top: 5px;
+        "
+      ></i>
+    </div>
+    <div class="avatar chat-user-profile m-0 me-3">
+      <img
+        [src]="
+          chatRoomMessagesResponse.recieverProfilePic
+            ? chatRoomMessagesResponse.recieverProfilePic
+            : 'assets/images/profile.png'
+        "
+        (error)="handleImageError($event)"
+        alt="avatar"
+        class="avatar-50 rounded"
+        loading="lazy"
+      />
+      <div class="iq-profile-badge bg-danger"></div>
+    </div>
+    <h5 class="mb-0">
+      {{ chatRoomMessagesResponse.recieverName }}
+      <p class="text-primary" *ngIf="isRecieverFocusIn">
+        Typing <span class="typing-dots">...</span>
+      </p>
+    </h5>
+    <small class="text-capitalize"></small>
+  </div>
+</header>
+<div
+  class="pt-4 pe-3 perfect-scrollbar ps ps--active-y chat-padding"
+  data-mdb-perfect-scrollbar="true"
+  style="position: relative"
+  id="container"
+>
+  <div class="col-sm-12 text-center" *ngIf="showLoader">
+    <img
+      src="../assets/images/page-img/page-load-loader.gif"
+      alt="loader"
+      style="height: 100px"
+      loading="lazy"
+    />
+  </div>
+  <div class="col-sm-12 text-center" *ngIf="messageList.length == 0">
+    No messages here yet...
+  </div>
+  <ng-container *ngFor="let message of messageList; let i = index">
+    <div
+      class="d-flex flex-row justify-content-start"
+      *ngIf="message.profileId != myProfileId"
+      style="padding-left: 22px"
+    >
+      <img
+        [src]="
+          chatRoomMessagesResponse.recieverProfilePic
+            ? chatRoomMessagesResponse.recieverProfilePic
+            : 'assets/images/profile.png'
+        "
+        (error)="handleImageError($event)"
+        alt="avatar 1"
+        style="width: 45px; height: 100%"
+      />
+      <div>
+        <p
+          class="small p-2 ms-3 mb-1 rounded-3 text-wrap"
+          style="background-color: #f5f6f7"
+          [innerHTML]="message.message"
+        ></p>
+        <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
+          {{ message.date | date : "short" }}
+        </p>
+      </div>
+    </div>
+
+    <div
+      (mouseenter)="hoverId = message.id"
+      (mouseleave)="hoverId = undefined"
+      class="d-flex flex-row justify-content-end"
+      *ngIf="message.profileId == myProfileId"
+      (mouseenter)="hoverId = message.id"
+      (mouseleave)="hoverId = undefined"
+    >
+      <div>
+        <p
+          class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary text-wrap"
+          [innerHTML]="message.message"
+        ></p>
+        <div class="d-flex">
+          <p class="small rounded-3 text-muted">
+            {{ message.date | date : "short" }}
+          </p>
+        </div>
+      </div>
+      <img
+        *ngIf="hoverId != message.id"
+        [src]="
+          chatRoomMessagesResponse.senderProfilePic
+            ? chatRoomMessagesResponse.senderProfilePic
+            : 'assets/images/profile.png'
+        "
+        (error)="handleImageError($event)"
+        alt="avatar 1"
+        style="width: 45px; height: 100%"
+      />
+      <button
+        *ngIf="hoverId == message.id"
+        class="btn btn-danger"
+        style="width: 45px; height: 46px; border-radius: 38px"
+        (click)="deleteMessage(message.id, i)"
+      >
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ng-container>
+  <div
+    class="row textarea-width textarea-padding"
+    style="position: fixed; bottom: 60px; background-color: #f8f9fa"
+  >
+    <div
+      class="col-12 w-100 text-center"
+      *ngIf="chatRoomMessagesResponse.chatDisabled"
+    >
+      You and {{ chatRoomMessagesResponse.recieverName }} are no longer frineds.
+    </div>
+    <div class="col-12 d-flex" *ngIf="!chatRoomMessagesResponse.chatDisabled">
+      <img
+        [src]="
+          chatRoomMessagesResponse.senderProfilePic
+            ? chatRoomMessagesResponse.senderProfilePic
+            : 'assets/images/profile.png'
+        "
+        (error)="handleImageError($event)"
+        alt="avatar 3"
+        style="width: 40px; height: 100%"
+      />
+      <textarea
+        rows="1"
+        style="width: 80% !important"
+        class="form-control ms-2 me-2"
+        id="exampleFormControlInput2"
+        #inputBox
+        [(ngModel)]="message"
+        placeholder="Type message"
+        (keydown.enter)="onEnterKeyPress($event)"
+        (focus)="onFocus($event)"
+        (blur)="onBlur($event)"
+      ></textarea>
+      <app-emoji-picker
+        (onEmojiSelection)="onEmojiSelection($event)"
+      ></app-emoji-picker>
+      <button
+        class="btn btn-primary ms-2"
+        style="width: 40px"
+        (click)="onSendMessage()"
+      >
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>

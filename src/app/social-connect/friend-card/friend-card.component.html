@@ -1,1 +1,70 @@
-<p>friend-card works!</p>
+<div class="card card-block card-stretch card-height">
+    <div class="card-body profile-page p-0">
+      <div class="profile-header-image">
+        <div class="cover-container">
+          <img
+            [src]="
+              friend.coverImage
+                ? friend.coverImage
+                : '../assets/images/page-img/profile-bg2.jpg'
+            "
+            alt="profile-bg"
+            class="rounded img-fluid w-100"
+            loading="lazy"
+          />
+        </div>
+        <div class="profile-info">
+          <div class="user-detail" style="padding: 2%">
+            <div
+              class="d-flex flex-wrap justify-content-between align-items-start"
+            >
+              <div class="profile-detail d-flex" style="padding-bottom: 12px">
+                <div class="profile-img pe-4" style="margin-top: -3.375rem">
+                  <img
+                    [src]="
+                      friend.profileImage
+                        ? friend.profileImage
+                        : './assets/images/user/05.jpg'
+                    "
+                    alt="profile-img"
+                    loading="lazy"
+                    class="avatar-130 img-fluid"
+                  />
+                </div>
+                <div class="user-data-block mt-md-0 mt-2">
+                  <h4>
+                    <a
+                      routerLink="../profile"
+                      [queryParams]="{ id: friend.id }"
+                      >{{ friend.name }}</a
+                    >
+                  </h4>
+                  <h6>@designer</h6>
+                  <p class="mb-2 mb-md-0">
+                    Lorem Ipsum is simply dummy text of the
+                  </p>
+                </div>
+              </div>
+              <div class="d-flext">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="friend.status == 'REQUESTED'"
+                  (click)="sendFriendRequest(friend)"
+                >
+                  {{
+                    friend.status == "REQUESTED"
+                      ? "Request Sent"
+                      : friend.status == "ACCEPTED"
+                      ? "Following"
+                      : "Follow"
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

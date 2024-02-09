@@ -1,1 +1,48 @@
-<p>upcoming-birthday works!</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <div class="header-title">
+        <h4 class="card-title">Upcoming Birthday</h4>
+      </div>
+    </div>
+    <div
+      class="card-body"
+      style="overflow: scroll; max-height: 198px"
+      (scroll)="onScroll($event)"
+    >
+      <ul class="media-story list-inline m-0 p-0">
+        <li *ngIf="upcomingBirthdaysList.length == 0">No upcoming birthday</li>
+        <li
+          class="d-flex mb-4 align-items-center"
+          *ngFor="let birthday of upcomingBirthdaysList"
+        >
+          <img
+            [src]="
+              birthday?.profileImage
+                ? birthday?.profileImage
+                : '../assets/images/profile.png'
+            "
+            (error)="handleImageError($event)"
+            alt="profile-img"
+            class="rounded-circle img-fluid"
+            loading="lazy"
+          />
+          <div class="stories-data ms-3">
+            <h5>{{ birthday?.name }}</h5>
+            <p class="mb-0">{{ birthday?.birthdayStatus }}</p>
+          </div>
+        </li>
+      </ul>
+      <div
+        *ngIf="upcomingBirthdaysList.length != totalUpcomingBirthdays"
+        class="col-12 text-center"
+      >
+        <img
+          src="assets/images/page-img/page-load-loader.gif"
+          alt="loader"
+          style="height: 72px"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+  

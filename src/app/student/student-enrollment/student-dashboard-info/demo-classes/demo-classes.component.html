@@ -1,1 +1,190 @@
-<p>demo-classes works!</p>
+<mat-tab-group mat-align-tabs="vertical">
+    <mat-tab label="Live Demo Classes">
+       <div class="card">
+ 
+          <div class="card-body">
+             <div id="table" class="table-editable">
+               <div class="col-sm-12 col-md-6">
+                  <div id="user_list_datatable_info" class="dataTables_filter">
+                     <form class="me-3 position-relative">
+                      
+                     </form>
+                  </div>
+               </div>
+               <div class="col-sm-12 col-md-6"></div>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+                        <th>Class Title <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('name')"></i></th>
+                        <th>Teacher Name <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='teacher_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('teacher_name')"></i></th>
+                        <th>Start Time <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='start_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('start_date')"></i></th>
+                        <th>End Time <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='end_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('end_date')"></i></th>
+  
+                         <th>Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                     <tr *ngIf="liveClasses?.length==0">
+                        <td colspan="4">No Record Found.</td>
+                     </tr>
+                      <tr class="" *ngFor="let live of liveClasses | short:type:typeOfShorting
+                      ">
+                         <td>{{ live?.name }}</td>
+                         <td>{{ live?.teacher_name }}</td>
+                         <td> {{ live?.start_date | date: "h:mm a" }} </td>
+                         <td> {{ live?.end_date | date: "h:mm a" }} </td>
+ 
+ 
+                         <td>
+                            <span class="table-remove"><button type="button"
+                                  class="btn btn-danger btn-rounded btn-sm my-0" (click)="joinClass(live.id)">Join</button></span>
+                         </td>
+                      </tr>
+ 
+                   </tbody>
+                </table>
+             </div>
+             <div class="col-md-12" *ngIf="liveClasses.length > 0">
+               <div class="d-flex justify-content-end">
+                  <nav aria-label="...">
+                     <ul class="pagination">
+                        <li class="page-item"><span class="page-link bg-primary">
+                              <select class="form-select-sm" style="padding-top: 0; padding-bottom:0" [(ngModel)]="size"
+                                 (change)="onChange()">
+                                 <option value="5">5</option>
+                                 <option value="10">10</option>
+                                 <option value="15">15</option>
+                                 <option value="20">20</option>
+                              </select>
+                           </span>
+                        </li>
+                        <li class="page-item ">
+                           <button class="page-link" (click)="previous()" [disabled]="page <= 0">Previous</button>
+                        </li>
+                        <li [ngClass]="page==0? 'active':''" (click)="page = 0 ; onChange()" class="page-item">
+                           <button class="page-link">1</button>
+                        </li>
+                        <li *ngIf=" totalCount > size" [ngClass]="page==1? 'active':''" (click)="page = 1 ; onChange()" class="page-item">
+                           <button class="page-link">2</button>
+                        </li>
+                        <li *ngIf="totalCount > 3*size" [ngClass]="page==2? 'active':''" (click)="page = 2 ; onChange()" class="page-item">
+                           <button class="page-link">3</button>
+                        </li>
+                        <li *ngIf="page >= 3" [ngClass]="page>=3? 'active':''" class="page-item">
+                           <button class="page-link">{{page + 1}}</button>
+                        </li>
+               
+                        <li class="page-item">
+                           <button class="page-link" (click)="onTableDataChange()"
+                              [disabled]="(((page + 1) * size) >= totalCount)">Next</button>
+                        </li>
+                     </ul>
+     
+                  </nav>
+               </div>
+            </div>
+          </div>
+       </div>
+    </mat-tab>
+    <mat-tab label="Future Demo Classes">
+       <div class="card">
+ 
+          <div class="card-body">
+             <div id="table" class="table-editable">
+               <div class="col-sm-12 col-md-6">
+                  <div id="user_list_datatable_info" class="dataTables_filter">
+                     <form class="me-3 position-relative">
+                        <div class="form-group mb-0">
+                           <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                              placeholder="Search....">
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="col-sm-12 col-md-6"></div>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+                        <th>Class Title <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('name')"></i></th>
+                        <th>Teacher Name <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='teacher_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('teacher_name')"></i></th>
+                        <th>Start Time <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='start_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('start_date')"></i></th>
+                        <th>End Time <i ng-click="typeOfShorting:!typeOfShorting"
+                           [ngClass]=" typeOfShorting && type =='end_date' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                           (click)="short('end_date')"></i></th>
+  
+                    
+                      </tr>
+                   </thead>
+                   <tbody>
+                     <tr *ngIf="futureClasses?.length==0">
+                        <td colspan="4">No Record Found.</td>
+                     </tr>
+                      <tr class="" *ngFor="let element of futureClasses | short:type:typeOfShorting
+                      ">
+                         <td>{{ element?.name }}</td>
+                         <td>{{ element?.teacher_name }}</td>
+                         <td> {{ element?.start_date | date: "h:mm a" }} </td>
+                         <td> {{ element?.end_date | date: "h:mm a" }} </td>
+
+                      </tr>
+ 
+                   </tbody>
+                </table>
+             </div>
+             <div class="col-md-12" *ngIf="futureClasses.length > 0">
+               <div class="d-flex justify-content-end">
+                  <nav aria-label="...">
+                     <ul class="pagination">
+                        <li class="page-item"><span class="page-link bg-primary">
+                              <select class="form-select-sm" style="padding-top: 0; padding-bottom:0" [(ngModel)]="size"
+                                 (change)="onChange()">
+                                 <option value="5">5</option>
+                                 <option value="10">10</option>
+                                 <option value="15">15</option>
+                                 <option value="20">20</option>
+                              </select>
+                           </span>
+                        </li>
+                        <li class="page-item ">
+                           <button class="page-link" (click)="previous()" [disabled]="page <= 0">Previous</button>
+                        </li>
+                        <li [ngClass]="page==0? 'active':''" (click)="page = 0 ; onChange()" class="page-item">
+                           <button class="page-link">1</button>
+                        </li>
+                        <li *ngIf=" totalCountOfFuture > size" [ngClass]="page==1? 'active':''" (click)="page = 1 ; onChange()" class="page-item">
+                           <button class="page-link">2</button>
+                        </li>
+                        <li *ngIf="totalCountOfFuture > 3*size" [ngClass]="page==2? 'active':''" (click)="page = 2 ; onChange()" class="page-item">
+                           <button class="page-link">3</button>
+                        </li>
+                        <li *ngIf="page >= 3" [ngClass]="page>=3? 'active':''" class="page-item">
+                           <button class="page-link">{{page + 1}}</button>
+                        </li>
+                   
+                        <li class="page-item">
+                           <button class="page-link" (click)="onTableDataChange()"
+                              [disabled]="(((page + 1) * size) >= totalCountOfFuture)">Next</button>
+                        </li>
+                     </ul>
+                    
+                  </nav>
+               </div>
+            </div>
+          </div>
+       </div>
+    </mat-tab>
+ </mat-tab-group>

@@ -1,1 +1,91 @@
-<p>teacher-profile-highlight works!</p>
+<div class="helper-div position-relative">
+    <div class="cmn-box z-index-1">
+      <h3 class="tertiary-title medium text-start">Teacher Highlights</h3>
+      <ul class="hightlight-list">
+        <table>
+          <tr>
+            <th style="width: 45%; padding: 1.5% 0%">
+              <img src="assets/img/h-1.png" alt="" />&nbsp;&nbsp;<span
+                >Courses :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%; max-width: 210px; word-wrap: break-word">
+              {{ teacherDetails.courseCount }}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 45%; padding: 1.5% 0%">
+              <img src="assets/img/h-5.png" alt="" />&nbsp;&nbsp;<span
+                >Experience :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%; max-width: 210px; word-wrap: break-word">
+              {{ teacherDetails.experience }}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 45%; padding: 1.5% 0%">
+              <img src="assets/img/h-3.png" alt="" />&nbsp;&nbsp;<span
+                >Contact no. :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%; max-width: 210px; word-wrap: break-word">
+              {{ teacherDetails.mobileNumber }}
+            </td>
+          </tr>
+          <tr>
+            <th style="width: 45%; padding: 1.5% 0%">
+              <img src="assets/img/h-4.png" alt="" />&nbsp;&nbsp;<span
+                >Email :</span
+              >
+            </th>
+            <td style="padding: 1.5% 0%; max-width: 210px; word-wrap: break-word">
+              {{ teacherDetails.email }}
+            </td>
+          </tr>
+  
+          <tr>
+            <th style="width: 45%; padding: 1.5% 0%">
+              <img src="assets/img/h-1.png" />&nbsp;&nbsp;<span>Follow On :</span>
+            </th>
+            <td style="padding: 1.5% 0%; max-width: 210px; word-wrap: break-word">
+              <a
+                style="color: #007ef2"
+                *ngIf="teacherDetails.facebookPage"
+                href="{{ teacherDetails.facebookPage }}"
+                target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a
+                *ngIf="teacherDetails.instaPage"
+                style="color: #007ef2"
+                href="{{ teacherDetails.instaPage }}"
+                target="_blank"
+                ><i class="fab fa-instagram"></i> </a
+              >&nbsp;&nbsp;&nbsp;&nbsp;
+              <a
+                href="{{ teacherDetails.linkedInPage }}"
+                target="_blank"
+                *ngIf="teacherDetails.linkedInPage"
+                style="color: #007ef2"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a
+                href="{{ teacherDetails.youtubePage }}"
+                target="_blank"
+                *ngIf="teacherDetails.youtubePage"
+                style="color: #007ef2"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </td>
+          </tr>
+        </table>
+      </ul>
+  
+      <!-- <a href="#" class="btn box-btn border-style-medium blue w-100"><i
+                  class="far fa-plus"></i>Follow</a> -->
+    </div>
+  </div>
+  

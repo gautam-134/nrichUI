@@ -1,1 +1,107 @@
-<p>add-faqs works!</p>
+<h1 mat-dialog-title>Create FAQ</h1>
+<div mat-dialog-content>
+    <div class="card card-custom gutter-b">
+
+        <div class="card-body">
+            <div style="width: 100%" class="scroll-custom-table">
+                <form [formGroup]="FaqForm">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Frequently Asked Question<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="Frequently Asked Question"
+                                    formControlName="question" />
+                                <div *ngIf="submitted && form['question']?.invalid">
+                                    <div class="text-danger" *ngIf="form['question']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Answer<span class="text-danger">*</span></label>
+                                <textarea class="form-control" placeholder="" formControlName="answer"></textarea>
+                                <div *ngIf="submitted && form['answer']?.invalid">
+                                    <div class="text-danger" *ngIf="form['answer']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Display Order<span class="text-danger">*</span></label>
+                                <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                                    placeholder="Enter display Order" formControlName="displayOrder" />
+                                <div *ngIf="submitted && form['displayOrder']?.invalid">
+                                    <div class="text-danger" *ngIf="form['displayOrder']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>FAQ Type<span class="text-danger">*</span></label>
+                                <select class="form-control" formControlName="faqType">
+                                    <option value="">Select FAQ Type</option>
+                                    <option value="Subscription">Subscription</option>
+                                    <option value="ContactUs">Contact Us FAQ</option>
+                                    <option value="Home">Home FAQ</option>
+                                    <option value="InstituteProfile">Institute Profile FAQ</option>
+                                    <option value="Institute">Nrich For Institute FAQ</option>
+                                    <option value="Benefits">Benefits FAQ</option>
+                                    <option value="Social">Social Connect FAQ</option>
+                                    <option value="NrichWebsite">Nrich Website FAQ</option>
+                                    <option value="School">Nrich For School FAQ</option>
+                                    <option value="DigitalLibrary">Digital Library FAQ</option>
+                                    <option value="Meet">Nrich Meet FAQ</option>
+                                </select>
+                                <ng-container *ngIf="submitted && form['faqType'].invalid">
+                                    <div class="text-danger">
+                                        <div class="alert-text" *ngIf="form['faqType']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <div class="radio-inline">
+                                    <input id="active" type="radio" class="custom-control-input" value="true"
+                                        name="active" formControlName="active">
+                                    <label class="form-label text-dark" for="male">&nbsp;Active</label>
+                                    &nbsp;&nbsp;
+                                    <input id="inactive" type="radio" class="custom-control-input" value="false"
+                                        name="active" formControlName="active">
+                                    <label class="form-label text-dark" for="male">&nbsp;Inactive</label>
+                                </div>
+                                <span class="form-text text-muted">Do you want to show this on frequently Asked
+                                    Questions?</span>
+                                <div *ngIf="submitted && form['active']?.invalid">
+                                    <div class="text-danger" *ngIf="form['active']?.errors?.['required']">
+                                        Above Field Is Required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button type="reset" class="btn btn-primary active" style="margin-right: 20px;" (click)="onSubmit()">
+        Submit
+    </button>
+
+    <button type="reset" class="btn btn-secondary active" mat-button mat-dialog-close>
+        Cancel
+    </button>
+</div>

@@ -1,1 +1,73 @@
-<p>stories works!</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <div class="header-title">
+        <h4 class="card-title">Events</h4>
+      </div>
+      <div
+        *ngIf="events.length != 0"
+        class="card-header-toolbar d-flex align-items-center"
+      >
+        <div class="dropdown">
+          <div
+            class="dropdown-toggle"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            role="button"
+          >
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <a
+              class="dropdown-item d-flex align-items-center"
+              (click)="viewEvents()"
+              ><span class="material-symbols-outlined me-2 md-18">
+                visibility </span
+              >View All</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" style="max-height: 182px; overflow: scroll">
+      <ul class="media-story list-inline m-0 p-0">
+        <li *ngIf="events.length == 0">No upcoming event</li>
+        <li *ngFor="let event of events" class="d-flex mb-2 align-items-center">
+          <img
+            [src]="
+              event.profileImage
+                ? event.profileImage
+                : 'assets/images/profile.png'
+            "
+            (error)="handleImageError($event)"
+            alt="story-img"
+            class="rounded-circle img-fluid"
+            loading="lazy"
+          />
+          <div class="stories-data ms-3" style="cursor: pointer;" (click)="viewEvent(event.id)">
+            <h5>{{ event.name }}</h5>
+            <h6>{{ event.postText | truncate:20 }}</h6>
+            <p class="mb-0">
+              {{
+                this.timeService.calculateDaysAgo(event.createdDate) == 0
+                  ? this.timeService.calculateHoursAgo(event.createdDate) == 0
+                    ? this.timeService.calculateMinutesAgo(event.createdDate) == 0
+                      ? "Just Now"
+                      : this.timeService.calculateMinutesAgo(event.createdDate) +
+                        " minutes ago"
+                    : this.timeService.calculateHoursAgo(event.createdDate) +
+                      " hours ago"
+                  : this.timeService.calculateDaysAgo(event.createdDate) +
+                    " days ago"
+              }}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <app-upcoming-birthday></app-upcoming-birthday>
+  

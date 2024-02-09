@@ -1,1 +1,324 @@
-<p>teacher-profile works!</p>
+<main>
+    <div class="teachers-area gray-bg position-relative">
+      <img src="assets/img/gg-3.png" alt="" class="gg-3 position-absolute" />
+      <div class="container cs-padding">
+        <div class="one-third-g-wrapper">
+          <div class="one-third-left">
+            <div class="gap-38">
+              <div class="teacher-short-info-wrap">
+                <div class="theader-thumb">
+                  <img
+                    class="img-fluid w-100"
+                    *ngIf="teacherDetails?.teacherImage !== null"
+                    [src]="teacherDetails.teacherImage"
+                    alt=""
+                  />
+                  <img
+                    class="img-fluid w-100"
+                    *ngIf="teacherDetails?.teacherImage == null"
+                    [src]="'../../../assets/images/profile.png'"
+                    alt=""
+                  />
+                </div>
+                <div class="teacher-short-info">
+                  <h2 class="teacher-name" style="margin-bottom: 15px">
+                    <span class="desination d-block">Instructor</span>
+                    {{ teacherDetails.name }}
+                  </h2>
+                  <div class="badge-showcase d-flex align-items-center">
+                    <div
+                      style="
+                        background-color: rgba(0, 126, 242, 0.1);
+                        border-radius: 5px;
+                      "
+                    >
+                      <span
+                        *ngIf="(teacherDetails.institutesNames + '').length <= 2"
+                        style="
+                          padding: 5px;
+                          color: #007ef2;
+                          font-weight: 700;
+                          font-size: 14px;
+                          line-height: 21px;
+                        "
+                      >
+                        {{ teacherDetails.institutesNames }}
+                      </span>
+                      <span
+                        *ngIf="(teacherDetails.institutesNames + '').length > 2"
+                        style="
+                          padding: 5px;
+                          color: #007ef2;
+                          font-weight: 700;
+                          font-size: 14px;
+                          line-height: 21px;
+                        "
+                      >
+                        {{ teacherDetails.institutesNames | slice : 0 : 2 }}...
+                      </span>
+                    </div>
+                  </div>
+  
+                  <div class="info-rw">
+                    <div class="details plc-2" style="margin-right: 0px">
+                      <div class="single">
+                        <h6>
+                          <img
+                            class="follower img-fluid"
+                            src="assets/img/h-1.png"
+                            alt=""
+                          />{{
+                            teacherDetails.experience
+                              ? teacherDetails.experience
+                              : "-"
+                          }}
+                        </h6>
+                        <p>Experience</p>
+                      </div>
+                      <div class="single">
+                        <h6>
+                          <img
+                            class="watch-time img-fluid"
+                            src="assets/img/star-5.png"
+                            alt=""
+                          />{{
+                            teacherDetails.weightedAverage == null
+                              ? "0.0"
+                              : teacherDetails.weightedAverage
+                          }}
+                        </h6>
+                        <p>Reviews</p>
+                      </div>
+                      <div class="single">
+                        <a
+                          class="btn box-btn border-style-medium blue"
+                          (click)="scroll(target)"
+                          >View Courses</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="gap-38">
+              <div class="bio">
+                <h3 class="tertiary-title text-start">About Me</h3>
+                <p appscrollablediv heightinpx="126px">
+                  {{ teacherDetails.description }}
+                </p>
+  
+                <div class="experties">
+                  <button style="cursor: default"
+                    *ngFor="let tag of teacherDetails.tags; let i = index"
+                    [ngClass]="{
+                      '': (i < 4 ? i : i % 4) == 0,
+                      blue: (i < 4 ? i : i % 4) == 1,
+                      red: (i < 4 ? i : i % 4) == 2,
+                      yellow: (i < 4 ? i : i % 4) == 3
+                    }"
+                  >
+                    {{ tag }}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="gap-38">
+              <div class="one-third-blk">
+                <div class="flex-title">
+                  <h3 class="tertiary-title m-0">My Methodology</h3>
+                  <a
+                    (click)="scroll(target)"
+                    class="btn box-btn border-style-small blue"
+                    >Book A Demo</a
+                  >
+                </div>
+  
+                <p>
+                  Hello students! I am a self-driven, motivated entrepreneur with
+                  a proven track record of success with extraordinary
+                  achievements.
+                </p>
+  
+                <div class="video position-relative" *ngIf="teacherDetails">
+                  <iframe
+                    [src]="teacherDetails.youtubePage | safe"
+                    frameborder="0"
+                    width="100%"
+                    height="315"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
+                    *ngIf="teacherDetails.youtubePage"
+                    [ngStyle]="{
+                      display: teacherDetails.youtubePage ? 'block' : 'none'
+                    }"
+                  ></iframe>
+                  <video
+                    controls
+                    controlsList="nodownload"
+                    oncontextmenu="return false;"
+                    width="100%"
+                    *ngIf="
+                      !teacherDetails.youtubePage &&
+                      teacherDetails.teacherTeasorVideoPath
+                    "
+                  >
+                    <source
+                      [src]="teacherDetails.teacherTeasorVideoPath"
+                      type=""
+                    />
+                  </video>
+                  <video
+                    controls
+                    controlsList="nodownload"
+                    oncontextmenu="return false;"
+                    width="100%"
+                    *ngIf="
+                      !teacherDetails.youtubePage &&
+                      !teacherDetails.teacherTeasorVideoPath
+                    "
+                  >
+                    <source
+                      src="https://nrichvideo.s3.ap-south-1.amazonaws.com/bydefaultteacher.mp4"
+                      type=""
+                    />
+                  </video>
+                  <!-- <a
+                    [href]="teacherDetails.teacherTeasorVideoPath"
+                    class="play-video position-absolute top-50 start-50"
+                    ><i class="fas fa-play"></i
+                  ></a> -->
+                </div>
+              </div>
+            </div>
+  
+            <div class="course-blk type-2">
+              <h5>
+                Still Confused About <br />
+                What To Do ?
+              </h5>
+              <a
+                class="btn box-btn fill-blue small"
+                [routerLink]="
+                  authService.isLoggin() ? '/' : '/login'
+                "
+                >GRAB A FREE DEMO</a
+              >
+              <!-- <a  class="btn box-btn fill-blue small" (click)="review()">Reviews</a> -->
+            </div>
+          </div>
+          <div class="one-third-right">
+            <div class="helper-div position-relative">
+              <img
+                src="assets/img/move-1.png"
+                alt=""
+                class="position-absolute move-1"
+              />
+              <app-inquiry-form
+                [type]="'teacher'"
+                [courses]="teachercourselist"
+              ></app-inquiry-form>
+            </div>
+            <app-teacher-profile-highlight
+              [teacherDetails]="teacherDetails"
+            ></app-teacher-profile-highlight>
+  
+            <div class="row"></div>
+            <div class="flex-title" style="margin-bottom: 0px">
+              <h6 class="tertiary-title">Reviews</h6>
+              <a
+                *ngIf="isLogin"
+                class="btn box-btn border-style-small blue"
+                (click)="openDialog()"
+                >Write Review</a
+              >
+              <a
+                *ngIf="!isLogin"
+                class="btn box-btn border-style-small blue"
+                routerLink="/login"
+                >Write Review</a
+              >
+            </div>
+            <app-review-slider
+              [reviewAndRatings]="teacherReviewlist"
+              [reviewFrom]="'teacher'"
+            ></app-review-slider>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./instructor-area -->
+  
+    <div #target class="section-cover" id="course-area">
+      <div
+        *ngIf="teachercourselist.length > 0"
+        class="teachers-course-area gray-bg position-relative"
+      >
+        <div class="container cs-padding">
+          <h2 class="secondary-title text-start mb-1">
+            More From {{ teacherDetails.name }}
+          </h2>
+          <app-course-slider [courses]="teachercourselist"></app-course-slider>
+        </div>
+      </div>
+      <!-- ./teachers-course-area -->
+    </div>
+  
+    <div class="section-cover" id="apply-area">
+      <div class="ins-area fix bg-white">
+        <div class="container type-2 cs-padding">
+          <div class="row ins-row-type-three">
+            <div class="col-md-6 mt-2 ins-el-box position-relative">
+              <img
+                class="img-fluid position-absolute bottom-0 ins-t-1"
+                src="assets/img/ins-t-1.png"
+                alt=""
+              />
+              <div class="ins-element blue">
+                <div class="ins-el-inner">
+                  <h5>Become An Instructor</h5>
+                  <p>
+                    Promote your teaching skills & publish your<br /><b
+                      >profile in our Directory</b
+                    >
+                  </p>
+                  <a
+                    [routerLink]="['/connect-with-learning']"
+                    class="btn box-btn fill-white small round-60"
+                    ><i class="far fa-plus-circle"></i>Apply Now</a
+                  >
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-6 mt-2 ins-el-box position-relative">
+              <img
+                class="img-fluid position-absolute bottom-0 ins-t-1 two"
+                src="assets/img/ins-t-2.png"
+                alt=""
+              />
+              <div class="ins-element green">
+                <div class="ins-el-inner">
+                  <h5>Register Your Institute</h5>
+                  <p>
+                    Advertise your Institute in our Marketplace and<br /><b
+                      >get more Students</b
+                    >
+                  </p>
+                  <a
+                    [routerLink]="['/login']"
+                    class="btn box-btn fill-white small round-60"
+                    ><i class="far fa-plus-circle"></i>Register Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./ins-area -->
+    </div>
+  </main>
+  

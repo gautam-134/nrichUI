@@ -1,0 +1,55 @@
+.selected-card {
+    background-color: #e6e6e6; /* Change this to your desired highlight color */
+}
+
+//* Add this CSS to your component's CSS file or style section */
+
+/* Center the buttons horizontally */
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Style the Submit Transaction button */
+.submit-button {
+    width: 150px; /* Set your preferred width */
+    height: 60px;
+    background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+    box-shadow: 0px 18px 29px rgba(23, 16, 21, 0.025), 0px 3.6px 4.7125px rgba(23, 16, 21, 0.05);
+    border-radius: 6px;
+    border: 1px solid #fff;
+    color: #fff;
+    margin-right: 10px;
+}
+
+/* Style the Edit button */
+.edit-button {
+    width: 150px; /* Set your preferred width */
+    height: 60px;
+    background: linear-gradient(94.38deg, #ff6600 -1.08%, #ff9900 96.88%);
+    box-shadow: 0px 18px 29px rgba(23, 16, 21, 0.025), 0px 3.6px 4.7125px rgba(23, 16, 21, 0.05);
+    border-radius: 6px;
+    border: 1px solid #fff;
+    color: #fff;
+}
+.custom-button {
+    width: 150px; /* Set your preferred width for both buttons */
+    height: 60px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background: linear-gradient(94.38deg, #FF5733 -1.08%, #FF0000 96.88%); /* Change the color here */
+    box-shadow: 0px 18px 29px rgba(23, 16, 21, 0.025), 0px 3.6px 4.7125px rgba(23, 16, 21, 0.05);
+}
+
+.submit-button:disabled {
+    // background: linear-gradient(94.38deg, #cccccc -1.08%, #dddddd 96.88%); /* Define a more visually appealing disabled color */
+    cursor: not-allowed; /* Change cursor to not-allowed when disabled */
+    box-shadow: none; /* Remove the box-shadow for disabled state */
+}

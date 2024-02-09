@@ -1,1 +1,126 @@
-<p>suggested-friends works!</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <div class="header-title">
+        <h4 class="card-title">Suggested Friends</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="nav nav-tabs" id="myTab-1" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-bs-toggle="tab"
+            href="#home"
+            role="tab"
+            aria-controls="home"
+            aria-selected="true"
+            (click)="tabChange('admin')"
+            >Admin</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            href="#profile-one"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            tabindex="-1"
+            (click)="tabChange('student')"
+            >Student</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="contact-tab"
+            data-bs-toggle="tab"
+            href="#contact"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+            tabindex="-1"
+            (click)="tabChange('teacher')"
+            >Teacher</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent-2">
+        <div
+          class="tab-pane fade show active"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
+          <div
+            id="content-page"
+            style="padding: 0px !important"
+            class="content-page"
+          >
+            <div class="row">
+              <div class="col-md-6" *ngFor="let friend of adminsList.friends">
+                <app-friend-card [friend]="friend"></app-friend-card>
+              </div>
+              <div class="col-12" *ngIf="adminsList.friends.length == 0">
+                No admins found.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="profile-one"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <div
+            id="content-page"
+            style="padding: 0px !important"
+            class="content-page"
+          >
+            <div class="row">
+              <div class="col-md-6" *ngFor="let friend of studentList.friends">
+                <app-friend-card [friend]="friend"></app-friend-card>
+              </div>
+              <div class="col-12" *ngIf="studentList.friends.length == 0">
+                No Student found.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="contact"
+          role="tabpanel"
+          aria-labelledby="contact-tab"
+        >
+          <div
+            id="content-page"
+            style="padding: 0px !important"
+            class="content-page"
+          >
+            <div class="row">
+              <div class="col-md-6" *ngFor="let friend of teacherList.friends">
+                <app-friend-card [friend]="friend"></app-friend-card>
+              </div>
+              <div class="col-12" *ngIf="teacherList.friends.length == 0">
+                No Teacher found.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center" *ngIf="showLoader">
+        <img
+          src="../assets/images/page-img/page-load-loader.gif"
+          alt="loader"
+          style="height: 100px"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+  

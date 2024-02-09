@@ -1,1 +1,67 @@
-<p>teacher-management works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Teachers Management</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <div id="user_list_datatable_info" class="dataTables_filter">
+                            <form class="me-3 position-relative">
+                                <div class="form-group mb-0">
+                                    <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                        type="text" placeholder="Search....">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Institute Name<i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='institute_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('institute_name')" ></i></th>
+                                <th>Teacher Name <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='teacher_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('teacher_name')" ></i></th>
+                                <th>Email <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='email' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('email')" ></i></th>
+                                <th>Private <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='is_private' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('is_private')" ></i></th>
+                                <th>Display Order <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='display_Order' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('display_Order')" ></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngIf="teacherList?.length==0">
+                                <td colspan="6">No Record Found.</td>
+                            </tr>
+                            <tr class="" *ngFor="let element of teacherList  | short:type:typeOfShorting ; let i=index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ element?.institute_name }}</td>
+                                <td>
+                                    {{element?.teacher_name}}
+                                </td>
+                                <td>
+                                    {{element?.email}}
+                                </td>
+                                <td> <div class="form-check form-switch">
+                                    <input class="form-check-input" [(ngModel)]="element.is_private"
+                                       (change)="featured(element,$event)" type="checkbox" id="flexSwitchCheckChecked"
+                                       [checked]="element?.is_private">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">{{element?.is_private ?
+                                       'Enable':'Disable'}}</label>
+                                 </div></td>
+                                <td><input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;" #displayOrder
+                                    (change)="changeDisplayOrder(displayOrder.value,element.id_teacher)"
+                                    [value]="element?.display_Order"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

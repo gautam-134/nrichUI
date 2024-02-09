@@ -1,1 +1,148 @@
-<p>add-material works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Upload Material</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="row mb-3">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Topic<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Topic" formControlName="materialTopic"
+                  [(ngModel)]="materialModule.materialTopic" />
+                <div *ngIf="isSubmit && controls['materialTopic'].invalid">
+                  <div *ngIf="controls['materialTopic'].errors?.['required']" class="text-danger">
+                    Topic is required
+                  </div>
+                </div>
+                <div *ngIf="
+                    controls['materialTopic'].invalid &&
+                    controls['materialTopic'].value
+                  ">
+                  <div class="text-danger" *ngIf="controls['materialTopic'].errors?.['validateCharctersInput']">
+                    Topic must not contain more than 28 characters.
+                  </div>
+                  <div class="text-danger" *ngIf="controls['materialTopic'].errors?.['validateInputWords']">
+                    Topic must not contain more than 5 words.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Material Type<span class="text-danger">*</span></label>
+                <select class="form-select" formControlName="materialType" [(ngModel)]="materialModule.materialType">
+                  <option selected="" disabled="">Select Material Type</option>
+                  <option value="video">Video</option>
+                  <option value="image">Image</option>
+                  <option value="pdf">PDF</option>
+                  <option value="audio">Audio</option>
+                </select>
+                <div *ngIf="isSubmit && controls['materialType'].invalid">
+                  <div *ngIf="controls['materialType'].errors?.['required']" class="text-danger">
+                    Material Type is required
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label>Meta Tags<span class="text-danger">*</span></label>
+                <tag-input [(ngModel)]="new" placeholder="Meta Tags" formControlName="metaTags"></tag-input>
+                <mat-hint>
+                  Hint:- Write a word & Press ENTER to add a Tag
+                </mat-hint>
+                <div *ngIf="isSubmit && controls['metaTags'].invalid">
+                  <div *ngIf="controls['metaTags'].errors?.['required']" class="text-danger">
+                    Meta Tags are required
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Upload File<span class="text-danger">*</span></label>
+                <input #fileSelect type="file" class="form-control" placeholder="Select File"
+                  (change)="onFileChange($event)" [multiple]="materialId ? false : true" />
+                <p *ngIf="materialFileName" style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 3px;
+                  ">
+                  <span><b>Uploaded File Name: </b>{{ materialFileName }}</span>
+  
+                  <button
+                    *ngIf="file || materialFilePath"
+                    (click)="documentPreview(file)"
+                    class="btn btn-primary btn-sm"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-eye"
+                    ></i>
+                    <span style="margin-left: 6px">Preview</span>
+                  </button>
+                </p>
+                <div *ngIf="isSubmit && hasError" class="text-danger">
+                  Please select file
+                </div>
+              </div>
+  
+              <table class="upload-table mt-2" *ngIf="filesList?.length != 0">
+                <h3>Selected Files:</h3>
+                <tbody class="upload-name-style">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th style="width: 50%">Name</th>
+                        <th>View</th>
+                        <th>Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody class="upload-name-style">
+                      <tr *ngFor="let item of filesList; let i = index">
+                        <td>{{ item.name }}</td>
+                        <td>
+                          <button (click)="documentPreview(item)" class="btn btn-primary">
+                            <i _ngcontent-cug-c349="" aria-hidden="true" class="fa fa-eye"></i><span
+                              style="margin-left: 6px">Preview</span>
+                          </button>
+                        </td>
+                        <td>
+                          <button (click)="deleteFilesFromList(i)" class="btn btn-secondary">
+                            Remove
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </tbody>
+              </table>
+            </div>
+            <div class="mb-3">
+              <button type="reset" style="margin-right: 5px" type="submit" class="btn btn-primary" style="
+                  margin-right: 10px;
+                  background-color: #007ef2;
+                  width: 120px;
+                " [disabled]="disableBtn" (click)="onSubmit()">
+                Save
+              </button>
+              <button (click)="back()" mat-button type="reset" class="btn btn-outline-primary ms-2" style="width: 120px">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spinner-container" *ngIf="progress">
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    <p style="color: white" class="upload-text">
+      {{
+      progress == 100
+      ? "Completed please Wait.."
+      : "Uploading " + progress + "%"
+      }}
+    </p>
+  </div>
+  

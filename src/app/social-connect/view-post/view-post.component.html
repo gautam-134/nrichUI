@@ -1,1 +1,189 @@
-<p>view-post works!</p>
+<div class="col-12" style="padding: 0% 20%">
+    <div class="card card-block card-stretch card-height">
+      <div class="card-body">
+        <div class="user-post-data">
+          <div class="d-flex justify-content-between">
+            <div class="me-3">
+              <img class="avatar-60 rounded-circle" [src]="
+                  post.profileImage
+                    ? post.profileImage
+                    : 'assets/images/profile.png'
+                " alt="" />
+            </div>
+            <div class="w-100">
+              <div class="d-flex justify-content-between">
+                <div class="">
+                  <h5 class="mb-0 d-inline-block"><a (click)="openProfile(post.createdBy)">{{ post.name }}</a></h5>
+                  <div d-flex flex-wrap align-items-center comment-activity>
+                    <span class="mb-0 text-primary" style="font-size: 12px;">
+                      {{
+                      this.timeService.calculateDaysAgo(post.createdDate) == 0
+                      ? this.timeService.calculateHoursAgo(post.createdDate) ==
+                      0
+                      ? this.timeService.calculateMinutesAgo(
+                      post.createdDate
+                      ) == 0
+                      ? "Just Now"
+                      : this.timeService.calculateMinutesAgo(
+                      post.createdDate
+                      ) + " minutes ago"
+                      : this.timeService.calculateHoursAgo(post.createdDate) +
+                      " hours ago"
+                      : this.timeService.calculateDaysAgo(post.createdDate) +
+                      " days ago"
+                      }}
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <div class="card-post-toolbar">
+                    <div class="dropdown" *ngIf="
+                            userProfileId == post.createdBy ||
+                            roleType == 'InstituteAdmin' ||  roleType == 'SuperAdmin' 
+                          ">
+                      <span class="dropdown-toggle material-symbols-outlined" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" role="button">
+                        more_horiz
+                      </span>
+                      <div class="dropdown-menu m-0 p-0">
+                        <a class="dropdown-item p-3" (click)="takeActionAfterReport(post.id)" >
+                          <div class="d-flex align-items-top">
+                            <span class="material-symbols-outlined">
+                              check_circle
+                            </span>
+                            <div class="data ms-2">
+                              <h6>Take Action</h6>
+                              <p class="mb-0">You can take suitable action for this Post.</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p>
+            {{ post.postText }}
+          </p>
+        </div>
+        <div *ngIf="post.postMediaVOs.length == 3" class="row">
+          <div class="col-md-6 mb-2">
+            <img *ngIf="post.postMediaVOs[0].mediaType == 'Image'" [src]="post.postMediaVOs[0].mediaName" alt="post-image"
+              style="height: 100%" class="img-fluid rounded w-100" (click)="showVideoInFullScreen(post.postMediaVOs[0].mediaName)" id={{post.postMediaVOs[0].mediaName}} />
+            <iframe *ngIf="post.postMediaVOs[0].mediaType == 'Video'" [src]="post.postMediaVOs[0].mediaName | safe"
+              width="100%" height="100%" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="col-md-6">
+            <div class="row mb-2">
+              <div class="col-12">
+                <img *ngIf="post.postMediaVOs[1].mediaType == 'Image'" [src]="post.postMediaVOs[1].mediaName"
+                  alt="post-image" style="height: 100%" class="img-fluid rounded w-100" (click)="showVideoInFullScreen(post.postMediaVOs[1].mediaName)" id={{post.postMediaVOs[1].mediaName}} />
+                <iframe *ngIf="post.postMediaVOs[1].mediaType == 'Video'" [src]="post.postMediaVOs[1].mediaName | safe"
+                  width="100%" height="100%" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-12">
+                <img *ngIf="post.postMediaVOs[2].mediaType == 'Image'" [src]="post.postMediaVOs[2].mediaName"
+                  alt="post-image" style="height: 100%" class="img-fluid rounded w-100" (click)="showVideoInFullScreen(post.postMediaVOs[2].mediaName)" id={{post.postMediaVOs[2].mediaName}} />
+                <iframe *ngIf="post.postMediaVOs[2].mediaType == 'Video'" [src]="post.postMediaVOs[2].mediaName | safe"
+                  frameborder="0" width="100%" height="100%"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div *ngIf="post.postMediaVOs.length == 2" class="row">
+          <div class="col-md-6 mb-2">
+            <img *ngIf="post.postMediaVOs[0].mediaType == 'Image'" [src]="post.postMediaVOs[0].mediaName" alt="post-image"
+              style="height: 100%" class="img-fluid rounded w-100" (click)="showVideoInFullScreen(post.postMediaVOs[0].mediaName)" id={{post.postMediaVOs[0].mediaName}} />
+            <iframe *ngIf="post.postMediaVOs[0].mediaType == 'Video'" [src]="post.postMediaVOs[0].mediaName | safe"
+              frameborder="0" width="100%" height="100%"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+          <div class="col-md-6 mb-2">
+            <img *ngIf="post.postMediaVOs[1].mediaType == 'Image'" [src]="post.postMediaVOs[1].mediaName" alt="post-image"
+              style="height: 100%" class="img-fluid rounded w-100" (click)="showVideoInFullScreen(post.postMediaVOs[1].mediaName)" id={{post.postMediaVOs[1].mediaName}} />
+            <iframe *ngIf="post.postMediaVOs[1].mediaType == 'Video'" [src]="post.postMediaVOs[1].mediaName | safe"
+              frameborder="0" width="100%" height="100%"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+        </div>
+        
+        <div *ngIf="post.postMediaVOs.length == 1" class="row">
+          <div class="col-12">
+            <img *ngIf="post.postMediaVOs[0].mediaType == 'Image'" [src]="post.postMediaVOs[0].mediaName" alt="post-image"
+              style="height: 100%" class="img-fluid rounded w-100"  [class.fullscreen]="isFullScreen"
+              (click)="showVideoInFullScreen(post.postMediaVOs[0].mediaName)" id={{post.postMediaVOs[0].mediaName}}/>
+            <iframe *ngIf="post.postMediaVOs[0].mediaType == 'Video'" [src]="post.postMediaVOs[0].mediaName | safe"
+              frameborder="0" width="100%" height="100%"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="comment-area mt-3">
+          &nbsp; {{ post.likesCount }}
+          {{ post.likesCount == 1 ? "like" : "likes" }}&nbsp;&nbsp;<span aria-haspopup="true" role="button">
+            {{post.postCommentsVOs.length}} {{ post.postCommentsVOs.length <=1 ? "comment" : "comments" }} </span>
+              <hr />
+          <hr />
+          <div style="overflow: auto; max-height: 160px">
+            <ul class="post-comments list-inline p-0 m-0">
+              <li *ngFor="let comment of post.postCommentsVOs" class="mb-2">
+                <div class="row">
+                  <div class="col-10">
+                    <div class="d-flex"> 
+                      <div class="user-img">
+                        <img [src]="
+                            comment.profileImage
+                              ? comment.profileImage
+                              : 'assets/images/profile.png'
+                          " alt="userimg" class="avatar-35 rounded-circle img-fluid" />
+                      </div>
+                      <div class="comment-data-block ms-3">
+                        <h6><a (click)="openProfile(comment.userProfileId)">{{ comment.name }}</a></h6>
+                        <p class="mb-0">{{ comment.comment }}</p>
+                        <div class="flex-wrap align-items-center comment-activity">
+                          <span class="mb-0 text-primary" style="font-size: 12px;">
+                            {{
+                            this.timeService.calculateDaysAgo(
+                            comment.createdDate
+                            ) == 0
+                            ? this.timeService.calculateHoursAgo(
+                            comment.createdDate
+                            ) == 0
+                            ? this.timeService.calculateMinutesAgo(
+                            comment.createdDate
+                            ) == 0
+                            ? "Just Now"
+                            : this.timeService.calculateMinutesAgo(
+                            comment.createdDate
+                            ) + " minutes ago"
+                            : this.timeService.calculateHoursAgo(
+                            comment.createdDate
+                            ) + " hours ago"
+                            : this.timeService.calculateDaysAgo(
+                            comment.createdDate
+                            ) + " days ago"
+                            }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,21 @@
-<p>addon-features-preview works!</p>
+<img
+  src="../../../assets/alerts/Close.png"
+  style="float: right; cursor: pointer"
+  (click)="close()"
+  alt=""
+/>
+<ul class="mt-4">
+  <li
+    class="mt-2"
+    style="
+      color: #8491a5;
+      font-size: 15.78px;
+      line-height: 23.68px;
+      font-weight: 400;
+      list-style-image: url('../../../assets/alerts/Path.png');
+    "
+    *ngFor="let feature of data.features"
+  >
+    {{ feature }}
+  </li>
+</ul>

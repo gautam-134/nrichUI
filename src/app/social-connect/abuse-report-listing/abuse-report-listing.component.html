@@ -1,1 +1,182 @@
-<p>abuse-report-listing works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex bg-primary">
+                <div class="header-title" style="margin-right: auto">
+                    <h4 class="card-title text-white">Reported Posts</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div id="user_list_datatable_info" class="dataTables_filter">
+                                <!-- <form class="me-3 position-relative">
+                                    <div class="form-group mb-0">
+                                        <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                            type="text" placeholder="Search...." />
+                                    </div>
+                                </form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav nav-pills text-center" style="border-color: #007EF2;" id="myTab" role="tablist"
+                        style="margin-top: 2%;">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                type="button" role="tab" aria-controls="home" aria-selected="true" (click)="switchTab('home')">Pending Post
+                                Reports</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                type="button" role="tab" aria-controls="profile" aria-selected="false" (click)="switchTab('profile')">Resolved Post
+                                Reports</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <table class="files-lists table table-striped mt-4">
+                                <thead>
+                                    <tr>
+
+                                        <th>S.No</th>
+                                        <th>Institute Name <i ng-click="typeOfShorting:!typeOfShorting"
+                                            [ngClass]=" typeOfShorting && type =='instituteName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                            (click)="short('instituteName')"></i></th>
+                                        <th>Post Created By <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='createdBy' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('createdBy')"></i></th>
+                                        <th>Post Created On <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='createdDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('createdDate')"></i></th>
+                                        <th>Status <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='reportStatus' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('reportStatus')"></i></th>
+                                        <th>Report Count <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='abuseReportCount' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('abuseReportCount')"></i></th>
+                                        <th>Manage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" *ngIf="abuseReport?.length==0">
+                                            No Record Found.
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let abuse of abuseReport  | short:type:typeOfShorting ; let i = index">
+                                        <td>{{i+1}}</td>
+                                        <td><a (click)="openProfile(abuse.createdById)">{{abuse.createdBy}}</a></td>
+                                        <td>{{abuse.instituteName}}</td>
+                                        <td>
+                                            <div class="font-weight-bolder font-size-lg mb-0">
+                                                {{ abuse.createdDate | date }}
+                                            </div>
+                                            <div class="font-weight-bold text-muted">
+                                                {{ abuse.createdDate | date: "h:mm a" }}
+                                            </div>
+                                        </td>
+                                        <td>{{abuse.reportStatus}}</td>
+                                        <td>{{abuse.abuseReportCount}}</td>
+
+                                        <td>
+                                            <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                                aria-label="Example home icon">
+                                                menu
+                                            </mat-icon>
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                                    title="reported By" (click)="viewReportedBy(abuse.postId)">
+                                                    Reported By
+                                                </button>
+                                                <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                                    title="reported By" (click)="viewPost(abuse.postId)">
+                                                    View Post
+                                                </button>
+                                            </mat-menu>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <app-table-paginator [size]="size" [pagenumber]="page" [totalElements]="totalCount"
+                                (pageChange)="pageChange($event)"
+                                (changeSize)="changeSize($event)"></app-table-paginator>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <table class="files-lists table table-striped mt-4">
+                                <thead>
+                                    <tr>
+
+                                        <th>S.No</th>
+                                        <th>Institute Name <i ng-click="typeOfShorting:!typeOfShorting"
+                                            [ngClass]=" typeOfShorting && type =='instituteName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                            (click)="short('instituteName')"></i></th>
+                                        <th>Post Created By <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='createdBy' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('createdBy')"></i></th>
+                                        <th>Post Created On <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='createdDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('createdDate')"></i></th>
+                                        <th>Status <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='reportStatus' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('reportStatus')"></i></th>
+                                        <th>Report Count <i ng-click="typeOfShorting:!typeOfShorting"
+                                                [ngClass]=" typeOfShorting && type =='abuseReportCount' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                                (click)="short('abuseReportCount')"></i></th>
+                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" *ngIf="abuseReport?.length==0">
+                                            No Record Found.
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let abuse of abuseReport  | short:type:typeOfShorting ; let i = index">
+                                        <td>{{i+1}}</td>
+                                        <td><a (click)="openProfile(abuse.createdById)">{{abuse.createdBy}}</a></td>
+                                        <td>{{abuse.instituteName}}</td>
+                                        <td>
+                                            <div class="font-weight-bolder font-size-lg mb-0">
+                                                {{ abuse.createdDate | date }}
+                                            </div>
+                                            <div class="font-weight-bold text-muted">
+                                                {{ abuse.createdDate | date: "h:mm a" }}
+                                            </div>
+                                        </td>
+                                        <td>{{abuse.reportStatus}}</td>
+                                        <td>{{abuse.abuseReportCount}}</td>
+
+                                        <!-- <td>
+                                            <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                                aria-label="Example home icon">
+                                                menu
+                                            </mat-icon>
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                                    title="reported By" (click)="viewReportedBy(abuse.postId)">
+                                                    Reported By
+                                                </button>
+                                                <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                                    title="reported By" (click)="viewPost(abuse.postId)">
+                                                    View Post
+                                                </button>
+                                            </mat-menu>
+                                        </td> -->
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <app-table-paginator [size]="size" [pagenumber]="page" [totalElements]="totalCount"
+                                (pageChange)="pageChange($event)"
+                                (changeSize)="changeSize($event)"></app-table-paginator>
+                         </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

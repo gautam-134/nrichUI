@@ -1,1 +1,145 @@
-<p>change-institute-admin-of-institute works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Process to change Institute Admin of Institute</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="changeInstituteAdminForm">
+                    <div class="tab-pane fade active show" id="pills-sale-tab">
+                        <div class="row">
+
+                            <div class="col-md-5">
+                                <label for="instituteNameInput" class="form-label">Institute Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" autocomplete="off" class="form-control"
+                                    formControlName="instituteName" id="instituteNameInput" />
+                                <div *ngIf="controls['instituteName'].invalid && submitted"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger" *ngIf="controls['instituteName']?.errors?.['required']">
+                                        Above field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="nameInput" class="form-label">Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" autocomplete="off" class="form-control" formControlName="name"
+                                    id="nameInput" />
+                                <div *ngIf="controls['name'].invalid && submitted" class="fv-plugins-message-container">
+                                    <div class="text-danger" *ngIf="controls['name']?.errors?.['required']">
+                                        Above field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="mobileNumberInput" class="form-label">Current Mobile Number<span
+                                        class="text-danger">*</span></label>
+                                <div *ngIf="showOTPSection">
+                                    <a *ngIf="counter > 0" class="resend-otp-code textdec">RESEND OTP
+                                        CODE AFTER {{ transform(counter) }}</a>
+                                    <a *ngIf="counter == 0" class="resend-otp-code textdec"
+                                        (click)="resendOTP('OLDMOBILENUMBER')">RESEND
+                                        OTP CODE</a>
+                                </div>
+                                <input type="text" class="form-control" autocomplete="off"
+                                    formControlName="oldMobileNumber" minlength="10" maxlength="10" (paste)="(false)"
+                                    (keypress)="numberOnly($event)" id="mobileNumberInput" />
+                                <div *ngIf="controls['oldMobileNumber'].invalid && submitted"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger" *ngIf="controls['oldMobileNumber']?.errors?.['required']">
+                                        Above field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="newMobileNumberInput" class="form-label">New Mobile Number<span
+                                        class="text-danger">*</span></label>
+                                <div *ngIf="showOTPSection">
+                                    <a *ngIf="counter > 0" class="resend-otp-code textdec">RESEND OTP
+                                        CODE AFTER {{ transform(counter) }}</a>
+                                    <a *ngIf="counter == 0" class="resend-otp-code textdec"
+                                        (click)="resendOTP('NEWMOBILENUMBER')">RESEND
+                                        OTP CODE</a>
+                                </div>
+                                <input type="text" class="form-control" autocomplete="off"
+                                    formControlName="newMobileNumber" minlength="10" maxlength="10" (paste)="(false)"
+                                    (keypress)="numberOnly($event)" id="newNumberInput" />
+                                <div *ngIf="controls['newMobileNumber'].invalid && submitted"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger" *ngIf="controls['newMobileNumber']?.errors?.['required']">
+                                        Above field is required.
+                                    </div>
+                                    <div class="text-danger" *ngIf="controls['newMobileNumber']?.errors?.['pattern']">
+                                        Invalid Mobile Number
+                                    </div>
+                                    <div class="text-danger"
+                                        *ngIf="controls['newMobileNumber']?.errors?.['sameAsOldMobileNumber']">
+                                        New Mobile Number should not be the same as the old mobile number.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5" *ngIf="showOTPSection">
+                                <label for="otpInput" class="form-label">Enter OTP (Current Mobile Number)<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" autocomplete="off"
+                                    formControlName="oldMobileOtp" (keypress)="numberOnly($event)" id="otpInput" />
+                                <div *ngIf="sendOtpClicked && controls['oldMobileOtp'].invalid"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger" *ngIf="controls['oldMobileOtp']?.errors?.['required']">
+                                        Current Mobile Number OTP is required.
+                                    </div>
+                                    <div class="text-danger" *ngIf="controls['oldMobileOtp']?.errors?.['pattern']">
+                                        Current Mobile Number OTP must be a 4-digit number.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5" *ngIf="showOTPSection">
+                                <label for="newMobileOTPInput" class="form-label">Enter OTP (New Mobile Number)<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" autocomplete="off"
+                                    formControlName="newMobileOtp" (keypress)="numberOnly($event)"
+                                    id="newMobileOTPInput" />
+                                <div *ngIf="sendOtpClicked && controls['newMobileOtp'].invalid"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger" *ngIf="controls['newMobileOtp']?.errors?.['required']">
+                                        New Mobile OTP is required.
+                                    </div>
+                                    <div class="text-danger" *ngIf="controls['newMobileOtp']?.errors?.['pattern']">
+                                        New Mobile Number OTP must be a 4-digit number.
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-5 mt-3" *ngIf="!showOTPSection">
+                                <button type="button" class="btn btn-primary" (click)="toggleOTPSection()"
+                                    style="background-color: #008ce4; color: white; width: 120px; height: 40px;">
+                                    Send OTP's
+                                </button>
+                            </div>
+                            <div class="col-md-5 mt-3" *ngIf="showOTPSection">
+                                <!-- Submit OTP Button -->
+                                <button type="submit" class="btn"
+                                    style="background-color: #008ce4; color: white; width: 120px; height: 40px;"
+                                    id="buttonSignup" (click)="submit()"> Submit OTP
+                                </button>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

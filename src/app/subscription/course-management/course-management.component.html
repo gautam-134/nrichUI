@@ -1,1 +1,83 @@
-<p>course-management works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Courses Management</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="row justify-content-between d-flex">
+                        <div class="col-sm-12 col-md-6 mb-2">
+                            <div id="user_list_datatable_info" class="dataTables_filter">
+                                <form class="me-3 position-relative">
+                                    <div class="form-group mb-0">
+                                    <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                        type="text" placeholder="Search....">
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <select (change)="onValueChange($event)" class="form-select"
+                                aria-label="Default select example">
+                                <option value="All Courses" selected>All Courses</option>
+                                <option value="Free Courses" >Free Courses</option>
+                                <option value="New Courses" >New Courses</option>
+                                <option value="Trending Courses" >Trending Courses</option>
+                                <option value="Popular Courses" >Popular Courses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Institute Name <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='institute_name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('institute_name')" ></i></th>
+                                <th>Course Name <i  ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='courseName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('courseName')" ></i></th>
+                                <th>Teacher Name <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='teacherName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('teacherName')" ></i></th>
+                                <th>Public <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='featured' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('featured')" ></i></th>
+                                <th>Display Order <i ng-click="typeOfShorting:!typeOfShorting" [ngClass]=" typeOfShorting && type =='display_order' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'" (click)="short('display_order')" ></i></th>
+                            </tr>
+                        </thead>    
+                        <tbody>
+
+                            <tr *ngIf="Courses?.length==0">
+                                <td colspan="7">No Record Found.</td>
+                            </tr>
+                            <tr class="" *ngFor="let element of Courses | short:type:typeOfShorting; let i=index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ element?.institute_name }}</td>
+                                <td>
+                                    {{element?.courseName}}
+                                </td>
+                                <td>
+                                    {{element?.teacherName}}
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" [(ngModel)]="element.featured"
+                                            (change)="featured(element,$event)" type="checkbox"
+                                            id="flexSwitchCheckChecked" [checked]="element?.featured">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">{{element?.featured
+                                            ?
+                                            'Enable':'Disable'}}</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;" #displayOrder
+                                        (change)="changeDisplayOrder(displayOrder.value,element.idCourse)"
+                                        [value]="element?.display_order">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

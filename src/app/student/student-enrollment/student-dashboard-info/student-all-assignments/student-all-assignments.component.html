@@ -1,1 +1,147 @@
 <p>student-all-assignments works!</p>
+<mat-tab-group mat-align-tabs="vertical">
+    <mat-tab label="Submitted Assignments">
+       <div class="card">
+          <div class="card-body">
+             <div id="table" class="table-editable">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+                         <th>S.No</th>
+                         <th>
+                            Task <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('name')"></i></th>
+                         <th>
+                            Submission Type <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='submissiontype' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('submissiontype')"></i>
+                         </th>
+                         <th>
+                            Last Submission Date <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='submissionFrom' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('submissionFrom')"></i>
+                         </th>
+                         <th>Evaluation <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='gradeType' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('gradeType')"></i></th>
+                         <th>Evaluation Status <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='requestStatus' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('requestStatus')"></i></th>
+ 
+                         <th *ngIf="assignments?.length != 0">Manage</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr *ngIf="assignments?.length == 0">
+                         <td colspan="5">No Record Found.</td>
+                      </tr>
+                      <tr class="" *ngFor="let element of assignments    | short:type:typeOfShorting;let i=index">
+                         <td>{{ i+1 }}</td>
+                         <td> {{ element.name }}</td>
+                         <td> {{ element.submissiontype }}</td>
+                         <td>{{element.submissionFrom | date}}</td>
+                         <td> {{ element.gradeType | uppercase }} </td>
+                         <td><span [ngClass]="{'badge bg-danger':element.requestStatus  ==='null','badge bg-success':element.requestStatus === 'Requested'}">
+                               {{element.requestStatus ? element.requestStatus :"Not Evaluated"}}</span></td>
+ 
+ 
+ 
+                         <td>
+                            <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                               aria-label="Example home icon">
+                               menu
+                            </mat-icon>
+                            <mat-menu #menu="matMenu">
+                               <button mat-menu-item (click)="viewAssignment(element)">
+                                  View Assignment
+                               </button>
+                               <button mat-menu-item *ngIf="element.grade" (click)="checkGrade(element)">
+                                  Check Grades
+                               </button>
+                               <button mat-menu-item *ngIf="element.marks || element.marks == 0 "
+                                  (click)="checkMarks(element)">
+                                  Check Marks
+                               </button>
+                               <button mat-menu-item *ngIf="element.submitAssignmentReevaluation ==false" [disabled]="element.requestStatus!='Evaluated'"
+                                  (click)="requestForReevaluation(element.id)">
+                                  Request For Re-evaluation
+                               </button>
+                            </mat-menu>
+ 
+                         </td>
+                      </tr>
+ 
+                   </tbody>
+                </table>
+                <app-table-paginator [size]="submittedSize" [totalElements]="totalSubmitCount" [pagenumber]="submittedPage" (pageChange)="submitPageChange($event)"
+                (changeSize)="submitSizeChange($event)"></app-table-paginator>
+             </div>
+          </div>
+       </div>
+    </mat-tab>
+    <mat-tab label="Pending Assignments">
+       <div class="card">
+ 
+          <div class="card-body">
+             <div id="table" class="table-editable">
+ 
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                   <thead>
+                      <tr>
+                         <th>S No.</th>
+                         <th>
+                            Assignment Name <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('name')"></i></th>
+                         <th>
+                            Submission Type <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='submissiontype' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('submissiontype')"></i>
+                         </th>
+                         <th>
+                            Last Submission Date <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='submissionFrom' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('submissionFrom')"></i>
+                         </th>
+                         <th>Grade Type <i ng-click="typeOfShorting:!typeOfShorting"
+                            [ngClass]=" typeOfShorting && type =='gradeType' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                            (click)="short('gradeType')"></i></th>
+ 
+                         <th *ngIf="pendingAssignments?.length != 0">Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr *ngIf="pendingAssignments?.length == 0">
+                         <td colspan="5">No Record Found.</td>
+                      </tr>
+                      <tr class="" *ngFor="let element of pendingAssignments    | short:type:typeOfShorting;let i =index">
+                         <td>{{ i+1 }}</td>
+                         <td> {{ element.name }}</td>
+                         <td> {{ element.submissiontype }}</td>
+                         <td> {{element.submissionFrom | date}}</td>
+                         <td> {{ element.gradeType | uppercase }} </td>
+ 
+ 
+                         <td>
+                            <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                               aria-label="Example home icon">
+                               menu
+                            </mat-icon>
+                            <mat-menu #menu="matMenu">
+                               <button mat-menu-item (click)="submitAssignment(element)">
+                                  Submit Assignment
+                               </button>
+                            </mat-menu>
+                         </td>
+                      </tr>
+ 
+                   </tbody>
+                </table>
+                <app-table-paginator [size]="size" [totalElements]="totalPendingCount" [pagenumber]="page" (pageChange)="pendingPageChange($event)"
+                (changeSize)="pendingSizeChange($event)"></app-table-paginator>
+             </div>
+          </div>
+       </div>
+    </mat-tab>
+ </mat-tab-group>

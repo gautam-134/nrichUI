@@ -1,1 +1,340 @@
-<p>dashboard works!</p>
+<div>
+    <div
+      style="
+        box-shadow: 6.01153px 6.01153px 30.0576px rgba(0, 0, 0, 0.06);
+        border-radius: 36.0692px;
+      "
+    >
+      <div class="row wh-color welcome_box" style="background: linear-gradient(95.13deg, #1360ba -19.76%, #058dda 108.11%);">
+        <div class="col-md-6">
+          <h2 class="wh-color">Welcome, {{ name | titlecase }}</h2>
+          <h4 class="wh-color">
+            You've learned 80% of your goal this week! Keep it up and improve your
+            results!
+          </h4>
+          <div style="margin-top: 10%">
+            <h4 class="wh-color">{{ d | date : "mediumDate" }}</h4>
+            <br />
+            <h4 class="wh-color">
+              {{ studentDashboardCount.instituteName | titlecase }}
+            </h4>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img
+            src="../../../assets/studentDashboard/studentdashboardimg1.svg"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <ul class="list-unstyled row mb-0 mt-2">
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="points">
+              <span>Total Courses</span>
+              <div class="d-flex align-items-center">
+                <h3>
+                  {{ studentDashboardCount.completedCourses }}/{{
+                    studentDashboardCount.enrolledCourses
+                  }}
+                </h3>
+                <h5>
+                  <small class="text-success ms-3">Completed/Enrolled</small>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="points">
+              <span>Total Score</span>
+              <div class="d-flex align-items-center">
+                <h3>
+                  {{ studentDashboardCount.marksObtained }}/{{
+                    studentDashboardCount.totalMarks
+                  }}
+                </h3>
+                <h5>
+                  <small class="text-danger ms-3"
+                    >{{ studentDashboardCount.avg }} AVG</small
+                  >
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="points">
+              <span>Total Attendance</span>
+              <div class="d-flex align-items-center">
+                <h3>{{ studentDashboardCount.totalAttendance }}</h3>
+                <h5><small class="text-success ms-3">hours</small></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="points">
+              <span>Late Entries</span>
+              <div class="d-flex align-items-center">
+                <h3>
+                  {{ studentDashboardCount.lateEntries }}/{{
+                    studentDashboardCount.totalClasses
+                  }}
+                </h3>
+                <h5><small class="text-success ms-3">Till Date</small></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card" style="max-height: 280px; min-height: 280px">
+              <div class="card-header">
+                <div class="header-title">
+                  <h4 class="card-title">My Courses</h4>
+                </div>
+              </div>
+              <div
+                class="card-body"
+                style="overflow: auto; max-height: 210px; min-height: 210px"
+              >
+                <div class="mb-3" *ngFor="let element of courses; let i = index">
+                  <div class="d-flex justify-content-between mt-2 text-dark">
+                    <h6>{{ element.courseName }}</h6>
+                    <small>{{ element.completeness }}</small>
+                  </div>
+                  <div
+                    class="shadow-none progress w-100 mt-2"
+                    style="height: 6px"
+                  >
+                    <div
+                      class="progress-bar"
+                      [ngClass]="
+                        i == 0
+                          ? 'bg-danger'
+                          : i % 2 == 0
+                          ? 'bg-primary'
+                          : 'bg-info'
+                      "
+                      data-toggle="progress-bar"
+                      role="progressbar"
+                      aria-valuenow="62"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      [ngStyle]="{
+                        width: element.completeness,
+                        transition: 'width 2s ease 0s'
+                      }"
+                    ></div>
+                  </div>
+                </div>
+                <div class="mb-3" *ngIf="courses.length == 0">
+                  No Courses Found.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card" style="max-height: 280px; min-height: 280px">
+              <div class="card-header d-flex justify-content-between">
+                <div class="header-title">
+                  <h4 class="card-title">Assignments</h4>
+                </div>
+              </div>
+              <div
+                class="card-body"
+                style="overflow: auto; max-height: 210px; min-height: 210px"
+              >
+                <ul class="m-0 p-0 today-schedule">
+                  <li class="d-flex" *ngFor="let element of assighnments">
+                    <div class="schedule-icon">
+                      <i class="material-symbols-outlined text-primary md-18"
+                        >fiber_manual_record</i
+                      >
+                    </div>
+                    <div class="schedule-text">
+                      <span>{{ element.name }}</span>
+                      <span
+                        >{{ element.publishedDate | date : "medium" }} to
+                        {{ element.submissionFrom | date : "medium" }}</span
+                      >
+                    </div>
+                  </li>
+                  <li class="d-flex" *ngIf="assighnments.length == 0">
+                    No Assignments Found.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card" style="max-height: 280px; min-height: 280px">
+              <div class="card-header d-flex justify-content-between">
+                <div class="header-title">
+                  <h4 class="card-title">Live/Upcoming Classes</h4>
+                </div>
+              </div>
+              <div
+                class="card-body"
+                style="overflow: auto; max-height: 210px; min-height: 210px"
+              >
+                <ul class="m-0 p-0 today-schedule">
+                  <li
+                    class="d-flex"
+                    *ngIf="liveClasses.length == 0 && futureClasses.length == 0"
+                  >
+                    No Classes Found.
+                  </li>
+                  <li class="d-flex" *ngFor="let element of liveClasses">
+                    <div class="schedule-icon">
+                      <i class="material-symbols-outlined text-primary md-18"
+                        >fiber_manual_record</i
+                      >
+                    </div>
+                    <div class="schedule-text">
+                      <span>{{ element.name }}</span>
+                      <span
+                        >{{ element?.start_date | date : "medium" }} to
+                        {{ element?.end_date | date : "h:mm a" }}</span
+                      >
+                    </div>
+                  </li>
+                  <li class="d-flex" *ngFor="let element of futureClasses">
+                    <div class="schedule-icon">
+                      <i class="material-symbols-outlined text-success md-18"
+                        >fiber_manual_record</i
+                      >
+                    </div>
+                    <div class="schedule-text">
+                      <span>{{ element.name }}</span>
+                      <span
+                        >{{ element?.start_date | date : "medium" }} to
+                        {{ element?.end_date | date : "h:mm a" }}</span
+                      >
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card" style="max-height: 280px; min-height: 280px">
+              <div class="card-header d-flex justify-content-between">
+                <div class="header-title">
+                  <h4 class="card-title">Quiz</h4>
+                </div>
+              </div>
+              <div
+                class="card-body"
+                style="overflow: auto; max-height: 210px; min-height: 210px"
+              >
+                <ul class="m-0 p-0 today-schedule">
+                  <li class="d-flex" *ngIf="pendingQuizs.length == 0">
+                    No Quizes Found
+                  </li>
+                  <li class="d-flex" *ngFor="let element of pendingQuizs">
+                    <div class="schedule-icon">
+                      <i class="material-symbols-outlined text-primary md-18"
+                        >fiber_manual_record</i
+                      >
+                    </div>
+                    <div class="schedule-text">
+                      <span>{{ element.name }}</span>
+                      <span
+                        >{{ element?.startDate | date : "medium" }} to
+                        {{ element?.dueDate | date : "medium" }}</span
+                      >
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card" style="max-height: 575px; min-height: 575px">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Notifications</h4>
+            </div>
+          </div>
+          <div
+            class="card-body p-0"
+            style="overflow: auto; max-height: 500px; min-height: 500px"
+            (scroll)="onScroll($event)"
+          >
+            <ul class="todo-task-lists m-0 p-0">
+              <li
+                class="d-flex align-items-center p-3"
+                *ngFor="let element of notifications"
+              >
+                <div class="user-img img-fluid">
+                  <img
+                    src="../../../../assets/images-marketing/bell.jpg"
+                    alt="story-img"
+                    class="rounded-circle avatar-40"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  class="d-flex align-items-center justify-content-between w-100 active-task"
+                  (click)="updateNotificationStatus(element)"
+                >
+                  <div class="ms-3">
+                    <h6 class="d-inline-block">{{ element.name }}</h6>
+                    <span
+                      class="badge bg-success ms-0 ms-md-3 my-1 my-md-0 text-white"
+                      *ngIf="element.viewed == 'false'"
+                      >New</span
+                    >
+                    <p class="mb-0">{{ element.notification }}</p>
+                  </div>
+                </div>
+              </li>
+              <li
+                *ngIf="notifications.length != totalNotifications"
+                class="col-12 text-center"
+              >
+                <img
+                  src="../assets/images/page-img/page-load-loader.gif"
+                  alt="loader"
+                  style="height: 72px"
+                  loading="lazy"
+                />
+              </li>
+              <li
+                class="d-flex align-items-center p-3"
+                *ngIf="notifications.length == 0"
+              >
+                No Notifications Found.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

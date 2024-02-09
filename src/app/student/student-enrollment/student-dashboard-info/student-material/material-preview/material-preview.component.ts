@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-material-preview',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
   templateUrl: './material-preview.component.html',
   styleUrl: './material-preview.component.scss'
 })
-export class MaterialPreviewComponent {
+export class MaterialPreviewComponent implements OnInit {
 
+  filePath:string=''
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { element: any },
+    public dialogRef: MatDialogRef<any>
+  ) {}
+
+  ngOnInit(): void {
+    this.filePath=AuthService.getFilePath
+  }
 }

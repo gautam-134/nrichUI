@@ -1,1 +1,160 @@
-<p>all-material works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div id="content-page" class="content-page">
+        <div class="card tab_wrapper">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3">
+                <div
+                  class="nav nav-pills text-center slide_tabs"
+                  id="v-pills-tab"
+                  role="tablist"
+                  aria-orientation="vertical"
+                >
+                  <a
+                    class="nav-link vertical-center active"
+                    id="v-pills-teacherAllClasses-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-teacherAllClasses"
+                    role="tab"
+                    aria-controls="v-pills-teacherAllClasses"
+                    style="height: 60px"
+                    aria-selected="true"
+                    >Classes</a
+                  >
+                  <a
+                    class="nav-link vertical-center"
+                    id="v-pills-teacherdemoClasses-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-teacherdemoClasses"
+                    role="tab"
+                    aria-controls="v-pills-teacherdemoClasses"
+                    style="height: 60px"
+                    aria-selected="false"
+                    >Demo Classes</a
+                  >
+                  <a
+                    class="nav-link vertical-center vertical-center"
+                    id="v-pills-adminWebinars-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-teacherWebinars"
+                    role="tab"
+                    aria-controls="v-pills-teacherWebinars"
+                    style="height: 60px"
+                    aria-selected="false"
+                    >Webinars
+                  </a>
+                  <a
+                    class="nav-link vertical-center"
+                    id="v-pills-teacherAllAssignments-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-teacherAllAssignments"
+                    role="tab"
+                    aria-controls="v-pills-teacherAllAssignments"
+                    style="height: 60px"
+                    aria-selected="false"
+                    >Assignments</a
+                  >
+                  <a
+                    class="nav-link vertical-center"
+                    id="v-pills-teacherAllMaterial-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-teacherAllMaterial"
+                    role="tab"
+                    aria-controls="v-pills-teacherAllMaterial"
+                    style="height: 60px"
+                    aria-selected="false"
+                    >Study Material</a
+                  >
+                  <a
+                    class="nav-link vertical-center"
+                    id="v-pills-teacherAllQuizes-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-teacherAllQuizes"
+                    role="tab"
+                    aria-controls="v-pills-teacherAllQuizes"
+                    style="height: 60px"
+                    aria-selected="false"
+                    >Quiz</a
+                  >
+                  <a
+                    class="nav-link vertical-center"
+                    id="v-pills-prerecorded-tab"
+                    data-bs-toggle="pill"
+                    href="#v-pills-prerecorded"
+                    role="tab"
+                    aria-controls="v-pills-prerecorded"
+                    aria-selected="false"
+                    >Prerecorded Modules</a
+                  >
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <div class="tab-content mt-0" id="v-pills-tabContent">
+                  <div
+                    class="tab-pane fade active show"
+                    id="v-pills-teacherAllClasses"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-teacherAllClasses-tab"
+                  >
+                    <app-all-class></app-all-class>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-teacherdemoClasses"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-teacherdemoClasses-tab"
+                  >
+                    <app-teacher-demo-classes></app-teacher-demo-classes>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-teacherWebinars"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-teacherWebinars-tab"
+                  >
+                    <app-teacher-webinars></app-teacher-webinars>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-teacherAllAssignments"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-teacherAllAssignments-tab"
+                  >
+                    <app-assigment></app-assigment>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-teacherAllMaterial"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-teacherAllMaterial-tab"
+                  >
+                    <app-materials></app-materials>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-teacherAllQuizes"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-teacherAllQuizes-tab"
+                  >
+                    <app-quiz></app-quiz>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-prerecorded"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-prerecorded-tab"
+                  >
+                    <app-batchprerecordedmodules
+                      [batchId]="batchId"
+                    ></app-batchprerecordedmodules>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

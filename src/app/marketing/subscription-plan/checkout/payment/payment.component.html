@@ -1,0 +1,519 @@
+<div style="margin-top: 4%" class="screenMargin">
+    <div class="row" style="margin-right: 0px">
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-12">
+            <div
+              class="card"
+              style="border: 1px solid #007ef2; border-radius: 5px"
+            >
+              <div class="card-body" style="padding: 3% 3%">
+                <div class="row">
+                  <div class="col-lg-8" style="display: flex">
+                    <div
+                      style="
+                        background-color: rgba(0, 126, 242, 0.2);
+                        padding: 4%;
+                        border-radius: 5px;
+                      "
+                    >
+                      <img
+                        src="../../../../../assets/images/carbonsoftware.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div style="padding-left: 4%">
+                      <p class="title1">
+                        {{
+                          planList?.pricingPlanName
+                            ? (planList?.pricingPlanName | titlecase)
+                            : (planList?.addOnPlanName | titlecase)
+                        }}
+                      </p>
+                      <!-- <p class="subTitle1">small description</p> -->
+                    </div>
+                  </div>
+                  <div class="col-lg-4 setPadding">
+                    <p class="price1" style="color: #007ef2">
+                      ₹{{
+                        planList?.discountPrice || planList?.discountPrice == 0
+                          ? planList?.discountPrice
+                          : planList?.price
+                      }}{{ planList?.addOnPlanName ? "" : "/annum" }}
+                    </p>
+                    <p
+                      class="discount1"
+                      *ngIf="
+                        planList?.discountPrice || planList?.discountPrice == 0
+                      "
+                    >
+                      <del>₹{{ planList?.price }}</del> Original Price
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 setMargin">
+            <div class="card">
+              <div
+                style="
+                  background-color: #007ef2;
+                  max-width: 150px;
+                  margin-top: -22px;
+                  margin-left: -1.5px;
+                  border-radius: 2px;
+                "
+              >
+                <p class="text-white" style="padding: 11%; font-weight: 700">
+                  GET ADDONS
+                </p>
+              </div>
+              <div
+                class="card-body"
+                style="
+                  overflow: auto;
+                  max-height: 338px;
+                  min-height: 338px;
+                  padding: 0px;
+                "
+              >
+                <div
+                  class="card"
+                  style="
+                    border: 1px solid #007ef2;
+                    border-radius: 5px;
+                    margin: 1% 1% 3% 1%;
+                  "
+                  *ngFor="let addon of addons"
+                >
+                  <div class="card-body" style="padding: 3% 3%">
+                    <div class="row">
+                      <div class="col-lg-6" style="display: flex">
+                        <div
+                          style="
+                            background-color: rgba(0, 126, 242, 0.2);
+                            padding: 4%;
+                            border-radius: 5px;
+                            max-height: 100%;
+                          "
+                        >
+                          <img
+                            src="../../../../../assets/images/carbonsoftware.svg"
+                            alt=""
+                          />
+                        </div>
+                        <div style="padding-left: 4%">
+                          <p class="title1">{{ addon.addOnPlanName }}</p>
+                          <p class="subTitle1">
+                            addons's description
+                            <i
+                              class="fas fa fa-info-circle"
+                              style="cursor: pointer"
+                              title="Click for description"
+                              aria-hidden="true"
+                              (click)="showFeatures(addon.features)"
+                            ></i>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 setPadding">
+                        <p class="price1" style="color: #007ef2">
+                          ₹{{
+                            addon.discountPrice || addon?.discountPrice == 0
+                              ? addon.discountPrice
+                              : addon.price
+                          }}
+                        </p>
+                        <p
+                          class="discount1"
+                          *ngIf="addon.discountPrice || addon?.discountPrice == 0"
+                        >
+                          <del>₹{{ addon.price }}</del> Original Price
+                        </p>
+                      </div>
+                      <div
+                        class="col-lg-2 setPadding"
+                        style="display: flex; align-items: center"
+                      >
+                        <button
+                          (click)="addAddons(addon.id)"
+                          [ngStyle]="
+                            selectedAddonsId.includes(addon.id)
+                              ? {
+                                  'background-color': 'white',
+                                  border: '1px solid red',
+                                  width: '85px'
+                                }
+                              : {
+                                  'background-color': 'white',
+                                  border: '1px solid #007ef2',
+                                  width: '85px'
+                                }
+                          "
+                          style="
+                            background-color: white;
+                            border: 1px solid red;
+                            width: 85px;
+                          "
+                        >
+                          <span
+                            class="button1"
+                            [ngStyle]="
+                              selectedAddonsId.includes(addon.id)
+                                ? { color: 'red', padding: '8%' }
+                                : { color: '#007ef2', padding: '8%' }
+                            "
+                            >{{
+                              selectedAddonsId.includes(addon.id)
+                                ? "Remove Add On"
+                                : "Add On +"
+                            }}</span
+                          >
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row setCouponMargin">
+          <div class="col-12">
+            <div style="background-color: white; border-radius: 6px; padding: 2%">
+              <span>
+                <img
+                  src="../../../../../assets/images/mdi_coupon-outline.svg"
+                  alt=""
+                />
+                <span> Have a coupon code ?</span>
+              </span>
+              <div
+                style="
+                  display: flex;
+                  border: 1px solid lightgrey;
+                  padding: 1%;
+                  border-radius: 11px;
+                  background-color: #f1f5f9;
+                "
+              >
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  style="border-color: transparent; background-color: #f1f5f9"
+                  [(ngModel)]="coupon"
+                  placeholder="ZA0993"
+                />
+                <div
+                  style="padding: 2%"
+                  *ngIf="!subscriptionPlanTransaction?.discount"
+                >
+                  <button
+                    (click)="applyCoupon()"
+                    style="
+                      background-color: white;
+                      border: 1px solid #007ef2;
+                      width: 59px;
+                      border-radius: 3px;
+                    "
+                  >
+                    <span class="button1" style="color: #007ef2; padding: 8%"
+                      >Verify</span
+                    >
+                  </button>
+                </div>
+                <div
+                  style="padding: 2%"
+                  *ngIf="subscriptionPlanTransaction?.discount"
+                >
+                  <button
+                    (click)="reinitalizeCoupon()"
+                    style="
+                      background-color: white;
+                      border: 1px solid #f25100;
+                      width: 59px;
+                      border-radius: 3px;
+                    "
+                  >
+                    <span class="button1" style="color: #f25100; padding: 8%"
+                      >Cancel</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" style="margin-top: 8%">
+            <div class="card">
+              <div class="card-body" style="padding: 7%">
+                <p
+                  style="
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 27px;
+                    color: #1f1f1f;
+                  "
+                >
+                  Order Summary
+                </p>
+                <hr />
+                <div>
+                  <div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngFor="let item of subscriptionPlanTransaction?.items"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        {{ item.name }}
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        >&#8377;{{
+                          item.discountedPrice ? item.discountedPrice : item.price
+                        }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.discount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        Discount
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.discount }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.amount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        Sub Total
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.amountDue }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.igstInAmount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        IGST
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.igstInAmount }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.sgstInAmount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        SGST
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.sgstInAmount }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.cgstInAmount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        CGST
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.cgstInAmount }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.gstInAmount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        GST
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.gstInAmount }}</b
+                      >
+                    </div>
+                    <div
+                      style="display: flex; justify-content: space-between"
+                      *ngIf="subscriptionPlanTransaction?.netamount"
+                    >
+                      <p
+                        style="
+                          font-weight: 400;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #8491a5;
+                        "
+                      >
+                        Total Amount
+                      </p>
+                      <b
+                        style="
+                          font-weight: 700;
+                          font-size: 12.6837px;
+                          line-height: 30px;
+                          color: #1f1f1f;
+                        "
+                        ><span>&#8377;</span
+                        >{{ subscriptionPlanTransaction?.netamount }}</b
+                      >
+                    </div>
+                  </div>
+                  <div style="padding: 5%">
+                    <button
+                      type="button"
+                      style="
+                        width: 100%;
+                        height: 60px;
+                        left: 40px;
+                        top: 283px;
+                        background: linear-gradient(
+                          94.38deg,
+                          #008ce4 -1.08%,
+                          #00af9e 96.88%
+                        );
+                        box-shadow: 0px 18px 29px rgba(23, 16, 21, 0.025),
+                          0px 3.6px 4.7125px rgba(23, 16, 21, 0.05);
+                        border-radius: 6px;
+                        border: 1px solid #ffff;
+                        color: #ffffff;
+                      "
+                      (click)="pay()"
+                    >
+                      PROCEED TO PAY
+                    </button>
+                    <p
+                      *ngIf="subscriptionPlanTransaction?.discount"
+                      class="mt-2"
+                      style="
+                        font-weight: 400;
+                        font-size: 12.6837px;
+                        line-height: 19px;
+                        color: #8491a5;
+                      "
+                    >
+                      You saved ₹{{ subscriptionPlanTransaction?.discount }} on
+                      your order.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="setMargin1 justifyContent" style="display: flex">
+    <p>Having trouble in payment. <a> Need any help?</a></p>
+  </div>
+  <div class="setMargin1 justifyContent1" style="display: flex">
+    <button class="btn btn-sm btn-secondary" (click)="goBack()">< Go Back</button>
+  </div>
+  

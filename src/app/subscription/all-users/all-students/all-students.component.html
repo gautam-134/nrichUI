@@ -1,1 +1,211 @@
-<p>all-students works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #studentSearch
+                        type="text"
+                        placeholder="Type in this field for quick filter"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+  
+              <!-- <div class="col-sm-12 col-md-6">
+                <div class="user-list-files d-flex justify-content-end">
+                  <a
+                    (click)="addCourse()"
+                    class="chat-icon-delete btn bg-soft-primary"
+                  >
+                    + Add New Course
+                  </a>
+                </div>
+              </div> -->
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    No
+                    <!-- <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'id'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('id')"
+                    ></i> -->
+                  </th>
+                  <th scope="col">
+                    Name
+                    <!-- <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'name'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('name')"
+                    ></i> -->
+                  </th>
+                  <th scope="col">
+                    Email
+                    <!-- <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'featured'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('featured')"
+                    ></i> -->
+                  </th>
+                  <th scope="col">
+                    Phone Number
+                    <!-- <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'displayOrder'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('displayOrder')"
+                    ></i> -->
+                  </th>
+                  <th scope="col">
+                    Registration Type
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'displayOrder'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('displayOrder')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">
+                    Sign Up From
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'displayOrder'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('displayOrder')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">
+                    Country
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'displayOrder'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('displayOrder')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">
+                    State
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'displayOrder'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('displayOrder')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">
+                    Date
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'displayOrder'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('displayOrder')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="students.length == 0">
+                  <td colspan="10">No Students Found</td>
+                </tr>
+                <tr *ngFor="let element of students; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element?.firstName }}
+                  </td>
+                  <td>
+                    {{ element?.email }}
+                  </td>
+                  <td>
+                    {{ element?.mobileNumber }}
+                  </td>
+                  <td>
+                    {{ element?.registrationMode }}
+                  </td>
+                  <td></td>
+                  <td>
+                    {{ element?.country }}
+                  </td>
+                  <td>
+                    {{ element?.state }}
+                  </td>
+                  <td>
+                    {{ element?.registrationDate | date: "dd/MM/yyyy" }}
+                  </td>
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                      >menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        (click)="enrolledCourses(element.id)"
+                        data-toggle="tooltip"
+                        title="Edit Course"
+                      >
+                        Enrolled Course
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

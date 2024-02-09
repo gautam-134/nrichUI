@@ -1,1 +1,137 @@
-<p>checkout works!</p>
+<main>
+    <div
+      class="section-cover"
+      style="margin-top: 60px; margin-bottom: 35px"
+      id="hero-area"
+    >
+      <div class="hero-area" style="display: contents">
+        <div class="row" style="margin-right: 0px">
+          <div class="col-md-12">
+            <div class="row" style="text-align: center; justify-content: center">
+              <div class="col-1" style="margin: 0% -3%">
+                <span class="tab2" [ngClass]="tab == 1 ? 'active' : ''">
+                  <span
+                    class="text2 text-center"
+                    [ngClass]="tab == 1 ? 'text-active' : ''"
+                    >1</span
+                  >
+                </span>
+              </div>
+              <div class="col-1">
+                <img
+                  src="../assets/Vector 98 (1).png"
+                  style="width: 100%"
+                  alt=""
+                />
+              </div>
+              <div class="col-1" style="margin: 0% -3%">
+                <span class="tab2" [ngClass]="tab == 2 ? 'active' : ''">
+                  <span
+                    class="text2 text-center"
+                    [ngClass]="tab == 2 ? 'text-active' : ''"
+                    >2</span
+                  >
+                </span>
+              </div>
+              <div class="col-1">
+                <img
+                  src="../assets/Vector 98 (1).png"
+                  style="width: 100%"
+                  alt=""
+                />
+              </div>
+              <div class="col-1" style="margin: 0% -3%">
+                <span class="tab2" [ngClass]="tab == 3 ? 'active' : ''">
+                  <div
+                    class="text2 text-center"
+                    [ngClass]="tab == 3 ? 'text-active' : ''"
+                  >
+                    3
+                  </div>
+                </span>
+              </div>
+            </div>
+            <app-contact-information *ngIf="tab == 1"></app-contact-information>
+            <app-payment *ngIf="tab == 2"></app-payment>
+            <app-confirmation *ngIf="tab == 3"></app-confirmation>
+            <button
+              #dClick
+              style="display: none"
+              (click)="changeTabWithSuccess()"
+            >
+              Default Click
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- <main>
+    <div class="section-cover" id="hero-area">
+      <div
+        class="hero-area"
+        style="padding-top: 0px; min-height: 548px; overflow: auto"
+      >
+        <div class="container cs-padding">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row" style="text-align: center">
+                <span>
+                  <span>
+                    <span class="tab2" [ngClass]="tab == 1 ? 'active' : ''">
+                      <span
+                        class="text2 text-center"
+                        [ngClass]="tab == 1 ? 'text-active' : ''"
+                        >1</span
+                      >
+                    </span>
+                  </span>
+                  <span>
+                    <img src="../assets/Vector 98 (1).png" alt="" />
+                  </span>
+                  <span>
+                    <span class="tab2" [ngClass]="tab == 2 ? 'active' : ''">
+                      <span
+                        class="text2 text-center"
+                        [ngClass]="tab == 2 ? 'text-active' : ''"
+                        >2</span
+                      >
+                    </span>
+                  </span>
+                  <span>
+                    <img
+                      src="../assets/Vector 98 (1).png"
+                      style="margin-top: -4px; width: 150px"
+                      alt=""
+                    />
+                  </span>
+                  <span>
+                    <span class="tab2" [ngClass]="tab == 3 ? 'active' : ''">
+                      <div
+                        class="text2 text-center"
+                        [ngClass]="tab == 3 ? 'text-active' : ''"
+                      >
+                        3
+                      </div>
+                    </span>
+                  </span>
+                </span>
+              </div>
+              <app-contact-information *ngIf="tab == 1"></app-contact-information>
+              <app-payment *ngIf="tab == 2"></app-payment>
+              <app-confirmation *ngIf="tab == 3"></app-confirmation>
+              <button
+                #dClick
+                style="display: none"
+                (click)="changeTabWithSuccess()"
+              >
+                Default Click
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main> -->
+  

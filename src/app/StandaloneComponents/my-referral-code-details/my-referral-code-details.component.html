@@ -1,1 +1,92 @@
-<p>my-referral-code-details works!</p>
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <nav class="col-md-9">
+          <ul class="nav nav-pills mb-6" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link active"
+                id="pills-dashboard-tab"
+                data-bs-toggle="pill"
+                href="#pills-dashboard"
+                role="tab"
+                aria-controls="pills-dashboard"
+                aria-selected="true"
+                >Referral Dashboard</a
+              >
+            </li>
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                id="pills-Signups-tab"
+                data-bs-toggle="pill"
+                href="#pills-Signups"
+                role="tab"
+                aria-controls="pills-Signups"
+                aria-selected="false"
+                tabindex="-1"
+                >Referral Signups</a
+              >
+            </li>
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                id="pills-rewards-tab"
+                data-bs-toggle="pill"
+                href="#pills-rewards"
+                role="tab"
+                aria-controls="pills-rewards"
+                aria-selected="false"
+                tabindex="-1"
+                >Referral Rewards</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="col-md-3">
+          <div class="text-end">
+            <button class="btn btn-primary" [disabled]="!code" style="background-color: #007ef2" (click)="copy(code)">
+              Copy Link  <img src="../../../assets/share.svg" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="tab-content mt-0" id="v-pills-tabContent">
+        <div
+          class="tab-pane fade active show"
+          id="pills-dashboard"
+          role="tabpanel"
+          aria-labelledby="pills-dashboard"
+        >
+          <app-referral-dashboard [code]="code" [referredDiscount]="referredDiscount" [referrerDiscount]="referrerDiscount"  [totalRewardCount]="totalRewardCount" [totalSignUpCount]="totalSignUpCount"></app-referral-dashboard>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Signups"
+          role="tabpanel"
+          aria-labelledby="pills-Signups"
+        >
+          <app-referral-sign-ups
+            [referralUsers]="referralSignups"  [config]="totalSignUpCount"  [maxPages]="usersSize" [pagenumber]="userPage"
+            (nextPage)="nextPage($event)"
+          ></app-referral-sign-ups>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-rewards"
+          role="tabpanel"
+          aria-labelledby="pills-rewards"
+        >
+          <app-referral-rewards
+            [referralRewards]="referralRewards"  [config]="totalRewardCount"  [maxPages]="size" [pagenumber]="page"
+            (nextPage)="nextRewardPage($event)"
+          ></app-referral-rewards>
+        </div>
+      </div>
+    </div>
+  </div>
+  

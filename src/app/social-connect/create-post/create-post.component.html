@@ -1,1 +1,334 @@
-<p>create-post works!</p>
+<div class="col-sm-12">
+    <div id="post-modal-data" class="card card-block card-stretch card-height">
+      <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+          <h4 class="card-title">Create Post</h4>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="user-img">
+            <img
+              [src]="
+                userProfile.profileImage
+                  ? userProfile.profileImage
+                  : 'assets/images/profile.png'
+              "
+              (error)="handleImageError($event)"
+              alt="userimg"
+              class="avatar-60 rounded-circle"
+              loading="lazy"
+            />
+          </div>
+          <form
+            class="post-text ms-3 w-100"
+            data-bs-toggle="modal"
+            data-bs-target="#post-modal"
+            action="javascript:void();"
+            #openModal
+          >
+            <input
+              type="text"
+              class="form-control rounded"
+              placeholder="Write something here..."
+              style="border: none"
+            />
+          </form>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="post-modal"
+        tabindex="-1"
+        aria-labelledby="post-modalLabel"
+        aria-hidden="true"
+        style="position: fixed"
+      >
+        <div class="modal-dialog setPadding">
+          <div class="modal-content">
+            <div class="modal-header" style="padding: 10px">
+              <h5 class="modal-title" id="post-modalLabel">Create Post</h5>
+              <a
+                #closeModal
+                (click)="resetPostForm()"
+                href="javascript:void(0);"
+                class="lh-1"
+                data-bs-dismiss="modal"
+              >
+                <span class="material-symbols-outlined">close</span>
+              </a>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="postForm">
+                <div class="d-flex align-items-center">
+                  <div class="user-img">
+                    <img
+                      [src]="
+                        userProfile.profileImage
+                          ? userProfile.profileImage
+                          : 'assets/images/profile.png'
+                      "
+                      (error)="handleImageError($event)"
+                      alt="userimg"
+                      class="avatar-60 rounded-circle img-fluid"
+                      style="height: 60px; width: 67px"
+                      loading="lazy"
+                    />
+                  </div>
+                  <textarea
+                    formControlName="postText"
+                    rows="2"
+                    class="form-control"
+                    placeholder="Write something here..."
+                    style="border: none; resize: none"
+                  ></textarea>
+                  <app-emoji-picker
+                    [onBottom]="true"
+                    (onEmojiSelection)="onEmojiSelection($event)"
+                  ></app-emoji-picker>
+                </div>
+                <div *ngIf="isSubmit && controls['postText'].invalid">
+                  <div
+                    *ngIf="controls['postText'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Post text is required
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 mb-2">
+                    <div class="fileUpload" style="width: 100%">
+                      <input
+                        type="file"
+                        class="upload"
+                        #fileSelect
+                        (change)="onFilesSelected($event)"
+                        accept="image/x-png,image/gif,image/jpeg"
+                      />
+                      <a style="color: #48a3e6">
+                        <img
+                          src="assets/Social_Connect/Photo.png"
+                          alt="icon"
+                          class="img-fluid me-2"
+                          loading="lazy"
+                        />
+                        Photo
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-2">
+                    <div class="fileUpload" style="width: 100%">
+                      <a style="color: #48a3e6" (click)="displayLinkInput()">
+                        <img
+                          src="assets/Social_Connect/Video.png"
+                          alt="icon"
+                          class="img-fluid me-2"
+                          loading="lazy"
+                        />
+                        Video
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-3 col-sm-6 mb-2">
+                    <div
+                      class="fileUpload"
+                      style="overflow: visible; padding: 9.5px; width: 100%"
+                    >
+                      <input
+                        style="display: none"
+                        id="dropdownInput"
+                        type="checkbox"
+                      />
+                      <div class="dropdown">
+                        <label class="dropbtn" for="dropdownInput">
+                          <span class="m-auto ml1 small-font">
+                            <img
+                              [src]="
+                                visible == 'friends'
+                                  ? 'assets/Social_Connect/friend.png'
+                                  : 'assets/Social_Connect/everyone.png'
+                              "
+                              style="width: 22px"
+                              alt="icon"
+                              class="img-fluid me-2"
+                            />
+                            To
+                            {{ controls["visibility"].value | titlecase }}
+                          </span>
+                        </label>
+                        <div class="dropdown-content" style="border-radius: 10px">
+                          <p for="dropdownInput">
+                            <label
+                              (click)="changeVisibility('friends')"
+                              style="font-weight: 100; cursor: pointer"
+                              for="dropdownInput"
+                              >To Friends</label
+                            >
+                            <label
+                              (click)="changeVisibility('everyone')"
+                              style="font-weight: 100; cursor: pointer"
+                              for="dropdownInput"
+                              >To Everyone</label
+                            >
+                          </p>
+                        </div>
+                        <label for="dropdownInput" class="overlay"></label>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-3 col-sm-6 mb-2">
+                    <div
+                      class="fileUpload"
+                      style="overflow: visible; padding: 9.5px; width: 100%"
+                    >
+                      <input
+                        style="display: none"
+                        id="typeInput"
+                        type="checkbox"
+                      />
+                      <div class="dropdown">
+                        <label class="dropbtn" for="typeInput">
+                          <span class="m-auto ml1 small-font">
+                            <img
+                              [src]="
+                                type == 'POST'
+                                  ? 'assets/Social_Connect/post.png'
+                                  : 'assets/Social_Connect/event.png'
+                              "
+                              style="width: 22px"
+                              alt="icon"
+                              class="img-fluid me-2"
+                            />
+                            {{ controls["type"].value }}
+                          </span>
+                        </label>
+                        <div class="dropdown-content" style="border-radius: 10px">
+                          <p for="typeInput">
+                            <label
+                              (click)="changeType('POST')"
+                              style="font-weight: 100; cursor: pointer"
+                              for="typeInput"
+                              >POST</label
+                            >
+                            <label
+                              (click)="changeType('EVENT')"
+                              style="font-weight: 100; cursor: pointer"
+                              for="typeInput"
+                              >EVENT</label
+                            >
+                          </p>
+                        </div>
+                        <label for="typeInput" class="overlay"></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="linkInput" class="mb-2 d-flex">
+                  <input
+                    type="text"
+                    placeholder="Add link"
+                    class="form-control"
+                    style="width: 700%; margin-right: 5px"
+                    #link
+                  />
+                  <button
+                    class="btn btn-success w-100"
+                    (click)="addLink(link.value)"
+                    style="margin-right: 5px"
+                  >
+                    + Add
+                  </button>
+                  <button
+                    class="btn btn-danger w-100"
+                    (click)="linkInput = false; linkError = false"
+                  >
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="text-danger" *ngIf="linkError">
+                  Link format is not correct
+                </div>
+                <div style="overflow: auto; max-height: 247px">
+                  <div class="row">
+                    <div
+                      *ngFor="let file of filesBase64; let i = index"
+                      class="col-md-6 mb-2 image-container"
+                    >
+                      <img [src]="file" class="w-100 cont1" alt="Image Preview" />
+                      <button
+                        class="delete-button"
+                        (click)="removeImageFromList(i)"
+                      >
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div
+                      *ngFor="let link of linksList"
+                      class="col-md-6 mb-2 image-container"
+                    >
+                      <iframe
+                        [src]="link | safe"
+                        frameborder="0"
+                        width="100%"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      ></iframe>
+                      <button
+                        class="delete-button"
+                        (click)="removeLinkFromList(link)"
+                      >
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div
+                      *ngFor="let media of postVO.postMediaVOs"
+                      class="col-md-6 mb-2 image-container"
+                    >
+                      <div *ngIf="media.mediaType == 'Image'">
+                        <img
+                          [src]="media.mediaName"
+                          class="w-100 cont1"
+                          alt="Image Preview"
+                        />
+                        <button
+                          class="delete-button"
+                          (click)="deletePostMedia(media.id)"
+                        >
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div *ngIf="media.mediaType == 'Video'">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          [src]="media.mediaName | safe"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        ></iframe>
+                        <button
+                          class="delete-button"
+                          (click)="deletePostMedia(media.id)"
+                        >
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  (click)="onSubmit()"
+                  type="button"
+                  class="btn btn-primary d-block mt-3"
+                >
+                  Post
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

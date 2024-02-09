@@ -1,1 +1,39 @@
-<p>take-action-on-reported-post works!</p>
+<div class="card" [ngClass]="{'description-shown': descriptionVisible}">
+    <div class="card-header d-flex bg-primary">
+        <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">What do you want to do with this post?</h4>
+        </div>
+    </div>
+    <div class="card-body" [ngStyle]="{'height.px': dialogHeight}">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="action-select" class="form-label">Action<span class="text-danger">*</span></label>
+                <select class="form-control" formControlName="actionTaken" id="action-select" (change)="updateDescription()">
+                    <option value="" disabled selected>Select action</option>
+                    <option value="NotViolating">No Action Needed</option>
+                    <option value="Deleted">Delete Post</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reason-input" class="form-label">Reason<span class="text-danger">*</span></label>
+                <textarea class="form-control" id="reason-input" rows="3" formControlName="actionReason"></textarea>
+                <div *ngIf="
+                (submitted && controls['actionReason']?.invalid) ||
+                controls['actionReason']?.touched
+              ">
+              <div *ngIf="controls['actionReason']?.errors?.['required']" class="text-danger">
+                Please leave a comment.
+              </div>
+            </div>
+            </div>
+            <div class="form-group" id="action-description" [style.display]="descriptionVisible ? 'block' : 'none'">
+                <label class="form-label">Description:</label>
+                <p>{{ descriptionText }}</p>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!form.controls['actionTaken'].value" (click)="submit()">Submit</button>
+            <button type="button" style="margin-left: 2%;" mat-button class="btn btn-secondary" (click)="closeDialog()">
+                Close
+            </button>
+        </form>
+    </div>
+</div>

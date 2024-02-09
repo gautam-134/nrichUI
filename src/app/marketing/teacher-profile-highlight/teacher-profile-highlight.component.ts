@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { teacherDetails } from 'src/app/model/teacher-info';
 
 @Component({
   selector: 'app-teacher-profile-highlight',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
   templateUrl: './teacher-profile-highlight.component.html',
   styleUrl: './teacher-profile-highlight.component.scss'
 })
-export class TeacherProfileHighlightComponent {
+export class TeacherProfileHighlightComponent implements OnInit {
 
+  @Input('teacherDetails') teacherDetails!:teacherDetails;
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  gotolinkedin(link:any){
+    window.open(link, '_blank');
+
+  }
 }
+

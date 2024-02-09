@@ -1,1 +1,119 @@
-<p>subscription-contact-us works!</p>
+<!-- <div class="container" style="max-width: 100%; padding: 0px">
+  <form [formGroup]="form">
+    <div class="cta-area position-relative z-index-2">
+      <div class="container type-2 cs-padding mb-3">
+        <div class="row">
+          <div class="col-12">
+            <p
+              class="text-white"
+              style="font-size: 36px; font-weight: 700; margin-top: 0px"
+            >
+              How does this work?
+              <span style="color: #f6f8ff; font-weight: 300; font-size: 13px"
+                >*(we don’t sell your phone numbers. PERIOD)</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="container type-2 cs-padding">
+        <div class="cta-g-wrapper" style="grid-gap: 12px">
+          <fieldset class="mb-4">
+            <legend>Full Name</legend>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="name"
+              placeholder="John Smith"
+              id="fullname"
+              autocomplete="off"
+            />
+            <div *ngIf="submitted && controls['name']?.invalid">
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['name']?.errors?.['required']"
+              >
+                Full name is required.
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="mb-4">
+            <legend>Contact Number</legend>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="mobileNumber"
+              placeholder="Contact Number"
+              id="number"
+              autocomplete="off"
+              minlength="10"
+              maxlength="10"
+              (keydown)="onlyNumeric($event)"
+            />
+            <div *ngIf="submitted && controls['mobileNumber']?.invalid">
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['mobileNumber']?.errors?.['required']"
+              >
+                Contact number is required.
+              </div>
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['mobileNumber']?.errors?.['minlength'] || controls['mobileNumber']?.errors?.['maxlength']"
+              >
+                Contact number is invalid.
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="mb-4">
+            <legend>Courses</legend>
+            <input
+              class="form-control"
+              type="text"
+              list="codes"
+              formControlName="id"
+              placeholder="Enter Course"
+              [(ngModel)]="courseName"
+              (input)="getCourses($event)"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete
+              autoActiveFirstOption
+              #auto="matAutocomplete"
+              (optionSelected)="updateCourseId()"
+            >
+              <mat-option
+                *ngFor="let option of courses"
+                [value]="option.courseName"
+              >
+                {{ option.courseName }}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="submitted && controls['id']?.invalid">
+              <div
+                class="text-danger p-absoulte"
+                *ngIf="controls['id']?.errors?.['required']"
+              >
+                Course name is required.
+              </div>
+            </div>
+            <div
+              class="text-danger p-absoulte"
+              *ngIf="submitted && inqueryForm.id == undefined"
+            >
+              Course name is required.
+            </div>
+          </fieldset>
+          <div class="mb-4">
+            <button
+              (click)="submit()"
+              class="btn btn-medium_round d-flex align-items-center justify-content-center text-uppercase w-100"
+            >
+              <span class="text-gradient textdec">BOOK FOR A CALL BACK</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div> -->

@@ -1,1 +1,26 @@
-<p>add-sticky-note works!</p>
+<div class="card">
+    <div class="card-header d-flex bg-primary">
+        <div class="header-title" style="margin-right: auto">
+            <h4 class="card-title text-white">Add Note</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <textarea type="text" formControlName="content" class="form-control" id="content"></textarea>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="button" style="margin-right: 5px;background-color: #007EF2;width: 10%;" [disabled]="!form.controls['content'].value" type="submit" class="btn btn-primary active"
+                  (click)="onSubmit()">
+                  Add
+                </button>
+                <button type="button" style="margin-right: 5px;width: 10%;" type="submit" mat-button class="btn btn-secondary" (click)="closeDialog()">
+                  Close
+                </button>
+              </div>
+        </form>
+    </div>
+
+</div>

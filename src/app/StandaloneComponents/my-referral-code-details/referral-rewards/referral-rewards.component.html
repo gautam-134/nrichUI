@@ -1,1 +1,51 @@
-<p>referral-rewards works!</p>
+<div class="card">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table forum-table mb-0 rounded">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>Name</th>
+              <th>Discount</th>
+              <th>Expired On</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="7" *ngIf="referralRewards.rewards.length==0">
+                 No Record Found.
+              </td>
+           </tr>
+            <tr *ngFor="let element of referralRewards?.rewards">
+              <td class="col-lg-4">
+                <div class="d-flex align-items-center">
+                  <!-- <img class="img-fluid rounded-circle avatar-40" src="../assets/images/user/01.jpg" alt=""
+                    loading="lazy" /> -->
+                  <div class="media-body ms-3">
+                    <h6 class="">
+                      {{ element?.code }}<a><i style="margin-left: 6px;color: black;-webkit-text-stroke-width: 0.3px;"
+                          class='fa fa-copy' (click)="copy(element.code)"></i></a>
+                    </h6>
+                  </div>
+                </div>
+              </td>
+              <td *ngIf="element?.codeDetailsVO?.discountType =='percentage'">{{element?.codeDetailsVO?.discount}}%</td>
+              <td *ngIf="element?.codeDetailsVO?.discountType !='percentage'">&#x20B9;{{element?.codeDetailsVO?.discount}}
+              </td>
+              <td>
+                <div class="font-weight-bolder font-size-lg mb-0">
+                  {{element?.codeDetailsVO?.endDate | date }}
+                </div>
+                <div class="font-weight-bold text-muted">
+                  {{ element?.codeDetailsVO?.endDate| date: "h:mm a" }}
+                </div>
+              </td>
+              <td class="col-lg-2 h6">{{ element?.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <app-table-paginator  [size]="10" [totalElements]="referralRewards.totalCount" [pagenumber]="pageNumber" (pageChange)="nextRewardPage.emit($event)" [disableSize]="true">
+        </app-table-paginator>
+      </div>
+    </div>
+  </div>

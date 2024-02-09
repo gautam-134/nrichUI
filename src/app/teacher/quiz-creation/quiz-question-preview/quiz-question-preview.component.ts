@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-quiz-question-preview',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './quiz-question-preview.component.html',
   styleUrl: './quiz-question-preview.component.scss'
 })
-export class QuizQuestionPreviewComponent {
+export class QuizQuestionPreviewComponent implements OnInit {
 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 }

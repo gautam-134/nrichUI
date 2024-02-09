@@ -1,1 +1,141 @@
-<p>teacher-dashboard works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div id="content-page" class="content-page">
+        <div class="row">
+          <div class="mb-2">
+            <h4>Learning Modules</h4>
+          </div>
+  
+          <div class="col-sm-12 col-md-6">
+            <div id="user_list_datatable_info" class="dataTables_filter">
+              <form class="me-3 position-relative">
+                <div class="form-group mb-0">
+                  <input
+                    class="form-control"
+                    (keyup)="search($event)"
+                    [(ngModel)]="searchParam"
+                    type="text"
+                    placeholder="Quick Finder"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div style="padding: 10px"></div>
+  
+          <div style="padding: 10px" *ngIf="teacherCourses.length == 0">
+            <h6>No course found!</h6>
+          </div>
+  
+          <div
+            class="col-sm-12 col-md-6 col-lg-4 col-xl-3"
+            *ngFor="let course of teacherCourses"
+          >
+            <div
+              class="card"
+              style="cursor: pointer"
+              [routerLink]="['/teacher/batches']"
+              [queryParams]="{
+                id: course.idCourse,
+                idbatch: course.batchId,
+                courseName: course.courseName
+              }"
+            >
+              <div class="card-body">
+                <div>
+                  <img
+                    [src]="
+                      course.courseImage
+                        ? course.courseImage
+                        : '../assets/images/market/1.png'
+                    "
+                    height="100%"
+                    width="100%"
+                    class="avatar job-icon mb-3 d-inline-block"
+                    loading="lazy"
+                    alt="img"
+                  />
+                </div>
+                <h5
+                  *ngIf="(course.courseName + '').length <= 25"
+                  class="short-description"
+                  title="{{ course.courseName }}"
+                >
+                  {{ course.courseName }}
+                </h5>
+                <h5
+                  *ngIf="(course.courseName + '').length > 25"
+                  class="short-description"
+                  title="{{ course.courseName }}"
+                >
+                  {{ course.courseName | slice : 0 : 25 }}...
+                </h5>
+  
+                <small></small>
+                <div
+                  class="mt-2"
+                  style="min-height: 50px; overflow: auto; max-height: 50px"
+                >
+                  <p
+                    *ngIf="(course.courseTitle + '').length <= 62"
+                    class="short-description"
+                    title="{{ course.courseTitle }}"
+                  >
+                    {{ course.courseTitle | innerhtmltoplaintext }}
+                  </p>
+                  <p
+                    *ngIf="(course.courseTitle + '').length > 62"
+                    class="short-description"
+                    title="{{ course.courseTitle }}"
+                  >
+                    {{
+                      course.courseTitle | innerhtmltoplaintext | slice : 0 : 62
+                    }}...
+                  </p>
+                </div>
+                <div>
+                  <span class="text-warning d-flex align-items-center mt-2">
+                    <i
+                      [ngClass]="course.weightedAverage >= 1 ? '' : 'text-gray'"
+                      class="fa fa-star checked md-18 me-2"
+                    ></i>
+                    <i
+                      [ngClass]="course.weightedAverage >= 2 ? '' : 'text-gray'"
+                      class="fa fa-star checked md-18 me-2"
+                    ></i>
+                    <i
+                      [ngClass]="course.weightedAverage >= 3 ? '' : 'text-gray'"
+                      class="fa fa-star checked md-18 me-2"
+                    ></i>
+                    <i
+                      [ngClass]="course.weightedAverage >= 4 ? '' : 'text-gray'"
+                      class="fa fa-star checked md-18 me-2"
+                    ></i>
+                    <i
+                      [ngClass]="course.weightedAverage >= 5 ? '' : 'text-gray'"
+                      class="fa fa-star md-18 text-gray me-2"
+                    ></i>
+                    <small style="padding-top: 5px" class="text-dark me-2"
+                      >{{
+                        course.weightedAverage ? course.weightedAverage : "0.0"
+                      }}/5</small
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <app-table-paginator
+            [size]="size"
+            [totalElements]="config"
+            [pagenumber]="pageNumber"
+            (pageChange)="nextPage($event)"
+            [disableSize]="true"
+            style="padding: 10px"
+          ></app-table-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+  

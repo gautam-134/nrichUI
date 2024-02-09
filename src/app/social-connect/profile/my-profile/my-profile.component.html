@@ -1,1 +1,133 @@
-<p>my-profile works!</p>
+<div class="card">
+    <div class="card-body profile-page p-0">
+      <div class="profile-header">
+        <div class="position-relative">
+          <img
+            [src]="
+              myProfile.coverImage
+                ? myProfile.coverImage
+                : 'assets/images/page-img/profile-bg1.jpg'
+            "
+            (error)="handleCoverImageError($event)"
+            alt="profile-bg"
+            class="rounded img-fluid w-100"
+            loading="lazy"
+          />
+          <ul
+            class="header-nav list-inline d-flex flex-wrap justify-end p-0 m-0"
+            style="z-index: 50"
+          >
+            <li
+              routerLink="../create-profile"
+              *ngIf="myProfile.id == myProfileId"
+            >
+              <a class="material-symbols-outlined"> edit </a>
+            </li>
+          </ul>
+        </div>
+        <div class="user-detail text-center mb-3">
+          <div class="profile-img">
+            <img
+              [src]="
+                myProfile.profileImage
+                  ? myProfile.profileImage
+                  : 'assets/images/profile.png'
+              "
+              (error)="handleImageError($event)"
+              alt="profile-img"
+              loading="lazy"
+              class="avatar-130 img-fluid"
+            />
+          </div>
+          <div class="profile-detail">
+            <h3 class="">{{ myProfile.name }}</h3>
+          </div>
+        </div>
+        <div
+          class="profile-info p-3 d-flex align-items-center justify-content-between position-relative"
+        >
+          <div class="social-links">
+            <ul
+              class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0"
+            >
+              <li class="text-center pe-3" *ngIf="myProfile.status == 'PENDING'">
+                <button
+                  type="button"
+                  class="btn d-inline-flex btn-soft-primary me-1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Respond
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
+                  <li><a class="dropdown-item" (click)="accept()">Accept</a></li>
+                  <li><a class="dropdown-item" (click)="reject()">Reject</a></li>
+                </ul>
+              </li>
+              <li class="text-center pe-3" *ngIf="myProfile.status == 'FRIEND'">
+                <button
+                  type="button"
+                  class="btn d-inline-flex btn-soft-primary me-1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="material-symbols-outlined me-1">done</i> Friends
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
+                  <li>
+                    <a class="dropdown-item" (click)="unFriend()">Unfriend</a>
+                  </li>
+                </ul>
+              </li>
+              <li
+                class="text-center pe-3"
+                *ngIf="myProfile.status == 'REQUESTED'"
+              >
+                <button
+                  type="button"
+                  class="btn d-inline-flex btn-soft-primary me-1"
+                >
+                  <i class="material-symbols-outlined me-1">done</i>Request Sent
+                </button>
+              </li>
+              <li
+                class="text-center pe-3"
+                *ngIf="myProfile.status == 'NOTFRIEND'"
+              >
+                <button
+                  type="button"
+                  class="btn d-inline-flex btn-soft-primary me-1"
+                  (click)="sendFriendRequest()"
+                >
+                  Follow
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="social-info">
+            <ul
+              class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0"
+            >
+              <li *ngIf="myProfile.id != myProfileId">
+                <div class="d-flex" [routerLink]="'../chat/'+myProfile.id" *ngIf="myProfile.status === 'FRIEND'">
+                  <span class="material-symbols-outlined writ-icon md-18">
+                    send
+                  </span>
+                  <h6 class="ms-1">Write a message</h6>
+                </div>
+              </li>
+              <li class="text-center ps-3">
+                <h6>Posts</h6>
+                <p class="mb-0">{{ myProfile.noOfPosts }}</p>
+              </li>
+              <li class="text-center ps-3">
+                <h6>Friends</h6>
+                <p class="mb-0">{{ myProfile.noOfFriends }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

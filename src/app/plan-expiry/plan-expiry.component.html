@@ -1,1 +1,182 @@
-<p>plan-expiry works!</p>
+<main>
+    <img
+      src="assets/marketing_plans/Vector2.svg"
+      alt=""
+      class="position-absolute"
+      style="right: 0%; width: 5%; top: 0%"
+    />
+    <img
+      src="assets/marketing_plans/Vector1.svg"
+      alt=""
+      class="g-2 position-absolute"
+    />
+    <img
+      src="assets/marketing_plans/Vector3.svg"
+      alt=""
+      class="position-absolute"
+      style="right: 0%; width: 4%; top: 80%"
+    />
+    <div *ngIf="roleType == 'InstituteAdmin'">
+      <div class="row" style="margin-right: 0px; padding: 5%">
+        <div class="col-lg-6">
+          <p class="title" style="padding-bottom: 2%">
+            Couldn’t find <br />
+            <span class="title-pole">what you are looking for?</span>
+          </p>
+          <p
+            style="
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 161%;
+              color: #8491a5;
+              padding-bottom: 5%;
+            "
+          >
+            Your subscription was not renewed and you are restricted accessing the
+            resources. <br />
+            Restricted access will also deny access to your Students using the
+            resources. <br />
+            Please renew your subscription now to help your students continue
+            their learning
+          </p>
+          <button
+            (click)="navigateToPricingPlans()"
+            class="btn"
+            style="
+              background-color: white;
+              border: 1px solid #007ef2;
+              color: #007ef2;
+            "
+          >
+            Renew Your Plan
+          </button>
+          <button
+          (click)="logout()"
+          class="btn"
+          style="
+            background-color: white;
+            border: 1px solid #007ef2;
+            color: #007ef2;
+            margin-left: 21px;
+          "
+        >
+          Sign Out
+        </button>
+        </div>
+        <div class="col-lg-6">
+          <img
+            src="assets/marketing_plans/Institute_Admin.svg"
+            style="width: 100%"
+            alt=""
+          />
+        </div>
+      </div>
+      <p
+        style="
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 161%;
+          text-align: center;
+          color: #8491a5;
+        "
+      >
+        If you think it is a Billing related issue please contact the Service
+        Provider at <span style="color: #ff635f">info@nrichlearning.co.in</span>
+      </p>
+    </div>
+  
+    <div *ngIf="roleType == 'Admin' || roleType == 'Teacher'">
+      <div class="row" style="margin-right: 0px; padding: 5%">
+        <div class="col-lg-6">
+          <p class="title" style="padding-bottom: 2%">
+            Not able to <br />
+            <span class="title-pole"> Get Inside the LMS?</span>
+          </p>
+          <p
+            style="
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 161%;
+              color: #8491a5;
+              padding-bottom: 5%;
+            "
+          >
+            It’s my bad that you are seeing this denied access screen. Check with
+            your Institute Admin for a possible subscription lapse
+          </p>
+          <button
+            (click)="navigateToMarketing()"
+            class="btn"
+            style="
+              background-color: #007ef2;
+              border: 1px solid #007ef2;
+              color: white;
+            "
+          >
+            Contact Admin
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <img class="image1" src="assets/marketing_plans/Teacher_Background.svg" />
+          <img class="image2" src="assets/marketing_plans/Teacher.svg" />
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="roleType == 'Student'">
+      <div class="row" style="margin-right: 0px; padding: 5%">
+        <div class="col-lg-6">
+          <p class="title" style="padding-bottom: 2%">
+            Couldn’t find <br />
+            <span class="title-pole">what you are looking for?</span>
+          </p>
+          <p
+            style="
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 161%;
+              color: #8491a5;
+              padding-bottom: 5%;
+            "
+          >
+            You are seeing this screen due to some unforeseen reasons. Normally
+            the reasons could be <br /><br />
+  
+            1. Subscription of Institute has lapsed <br />
+            2. Institute has suspended the Student
+          </p>
+          <button
+            (click)="navigateToMarketing()"
+            class="btn"
+            style="
+              background-color: white;
+              border: 1px solid #007ef2;
+              color: #007ef2;
+            "
+          >
+            Contact Your Institute
+          </button>
+          <button
+          (click)="logout()"
+          class="btn"
+          style="
+            background-color: white;
+            border: 1px solid #007ef2;
+            color: #007ef2;
+            margin-left: 21px;
+          "
+        >
+          Sign Out
+        </button>
+        </div>
+        <div class="col-lg-6">
+          <img
+            src="assets/marketing_plans/Student.svg"
+            style="width: 80%"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+  

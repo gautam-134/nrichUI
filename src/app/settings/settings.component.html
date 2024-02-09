@@ -1,1 +1,163 @@
-<p>settings works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Payment Gateway Settings</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><b>Razorpay details</b></div>
+          <form [formGroup]="razorPayForm" (ngSubmit)="submit()">
+            <div class="row">
+              <div class="form-group col-md-5">
+                <label class="form-label" for="validationCustom01"
+                  >Razorpay Key<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  formControlName="razorPayKeyId"
+                  class="form-control"
+                />
+                <div *ngIf="isSubmit && controls['razorPayKeyId']?.invalid">
+                  <div
+                    *ngIf="controls['razorPayKeyId'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    RazorpayKeyId is required
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-5">
+                <label class="form-label" for="validationCustom01"
+                  >Razorpay Secret<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  formControlName="razorPaySecret"
+                  class="form-control"
+                />
+                <div *ngIf="isSubmit && controls['razorPaySecret']?.invalid">
+                  <div
+                    *ngIf="controls['razorPaySecret'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    RazorPaySecret is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2" style="margin-top: 23px">
+                <div class="row">
+                  <button
+                    class="btn box-btn btn-success mt-2"
+                    type="submit"
+                    style="width: 92px"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <p>
+                  Sign up now to create a Razorpay account.
+                  <a href="https://rzp.io/i/YkQ9OXxQu" target="_blank"
+                    >click here</a
+                  >
+                </p>
+              </div>
+              <!-- <div class="col-md-1" style="margin-top: 23px">
+                <div class="row">
+                  <h6 *ngIf="isVerified" class="badge bg-success mt-2" style="padding: 9px; width: 92px; font-size: 100%">
+                    Verified
+                  </h6>
+                  <button *ngIf="!isVerified" class="btn btn-secondary mt-2 text-white" style="width: 92px"
+                    (click)="verifyRazorPayCredientials()">
+                    Verify
+                  </button>
+                </div>
+              </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Webhook Settings</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <div>
+              <b>Verification Token:</b
+              ><b style="text-decoration: underline">{{
+                webhookVerTokenVO.token
+              }}</b>
+            </div>
+            <div *ngIf="webhookUrls">
+              <b>Webhook Url:</b
+              ><b style="text-decoration: underline">{{ webhookUrls }}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">GoogleSheet Webhook Script</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <symbol
+              id="exclamation-triangle-fill"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              />
+            </symbol>
+          </svg>
+          <div
+            class="alert alert-warning d-flex align-items-center"
+            role="alert"
+          >
+            <svg
+              class="bi flex-shrink-0 me-2"
+              width="24"
+              height="24"
+              role="img"
+              aria-label="Warning:"
+            >
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+              Allowed Column Names :
+              <span *ngFor="let column of columnNames; let i = index"
+                >{{ column }}{{ columnNames.length == i + 1 ? " " : " , " }}</span
+              >
+            </div>
+          </div>
+          <div class="text-box">
+            <div class="top-area">
+              <h2>Copy Script</h2>
+              <div class="copy-btn" (click)="copyScript()">
+                <i class="fa fa-copy"></i>
+              </div>
+            </div>
+            <textarea readonly spellcheck="false" #script>
+  function saveData(row){var ss=SpreadsheetApp.getActive(),lastColumn=ss.getActiveRange().getLastColumn(),rng=ss.getActiveSheet().getRange(1,1,10,lastColumn-1),vals=rng.getValues(),payload={'row':row[0],'header':vals[0]},options={'contentType':'application/json','method':'post','payload':JSON.stringify(payload)},path='{{
+                webhookUrls
+              }}',response=UrlFetchApp.fetch(path,options);return JSON.parse(response.getContentText()).message}function doPost(e){return HtmlService.createHtmlOutput("post request received")}</textarea
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

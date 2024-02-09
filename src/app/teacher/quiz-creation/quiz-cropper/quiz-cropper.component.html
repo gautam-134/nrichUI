@@ -1,1 +1,43 @@
-<p>quiz-cropper works!</p>
+
+<!-- <div class="card">
+<div class="row" style="
+overflow: auto;
+max-height: 400px;
+min-height: 400px;
+">
+    <div class="col-md-6">
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1.75/1"
+            format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [cropperMinHeight]="500"
+            [cropperMinWidth]="875"></image-cropper>
+    </div>
+    <div class="col-md-6">
+        <img [src]="croppedImage" style="width: 560px;height: 314px;" />
+    </div>
+</div>
+<div style="margin-top: 2%;">
+    <button class="btn btn-secondary" mat-dialog-close>Cancel</button>
+    <button mat-button class="btn btn-primary" style="margin-left: 5px;" (click)="convertBase64ToFile()">Ok</button>
+</div>
+</div> -->
+
+<div class="card">
+    <div>
+        <h3>Adjust Image to Crop</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="max-height:400px;max-width:400px; 
+        overflow-y: auto;">
+            <image-cropper [imageURL]="file" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                [aspectRatio]="1.75/1" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+        </div>
+
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-secondary" mat-dialog-close>Cancel</button>
+        <button mat-button class="btn btn-primary" style="margin-left: 5px;" (click)="convertBase64ToFile()">Save</button>
+    </div>
+
+</div>

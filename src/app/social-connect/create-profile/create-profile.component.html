@@ -1,1 +1,286 @@
-<p>create-profile works!</p>
+<div class="card">
+    <div class="card-body profile-page p-0">
+      <div class="profile-header">
+        <div class="cont position-relative">
+          <img
+            [src]="
+              coverPicBase64
+                ? coverPicBase64
+                : userProfile.coverImage
+                ? userProfile.coverImage
+                : '../assets/images/page-img/profile-bg1.jpg'
+            "
+            alt="profile-bg"
+            class="rounded img-fluid w-100"
+            loading="lazy"
+          />
+          <button
+            class="button btn btn-sm btn-danger"
+            (click)="removeImage(false)"
+          >
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="user-detail text-center mb-3">
+          <div class="cont1 profile-img">
+            <img
+              [src]="
+                profilePicBase64
+                  ? profilePicBase64
+                  : userProfile.profileImage
+                  ? userProfile.profileImage
+                  : 'assets/images/profile.png'
+              "
+              alt="profile-img"
+              loading="lazy"
+              class="avatar-130 img-fluid"
+            />
+            <button
+              class="button btn btn-sm btn-danger"
+              (click)="removeImage(true)"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="profile-detail">
+            <h3 class="">
+              {{ getControls["name"].value ? getControls["name"].value : "Name" }}
+            </h3>
+          </div>
+        </div>
+        <div
+          class="profile-info p-3 d-flex align-items-center justify-content-between position-relative"
+        >
+          <div class="social-links">
+            <ul
+              class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0"
+            >
+              <li class="fileUpload w-100">
+                <input
+                  type="file"
+                  class="upload"
+                  (change)="uploadImage($event, 1, 1, true)"
+                />
+                <a style="cursor: pointer">Upload Profile Image</a>
+              </li>
+            </ul>
+          </div>
+          <div class="social-info">
+            <ul
+              class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0"
+            >
+              <li class="fileUpload w-100">
+                <input
+                  type="file"
+                  class="upload"
+                  (change)="uploadImage($event, 4, 1, false)"
+                />
+                <a style="cursor: pointer">Upload Cover Image</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="card">
+        <form [formGroup]="userProfileForm" (ngSubmit)="submit()">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Personal Information</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label class="form-label" for="exampleInputText1"
+                  >Enter Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Name"
+                  formControlName="name"
+                />
+                <div *ngIf="isSubmit && getControls['name']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['name']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label" for="exampleInputText1"
+                  >Date of Birth
+                </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  placeholder="Select Date of Birth"
+                  formControlName="dateOfBirth"
+                />
+                <div *ngIf="isSubmit && getControls['dateOfBirth']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['dateOfBirth']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="row">
+                  <label for="gender" class="form-label text-dark">Gender</label>
+                  <div class="col-md-4">
+                    <input
+                      id="male"
+                      type="radio"
+                      class="custom-control-input"
+                      value="M"
+                      formControlName="gender"
+                    />
+                    <label class="form-label text-dark" for="male"
+                      >&nbsp;Male</label
+                    >
+                  </div>
+                  <div class="col-md-4">
+                    <input
+                      id="female"
+                      type="radio"
+                      class="custom-control-input"
+                      formControlName="gender"
+                      value="F"
+                    />
+                    <label class="form-label text-dark" for="male"
+                      >&nbsp;Female</label
+                    >
+                  </div>
+                  <div *ngIf="isSubmit && getControls['gender']?.invalid">
+                    <div
+                      class="text-danger"
+                      *ngIf="getControls['gender']?.errors?.['required']"
+                    >
+                      Above Field Is Required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="exampleInputEmail1" class="form-label">Country</label>
+                <select class="form-control" formControlName="country">
+                  <option *ngFor="let country of countryList" [value]="country">
+                    {{ country }}
+                  </option>
+                </select>
+                <div *ngIf="isSubmit && getControls['country']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['country']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="exampleInputEmail1" class="form-label">State</label>
+                <select class="form-control" formControlName="state">
+                  <option *ngFor="let state of stateList" [value]="state">
+                    {{ state }}
+                  </option>
+                </select>
+                <div *ngIf="isSubmit && getControls['state']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['state']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Employment Staus</label
+                >
+                <select class="form-control" formControlName="employmentStatus">
+                  <option selected disabled value="">
+                    Select Employment Status
+                  </option>
+                  <option value="employeed">Employeed</option>
+                  <option value="notemployeed">Not Employeed</option>
+                </select>
+                <div *ngIf="isSubmit && getControls['employmentStatus']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['employmentStatus']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="metaTags" class="form-label">Interest</label>
+                <tag-input
+                  [(ngModel)]="new"
+                  formControlName="interest"
+                  placeholder="Meta Tags"
+                ></tag-input>
+                <mat-hint> Hint:- Press enter for add tags. </mat-hint>
+                <div *ngIf="isSubmit && getControls['interest']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['interest']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Education Qualification</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="educationQualification"
+                ></textarea>
+                <div
+                  *ngIf="
+                    isSubmit && getControls['educationQualification']?.invalid
+                  "
+                >
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['educationQualification']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <label for="exampleInputEmail1" class="form-label">Bio</label>
+                <textarea class="form-control" formControlName="bio"></textarea>
+                <div *ngIf="isSubmit && getControls['bio']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="getControls['bio']?.errors?.['required']"
+                  >
+                    Above Field Is Required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+            <!-- <button type="cancel" class="btn btn-danger text-white">
+              cancel
+            </button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

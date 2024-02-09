@@ -1,1 +1,101 @@
-<p>institute-management works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Institutes Management</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <div id="user_list_datatable_info" class="dataTables_filter">
+                            <form class="me-3 position-relative">
+                                <div class="form-group mb-0">
+                                    <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                        type="text" placeholder="Search....">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Institute Name <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]="typeOfShorting && type =='name' ?  'fa fa-sort-amount-desc' :'fa fa-sort-amount-asc'"
+                                        (click)="short('name')"></i></th>
+                                <th>Institute Code <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]="typeOfShorting && type =='institutionCode' ?  'fa fa-sort-amount-desc' :'fa fa-sort-amount-asc'"
+                                        (click)="short('institutionCode')"></i></th>
+                                <th>Institute Admin <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]="typeOfShorting && type =='instituteAdminName' ?  'fa fa-sort-amount-desc' :'fa fa-sort-amount-asc'"
+                                        (click)="short('instituteAdminName')"></i></th>
+                                <th>Contact Number <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]="typeOfShorting && type =='mobileNumber' ?  'fa fa-sort-amount-desc' :'fa fa-sort-amount-asc'"
+                                        (click)="short('mobileNumber')"></i></th>
+                                <th>Public <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='featured' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('featured')"></i></th>
+                                <th>Display Order <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='displayOrder' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('displayOrder')"></i></th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngIf="insituteList?.length==0">
+                                <td colspan="6">No Record Found.</td>
+                            </tr>
+                            <tr class="" *ngFor="let element of insituteList | short:type:typeOfShorting ; let i=index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ element?.name }}</td>
+                                <td>{{element?.institutionCode}}</td>
+                                <td>{{element?.instituteAdminName}}</td>
+                                <td>{{element?.mobileNumber}}</td>
+
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" [(ngModel)]="element.featured"
+                                            (change)="featured(element,$event)" type="checkbox"
+                                            id="flexSwitchCheckChecked" [checked]="element?.featured">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">{{element?.featured
+                                            ?
+                                            'Enable':'Disable'}}</label>
+                                    </div>
+                                </td>
+                                <td><input type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;"
+                                        #displayOrder (change)="changeDisplayOrder(displayOrder.value,element.id)"
+                                        [value]="element?.displayOrder"></td>
+
+                                <td>
+                                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example home icon" *ngIf="element?.name">menu
+                                    </mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                        <button [disabled]="element?.isOfflineInvoiceGenerated" mat-menu-item
+                                            style="cursor: pointer" data-toggle="tooltip"
+                                            (click)="submitOfflinePayment(element.id,element?.name)">
+                                            {{ element?.isOfflineInvoiceGenerated?'Invoice Already Generted':'Generate
+                                            Invoice'}}
+                                        </button>
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            (click)="changeInstituteAdmin(element.id,element?.name)">
+                                            Change Institute Admin
+                                        </button>
+                                    </mat-menu>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

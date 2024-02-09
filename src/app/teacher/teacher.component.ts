@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher',
@@ -7,6 +14,34 @@ import { Component } from '@angular/core';
   templateUrl: './teacher.component.html',
   styleUrl: './teacher.component.scss'
 })
-export class TeacherComponent {
+export class TeacherComponent implements OnInit {
+  @Output('desktopHamburgerClick')
+  desktopHamburgerClick: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+  opensidebar!: any;
+  scrHeight!: number;
+  removecss!: boolean;
+  constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    this.getScreenSize();
+    const url = localStorage.getItem('redirectRoute');
+    if (url) {
+      this.router.navigate([url]);
+      localStorage.removeItem('redirectRoute');
+    }
+  }
+  toggleDesktopSidebarOpen(value: Boolean) {
+    this.opensidebar = value;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.scrHeight = window.innerHeight;
+
+    if (window.innerWidth <= 900) {
+      this.removecss = true;
+    } else {
+      this.removecss = false;
+    }
+  }
 }

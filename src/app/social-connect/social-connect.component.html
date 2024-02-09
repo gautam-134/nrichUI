@@ -1,1 +1,46 @@
-<p>social-connect works!</p>
+<div class="position-relative setWidth" *ngIf="response">
+    <div id="content-page" style="padding: 0px !important" class="content-page">
+      <div class="" style="margin-right: 10px">
+        <!-- <div class="d-flex">
+          <p style="text-decoration: underline" class="ms-2" (click)="newsFeed()">
+            NewsFeed
+          </p>
+          <p
+            style="text-decoration: underline"
+            class="ms-2"
+            (click)="suggestedFriends()"
+          >
+            SuggestedFriends
+          </p>
+          <p
+            style="text-decoration: underline"
+            class="ms-2"
+            (click)="friendRequest()"
+          >
+            Friend Requests
+          </p>
+          <p style="text-decoration: underline" class="ms-2" (click)="friends()">
+            My Profile
+          </p>
+          <p
+            style="text-decoration: underline"
+            class="ms-2"
+            (click)="createProfile()"
+          >
+            Create Profile
+          </p>
+          <p
+            style="text-decoration: underline"
+            class="ms-2"
+            (click)="pendingrequest()"
+          >
+            Pending Requests
+          </p>
+        </div> -->
+        <app-global-search></app-global-search>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <app-chat *ngIf="response"></app-chat>
+  

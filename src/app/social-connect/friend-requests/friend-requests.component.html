@@ -1,1 +1,63 @@
-<p>friend-requests works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <div class="header-title">
+            <h4 class="card-title">Friend Request</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="request-list list-inline m-0 p-0">
+            <li
+              class="d-flex align-items-center justify-content-between flex-wrap"
+              *ngFor="let friendRequest of friendRequests; let i = index"
+            >
+              <div class="user-img img-fluid flex-shrink-0">
+                <img
+                  [src]="
+                    friendRequest.profileImage
+                      ? friendRequest.profileImage
+                      : 'assets/images/profile.png'
+                  "
+                  (error)="handleImageError($event)"
+                  alt="story-img"
+                  class="rounded-circle avatar-60"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 style="cursor: pointer;" routerLink="../profile" [queryParams]="{id:friendRequest.id}">{{ friendRequest.name }}</h6>
+                <p>{{ friendRequest.ago }}</p>
+              </div>
+              <div class="d-flex align-items-center mt-2 mt-md-0">
+                <div class="confirm-click-btn">
+                  <a
+                    (click)="accept(friendRequest.id, i)"
+                    class="me-3 btn btn-primary rounded confirm-btn"
+                    >Confirm</a
+                  >
+                  <a
+                    href="../app/profile.html"
+                    class="me-3 btn btn-primary rounded request-btn"
+                    style="display: none"
+                    >View All</a
+                  >
+                </div>
+                <a
+                  (click)="reject(friendRequest.id, i)"
+                  class="btn btn-secondary rounded"
+                  data-extra-toggle="delete"
+                  data-closest-elem=".item"
+                  >Delete</a
+                >
+              </div>
+            </li>
+            <li *ngIf="friendRequests.length == 0">
+              No Friend Requests Found
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

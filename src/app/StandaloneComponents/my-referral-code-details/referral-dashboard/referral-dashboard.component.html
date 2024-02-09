@@ -1,1 +1,147 @@
-<p>referral-dashboard works!</p>
+<div style="margin: 3%">
+    <!-- <div class="card" style="border-radius: 30px"> -->
+    <div class="card-body" style="border-radius: 30px; padding: 0px">
+      <div class="row">
+        <div class="col-md-5" style="text-align: left;">
+          <p style="
+              font-weight: 700;
+              font-size: 36.0691px;
+              line-height: 54px;
+              color: #1f1f1f;padding-top:35%;  
+            ">
+            Share & <span class="title-pole"> Grow Rich</span>
+          </p>
+          <p style="
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 161%;
+              color: #8491a5;
+              padding-bottom: 5%;
+            ">
+            When your Friends join NRICH using your Referral Link they get {{referredDiscount | number: '1.0-0'}}%
+            Discount on their Subscription and you get a {{referrerDiscount | number: '1.0-0'}}% Discount on your next
+            purchase.
+          </p>
+          <div class="d-flex">
+            <a style="margin-right: 10%;" href="https://www.facebook.com/nrichlearning.edu/" target="_blank"><img
+                src="assets/Referral/fbicon.svg" alt=""></a>
+            <a style="margin-right: 10%;"
+              href="https://www.linkedin.com/company/nrich-elearning-platform/?originalSubdomain=in" target="_blank"><img
+                src="assets/Referral/linkicon.svg" alt=""></a>
+            <a style="margin-right: 10%;" href="https://www.instagram.com/nrich.learning/?hl=en" target="_blank"> <img
+                src="assets/Referral/instagramicon.svg" alt=""></a>
+            <a style="margin-right: 15%;" href="https://wa.me/7009076565" target="_blank"><img
+                src="assets/Referral/watsappicon.svg" alt=""></a>
+            <a><img src="assets/Referral/shareicon.svg" alt=""></a>
+  
+          </div>
+        </div>
+        <div class="col-md-7" style="
+            background-color: rgba(0, 126, 242, 0.1);
+            border-radius: 0px 30px 30px 0px;
+            padding: 5% 10% 5% 10%;
+          ">
+          <div class="card">
+            <div class="card-header" style="background-color: #ff635f1a">
+              <p style="
+                  font-weight: 700;
+                  font-size: 37.4499px;
+                  line-height: 56px;
+                  color: #ff635f;
+                  text-align: center;
+                ">
+                Get {{referrerDiscount | number: '1.0-0'}}% Discount
+              </p>
+            </div>
+            <div class="card-body" style="text-align: center; border-bottom: 1.31622px dashed #c7c7c7">
+              <p style="
+                  font-weight: 400;
+                  font-size: 16.6125px;
+                  line-height: 161%;
+                  color: #8491a5;
+                ">
+                For every Subscription through your Referral Link you get a <b>{{referrerDiscount | number: '1.0-0'}}%
+                  Discount Coupon </b> added to your account.
+              </p>
+            </div>
+            <div class="card-footer">
+              <div style="text-align: center">
+                <p style="
+                    font-weight: 400;
+                    font-size: 16.6125px;
+                    line-height: 20px;
+                    color: #8491a5;
+                  ">
+                  <b>Invite Users</b>
+                </p>
+              </div>
+              <div style="
+                  background: rgba(241, 245, 249, 0.4);
+                  border: 0.78464px solid #cbd5e1;
+                  border-radius: 5.61304px;
+                  padding: 1%;
+                " class="row">
+                <div class="col-8">
+                  <p style="font-size: 9.6px;" *ngIf="code">https://nrichlearning.com/login/{{code}}</p>
+                </div>
+                <div class="col-4" style="text-align: end">
+                  <button type="button" [disabled]="!code" style="
+                      background: #007ef2;
+                      border-radius: 4.16548px;
+                      color: #f0f3fa;
+                      border: transparent;
+  
+                    " (click)="copy(code)">
+                    Copy Link
+                    <img src="../../../assets/share.svg" />
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row" style="margin-right:auto">
+                    <div class="card mb-3" style="margin-top: 21px">
+                      <div class="row" style="background: rgba(0, 126, 242, 0.1)">
+                        <div class="col-md-4">
+                          <img src="assets/Referral/signupicon.svg" style="height: 106%; width: 100%"
+                            class="img-fluid rounded-start" alt="..." />
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title">Referral Signups</h5>
+                            <p class="card-text">
+                              {{totalSignUpCount}}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="card mb-3" style="margin-top: 21px">
+                      <div class="row" style="background: rgba(255, 99, 95, 0.1)">
+                        <div class="col-md-4">
+                          <img src="assets/Referral/rewards.svg" style="height: 106%; width: 100%"
+                            class="img-fluid rounded-start" alt="..." />
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title">Referral Rewards</h5>
+                            <p class="card-text">
+                              {{totalRewardCount}}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

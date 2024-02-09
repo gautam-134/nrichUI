@@ -1,1 +1,120 @@
-<p>class-details works!</p>
+<!-- <div class="card">
+  <div class="card-header" style="font-weight: bold">Live Class Recording</div>
+  <div class="card-body">
+    <div class="row">
+      <div
+        class="col-md-6"
+        *ngFor="let element of classVOObj; let pIndex = index"
+      >
+        <div
+          *ngIf="liveRecordings?.length != 0"
+          [attr.id]="'video-container' + pIndex"
+          class="card card-custom card-stretch"
+        >
+          <ng-container class="video-container">
+            <video
+              class="video-player"
+              (loadeddata)="
+                updateSeekBar(element.id, element.classMaterialObject, pIndex)
+              "
+              (play)="
+                saveVideoTimeDetails(
+                  element.id,
+                  element.classMaterialObject,
+                  pIndex
+                )
+              "
+              (pause)="clearSubscription(element.id)"
+              controls
+              controlsList="nofullscreen"
+              [attr.id]="'liveClassVideo' + pIndex"
+              src="{{ element.path }}"
+              (fullscreenchange)="onVideoTagFullScreen($event)"
+              (mozfullscreenchange)="onVideoTagFullScreen($event)"
+              (webkitfullscreenchange)="onVideoTagFullScreen($event)"
+            ></video>
+            <div class="overlay-text">
+              <span class="badge bg-primary">{{ userId }}</span>
+            </div>
+            <div
+              class="overlay-icon"
+              (click)="showVideoInFullScreen('video-container' + pIndex)"
+            >
+              <i
+                class="fas fa"
+                [ngClass]="isFullScreen ? 'fa-compress' : 'fa-expand'"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div
+              class="w-100"
+              *ngIf="(pIndex + 1) % 3 === 0"
+              style="margin: 25px"
+            ></div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="card">
+    <div class="card-header" style="font-weight: bold">Live Class Recordings</div>
+    <div class="card-body">
+      <p *ngIf="classVOObj?.length == 0">No Live Class Recording Found.</p>
+      <div class="row">
+        <div
+          class="col-md-4 mt-2"
+          [attr.id]="'video-container' + pIndex"
+          *ngFor="let element of classVOObj; let pIndex = index"
+        >
+          <app-video-player [path]="element.path" [pIndex]="pIndex"></app-video-player>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header" style="font-weight: bold">
+      Class mapped materials
+    </div>
+    <div class="card-body">
+      <table class="files-lists table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Material Name</th>
+            <th scope="col">Materialype</th>
+            <th scope="col">Date</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" *ngIf="mappedMaterial?.length == 0">
+              No Material Found
+            </td>
+          </tr>
+          <tr *ngFor="let element of mappedMaterial; let i = index">
+            <td>
+              {{ i + 1 }}
+            </td>
+            <td>
+              {{ element.name }}
+            </td>
+            <td>{{ element?.type }}</td>
+            <td>{{ element.createdDate | date : "medium" }}</td>
+            <td>
+              <i
+                style="cursor: pointer"
+                class="fa fa-eye"
+                aria-hidden="true"
+                (click)="showPreview(element.path, element.type)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

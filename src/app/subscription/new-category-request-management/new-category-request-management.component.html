@@ -1,1 +1,120 @@
-<p>new-category-request-management works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white"> New Category Requests Management</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="row justify-content-between d-flex">
+                        <div class="col-sm-12 col-md-6 mb-2">
+                            <div id="user_list_datatable_info" class="dataTables_filter">
+                                <form class="me-3 position-relative">
+                                    <div class="form-group mb-0">
+                                        <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                            type="text" placeholder="Search....">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 mb-2">
+                            <select (change)="onValueChange($event)" class="form-select"
+                                aria-label="Default select example">
+                                <option value="Requested" selected>Pending Requests</option>
+                                <option value="Accepted">Accepted Requests</option>
+                                <option value="Rejected">Rejected Requests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Course Name<i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='courseName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('courseName')"></i></th>
+                                <th>
+                                    Institute Name<i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='instituteName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('instituteName')"></i>
+                                </th>
+                                <th>RequestedBy <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='requestByUser' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('requestByUser')"></i></th>
+                                <th>Category <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='categoryName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('categoryName')"></i></th>
+                                <th>Sub Category <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='subCategoryName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('subCategoryName')"></i></th>
+                                <th>Sub Sub Category <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='subSubCategoryName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('subSubCategoryName')"></i></th>
+                                <th  *ngIf="requestType=='Requested'">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngIf="categoryRequestList?.length==0">
+                                <td colspan="8">No Record Found.</td>
+                            </tr>
+                            <tr class=""
+                                *ngFor="let element of categoryRequestList  | short:type:typeOfShorting ; let i=index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ element?.courseName }}</td>
+                                <td>
+                                    {{element?.instituteName}}
+                                </td>
+                                <td>
+                                    {{element?.requestByUser}}
+                                </td>
+                                <td>
+                                    {{element?.categoryName}}
+                                </td>
+                                <td>
+                                    {{element?.subCategoryName}}
+                                </td>
+                                <td>
+                                    {{element?.subSubCategoryName}}
+                                </td>
+                                <td *ngIf="requestType=='Requested'">
+                                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example home icon">
+                                        menu
+                                    </mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip" title="Edit"
+                                            (click)="edit(element)">
+                                            Edit
+                                        </button>
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="Approve" (click)="acceptReject(element)">
+                                            Accept/Reject
+                                        </button>
+                                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-start">
+                            <button type="button" class="btn btn-primary" [routerLink]="['/master/category-management']"
+                                style="background-color: #007EF2;width: 120px;">
+                                << Back</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

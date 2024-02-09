@@ -1,1 +1,108 @@
-<p>admin-details works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Admin Details</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #adminSearch
+                        type="text"
+                        placeholder="Type in this field for quick filter"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+  
+              <!-- <div class="col-sm-12 col-md-6">
+                  <div class="user-list-files d-flex justify-content-end">
+                    <a
+                      (click)="addCourse()"
+                      class="chat-icon-delete btn bg-soft-primary"
+                    >
+                      + Add New Course
+                    </a>
+                  </div>
+                </div> -->
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    No
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'id'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('id')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">
+                    Institute Name
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'name'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('name')"
+                      ></i> -->
+                  </th>
+                  <th scope="col">
+                    Role Name
+                    <!-- <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'featured'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('featured')"
+                      ></i> -->
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="details.length == 0">
+                  <td colspan="6">No Details Found</td>
+                </tr>
+                <tr *ngFor="let element of details; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element?.instituteName }}
+                  </td>
+                  <td>
+                    {{ element?.roleName }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+            <button class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

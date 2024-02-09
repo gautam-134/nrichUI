@@ -1,1 +1,81 @@
-<p>about works!</p>
+<div class="card">
+    <div class="card-body">
+      <div class="tab-content">
+        <div
+          class="tab-pane fade active show"
+          id="v-pills-basicinfo-tab"
+          role="tabpanel"
+          aria-labelledby="v-pills-basicinfo-tab"
+        >
+          <h4>Personal Info</h4>
+          <hr />
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>About Me:</h6>
+            </div>
+            <div class="col-9">
+              <p class="mb-0">{{ myProfile.bio  | titlecase}}</p>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>Education Qualification:</h6>
+            </div>
+            <div class="col-9">
+              <p class="mb-0">{{ myProfile.educationQualification  | titlecase}}</p>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>Employment Status:</h6>
+            </div>
+            <div class="col-9">
+              <p class="mb-0">{{ myProfile.employmentStatus  | titlecase}}</p>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>Address:</h6>
+            </div>
+            <div class="col-9">
+              <p class="mb-0">{{ myProfile.state }}, {{ myProfile.country }}</p>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>Birth Date:</h6>
+            </div>
+            <div class="col-9">
+              <p class="mb-0">{{ myProfile.dob }}</p>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>Gender:</h6>
+            </div>
+            <div class="col-9">
+              <p class="mb-0">
+                {{ myProfile.gender == "M" ? "Male" : "Female" }}
+              </p>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <h6>Interested in:</h6>
+            </div>
+            <div class="col-9">
+              <div class="d-flex">
+                <p class="mb-0 me-2" *ngFor="let element of myProfile.interest">
+                  <span
+                    class="badge rounded-pill border border-primary text-primary"
+                    >{{ element  | titlecase}}</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

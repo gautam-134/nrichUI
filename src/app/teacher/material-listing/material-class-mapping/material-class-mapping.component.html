@@ -1,1 +1,151 @@
-<p>material-class-mapping works!</p>
+<div class="card-header bg-primary">
+    <div class="card-title text-center">
+      <h3 class="card-label text-white" style="margin-bottom: -10px">
+        Material Class Mapping
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div class="card">
+      <div class="card-body" style="padding: 0.5rem 0.5rem">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between"
+                style="padding: 1% 0% 0% 0%"
+              >
+                <div class="row w-100 mb-1">
+                  <div class="col-sm-3">
+                    <p class="card-label text-black" style="margin-bottom: 0px">
+                      SELECT DATE TO SEARCH CLASS
+                    </p>
+                    <input
+                      type="date"
+                      style="width: auto"
+                      class="form-control"
+                      (change)="fetchMaterialClassesByDate($event)"
+                    />
+                  </div>
+                  <div class="col-sm-3" *ngIf="filterDate">
+                    <p class="card-label text-black" style="margin-bottom: 0px">
+                      SEARCH BY CLASS NAME
+                    </p>
+                    <input
+                      type="text"
+                      (keyup)="fetchMaterialClassesByDateSearch($event)"
+                      placeholder="Enter Class Name"
+                      size="50"
+                      class="form-control ps-6"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-body"
+                style="
+                  overflow: auto;
+                  max-height: 433px;
+                  min-height: 433px;
+                  padding: 0%;
+                "
+              >
+                <table class="files-lists table table-striped mt-4">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <!-- <th scope="col">Name</th> -->
+                      <th scope="col">
+                        Class Name
+                        <i
+                          ng-click="typeOfShorting:!typeOfShorting"
+                          [ngClass]="
+                            typeOfShorting && type == 'className'
+                              ? 'fa fa-sort-amount-desc'
+                              : 'fa fa-sort-amount-asc'
+                          "
+                          (click)="short('className')"
+                        ></i>
+                      </th>
+                      <th scope="col">
+                        Batch Name
+                        <i
+                          ng-click="typeOfShorting:!typeOfShorting"
+                          [ngClass]="
+                            typeOfShorting && type == 'batchName'
+                              ? 'fa fa-sort-amount-desc'
+                              : 'fa fa-sort-amount-asc'
+                          "
+                          (click)="short('batchName')"
+                        ></i>
+                      </th>
+  
+                      <th scope="col">
+                        Course Name
+                        <i
+                          ng-click="typeOfShorting:!typeOfShorting"
+                          [ngClass]="
+                            typeOfShorting && type == 'courseName'
+                              ? 'fa fa-sort-amount-desc'
+                              : 'fa fa-sort-amount-asc'
+                          "
+                          (click)="short('courseName')"
+                        ></i>
+                      </th>
+  
+                      <th scope="col">
+                        Class Start Date
+                        <i
+                          ng-click="typeOfShorting:!typeOfShorting"
+                          [ngClass]="
+                            typeOfShorting && type == 'classStartDate'
+                              ? 'fa fa-sort-amount-desc'
+                              : 'fa fa-sort-amount-asc'
+                          "
+                          (click)="short('classStartName')"
+                        ></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="classMapping?.length == 0">
+                      <td colspan="8">
+                        <span *ngIf="!isRecordFetched"
+                          >Select date for records.</span
+                        ><span *ngIf="isRecordFetched">No classes found for selected date.</span>
+                      </td>
+                    </tr>
+                    <tr *ngFor="let element of classMapping; let i = index">
+                      <td>
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          name="flexRadioDefaultBatch"
+                          id="{{ 'flexRadioDefaultBatch' + i }}"
+                          (click)="saveClassMapping($event, element)"
+                          [(ngModel)]="element.selected"
+                        />
+                      </td>
+                      <td>{{ element?.className }}</td>
+                      <td>
+                        {{ element?.batchName }}
+                      </td>
+                      <td>{{ element?.courseName }}</td>
+  
+                      <td>{{ element?.classStartDate | date : "medium" }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex">
+    <button mat-dialog-close type="reset" class="btn btn-sm btn-danger">
+      Close
+    </button>
+  </div>
+  

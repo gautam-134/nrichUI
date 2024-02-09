@@ -1,0 +1,17 @@
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  .fslightbox-container {
+    display: none; /* Initially hide the container */
+    /* Add additional styles as needed */
+  }

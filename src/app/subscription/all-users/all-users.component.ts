@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-all-users',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './all-users.component.html',
   styleUrl: './all-users.component.scss'
 })
-export class AllUsersComponent {
+export class AllUsersComponent implements OnInit {
+  tab: number = 1;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

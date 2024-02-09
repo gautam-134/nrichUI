@@ -1,1 +1,110 @@
-<p>faq-listing works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Faq Listing</h4>
+                </div>
+                <button (click)="addFaq()" class="btn" style="background: white; color: #50B5FF">
+                    + Create FAQ
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="table">
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <div id="user_list_datatable_info" class="dataTables_filter">
+                            <!-- <form class="me-3 position-relative">
+                                <div class="form-group mb-0">
+                                    <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam"
+                                        type="text" placeholder="Search....">
+                                </div>
+                            </form> -->
+                            <select (change)="onValueChange($event)" class="form-select"
+                                aria-label="Default select example">
+
+                                <option value="Subscription" selected>Subscription FAQ</option>
+                                <option value="ContactUs">Contact Us FAQ</option>
+                                <option value="Home">Home FAQ</option>
+                                <option value="InstituteProfile">Institute Profile FAQ</option>
+                                <option value="Institute">Nrich For Institute FAQ</option>
+                                <option value="Benefits">Benefits FAQ</option>
+                                <option value="School">Nrich For School FAQ</option>
+                                <option value="Social">Social Connect FAQ</option>
+                                <option value="NrichWebsite">Nrich Website FAQ</option>
+                                <option value="DigitalLibrary">Digital Library FAQ</option>
+                                <option value="Meet">Nrich Meet FAQ</option>
+                                <!-- <option value="Trending Faqs" >Trending Faqs</option>
+                            <option value="Popular Faqs" >Popular Faqs</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <table class="files-lists table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Question <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='question' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('question')"></i></th>
+                                <th>Answer <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='answer' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('answer')"></i></th>
+                                <th>Created Date <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='createdDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('createdDate')"></i></th>
+                                <th>Display Order <i ng-click="typeOfShorting:!typeOfShorting"
+                                        [ngClass]=" typeOfShorting && type =='displayOrder' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                                        (click)="short('displayOrder')"></i></th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" *ngIf="FaqList?.length==0">
+                                    No Record Found.
+                                </td>
+                            </tr>
+                            <tr *ngFor="let faq of FaqList | short:type:typeOfShorting;let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{faq?.question}}</td>
+
+                                <td>{{faq?.answer}}</td>
+                                <td>
+                                    <div faq="font-weight-bold text-muted">
+                                        {{faq.createdDate | date}}
+                                    </div>
+                                    <div faq="font-weight-bolder font-size-lg mb-0">
+                                        {{faq.createdDate | date :'shortTime'}}
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <input 	type="text" (keypress)="numberOnly($event)" min="0" style="width: 55px;" (change)="changeDisplayOrder(displayOrder.value,faq.id)" #displayOrder [value]="faq?.displayOrder
+                                        ">
+                                </td>
+                                <td>
+                                    <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example home icon">menu
+                                    </mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="Edit Faq" (click)="editFaq(faq)">
+                                            Edit FAQ
+                                        </button>
+
+                                        <button mat-menu-item style="cursor: pointer" data-toggle="tooltip"
+                                            title="delete Faq" (click)="delete(faq.id)">Delete FAQ
+                                        </button>
+                                    </mat-menu>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="pageChange($event)"
+                        (changeSize)="changeSize($event)"></app-table-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

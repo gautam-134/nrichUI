@@ -1,0 +1,33 @@
+.spinner-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.32);
+    z-index: 200000000000;
+  }
+  
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: #50b5ff !important;
+  }
+  
+  .mat-progress-bar {
+    display: block;
+    height: 4px;
+    overflow: hidden;
+    position: relative;
+    transition: opacity 250ms linear;
+    width: 55%;
+    height: 5%;
+  }
+  .upload-text {
+    position: absolute;
+    margin: 1%;
+    word-wrap: break-word;
+  }
+

@@ -1,0 +1,44 @@
+.overlay-icon {
+    position: absolute;
+    top: 4%;
+    right: 1%;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .overlay-icon i {
+    transition: transform 0.3s ease;
+  }
+  
+  .overlay-icon:hover i {
+    transform: scale(1.2);
+  }
+    /* Target full-screen button in WebKit-based browsers (e.g. Chrome, Safari) */
+    video::-webkit-media-controls-fullscreen-button {
+      display: none !important;
+    }
+    
+    /* Target full-screen button in Firefox */
+    video::-moz-full-screen-controls {
+      display: none !important;
+    }
+    
+    /* Target full-screen button in Edge */
+    video::-webkit-media-controls-overlay-play-button::part(mediaFullscreenButton) {
+      display: none !important;
+    }
+    
+    video::-moz-full-screen-ancestor::-moz-full-screen-button {
+      display: none;
+    }
+    .disabled {
+      pointer-events: none;
+    }
+  
+    /* Add this to your component's style file (e.g., video-player.component.scss) */
+  video:-webkit-full-screen::-webkit-media-controls-play-button,
+  video:-moz-full-screen::-moz-full-screen::-moz-media-controls-play-button {
+    display: none !important;
+  }
+  

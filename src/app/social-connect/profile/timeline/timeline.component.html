@@ -1,1 +1,8 @@
-<p>timeline works!</p>
+<app-create-post
+  *ngIf="currentLoginProfileId == profileId"
+  [userProfile]="userProfile"
+  (refreshNewsfeed)="refreshProfile($event)"
+></app-create-post>
+<app-newsfeed-posts
+  [posts]="posts"
+></app-newsfeed-posts>

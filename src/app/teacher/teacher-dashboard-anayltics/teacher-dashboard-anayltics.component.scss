@@ -1,0 +1,46 @@
+.wh-color {
+    color: white;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0px !important;
+  }
+  
+  .set-img {
+    margin-top: -80px !important;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .set-img {
+      margin-top: 2% !important;
+    }
+  }
+  
+  .change-width {
+    width: 54%;
+  }
+  
+  @media only screen and (max-width: 1338px) {
+    .change-width {
+      width: 70% !important;
+    }
+  }
+  
+  @media only screen and (max-width: 1129px) {
+    .change-width {
+      width: 80% !important;
+    }
+  }
+  
+  @media only screen and (max-width: 982px) {
+    .change-width {
+      width: 87% !important;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .change-width {
+      width: 42% !important;
+    }
+  }
+  

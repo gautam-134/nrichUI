@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { assignmentVO } from 'src/app/model/assignmentVO';
+import { ClassVO } from 'src/app/model/classVO';
 
 @Component({
   selector: 'app-student-dashboard-info',
@@ -7,6 +11,26 @@ import { Component } from '@angular/core';
   templateUrl: './student-dashboard-info.component.html',
   styleUrl: './student-dashboard-info.component.scss'
 })
-export class StudentDashboardInfoComponent {
+export class StudentDashboardInfoComponent implements OnInit {
+  courseId!: number;
+  batchId!: number;
+  totalCount!: number;
+  FutureTotalCount!: number;
+  page: number = 0;
+  size: number = 5;
+  Livepage: number = 0;
+  Livesize: number = 5;
+  searchParam: string = '';
+  subject = new Subject();
+  result$!: Observable<any>;
+  assignments!: assignmentVO[];
+  liveClassesVO!: ClassVO[];
+  futureClassesVO!: ClassVO[];
+  recordedClassesVO!: ClassVO[];
+  constructor(private route: ActivatedRoute) {}
 
+  ngOnInit(): void {
+    this.batchId = +this.route.snapshot.queryParams?.['idbatch'];
+  }
 }
+

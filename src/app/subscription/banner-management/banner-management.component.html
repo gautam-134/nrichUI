@@ -1,1 +1,100 @@
-<p>banner-management works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Banner Listing</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #bannerSearch
+                        type="text"
+                        placeholder="Type in this field for quick filter"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+  
+              <div class="col-sm-12 col-md-6">
+                <div class="user-list-files d-flex justify-content-end">
+                  <a
+                    routerLink="/master/create-banner"
+                    class="chat-icon-delete btn bg-soft-primary"
+                  >
+                    + Create Banner
+                  </a>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col" style="width: 15%">Banner Image</th>
+                  <th scope="col">Banner Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Created Date & Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="banners.length == 0" class="text-center">
+                  <td colspan="6">No banners found</td>
+                </tr>
+                <tr *ngFor="let element of banners; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    <img [src]="element.bannerImage" style="width: 70%" alt="" />
+                  </td>
+                  <td>
+                    {{ element.bannerName }}
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        [(ngModel)]="element.status"
+                        (change)="disableBanner(element, $event)"
+                        type="checkbox"
+                        [id]="'flexSwitchCheckChecked' + 'disable' + i"
+                        [checked]="element?.status"
+                      />
+                      <label
+                        class="form-check-label"
+                        [for]="'flexSwitchCheckChecked' + 'disable' + i"
+                        >{{ element?.status ? "Active" : "Inactive" }}</label
+                      >
+                    </div>
+                  </td>
+                  <td>
+                    {{ element?.location }}
+                  </td>
+                  <td>
+                    {{ element?.createdDate | date : "medium" }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,120 @@
-<p>create-banner works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Banner Details</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="bannerForm">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label style="padding-bottom: 3px"
+                  >Banner Name<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Banner Name"
+                  formControlName="bannerName"
+                />
+                <div *ngIf="submitted && form['bannerName']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="form['bannerName']?.errors?.['required']"
+                  >
+                    Banner name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label style="padding-bottom: 3px"
+                  >Redirect Path<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Redirect Path"
+                  formControlName="redirectPath"
+                />
+                <div *ngIf="submitted && form['redirectPath']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="form['redirectPath']?.errors?.['required']"
+                  >
+                    Redirect path is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label style="padding-bottom: 3px"
+                  >Location<span class="text-danger">*</span></label
+                >
+                <select class="form-control" formControlName="location">
+                  <option value="" selected disabled>Select location</option>
+                  <option value="Home">Home</option>
+                  <option value="Student">Student</option>
+                </select>
+                <div *ngIf="submitted && form['location']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="form['location']?.errors?.['required']"
+                  >
+                    Location is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label style="padding-bottom: 3px"
+                  >Banner Image<span class="text-danger">*</span></label
+                >
+                <input
+                  #fileSelect
+                  type="file"
+                  accept=".jpg,.jpeg,.png"
+                  class="form-control"
+                  (change)="onFileChange($event)"
+                />
+                <div *ngIf="submitted && hasError" class="text-danger">
+                  Please select banner image
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+              <div *ngIf="imageSrc" class="form-group col-md-6">
+                <label style="padding-bottom: 3px">Preview</label>
+                <img
+                  [src]="imageSrc"
+                  alt="Banner Image"
+                  width="100%"
+                  style="border-radius: 4px"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+  
+        <div class="card-footer">
+          <button
+            type="submit"
+            (click)="onSubmit()"
+            type="submit"
+            class="btn btn-primary active"
+            style="margin-right: 20px"
+          >
+            Create Banner
+          </button>
+  
+          <button
+            type="submit"
+            type="submit"
+            routerLink="/master/banners"
+            class="btn btn-secondary active"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

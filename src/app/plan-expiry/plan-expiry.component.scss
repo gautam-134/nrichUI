@@ -1,0 +1,29 @@
+@import url("../../assets/css/bootstrap.min.css");
+@import url("../../assets/css/all.min.css");
+@import url("../../assets/css/slick.css");
+@import url("../../assets/css/nice-select.css");
+@import url("../../assets/css/main.css");
+@import url("../../assets/css/responsive.css");
+
+.title-pole {
+  background: -o-linear-gradient(355.62deg, #008ce4 -1.08%, #00af9e 96.88%);
+  background: linear-gradient(94.38deg, #008ce4 -1.08%, #00af9e 96.88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 36.0691px;
+  line-height: 54px;
+  color: #1f1f1f;
+}
+
+.image1 {
+  position: relative;
+}
+.image2 {
+  position: absolute;
+  top: 20%;
+}

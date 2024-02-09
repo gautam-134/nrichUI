@@ -1,1 +1,204 @@
-<p>edit-current-plan works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Edit Subscription Details</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="row mb-3">
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Plan Name<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Plan Name"
+                  formControlName="planName"
+                  readonly
+                />
+                <div *ngIf="isSubmit && controls['planName'].invalid">
+                  <div
+                    *ngIf="controls['planName'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Plan Name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >End Date<span class="text-danger">*</span></label
+                >
+                <input
+                  type="datetime-local"
+                  [min]="now"
+                  class="form-control"
+                  id="exampleInputdatetime"
+                  formControlName="actualEndDate"
+                />
+                <div *ngIf="isSubmit && controls['actualEndDate'].invalid">
+                  <div
+                    *ngIf="controls['actualEndDate'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    End Date is required
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Allowed Concurrent Classes<span class="text-danger"
+                    >*</span
+                  ></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="allowedConcurrentClasses"
+                  (input)="checkInputs($event, 1)"
+                  (keydown)="onlyNumeric($event)"
+                />
+                <div *ngIf="err1">
+                  <div class="text-danger">
+                    Concurrent classes should not be less than current concurrent
+                    classes
+                  </div>
+                </div>
+                <div
+                  *ngIf="isSubmit && controls['allowedConcurrentClasses'].invalid"
+                >
+                  <div
+                    *ngIf="controls['allowedConcurrentClasses'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Allowed Concurrent Classes is required
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Allowed Storage<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="allowedStorage"
+                  (input)="checkInputs($event, 2)"
+                  (keydown)="onlyNumeric($event)"
+                />
+                <div *ngIf="err2">
+                  <div class="text-danger">
+                    Storage should not be less than current storage
+                  </div>
+                </div>
+                <div *ngIf="isSubmit && controls['allowedStorage'].invalid">
+                  <div
+                    *ngIf="controls['allowedStorage'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Allowed Storage is required
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Allowed Students<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="allowedStudents"
+                  (input)="checkInputs($event, 3)"
+                  (keydown)="onlyNumeric($event)"
+                />
+                <div *ngIf="err3">
+                  <div class="text-danger">
+                    Students should not be less than current students
+                  </div>
+                </div>
+                <div *ngIf="isSubmit && controls['allowedStudents'].invalid">
+                  <div
+                    *ngIf="controls['allowedStudents'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Allowed Students is required
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mb-3">
+                <label class="form-label"
+                  >Allowed Teachers<span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="allowedTeachers"
+                  (input)="checkInputs($event, 4)"
+                  (keydown)="onlyNumeric($event)"
+                />
+                <div *ngIf="err4">
+                  <div class="text-danger">
+                    Teachers should not be less than current teachers
+                  </div>
+                </div>
+                <div *ngIf="isSubmit && controls['allowedTeachers'].invalid">
+                  <div
+                    *ngIf="controls['allowedTeachers'].errors?.['required']"
+                    class="text-danger"
+                  >
+                    Allowed Teachers is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mt-2">
+                <label name="planType"
+                  >Zoom SDK (Included)<span class="text-danger">*</span></label
+                >
+                <select formControlName="zoomAllowed" class="form-control">
+                  <option value="" disabled>Select Value</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div *ngIf="isSubmit && controls['zoomAllowed']?.invalid">
+                  <div
+                    class="text-danger"
+                    *ngIf="controls['zoomAllowed']?.errors?.['required']"
+                  >
+                    Above Field Is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button
+                type="reset"
+                style="margin-right: 5px"
+                type="submit"
+                class="btn btn-primary active"
+                (click)="onSubmit()"
+              >
+                Submit
+              </button>
+              <button
+                (click)="back()"
+                mat-button
+                type="reset"
+                class="btn btn-secondary active"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

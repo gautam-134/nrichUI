@@ -1,0 +1,65 @@
+pre {
+    font-family: poppins;
+    font-size: 0.875em;
+  }
+  
+  img {
+    border-radius: 22px;
+  }
+  
+  .text-wrap {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .textarea-width {
+    width: 68% !important;
+  }
+  
+  @media only screen and (max-width: 1570px) {
+    .textarea-width {
+      width: 64% !important;
+    }
+  }
+  
+  @media only screen and (max-width: 1503px) {
+    .textarea-width {
+      width: -webkit-fill-available !important;
+    }
+  }
+  
+  .chat-padding {
+    padding-bottom: 32px !important;
+  }
+  
+  
+  .textarea-padding {
+    padding: 8px 22px 8px 22px !important;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .textarea-padding {
+      padding: 8px 22px 32px 22px !important;
+    }
+    .chat-padding {
+      padding-bottom: 52px !important;
+    }
+  }
+  
+  @media only screen and (max-width: 388px) {
+    .textarea-padding {
+      padding: 8px 22px 57px 22px !important;
+    }
+    .chat-padding {
+      padding-bottom: 77px !important;
+    }
+  }
+  .typing-dots {
+    animation: blink 1s infinite;
+  }
+  
+  
+  @keyframes blink {
+    50% { opacity: 0; }
+  }

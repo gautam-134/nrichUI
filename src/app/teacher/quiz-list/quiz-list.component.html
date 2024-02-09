@@ -1,1 +1,299 @@
-<p>quiz-list works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card  file_manager">
+        <div class="card-header bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">File Management</h4>
+          </div>
+  
+          <div class="d-flex button-box">
+            <!-- <button
+              type="button"
+              class="btn btn-danger ml-2 setHeight d-flex align-items-center"
+              style="margin-right: 3px"
+            >
+              <mat-icon aria-hidden="false">delete_forever</mat-icon>
+              Delete
+            </button> -->
+            <input
+                type="file"
+                #inputFile
+                (change)="fileChangeListener($event)"
+                class="btn btn-light-primary ml-2 setHeight d-flex align-items-center"
+                style="background: white; margin-right: 3px"
+              />
+              <button
+                [disabled]="inputFile.value == ''"
+                type="submit"
+                (click)="uploadExcel()"
+                type="submit"
+                style="background: white; color: #50b5ff; margin-right: 3px; margin-bottom: 0px;"
+                class="btn btn-primary  ml-2 setHeight d-flex align-items-center"
+              >
+                Upload
+              </button>
+  
+              <a
+                href="https://nrichvideo.s3.ap-south-1.amazonaws.com/QuizExcelSample.xlsx"
+                style="background: white; color: #50b5ff; margin-right: 3px"
+                class="btn btn-primary  ml-2 setHeight d-flex align-items-center"
+              >
+                Download Sample
+              </a>
+              <button
+                type="submit"
+                (click)="createQuiz()"
+                type="submit"
+                style="background: white; color: #50b5ff; margin-right: 3px"
+                class="btn btn-primary  ml-2 setHeight d-flex align-items-center"
+              >
+                + Add Quiz
+              </button>
+  
+          </div>
+        </div>
+        <!-- <div class="card-header bg-primary">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="header-title mb-2" style="margin-right: auto">
+                <h4 class="card-title text-white">Quiz</h4>
+              </div>
+            </div>
+            <div class="col-md-10 d-flex justify-content-end">
+              <input
+                type="file"
+                #inputFile
+                (change)="fileChangeListener($event)"
+                class="btn btn-light-primary"
+                style="background: white; margin-left: 5px"
+              />
+              <button
+                [disabled]="inputFile.value == ''"
+                type="submit"
+                (click)="uploadExcel()"
+                type="submit"
+                style="background: white; color: #50b5ff; margin-left: 5px"
+                class="btn btn-primary"
+              >
+                Upload
+              </button>
+              <a
+                href="https://nrichvideo.s3.ap-south-1.amazonaws.com/QuizExcelSample.xlsx"
+                style="background: white; color: #50b5ff; margin-left: 5px"
+                class="btn btn-primary"
+              >
+                Download Sample
+              </a>
+              <button
+                type="submit"
+                (click)="createQuiz()"
+                type="submit"
+                style="background: white; color: #50b5ff; margin-left: 5px"
+                class="btn btn-primary"
+              >
+                + Add Quiz
+              </button>
+            </div>
+          </div>
+        </div> -->
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #quizSearch
+                        type="text"
+                        placeholder="Search...."
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- <div class="col-sm-12 col-md-6">
+                 <div class="user-list-files d-flex justify-content-end">
+                    <a class="chat-icon-delete btn bg-soft-primary" (click)="createQuiz()">
+                       + Add Quiz
+                    </a>
+                 </div>
+              </div> -->
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    Name
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'name'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('name')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Marks
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'totalMarks'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('totalMarks')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Start Date
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'startDate'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('startDate')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    End Date
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'endDate'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('endDate')"
+                    ></i>
+                  </th>
+                  <th scope="col">
+                    Exam Duration
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'hour'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('hour')"
+                    ></i>
+                  </th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="quizs.length == 0">
+                  <td colspan="6">No Record Found.</td>
+                </tr>
+                <tr *ngFor="let quiz of quizs | short : type : typeOfShorting">
+                  <td>{{ quiz.name }}</td>
+                  <td>{{ quiz.totalMarks }}</td>
+                  <td>{{ quiz.startDate | date : "short" }}</td>
+                  <td>{{ quiz.endDate | date : "short" }}</td>
+                  <td>
+                    <span class="badge bg-primary">
+                      <h6 style="color: white">
+                        {{ quiz.hour }}:{{ quiz.minutes }} hour
+                      </h6>
+                    </span>
+                  </td>
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                    >
+                      menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        (click)="editQuiz(quiz.id)"
+                        data-toggle="tooltip"
+                        title="Edit Quiz"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        mat-menu-item
+                        data-toggle="tooltip"
+                        (click)="newMapMaterial(quiz.id)"
+                        title="Edit Quiz Mapping"
+                      >
+                        Map to Batch
+                      </button>
+                      <button
+                        mat-menu-item
+                        data-toggle="tooltip"
+                        title="Submitted By"
+                        (click)="quizSubmitBy(quiz.id)"
+                      >
+                        Submitted By
+                      </button>
+                      <button
+                        mat-menu-item
+                        data-toggle="tooltip"
+                        (click)="preview(quiz.id)"
+                        title="Preview"
+                      >
+                        Preview
+                      </button>
+                      <button
+                        mat-menu-item
+                        *ngIf="!quiz.published"
+                        data-toggle="tooltip"
+                        (click)="publishQuizResult(quiz)"
+                        title="Quiz Result"
+                      >
+                        {{ quiz.buttonText || publishText }}
+                      </button>
+                      <button
+                        mat-menu-item
+                        *ngIf="quiz.published"
+                        data-toggle="tooltip"
+                        (click)="publishQuizResult(quiz)"
+                        title="Quiz Result"
+                      >
+                        {{ quiz.buttonText || unpublishText }}
+                      </button>
+                      <button
+                        mat-menu-item
+                        data-toggle="tooltip"
+                        (click)="delete(quiz.id)"
+                        title="Delete"
+                      >
+                        Delete
+                      </button>
+                      <button
+                        mat-menu-item
+                        data-toggle="tooltip"
+                        (click)="downloadQuizReport(quiz.id)"
+                        title="Download Report"
+                      >
+                        Download Report
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalElement"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

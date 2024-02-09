@@ -1,1 +1,72 @@
-<p>student-details works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Student Details</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #studentSearch
+                        type="text"
+                        placeholder="Type in this field for quick filter"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Institute Name</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Batch Name</th>
+                  <th scope="col">Pricing Plan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="details.length == 0">
+                  <td colspan="6">No Details Found</td>
+                </tr>
+                <tr *ngFor="let element of details; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element?.instituteName }}
+                  </td>
+                  <td>
+                    {{ element?.courseName }}
+                  </td>
+                  <td>
+                    {{ element?.batchName }}
+                  </td>
+                  <td>
+                    {{ element?.pricingPlanName }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+            <button class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

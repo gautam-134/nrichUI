@@ -1,0 +1,29 @@
+.close-button {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+  }
+  
+  .close-button::before,
+  .close-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .close-button::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  .close-button:hover::before,
+  .close-button:hover::after {
+    background-color: red;
+  }

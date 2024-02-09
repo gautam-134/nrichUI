@@ -1,1 +1,71 @@
-<p>global-search works!</p>
+<div class="row">
+    <div class="card">
+      <div class="card-body p-0">
+        <div class="row p-2">
+          <div class="col-2 text-center">
+            <span
+              class="text-center"
+              style="cursor: pointer"
+              (click)="goToNewsFeed()"
+            >
+              <i
+                class="material-symbols-outlined"
+                style="font-size: 30px; color: #50b5ff"
+                >home</i
+              >
+              <p style="color: #000000">Home</p>
+            </span>
+          </div>
+          <div class="col-8">
+            <mat-form-field
+              appearance="outline"
+              style="height: 54px; width: 100%"
+            >
+              <mat-label>Search Here...</mat-label>
+              <input
+                matInput
+                placeholder="Search"
+                [matAutocomplete]="auto"
+                (keyup)="search($event)"
+                [(ngModel)]="searchParam"
+              />
+              <mat-icon matSuffix style="color: #50b5ff">search</mat-icon>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let profile of profiles">
+                  <div (click)="goToProfile(profile.id)">
+                    <img
+                      class="example-option-img me-3"
+                      aria-hidden
+                      [src]="
+                        profile.profileImage
+                          ? profile.profileImage
+                          : 'assets/images/profile.png'
+                      "
+                      width="5%"
+                      style="border-radius: 50%"
+                    />
+                    <span>{{ profile.name }}</span>
+                  </div>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="col-2 text-center">
+            <span
+              class="text-center"
+              style="cursor: pointer"
+              (click)="myProfile()"
+            >
+              <i
+                class="material-symbols-outlined"
+                style="font-size: 30px; color: #50b5ff"
+                >person</i
+              >
+              <p style="color: #000000">My Profile</p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

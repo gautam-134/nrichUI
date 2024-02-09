@@ -1,1 +1,77 @@
-<p>profile works!</p>
+<div>
+    <div class="position-relative"></div>
+    <div id="content-page" class="content-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <app-my-profile [myProfile]="myProfile"></app-my-profile>
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="user-tabing">
+                  <ul
+                    class="nav nav-pills d-flex profile-feed-items p-0 m-0 rounded"
+                    role="tablist"
+                  >
+                    <li class="nav-item col-12 col-sm-3 p-0" role="presentation">
+                      <a
+                        [ngClass]="!isFriendsTabSelected ? 'nav-link active show':'nav-link'"
+                        href="#pills-timeline-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#timeline"
+                        role="button"
+                        [attr.aria-selected]="!isFriendsTabSelected"
+                        tabindex="-1"
+                        >Timeline</a
+                      >
+                    </li>
+                    <li class="nav-item col-12 col-sm-3 p-0" role="presentation">
+                      <a
+                        class="nav-link"
+                        href="#pills-about-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#about"
+                        role="button"
+                        aria-selected="false"
+                        tabindex="-1"
+                        >About</a
+                      >
+                    </li>
+                    <li class="nav-item col-12 col-sm-3 p-0" role="presentation">
+                      <a
+                      [ngClass]="isFriendsTabSelected ? 'nav-link active show':'nav-link'"
+                        href="#pills-friends-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#friends"
+                        role="button"
+                        [attr.aria-selected]="isFriendsTabSelected"
+                        tabindex="-1"
+                        >Friends</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="tab-content">
+              <div
+                class="tab-pane fade active show"
+                id="timeline"
+                role="tabpanel"
+              >
+                <app-timeline></app-timeline>
+              </div>
+              <div class="tab-pane fade" id="about" role="tabpanel">
+                <app-about [myProfile]="myProfile"></app-about>
+              </div>
+              <div class="tab-pane fade" id="friends" role="tabpanel">
+                <app-my-friends [myFriends]="myFriends" [profileId]="myProfile.id"></app-my-friends>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

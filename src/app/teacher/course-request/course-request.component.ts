@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-course-request',
@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './course-request.component.html',
   styleUrl: './course-request.component.scss'
 })
-export class CourseRequestComponent {
+export class CourseRequestComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

@@ -1,1 +1,152 @@
-<p>add-onn works!</p>
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-header d-flex justify-content-between bg-primary">
+             <div class="header-title">
+                <h4 class="card-title text-white">Add-On Plans</h4>
+             </div>
+             <button type="submit" (click)="addons()" type="submit" style="background: white; color: #50B5FF"
+                class="btn btn-primary">
+                + Add Add-On
+             </button>
+          </div>
+          <div class="card-body">
+             <div class="table">
+                <div class="row justify-content-between d-flex">
+                   <div class="col-sm-12 col-md-6">
+                      <div id="user_list_datatable_info" class="dataTables_filter">
+                         <form class="me-3 position-relative">
+                            <div class="form-group mb-0">
+                               <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                                  placeholder="Search....">
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                   <!-- <div class="col-sm-12 col-md-6">
+                      <div class="user-list-files d-flex justify-content-end">
+ 
+                         <a (click)="addons()" class="chat-icon-delete btn bg-soft-primary">
+                            + Add Add onns
+                         </a>
+                      </div>
+                   </div> -->
+                </div>
+                <table class="files-lists table table-striped mt-4">
+                   <thead>
+                      <tr>
+ 
+                         <th scope="col">Plan Name <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='addOnPlanName' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('addOnPlanName')"></i></th>
+                         <th scope="col">Price <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='price' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('price')"></i></th>
+                         <th scope="col">Students <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='allowedStudents' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('allowedStudents')"></i></th>
+ 
+                         <th scope="col">Storage <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='allowedStorage' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('allowedStorage')"></i></th>
+                         <th scope="col">Teachers <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='allowedTeachers' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('allowedTeachers')"></i> </th>
+                         <th scope="col">Concurrent Classes <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='allowedConcurrentClasses' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('allowedConcurrentClasses')"></i></th>
+                         <th scope="col">Effective Date <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='startDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('startDate')"></i></th>
+                         <th scope="col">End Date <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='endDate' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('endDate')"></i></th>
+                         <th scope="col">No Of Days <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='type' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('noOfDays')"></i></th>
+                         <th scope="col"> Display Order <i ng-click="typeOfShorting:!typeOfShorting"
+                               [ngClass]=" typeOfShorting && type =='displayOrder' ?  'fa fa-sort-amount-desc':'fa fa-sort-amount-asc'"
+                               (click)="short('displayOrder')"></i></th>
+                         <th scope="col">view </th>
+                         <th scope="col">Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <ng-container *ngFor="let row of addonslist  | short:type:typeOfShorting">
+                         <tr>
+                            <td>
+                               {{row.addOnPlanName | titlecase}}
+                            </td>
+                            <td>
+                               {{row.price}}
+                            </td>
+                            <td>
+                               {{row.allowedStudents ? row.allowedStudents :
+                               'NA'}}
+                            </td>
+                            <td>
+                               {{row.allowedStorage ? row.allowedStorage :
+                               'NA'}}
+                            </td>
+                            <td>
+                               {{row.allowedTeachers ? row.allowedTeachers :
+                               'NA'}}
+                            </td>
+                            <td>
+                               {{row.allowedConcurrentClasses ?
+                               row.allowedConcurrentClasses : 'NA'}}
+                            </td>
+                            <td>
+                               {{row.startDate | date:'short'}}
+                            </td>
+                            <td>
+                               {{row.endDate | date:'short'}}
+                            </td>
+                            <td>{{row.noOfDays ? row.noOfDays :'NA'}}</td>
+                            <td>{{row.displayOrder}}</td>
+                            <td><button (click)="open = row.id" class="btn btn-primary
+                             ">view</button></td>
+                            <td>
+                               <mat-icon aria-hidden="false" mat-button [matMenuTriggerFor]="menu"
+                                  aria-label="Example home icon">menu
+                               </mat-icon>
+                               <mat-menu #menu="matMenu">
+ 
+                                  <button mat-menu-item data-toggle="tooltip" title="Edit class Mapping"
+                                     (click)="editPlan(row)">
+                                     Edit
+                                  </button>
+ 
+                               </mat-menu>
+                            </td>
+                         </tr>
+                         <tr *ngIf="open == row.id">
+                            <td colspan="12">
+                               <table class="table">
+                                  <thead>
+                                     <tr>
+                                        <th>Feature Description</th>
+                                        <th>Display Order</th>
+                                     </tr>
+                                  </thead>
+                                  <tbody>
+                                     <tr *ngFor="let feature of row.features">
+                                        <td>{{feature.featureDescription}}
+                                        </td>
+                                        <td>{{feature.displayOrder}}</td>
+                                     </tr>
+                                  </tbody>
+                               </table>
+                            </td>
+                         </tr>
+                      </ng-container>
+                   </tbody>
+                </table>
+                <app-table-paginator [size]="size" [totalElements]="totalCount" (pageChange)="changePage($event)"
+                   (changeSize)="changeSize($event)">
+                </app-table-paginator>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

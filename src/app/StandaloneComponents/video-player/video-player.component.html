@@ -1,1 +1,54 @@
-<p>video-player works!</p>
+<div
+  [ngStyle]="
+    handleCssChangeAtRuntime
+      ? { position: 'relative !important', display: 'block !important' }
+      : { position: 'relative', display: 'block' }
+  "
+  style="height: 100%; max-width: 100%"
+  id="video-container"
+>
+  <video #videoPlayer
+  [attr.id]="getVideoElementId()"
+    style="height: 100%; max-width: 100%"
+    controls 
+    controlsList="nodownload"
+    oncontextmenu="return false;"
+    controlsList="nofullscreen"
+    src="{{ path }}"
+    (fullscreenchange)="onVideoTagFullScreen($event)"
+    (mozfullscreenchange)="onVideoTagFullScreen($event)"
+    (webkitfullscreenchange)="onVideoTagFullScreen($event)"
+    (ended)="saveLastStoppedTime()" (pause)="saveLastStoppedTime()"
+    (loadeddata)="playVideoAtLastStopedTime()"
+  ></video>
+  <span
+    [ngStyle]="
+      handleCssChangeAtRuntime
+        ? {
+            position: 'absolute !important',
+            top: '4% !important',
+            left: '1% !important',
+            display: 'block !important',
+            height: 'auto !important',
+            visibility: 'visible !important'
+          }
+        : {
+            position: 'absolute',
+            top: '4%',
+            left: '1%',
+            display: 'block',
+            height: 'auto',
+            visibility: 'visible'
+          }
+    "
+    class="badge bg-primary"
+    >{{ mobileNumber }}</span
+  >
+  <div class="overlay-icon" (click)="showVideoInFullScreen()">
+    <i
+      class="fas fa"
+      [ngClass]="isFullScreen ? 'fa-compress' : 'fa-expand'"
+      aria-hidden="true"
+    ></i>
+  </div>
+</div>

@@ -1,1 +1,102 @@
-<p>institutes-plan works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Institutes Subscription Plan</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <div class="col-sm-12 col-md-6">
+                <div id="user_list_datatable_info" class="dataTables_filter">
+                  <form class="me-3 position-relative">
+                    <div class="form-group mb-0">
+                      <input
+                        class="form-control"
+                        #planSearch
+                        type="text"
+                        placeholder="Type in this field for quick filter"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Institute Name</th>
+                  <th scope="col">Contact Number</th>
+                  <th scope="col">Plan Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="institutes.length == 0">
+                  <td colspan="6">No Institutes Plan Found</td>
+                </tr>
+                <tr *ngFor="let element of institutes; let i = index">
+                  <td>
+                    {{ i + 1 }}
+                  </td>
+                  <td>
+                    {{ element?.name }}
+                  </td>
+                  <td>
+                    {{ element?.instituteName }}
+                  </td>
+                  <td>
+                    {{element?.contactNumber}}
+                  </td>
+                  <td>
+                    {{ element?.planName }}
+                  </td>
+                  <td>
+                    <span
+                      class="badge"
+                      [ngClass]="
+                        element?.status === 'Active' ? 'bg-primary' : 'bg-danger'
+                      "
+                      >{{ element?.status }}</span
+                    >
+                  </td>
+                  <td>
+                    <mat-icon
+                      aria-hidden="false"
+                      mat-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example home icon"
+                      >menu
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                      <button
+                        mat-menu-item
+                        style="cursor: pointer"
+                        (click)="editPlan(element.id)"
+                        data-toggle="tooltip"
+                        title="Edit Plan"
+                      >
+                        Edit Plan
+                      </button>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-table-paginator
+              [size]="size"
+              [totalElements]="totalCount"
+              (pageChange)="pageChange($event)"
+              (changeSize)="changeSize($event)"
+            ></app-table-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

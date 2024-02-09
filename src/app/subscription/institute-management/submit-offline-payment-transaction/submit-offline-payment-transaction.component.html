@@ -1,1 +1,428 @@
-<p>submit-offline-payment-transaction works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between bg-primary">
+                <div class="header-title">
+                    <h4 class="card-title text-white">Offline Payment Transaction For Institute</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="offlineTransactionForm" #billingAddressFormElement>
+
+                    <div class="tab-pane fade active show" id="pills-sale-tab">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card position-relative inner-page-bg bg-primary" style="height: 57.2px">
+                                    <div class="inner-page-title">
+                                        <h5 class="text-white">Select Plan for {{instituteName}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" *ngFor="let element of annualPlans; let i = index">
+                                <div class="card" [ngClass]="{ 'selected-card': element.id === selectedPlanId }" (click)="isPlanSelectionEnabled ? selectPlan(element.id) : null">
+
+                                    <div [ngClass]="
+                                    element.id === selectedPlanId
+                                        ? 'card-body border text-center rounded bg-primary'
+                                        : 'card-body border text-center rounded'
+                                    ">
+                                        <label [for]="'radio_' + element.id">
+                                            <input type="radio" [id]="'radio_' + element.id" class="form-check-input"
+                                                name="selectedPlan" [value]="element.id"
+                                                [checked]="element.id === selectedPlanId"
+                                                [disabled]="!isPlanSelectionEnabled">
+                                            <h4>
+                                                {{ element?.pricingPlanName | titlecase }}
+                                            </h4>
+                                            <br />
+                                            <div class="d-flex align-items-center justify-content-center"
+                                                *ngIf="!element?.discountPrice">
+                                                <h1 style="font-size: calc(1.5rem + 2.5vw)">
+                                                    &#8377;{{ element?.price }}
+                                                </h1>
+                                                <small class="text-muted">/ Year</small>
+                                            </div>
+
+                                            <div class="d-flex align-items-center justify-content-center"
+                                                *ngIf="element?.discountPrice">
+                                                <h1 class="display-3" style="font-size: calc(1.5rem + 2.5vw)">
+                                                    &#8377;{{ element?.discountPrice }}
+                                                </h1>
+                                                <br /><del> &#8377;{{ element?.price }}</del>
+                                                <small>/ Year</small>
+                                            </div>
+
+                                            <br />
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div *ngIf="transactionControls['planId'].invalid && submitted"
+                                class="fv-plugins-message-container">
+                                <div class="text-danger" *ngIf="transactionControls['planId']?.errors?.['required']">
+                                    Please select Plan.
+                                </div>
+                            </div>
+                            <div class="col-md-4" *ngIf="annualPlans.length == 0">
+                                <p>No active plans found.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setPadding">
+                        <form [formGroup]="billingAddressForm">
+                            <div class="row" style="margin-top: 25px">
+                                <h4>Contact Information</h4>
+                                <div class="col-md-3">
+                                    <label for="inputEmail4" class="form-label">Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text " autocomplete="off" class="form-control" formControlName="name"
+                                        id="inputEmail4" />
+                                    <div *ngIf="controls['name'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['name']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputEmail4" class="form-label">Email <span
+                                            class="text-danger">*</span></label>
+                                    <input type="email" autocomplete="off" class="form-control" formControlName="email"
+                                        id="inputEmail4" />
+                                    <div *ngIf="controls['email'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['email']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                        <div *ngIf="controls['email'].errors?.['email']" class="text-text-danger">
+                                            Invalid Email !
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputEmail4" class="form-label">Mobile Number <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" autocomplete="off"
+                                        formControlName="phoneNumber" minlength="10" maxlength="10" (paste)="(false)"
+                                        (keypress)="numberOnly($event)" id="inputEmail4" />
+                                    <div *ngIf="controls['phoneNumber'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['phoneNumber']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                        <div class="text-danger" *ngIf="controls['phoneNumber']?.errors?.['pattern']">
+                                            Invalid Mobile Number
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" *ngIf="controls['isGST'].value == true">
+                                    <label for="inputEmail4" class="form-label">GST Number <span
+                                            class="text-danger">*</span></label>
+                                    <input formControlName="gstNumber" class="form-control" id="inputEmail4" />
+                                    <div *ngIf="controls['gstNumber'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['gstNumber']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                        <div class="text-danger" *ngIf="controls['gstNumber']?.errors?.['pattern']">
+                                            Invalid GST Number.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" formControlName="isGST" type="checkbox"
+                                            id="flexCheckDefault" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Do You Have GST Number
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 15px">
+                                <h4>Address</h4>
+                                <div class="col-md-4">
+                                    <label for="inputEmail4" class="form-label">Company Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" formControlName="companyName"
+                                        id="inputEmail4">
+                                    <div *ngIf="controls['companyName'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['companyName']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="inputEmail4" class="form-label">Company Address <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" formControlName="companyAddress"
+                                        id="inputEmail4">
+                                    <div *ngIf="controls['companyAddress'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger"
+                                            *ngIf="controls['companyAddress']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputEmail4" class="form-label">Country <span
+                                            class="text-danger">*</span></label>
+                                    <select type="number" class="form-control" formControlName="country"
+                                        id="inputEmail4">
+                                        <option value="">Select</option>
+                                        <option value="India">India</option>
+                                    </select>
+                                    <div *ngIf="controls['country'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['country']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputEmail4" class="form-label">State <span
+                                            class="text-danger">*</span></label>
+                                    <select class="form-control" formControlName="state" id="inputEmail4">
+                                        <option *ngFor="let states of states" value="{{ states?.id }}">
+                                            {{ states?.stateName }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="controls['state'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['state']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputEmail4" class="form-label">Zip Code <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" formControlName="pinCode" (keypress)="numberOnly($event)"
+                                        maxlength="6" class="form-control" id="inputEmail4" />
+                                    <div *ngIf="controls['pinCode'].invalid && submitted"
+                                        class="fv-plugins-message-container">
+                                        <div class="text-danger" *ngIf="controls['pinCode']?.errors?.['required']">
+                                            Above field is required.
+                                        </div>
+                                        <div class="text-danger"
+                                            *ngIf="controls['pinCode']?.errors?.['validateDigitInput']">
+                                            Invalid Zip code.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row" style="margin-top: 25px">
+                        <h4>Payment Details</h4>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">Amount Paid by Institute (Excluding GST) <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" id="amount" formControlName="amount" class="form-control"
+                                    placeholder="Enter Amount">
+                                <div *ngIf="transactionControls['amount'].invalid && submitted"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger"
+                                        *ngIf="transactionControls['amount']?.errors?.['required']">
+                                        Above field is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="paymentCreatedAt" class="form-label">Invoice Date <span
+                                        class="text-danger">*</span></label>
+                                <input type="datetime-local" id="paymentCreatedAt" formControlName="paymentCreatedAt"
+                                    class="form-control" [max]="getMaxDate()">
+                                <div *ngIf="transactionControls['paymentCreatedAt'].invalid && submitted"
+                                    class="fv-plugins-message-container">
+                                    <div class="text-danger"
+                                        *ngIf="transactionControls['paymentCreatedAt']?.errors?.['required']">
+                                        Above field is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-wrapper">
+                            <button class="custom-button cancel-button" (click)="goBack()" *ngIf="!showPrices">Cancel</button>
+                            <button class="custom-button submit-button" (click)="payment(scrollTarget);" *ngIf="!showPrices">Submit</button>
+                        </div>
+                        
+                        <div #scrollTarget id="scrollTarget">
+                            <div class="col-12" *ngIf="showPrices" >
+                                <div class="card">
+                                    <div class="card-body" style="padding: 7%">
+                                        <p style="
+                                    font-weight: 700;
+                                    font-size: 18px;
+                                    line-height: 27px;
+                                    color: #1f1f1f;
+                                ">
+                                            Order Summary
+                                        </p>
+                                        <hr />
+                                        <div>
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngFor="let item of subscriptionPlanTransaction?.items">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        {{ item.name }}
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        ">&#8377;{{
+                                                        item.discountedPrice ? item.discountedPrice : item.price
+                                                        }}</b>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngIf="subscriptionPlanTransaction?.amount">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        Sub Total
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        "><span>&#8377;</span>{{ subscriptionPlanTransaction?.amountDue }}</b>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngIf="subscriptionPlanTransaction?.igstInAmount">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        IGST
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        "><span>&#8377;</span>{{ subscriptionPlanTransaction?.igstInAmount }}</b>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngIf="subscriptionPlanTransaction?.sgstInAmount">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        SGST
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        "><span>&#8377;</span>{{ subscriptionPlanTransaction?.sgstInAmount }}</b>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngIf="subscriptionPlanTransaction?.cgstInAmount">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        CGST
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        "><span>&#8377;</span>{{ subscriptionPlanTransaction?.cgstInAmount }}</b>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngIf="subscriptionPlanTransaction?.gstInAmount">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        GST
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        "><span>&#8377;</span>{{ subscriptionPlanTransaction?.gstInAmount }}</b>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between"
+                                                    *ngIf="subscriptionPlanTransaction?.netamount">
+                                                    <p style="
+                                        font-weight: 400;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #8491a5;
+                                        ">
+                                                        Total Amount
+                                                    </p>
+                                                    <b style="
+                                        font-weight: 700;
+                                        font-size: 12.6837px;
+                                        line-height: 30px;
+                                        color: #1f1f1f;
+                                        "><span>&#8377;</span>{{ subscriptionPlanTransaction?.netamount }}</b>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; margin-top: 10px;">
+                                                <input type="checkbox" id="amountReceived" name="amountReceived"
+                                                    [(ngModel)]="amountReceived" (change)="handleAmountReceivedChange()"
+                                                    style="margin-right: 10px;">
+                                                <label for="amountReceived" style="margin-right: 10px;">Have you
+                                                    received
+                                                    that amount?</label>
+                                            </div>
+
+
+                                            <div class="button-wrapper">
+                                                <button type="button" class="submit-button" (click)="paymentRecieved()" [disabled]="!amountReceived">
+                                                    Submit Transaction
+                                                </button>
+                                            
+                                                <button type="button" class="edit-button" (click)="editFunction()">
+                                                    Edit
+                                                </button>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

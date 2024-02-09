@@ -1,1 +1,132 @@
-<p>purchase-history works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between bg-primary">
+          <div class="header-title">
+            <h4 class="card-title text-white">Purchase History</h4>
+          </div>
+          <!-- <button type="submit" (click)="addassignment()" type="submit" style="background: white; color: #50B5FF"
+                     class="btn btn-primary">+ Add Assignment</button> -->
+        </div>
+        <div class="card-body">
+          <div class="table">
+            <div class="row justify-content-between d-flex">
+              <!-- <div class="col-sm-12 col-md-6">
+                        <div id="user_list_datatable_info" class="dataTables_filter">
+                           <form class="me-3 position-relative">
+                              <div class="form-group mb-0">
+                                 <input class="form-control" (keyup)="search($event)" [(ngModel)]="searchParam" type="text"
+                                    placeholder="Search....">
+                              </div>
+                           </form>
+                        </div>
+                     </div> -->
+            </div>
+            <table class="files-lists table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>
+                    Course Name
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'courseName'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('courseName')"
+                    ></i>
+                  </th>
+                  <th>
+                    Purchase Date
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'purchaseDate'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('purchaseDate')"
+                    ></i>
+                  </th>
+                  <th>
+                    Total Amount
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'totalAmount'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('totalAmount')"
+                    ></i>
+                  </th>
+                  <th>
+                      Amount Payed
+                      <i
+                        ng-click="typeOfShorting:!typeOfShorting"
+                        [ngClass]="
+                          typeOfShorting && type == 'amountPayed'
+                            ? 'fa fa-sort-amount-desc'
+                            : 'fa fa-sort-amount-asc'
+                        "
+                        (click)="short('amountPayed')"
+                      ></i>
+                    </th>
+                  <th>
+                    Discount
+                    <i
+                      ng-click="typeOfShorting:!typeOfShorting"
+                      [ngClass]="
+                        typeOfShorting && type == 'discount'
+                          ? 'fa fa-sort-amount-desc'
+                          : 'fa fa-sort-amount-asc'
+                      "
+                      (click)="short('discount')"
+                    ></i>
+                  </th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6" *ngIf="purchaseHistories?.length == 0">
+                    No purchase history found.
+                  </td>
+                </tr>
+                <tr
+                  class=""
+                  *ngFor="
+                    let history of purchaseHistories
+                      | short : type : typeOfShorting;
+                    let i = index
+                  "
+                >
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ history.courseName }}</td>
+                  <td>{{ history.purchaseDate | date }}</td>
+                  <td>{{ history.totalAmount }}</td>
+                  <td>{{ history.amountPayed }}</td>
+                  <td>{{ history.discount }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-success" (click)="downloadInvoice(history.id)">
+                      Download Invoice
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <app-table-paginator
+            [size]="size"
+            [pagenumber]="page"
+            [totalElements]="totalCount"
+            (pageChange)="pageChange($event)"
+            (changeSize)="changeSize($event)"
+          ></app-table-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+  

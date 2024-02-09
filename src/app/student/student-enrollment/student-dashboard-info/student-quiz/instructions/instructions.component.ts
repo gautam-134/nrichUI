@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, EventEmitter, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-instructions',
@@ -7,6 +8,28 @@ import { Component } from '@angular/core';
   templateUrl: './instructions.component.html',
   styleUrl: './instructions.component.scss'
 })
-export class InstructionsComponent {
+export class InstructionsComponent implements OnInit {
+  uploadSuccess = new EventEmitter<boolean>();
+  constructor(
+    public dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      entry: boolean;
+      params: {
+        id: number;
+        hour: number;
+        minutes: number;
+        totalMarks: number;
+        negitiveMarking: number;
+        negtiveMarks: number;
+      };
+    }
+  ) {}
 
+  ngOnInit(): void {}
+
+  close() {
+    this.uploadSuccess.emit(true);
+    this.dialogRef.close();
+  }
 }
