@@ -9,18 +9,17 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { Subject } from 'rxjs';
 import { LoaderService } from '../../loader.service';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { TeachersList } from 'src/app/model/feature-home-teacher.model';
-import { InstituteDetails } from 'src/app/model/institute-details';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { BlogsVO } from '../../model/BlogsVO';
+import { TeachersList } from '../../model/feature-home-teacher.model';
+import { InstituteDetails } from '../../model/institute-details';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-institute-page',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-page.component.html',
   styleUrl: './institute-page.component.scss'
 })

@@ -6,14 +6,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { BillingAddressVO } from 'src/app/model/BillingAddressVO';
-import { CheckoutService } from 'src/app/services/checkout.service';
+import { BillingAddressVO } from '../../../../model/BillingAddressVO';
+import { CheckoutService } from '../../../../services/checkout.service';
 import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-contact-information',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './contact-information.component.html',
   styleUrl: './contact-information.component.scss'
 })

@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../loader.service';
 import { SocialApiService } from '../services/social-api.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { ApiResponse } from '../../model/ApiResponse';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Friends } from '../suggested-friends/suggested-friends.component';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MyProfile } from './my-profile/my-profile.component';
 
 @Component({
   selector: 'app-profile',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

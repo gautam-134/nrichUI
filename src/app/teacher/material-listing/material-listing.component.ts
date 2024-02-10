@@ -3,22 +3,21 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject, Subscription } from 'rxjs';
-import { MappingPageComponent } from 'src/app/common/mapping-page/mapping-page.component';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
+import { MappingPageComponent } from '../../common/mapping-page/mapping-page.component';
+import { LoaderService } from '../../loader.service';
+import { MappingType } from '../../model/MappingType';
 import {
   FetchClassAndMaterialResult,
   MaterialFetch,
-} from 'src/app/model/Material';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+} from '../../model/Material';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
 import { MaterialClassMappingComponent } from './material-class-mapping/material-class-mapping.component';
 
 @Component({
   selector: 'app-material-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './material-listing.component.html',
   styleUrl: './material-listing.component.scss'
 })

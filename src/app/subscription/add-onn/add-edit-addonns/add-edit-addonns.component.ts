@@ -2,17 +2,16 @@ import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { addOnPlan, addOnPlanFeatures } from 'src/app/model/addOn.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../../loader.service';
+import { addOnPlan, addOnPlanFeatures } from '../../../model/addOn.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 import { AddEditCouponComponent } from '../../coupon-code/add-edit-coupon/add-edit-coupon.component';
-import { discountPriceValidation } from 'src/app/common/validators/common.validators';
+import { discountPriceValidation } from '../../../common/validators/common.validators';
 
 @Component({
   selector: 'app-add-edit-addonns',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-addonns.component.html',
   styleUrl: './add-edit-addonns.component.scss'
 })

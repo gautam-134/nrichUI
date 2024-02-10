@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TeachersList } from 'src/app/model/feature-home-teacher.model';
+import { TeachersList } from '../../model/feature-home-teacher.model';
 
 @Component({
   selector: 'app-educator-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './educator-list.component.html',
   styleUrl: './educator-list.component.scss'
 })

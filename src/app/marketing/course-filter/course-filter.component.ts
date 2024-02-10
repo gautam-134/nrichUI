@@ -8,17 +8,16 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { CommonService } from 'src/app/services/common/common.service';
-import { CourseService } from 'src/app/services/course/course.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { CommonService } from '../../services/common/common.service';
+import { CourseService } from '../../services/course/course.service';
+import { InstituteService } from '../../services/institute/institute.service';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
+import { CourseCategoryVO } from '../../model/categories.model';
 @Component({
   selector: 'app-course-filter',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-filter.component.html',
   styleUrl: './course-filter.component.scss'
 })

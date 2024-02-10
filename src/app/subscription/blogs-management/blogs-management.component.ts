@@ -7,17 +7,16 @@ import {
   Subject,
   Subscription,
 } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../loader.service';
+import { BlogsVO } from '../../model/BlogsVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
 
 
 @Component({
   selector: 'app-blogs-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './blogs-management.component.html',
   styleUrl: './blogs-management.component.scss'
 })

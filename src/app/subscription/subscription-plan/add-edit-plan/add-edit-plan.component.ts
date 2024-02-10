@@ -2,19 +2,18 @@ import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { discountPriceValidation } from 'src/app/common/validators/common.validators';
-import { LoaderService } from 'src/app/loader.service';
+import { discountPriceValidation } from '../../../common/validators/common.validators';
+import { LoaderService } from '../../../loader.service';
 import {
   SubscriptionPricingPlans,
   SubscriptionPricingPlansFeatures,
-} from 'src/app/model/subscriptionplan.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+} from '../../../model/subscriptionplan.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-add-edit-plan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-plan.component.html',
   styleUrl: './add-edit-plan.component.scss'
 })

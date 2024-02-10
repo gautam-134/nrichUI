@@ -2,20 +2,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BatchVO } from 'src/app/model/BatchVO';
-import { Course } from 'src/app/model/Course';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseWizardService } from 'src/app/services/course/course-wizard.service';
-import { CourseService } from 'src/app/services/course/course.service';
-import { SupportService } from 'src/app/services/Support/support.service';
+import { LoaderService } from '../../loader.service';
+import { BatchVO } from '../../model/BatchVO';
+import { Course } from '../../model/Course';
+import { PricingPlanVO } from '../../model/PricingPlanVO';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CourseWizardService } from '../../services/course/course-wizard.service';
+import { CourseService } from '../../services/course/course.service';
+import { SupportService } from '../../services/Support/support.service';
 
 @Component({
   selector: 'app-course-wizard',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-wizard.component.html',
   styleUrl: './course-wizard.component.scss'
 })

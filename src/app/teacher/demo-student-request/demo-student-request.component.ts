@@ -1,15 +1,14 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { DemoClassRequest } from 'src/app/model/demoClassRequest';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { DemoClassRequest } from '../../model/demoClassRequest';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-demo-student-request',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './demo-student-request.component.html',
   styleUrl: './demo-student-request.component.scss'
 })

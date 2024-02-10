@@ -2,16 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoaderService } from 'src/app/loader.service';
-import { BatchMapping, CourseBatchMapVO } from 'src/app/model/CourseBatchMapVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../loader.service';
+import { BatchMapping, CourseBatchMapVO } from '../../model/CourseBatchMapVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CommonService } from '../../services/common/common.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mapping-page',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './mapping-page.component.html',
   styleUrl: './mapping-page.component.scss'
 })

@@ -1,16 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 import { ChatRoom } from '../chat/chat.component';
 import { SocialApiService } from '../services/social-api.service';
 import { Friends } from '../suggested-friends/suggested-friends.component';
-
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-friend-requests',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './friend-requests.component.html',
   styleUrl: './friend-requests.component.scss'
 })

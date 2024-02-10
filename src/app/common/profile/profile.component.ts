@@ -9,20 +9,19 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { Profile } from 'src/app/model/Profile';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { Profile } from '../../model/Profile';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 import { ImageCropDialogComponent } from '../image-crop-dialog/image-crop-dialog.component';
 
 @Component({
   selector: 'app-profile',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

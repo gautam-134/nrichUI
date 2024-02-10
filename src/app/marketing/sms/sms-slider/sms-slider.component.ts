@@ -3,8 +3,7 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-sms-slider',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './sms-slider.component.html',
   styleUrl: './sms-slider.component.scss'
 })

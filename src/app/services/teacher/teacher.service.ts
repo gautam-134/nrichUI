@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { TeachersListRes } from 'src/app/model/feature-home-teacher.model';
-import { FetchSubjectListForStudent } from 'src/app/model/fetchteacher.model';
-import { InquiryFormVO } from 'src/app/model/InquiryFormVO';
-import { MobileCoursesRes } from 'src/app/model/MobileCourseVO';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { TeachersListRes } from '../../model/feature-home-teacher.model';
+import { FetchSubjectListForStudent } from '../../model/fetchteacher.model';
+import { InquiryFormVO } from '../../model/InquiryFormVO';
+import { MobileCoursesRes } from '../../model/MobileCourseVO';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

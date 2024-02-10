@@ -66,7 +66,7 @@ import { ChangeInstituteAdminOfInstituteComponent } from './institute-management
     AllUsersComponent,
     StudentDetailsComponent,
     BlogsManagementComponent,
-    InstitutesPlanComponent,
+    // InstitutesPlanComponent,
     EditCurrentPlanComponent,
     NewCategoryRequestManagementComponent,
     BannerManagementComponent,

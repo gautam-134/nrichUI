@@ -3,19 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { MaterialPreviewComponent } from 'src/app/common/file-management/material-preview/material-preview.component';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { classMaterialVO } from 'src/app/model/ClassMaterialVO';
-import { VideoTimeTracking } from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { MaterialPreviewComponent } from '../../../../common/file-management/material-preview/material-preview.component';
+import { LoaderService } from '../../../../loader.service';
+import { ApiResponse } from '../../../../model/ApiResponse';
+import { classMaterialVO } from '../../../../model/ClassMaterialVO';
+import { VideoTimeTracking } from '../../../../model/PrerecordedModels';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../../services/auth.service';
+import { PreRecordedModuleService } from '../../../../services/pre-recorded-module.service';
+import { StudentService } from '../../../../services/student/student.service';
 @Component({
   selector: 'app-admin-all-material',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './admin-all-material.component.html',
   styleUrl: './admin-all-material.component.scss'
 })
@@ -84,7 +83,7 @@ export class AdminAllMaterialComponent implements OnInit {
       },
     });
 
-    dialogRef.componentInstance.videoStopped.subscribe((videoResumeTime: number) => {
+    dialogRef.componentInstance['videoStopped'].subscribe((videoResumeTime: number) => {
       if (videoResumeTime !== undefined) {
         this.storeVideoTime(videoResumeTime);
       }

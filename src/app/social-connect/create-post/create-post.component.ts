@@ -9,24 +9,24 @@ import {
   ViewChild,
   OnDestroy,
 } from '@angular/core';
+// import { Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PostVO } from 'src/app/model/PostVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PostVO } from '../../model/PostVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { InstituteService } from '../../services/institute/institute.service';
 import { UserProfile } from '../create-profile/create-profile.component';
 import { SocialApiService } from '../services/social-api.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { BlogImageCropperComponent } from 'src/app/common/blog-listing/blog-image-cropper/blog-image-cropper.component';
+import { BlogImageCropperComponent } from '../../common/blog-listing/blog-image-cropper/blog-image-cropper.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-create-post',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.scss'
 })

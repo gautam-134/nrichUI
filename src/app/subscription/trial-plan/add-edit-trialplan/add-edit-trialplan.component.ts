@@ -2,16 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { Triallist } from 'src/app/model/coupon.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../../loader.service';
+import { Triallist } from '../../../model/coupon.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 
 
 @Component({
   selector: 'app-add-edit-trialplan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-trialplan.component.html',
   styleUrl: './add-edit-trialplan.component.scss'
 })

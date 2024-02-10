@@ -9,15 +9,14 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InquiryForm } from 'src/app/model/InquiryFormVO';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { InquiryForm } from '../../model/InquiryFormVO';
+import { CourseService } from '../../services/course/course.service';
 const DEFAULT_DURATION = 500;
 @Component({
   selector: 'app-contact-nrich',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './contact-nrich.component.html',
   styleUrl: './contact-nrich.component.scss',
   animations: [

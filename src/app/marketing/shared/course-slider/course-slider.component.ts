@@ -5,7 +5,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
 
 @Component({
   selector: 'app-course-slider',

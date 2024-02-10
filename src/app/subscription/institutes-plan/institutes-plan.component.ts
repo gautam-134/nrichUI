@@ -7,18 +7,20 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { SubscriptionPlanVO } from 'src/app/model/SubscriptionPlanVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { SubscriptionPlanVO } from '../../model/SubscriptionPlanVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
+import { CommonModule2 } from "../../common/common.module";
+import { TablePaginatorComponent } from "../../common/table-paginator/table-paginator.component";
 
 @Component({
-  selector: 'app-institutes-plan',
-  standalone: true,
-  imports: [],
-  templateUrl: './institutes-plan.component.html',
-  styleUrl: './institutes-plan.component.scss'
+    selector: 'app-institutes-plan',
+    standalone: true,
+    templateUrl: './institutes-plan.component.html',
+    styleUrl: './institutes-plan.component.scss',
+    imports: [CommonModule2]
 })
 export class InstitutesPlanComponent implements OnInit, OnDestroy {
   institutes: SubscriptionPlanVO[] = [];

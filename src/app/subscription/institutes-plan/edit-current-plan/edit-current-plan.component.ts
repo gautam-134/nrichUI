@@ -2,15 +2,14 @@ import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { SubscriptionPlanVO } from 'src/app/model/SubscriptionPlanVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../../loader.service';
+import { SubscriptionPlanVO } from '../../../model/SubscriptionPlanVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-edit-current-plan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './edit-current-plan.component.html',
   styleUrl: './edit-current-plan.component.scss'
 })

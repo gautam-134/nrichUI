@@ -1,16 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { QuizUpdate } from 'src/app/model/Quiz';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { QuizApiService } from 'src/app/services/quiz-api.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { LoaderService } from '../../../loader.service';
+import { QuizUpdate } from '../../../model/Quiz';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { QuizApiService } from '../../../services/quiz-api.service';
+import { StudentService } from '../../../services/student/student.service';
 
 @Component({
   selector: 'app-quiz-preview',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './quiz-preview.component.html',
   styleUrl: './quiz-preview.component.scss'
 })

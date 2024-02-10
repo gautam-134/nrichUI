@@ -3,8 +3,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-lms',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './lms.component.html',
   styleUrl: './lms.component.scss'
 })

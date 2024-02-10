@@ -3,15 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { CRMService } from 'src/app/services/CRM/crm.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../loader.service';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { CRMService } from '../../services/CRM/crm.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 
 @Component({
   selector: 'app-failed-to-convert-leads',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './failed-to-convert-leads.component.html',
   styleUrl: './failed-to-convert-leads.component.scss'
 })

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject, Observable } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../loader.service';
+import { BlogsVO } from '../../model/BlogsVO';
+import { CommonService } from '../../services/common/common.service';
 
 @Component({
   selector: 'app-blogs-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './blogs-list.component.html',
   styleUrl: './blogs-list.component.scss'
 })

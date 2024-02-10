@@ -1,14 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { MobileCourseVO } from '../../../model/MobileCourseVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-category-courses',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './category-courses.component.html',
   styleUrl: './category-courses.component.scss'
 })

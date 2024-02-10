@@ -1,15 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoaderService } from 'src/app/loader.service';
-import { CrmFormFieldsVO } from 'src/app/model/CrmFormFieldsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { CrmFormFieldsVO } from '../../model/CrmFormFieldsVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CRMService } from '../../services/CRM/crm.service';
 
 @Component({
   selector: 'app-add-field',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-field.component.html',
   styleUrl: './add-field.component.scss'
 })

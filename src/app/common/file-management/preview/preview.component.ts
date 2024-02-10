@@ -10,14 +10,13 @@ import {
   OnChanges,
 } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { VideoTimeTrackingVO } from 'src/app/model/VideoTimeTrackingVO';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { VideoTimeTrackingVO } from '../../../model/VideoTimeTrackingVO';
+import { PreRecordedModuleService } from '../../../services/pre-recorded-module.service';
 
 @Component({
   selector: 'app-preview',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './preview.component.html',
   styleUrl: './preview.component.scss'
 })

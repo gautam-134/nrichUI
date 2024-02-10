@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../../services/auth.service';
+import { TeacherService } from '../../../../services/teacher/teacher.service';
 import { InstructionsComponent } from './instructions/instructions.component';
 
 @Component({
   selector: 'app-student-quiz',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-quiz.component.html',
   styleUrl: './student-quiz.component.scss'
 })

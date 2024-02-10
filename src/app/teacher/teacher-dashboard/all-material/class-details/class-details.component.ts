@@ -3,19 +3,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PreviewComponent } from 'src/app/common/file-management/preview/preview.component';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { Material, recordedClassDetails } from 'src/app/model/ClassList';
-import { VideoTimeTracking } from 'src/app/model/classVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { ClassService } from 'src/app/services/Classes/class.service';
+import { PreviewComponent } from '../../../../common/file-management/preview/preview.component';
+import { LoaderService } from '../../../../loader.service';
+import { ApiResponse } from '../../../../model/ApiResponse';
+import { Material, recordedClassDetails } from '../../../../model/ClassList';
+import { VideoTimeTracking } from '../../../../model/classVO';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../../services/auth.service';
+import { ClassService } from '../../../../services/Classes/class.service';
 
 @Component({
   selector: 'app-class-details',
-  standalone: true,
-  imports: [],
   templateUrl: './class-details.component.html',
   styleUrl: './class-details.component.scss'
 })

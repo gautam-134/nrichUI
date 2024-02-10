@@ -7,17 +7,16 @@ import {
   Subject,
   Subscription,
 } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../loader.service';
+import { BlogsVO } from '../../model/BlogsVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-blog-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './blog-listing.component.html',
   styleUrl: './blog-listing.component.scss'
 })

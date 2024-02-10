@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { assignmentVO } from '../../../../model/assignmentVO';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { AssignmentService } from '../../../../services/assignment/assignment.service';
+import { StudentService } from '../../../../services/student/student.service';
 
 import { SubmitAssignmentComponent } from './submit-assignment/submit-assignment.component';
 
 @Component({
   selector: 'app-student-all-assignments',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-all-assignments.component.html',
   styleUrl: './student-all-assignments.component.scss'
 })

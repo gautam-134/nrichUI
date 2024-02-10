@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nrich-meet',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './nrich-meet.component.html',
   styleUrl: './nrich-meet.component.scss'
 })

@@ -26,7 +26,7 @@ import { ExamFeedbackComponent } from './exam/exam-feedback/exam-feedback.compon
 import { StudentAllWebinarsComponent } from './student-enrollment/student-dashboard-info/student-all-webinars/student-all-webinars.component';
 import { StudentDemoClassesComponent } from './student-enrollment/student-demo-classes/student-demo-classes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PurchaseHistoryComponent } from './purchase-history/purchase-history/purchase-history.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 @NgModule({
   declarations: [

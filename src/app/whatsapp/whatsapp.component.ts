@@ -4,8 +4,7 @@ import { NotificationService } from '../services/notification/notification.servi
 
 @Component({
   selector: 'app-whatsapp',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './whatsapp.component.html',
   styleUrl: './whatsapp.component.scss'
 })

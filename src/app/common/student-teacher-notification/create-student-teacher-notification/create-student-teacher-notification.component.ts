@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { NotificationVO } from 'src/app/model/Notification';
-import { LoaderService } from 'src/app/loader.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { NotificationVO } from '../../../model/Notification';
+import { LoaderService } from '../../../loader.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-student-teacher-notification',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-student-teacher-notification.component.html',
   styleUrl: './create-student-teacher-notification.component.scss'
 })

@@ -8,15 +8,14 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { AllUsers } from 'src/app/model/AllUsers';
-import { AuthService } from 'src/app/services/auth.service';
-import { MasterService } from 'src/app/services/master/master.service';
+import { LoaderService } from '../../../loader.service';
+import { AllUsers } from '../../../model/AllUsers';
+import { AuthService } from '../../../services/auth.service';
+import { MasterService } from '../../../services/master/master.service';
 
 @Component({
   selector: 'app-all-admins',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './all-admins.component.html',
   styleUrl: './all-admins.component.scss'
 })

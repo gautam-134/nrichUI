@@ -8,15 +8,14 @@ import {
 
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../loader.service';
 
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { SelectInstituteComponent } from './select-institute/select-institute.component';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

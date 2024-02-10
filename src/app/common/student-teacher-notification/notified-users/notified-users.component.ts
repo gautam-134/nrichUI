@@ -8,15 +8,14 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 import { UserV2VO } from '../create-student-teacher-notification/create-student-teacher-notification.component';
 
 @Component({
   selector: 'app-notified-users',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './notified-users.component.html',
   styleUrl: './notified-users.component.scss'
 })

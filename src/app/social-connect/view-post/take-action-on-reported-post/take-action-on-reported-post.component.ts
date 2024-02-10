@@ -1,18 +1,17 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 import { SocialApiService } from '../../social-api.service';
-import { ReportedPostActionVO } from 'src/app/model/ReportedPostActionVO';
+import { ReportedPostActionVO } from '../../../model/ReportedPostActionVO';
 import { ViewPostComponent } from '../view-post.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { AuthService } from 'src/app/services/auth.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-take-action-on-reported-post',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './take-action-on-reported-post.component.html',
   styleUrl: './take-action-on-reported-post.component.scss'
 })

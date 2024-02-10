@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-enrollment-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './admin-enrollment-details.component.html',
   styleUrl: './admin-enrollment-details.component.scss'
 })

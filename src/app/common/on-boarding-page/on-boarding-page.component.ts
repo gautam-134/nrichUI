@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-on-boarding-page',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './on-boarding-page.component.html',
   styleUrl: './on-boarding-page.component.scss'
 })

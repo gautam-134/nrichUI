@@ -3,18 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable, Subject, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { PrerecordedModuleVO } from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+import { LoaderService } from '../../loader.service';
+import { PrerecordedModuleVO } from '../../model/PrerecordedModels';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { PreRecordedModuleService } from '../../services/pre-recorded-module.service';
 import { MappingPageComponent } from '../mapping-page/mapping-page.component';
-import { MappingType } from 'src/app/model/MappingType';
+import { MappingType } from '../../model/MappingType';
 
 @Component({
   selector: 'app-prerecorded-modules',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './prerecorded-modules.component.html',
   styleUrl: './prerecorded-modules.component.scss'
 })

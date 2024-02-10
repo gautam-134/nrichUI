@@ -66,6 +66,7 @@ import { VideoPlayerComponent } from "../StandaloneComponents/video-player/video
         AllClassComponent,
         AssigmentComponent,
         MaterialsComponent,
+        VideoPlayerComponent,
         QuizComponent,
         ReviewComponent,
         SubjectComponent,
@@ -115,7 +116,7 @@ import { VideoPlayerComponent } from "../StandaloneComponents/video-player/video
         ImageCropperModule,
         NgApexchartsModule,
         MatProgressBarModule,
-        VideoPlayerComponent
+    
     ]
 })
 export class TeacherModule {}

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Auth } from 'src/app/model/Auth';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { Auth } from '../../../model/Auth';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
 
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-select-institute',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './select-institute.component.html',
   styleUrl: './select-institute.component.scss'
 })

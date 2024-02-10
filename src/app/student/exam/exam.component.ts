@@ -3,17 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { QuizUpdate } from 'src/app/model/Quiz';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { QuizService } from 'src/app/services/Quiz/quiz.service';
+import { LoaderService } from '../../loader.service';
+import { QuizUpdate } from '../../model/Quiz';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { QuizService } from '../../services/Quiz/quiz.service';
 import Swal from 'sweetalert2';
 import { ExamFeedbackComponent } from './exam-feedback/exam-feedback.component';
 @Component({
   selector: 'app-exam',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './exam.component.html',
   styleUrl: './exam.component.scss'
 })

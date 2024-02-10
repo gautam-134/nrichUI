@@ -10,16 +10,15 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, Observable, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { CourseService } from '../../../services/course/course.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-disabled-courses',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './disabled-courses.component.html',
   styleUrl: './disabled-courses.component.scss'
 })

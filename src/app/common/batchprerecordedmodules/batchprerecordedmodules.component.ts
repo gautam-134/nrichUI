@@ -1,15 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PrerecordedModuleVO } from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PrerecordedModuleVO } from '../../model/PrerecordedModels';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { PreRecordedModuleService } from '../../services/pre-recorded-module.service';
 
 @Component({
   selector: 'app-batchprerecordedmodules',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './batchprerecordedmodules.component.html',
   styleUrl: './batchprerecordedmodules.component.scss'
 })

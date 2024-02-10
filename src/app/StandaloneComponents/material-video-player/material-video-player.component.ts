@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-material-video-player',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './material-video-player.component.html',
   styleUrl: './material-video-player.component.scss'
 })

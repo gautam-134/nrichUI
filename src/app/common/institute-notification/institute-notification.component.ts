@@ -8,17 +8,16 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { NotificationVO } from 'src/app/model/Notification';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { LoaderService } from '../../loader.service';
+import { NotificationVO } from '../../model/Notification';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification/notification.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-institute-notification',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-notification.component.html',
   styleUrl: './institute-notification.component.scss'
 })

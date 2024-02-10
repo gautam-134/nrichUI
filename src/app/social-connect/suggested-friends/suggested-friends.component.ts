@@ -1,14 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { SocialApiService } from '../services/social-api.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { ApiResponse } from '../../model/ApiResponse';
 import { HttpErrorResponse } from '@angular/common/http';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-suggested-friends',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './suggested-friends.component.html',
   styleUrl: './suggested-friends.component.scss'
 })

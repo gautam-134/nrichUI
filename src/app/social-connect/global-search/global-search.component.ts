@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, debounceTime, map, of } from 'rxjs';
 import { SocialApiService } from '../services/social-api.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-
+import { AuthService } from '../../services/auth.service';
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-global-search',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './global-search.component.html',
   styleUrl: './global-search.component.scss'
 })

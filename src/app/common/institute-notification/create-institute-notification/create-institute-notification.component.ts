@@ -3,17 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, debounceTime, map, of } from 'rxjs';
-import { UserInstitutes } from 'src/app/auth/login/select-institute/select-institute.component';
-import { LoaderService } from 'src/app/loader.service';
-import { NotificationVO } from 'src/app/model/Notification';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { UserInstitutes } from '../../../auth/login/select-institute/select-institute.component';
+import { LoaderService } from '../../../loader.service';
+import { NotificationVO } from '../../../model/Notification';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'app-create-institute-notification',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-institute-notification.component.html',
   styleUrl: './create-institute-notification.component.scss'
 })

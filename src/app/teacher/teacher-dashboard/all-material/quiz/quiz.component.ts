@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { AuthService } from '../../../../services/auth.service';
+import { TeacherService } from '../../../../services/teacher/teacher.service';
 
 @Component({
   selector: 'app-quiz',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.scss'
 })

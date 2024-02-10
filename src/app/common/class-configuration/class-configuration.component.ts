@@ -2,20 +2,20 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
-import { MyplanDetails } from 'src/app/model/MyPlanDetails';
+import { LoaderService } from '../../loader.service';
+import { MappingType } from '../../model/MappingType';
+import { MyplanDetails } from '../../model/MyPlanDetails';
 import {
   ClassConfiguration,
   ClassScheduleList,
   ScheduleClass,
-} from 'src/app/model/schedule-class-list.model';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { MyplanService } from 'src/app/services/myplan.service';
-import { SupportService } from 'src/app/services/Support/support.service';
+} from '../../model/schedule-class-list.model';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
+import { MyplanService } from '../../services/myplan.service';
+import { SupportService } from '../../services/Support/support.service';
 import Swal from 'sweetalert2';
 
 import { ClassMappingPageComponent } from '../class-mapping-page/class-mapping-page.component';
@@ -24,8 +24,7 @@ import { EditClassConfigurationComponent } from './edit-class-configuration/edit
 
 @Component({
   selector: 'app-class-configuration',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './class-configuration.component.html',
   styleUrl: './class-configuration.component.scss'
 })

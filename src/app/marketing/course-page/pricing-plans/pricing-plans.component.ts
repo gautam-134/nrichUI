@@ -1,14 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { AuthService } from 'src/app/services/auth.service';
+import { PricingPlanVO } from '../../../model/PricingPlanVO';
+import { AuthService } from '../../../services/auth.service';
 import { BuyCourseComponent } from '../buy-course/buy-course.component';
 
 @Component({
   selector: 'app-pricing-plans',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './pricing-plans.component.html',
   styleUrl: './pricing-plans.component.scss'
 })

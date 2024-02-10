@@ -1,15 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { crmLeadComments, CrmLeadTrackerVO } from 'src/app/model/CrmLeadTrackerVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { crmLeadComments, CrmLeadTrackerVO } from '../../model/CrmLeadTrackerVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CRMService } from '../../services/CRM/crm.service';
 
 @Component({
   selector: 'app-lead-history',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './lead-history.component.html',
   styleUrl: './lead-history.component.scss'
 })

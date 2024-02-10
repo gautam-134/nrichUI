@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { CommonService } from 'src/app/services/common/common.service';
+import { BlogsVO } from '../../../model/BlogsVO';
+import { CommonService } from '../../../services/common/common.service';
 
 @Component({
   selector: 'app-blogs',

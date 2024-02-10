@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { DemoClass } from 'src/app/model/DemoClass';
-import { AuthService } from 'src/app/services/auth.service';
-import { ClassService } from 'src/app/services/Classes/class.service';
+import { DemoClass } from '../../../model/DemoClass';
+import { AuthService } from '../../../services/auth.service';
+import { ClassService } from '../../../services/Classes/class.service';
 import Swal from 'sweetalert2';
 
 @Component({

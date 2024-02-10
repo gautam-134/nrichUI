@@ -2,14 +2,13 @@ import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { RolesService } from 'src/app/services/roles/roles.service';
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { RolesService } from '../../services/roles/roles.service';
 
 @Component({
   selector: 'app-screen-mapping',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './screen-mapping.component.html',
   styleUrl: './screen-mapping.component.scss'
 })

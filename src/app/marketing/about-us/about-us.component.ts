@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-// import { InstituteService } from 'src/app/services/institute/institute.service';
+// import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-about-us',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss'
 })

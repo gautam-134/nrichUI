@@ -5,8 +5,7 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
 @Component({
   selector: 'app-view-doc',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './view-doc.component.html',
   styleUrl: './view-doc.component.scss'
 })

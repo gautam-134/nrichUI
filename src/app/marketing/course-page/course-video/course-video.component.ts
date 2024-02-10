@@ -6,12 +6,11 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { CourseVO } from 'src/app/model/CourseVO';
+import { CourseVO } from '../../model/CourseVO';
 
 @Component({
   selector: 'app-course-video',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-video.component.html',
   styleUrl: './course-video.component.scss'
 })

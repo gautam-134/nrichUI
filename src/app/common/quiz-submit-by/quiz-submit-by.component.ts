@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { QuizService } from 'src/app/services/Quiz/quiz.service';
+import { LoaderService } from '../../loader.service';
+import { AuthService } from '../../services/auth.service';
+import { QuizService } from '../../services/Quiz/quiz.service';
 
 @Component({
   selector: 'app-quiz-submit-by',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './quiz-submit-by.component.html',
   styleUrl: './quiz-submit-by.component.scss'
 })

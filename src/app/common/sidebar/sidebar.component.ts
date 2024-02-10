@@ -3,13 +3,12 @@ import {
   OnInit
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Menu } from 'src/app/model/Menu';
-import { AuthService } from 'src/app/services/auth.service';
+import { Menu } from '../../model/Menu';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Observable, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../loader.service';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CourseService } from '../../services/course/course.service';
 
 @Component({
   selector: 'app-course-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-management.component.html',
   styleUrl: './course-management.component.scss'
 })

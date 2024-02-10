@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
-import { ScheduleClassVO } from 'src/app/model/schedule-class-list.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../../loader.service';
+import { MappingType } from '../../../model/MappingType';
+import { ScheduleClassVO } from '../../../model/schedule-class-list.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { InstituteService } from '../../../services/institute/institute.service';
 import Swal from 'sweetalert2';
 import { ClassMappingPageComponent } from '../../class-mapping-page/class-mapping-page.component';
 import { CreateEditClassConfigurationComponent } from '../../create-edit-class-configuration/create-edit-class-configuration.component';
@@ -16,8 +16,7 @@ import { AddClassInConfigurationComponent } from '../add-class-in-configuration/
 
 @Component({
   selector: 'app-schedule-class-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './schedule-class-list.component.html',
   styleUrl: './schedule-class-list.component.scss'
 })
@@ -245,7 +244,7 @@ export class ScheduleClassListComponent implements OnInit {
         classConfigId: this.activatedRoute.snapshot.queryParams['id'],
       },
     });
-    dialogRef.componentInstance.uploadSuccess.subscribe((res) => {
+    dialogRef.componentInstance.uploadSuccess.subscribe((res: any) => {
       if (res) {
         this.refresh(this.page);
         dialogRef.close();

@@ -8,15 +8,14 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CourseService } from '../../services/course/course.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-enrolled-students',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './enrolled-students.component.html',
   styleUrl: './enrolled-students.component.scss'
 })

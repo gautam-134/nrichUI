@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialApiService } from '../social-api.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { UpcomingBirthdayVO } from 'src/app/model/UpComingBirthdayVO';
+import { ApiResponse } from '../../model/ApiResponse';
+import { UpcomingBirthdayVO } from '../../model/UpComingBirthdayVO';
 
 @Component({
   selector: 'app-upcoming-birthday',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './upcoming-birthday.component.html',
   styleUrl: './upcoming-birthday.component.scss'
 })

@@ -2,16 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { FaqComponent } from 'src/app/marketing/shared/faq/faq.component';
-import { FAQVo } from 'src/app/model/Faq';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { FaqComponent } from '../../marketing/shared/faq/faq.component';
+import { FAQVo } from '../../model/Faq';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-add-faqs',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-faqs.component.html',
   styleUrl: './add-faqs.component.scss'
 })

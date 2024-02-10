@@ -2,11 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { CourseVO } from 'src/app/model/CourseVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { CourseVO } from '../../../model/CourseVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-reviews',

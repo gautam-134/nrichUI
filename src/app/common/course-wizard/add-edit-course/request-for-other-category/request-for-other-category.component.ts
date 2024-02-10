@@ -1,15 +1,14 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { CategoryRequestVO } from 'src/app/model/CategoryRequestVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CategoryService } from 'src/app/services/category/category.service';
+import { LoaderService } from '../../../../loader.service';
+import { CategoryRequestVO } from '../../../../model/CategoryRequestVO';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { CategoryService } from '../../../../services/category/category.service';
 
 @Component({
   selector: 'app-request-for-other-category',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './request-for-other-category.component.html',
   styleUrl: './request-for-other-category.component.scss'
 })

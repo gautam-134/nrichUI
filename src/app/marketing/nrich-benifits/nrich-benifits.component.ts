@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { InsitutionVO } from 'src/app/model/InstitutionVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { InsitutionVO } from '../../model/InstitutionVO';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-nrich-benifits',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './nrich-benifits.component.html',
   styleUrl: './nrich-benifits.component.scss'
 })

@@ -9,24 +9,23 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
-import { LoaderService } from 'src/app/loader.service';
-import { Country } from 'src/app/model/Country';
-import { CrmFormFieldsVO } from 'src/app/model/CrmFormFieldsVO';
-import { CrmStatus, CrmSubStatus } from 'src/app/model/CrmStatusAndSubStatus';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { States } from 'src/app/model/States';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { CourseService } from 'src/app/services/course/course.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { Country } from '../../model/Country';
+import { CrmFormFieldsVO } from '../../model/CrmFormFieldsVO';
+import { CrmStatus, CrmSubStatus } from '../../model/CrmStatusAndSubStatus';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { PricingPlanVO } from '../../model/PricingPlanVO';
+import { States } from '../../model/States';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
+import { CourseService } from '../../services/course/course.service';
+import { CRMService } from '../../services/CRM/crm.service';
 
 @Component({
   selector: 'app-edit-lead',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './edit-lead.component.html',
   styleUrl: './edit-lead.component.scss'
 })

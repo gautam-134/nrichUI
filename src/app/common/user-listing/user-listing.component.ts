@@ -5,20 +5,19 @@ import {
   ViewChild
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { SupportService } from 'src/app/services/Support/support.service';
+import { LoaderService } from '../../loader.service';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
+import { SupportService } from '../../services/Support/support.service';
 import Swal from 'sweetalert2';
 import { InstituteFormVO } from '../add-edit-institute/add-edit-institute.component';
 import { UserFormVO } from '../add-user/add-user.component';
 
 @Component({
   selector: 'app-user-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './user-listing.component.html',
   styleUrl: './user-listing.component.scss'
 })

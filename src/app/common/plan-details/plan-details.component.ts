@@ -3,8 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-plan-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './plan-details.component.html',
   styleUrl: './plan-details.component.scss'
 })

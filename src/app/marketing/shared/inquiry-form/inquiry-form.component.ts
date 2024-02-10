@@ -11,11 +11,11 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InquiryForm } from 'src/app/model/InquiryFormVO';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { MobileCourseVO } from '../../../model/MobileCourseVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { InquiryForm } from '../../../model/InquiryFormVO';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-inquiry-form',

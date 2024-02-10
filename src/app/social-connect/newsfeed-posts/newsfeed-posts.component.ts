@@ -10,19 +10,18 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PostCommentsVO, PostVO } from 'src/app/model/PostVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PostCommentsVO, PostVO } from '../../model/PostVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
 import { SocialApiService } from '../services/social-api.service';
 import { TimeService } from '../services/time.service';
 import { ReportAbuseOnPostComponent } from './report-abuse-on-post/report-abuse-on-post.component';
-
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-newsfeed-posts',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './newsfeed-posts.component.html',
   styleUrl: './newsfeed-posts.component.scss'
 })

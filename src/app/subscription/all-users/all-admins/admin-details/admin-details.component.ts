@@ -9,14 +9,13 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { AllUsers } from 'src/app/model/AllUsers';
-import { MasterService } from 'src/app/services/master/master.service';
+import { LoaderService } from '../../../../loader.service';
+import { AllUsers } from '../../../../model/AllUsers';
+import { MasterService } from '../../../../services/master/master.service';
 
 @Component({
   selector: 'app-admin-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './admin-details.component.html',
   styleUrl: './admin-details.component.scss'
 })

@@ -11,21 +11,20 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { AssignmentDocumentPreviewComponent } from 'src/app/common/assignment-document-preview/assignment-document-preview.component';
-import { LoaderService } from 'src/app/loader.service';
-import { answers, questions, QuizUpdate, sections } from 'src/app/model/Quiz';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { QuizApiService } from 'src/app/services/quiz-api.service';
+import { AssignmentDocumentPreviewComponent } from '../../../common/assignment-document-preview/assignment-document-preview.component';
+import { LoaderService } from '../../../loader.service';
+import { answers, questions, QuizUpdate, sections } from '../../../model/Quiz';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { QuizApiService } from '../../../services/quiz-api.service';
 import Swal from 'sweetalert2';
 import { QuizCropperComponent } from '../quiz-cropper/quiz-cropper.component';
-import { MappingPageComponent } from 'src/app/common/mapping-page/mapping-page.component';
-import { MappingType } from 'src/app/model/MappingType';
+import { MappingPageComponent } from '../../../common/mapping-page/mapping-page.component';
+import { MappingType } from '../../../model/MappingType';
 
 @Component({
   selector: 'app-quiz-question',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './quiz-question.component.html',
   styleUrl: './quiz-question.component.scss'
 })

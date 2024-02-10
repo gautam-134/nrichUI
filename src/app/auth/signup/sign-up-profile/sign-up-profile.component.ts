@@ -13,20 +13,19 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { Profile } from 'src/app/model/Profile';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import { LoaderService } from '../../../loader.service';
+import { Profile } from '../../../model/Profile';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { CommonService } from '../../../services/common/common.service';
+import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { getMessaging, getToken } from 'firebase/messaging';
 // import Swal from 'sweetalert2';
 // import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-sign-up-profile',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './sign-up-profile.component.html',
   styleUrl: './sign-up-profile.component.scss'
 })

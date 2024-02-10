@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { AuthService } from '../../../../services/auth.service';
+import { TeacherService } from '../../../../services/teacher/teacher.service';
 
 @Component({
   selector: 'app-admin-all-quiz',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './admin-all-quiz.component.html',
   styleUrl: './admin-all-quiz.component.scss'
 })

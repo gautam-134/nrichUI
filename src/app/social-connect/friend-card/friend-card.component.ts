@@ -1,15 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Friends } from '../suggested-friends/suggested-friends.component';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../loader.service';
 import { SocialApiService } from '../services/social-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-
+import { ApiResponse } from '../../model/ApiResponse';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-friend-card',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './friend-card.component.html',
   styleUrl: './friend-card.component.scss'
 })

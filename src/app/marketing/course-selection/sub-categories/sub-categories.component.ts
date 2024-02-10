@@ -1,14 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { CourseCategoryVO } from '../../../model/categories.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-sub-categories',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './sub-categories.component.html',
   styleUrl: './sub-categories.component.scss'
 })

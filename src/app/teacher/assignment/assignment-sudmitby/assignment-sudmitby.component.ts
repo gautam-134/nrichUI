@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Observable, of, map, debounceTime } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { CompletedAssignmentList } from 'src/app/model/assignmentVO';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service';
+import { LoaderService } from '../../../loader.service';
+import { CompletedAssignmentList } from '../../../model/assignmentVO';
+import { AssignmentService } from '../../../services/assignment/assignment.service';
 import { EvaluateAssignmentComponent } from './evaluate-assignment/evaluate-assignment.component';
 
 @Component({
   selector: 'app-assignment-sudmitby',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './assignment-sudmitby.component.html',
   styleUrl: './assignment-sudmitby.component.scss'
 })

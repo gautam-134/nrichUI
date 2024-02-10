@@ -7,14 +7,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { NotificationVO } from 'src/app/model/Notification';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { LoaderService } from '../../loader.service';
+import { NotificationVO } from '../../model/Notification';
+import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-student-teacher-notification',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-teacher-notification.component.html',
   styleUrl: './student-teacher-notification.component.scss'
 })

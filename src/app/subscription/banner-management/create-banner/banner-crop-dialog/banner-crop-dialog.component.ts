@@ -4,8 +4,7 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-banner-crop-dialog',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './banner-crop-dialog.component.html',
   styleUrl: './banner-crop-dialog.component.scss'
 })

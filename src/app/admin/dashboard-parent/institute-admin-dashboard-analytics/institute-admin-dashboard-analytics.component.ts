@@ -11,24 +11,23 @@ import {
   ApexXAxis,
 } from 'ng-apexcharts';
 import { Subscription } from 'rxjs';
-import { NotificationDetailsComponent } from 'src/app/common/header/notification-details/notification-details.component';
-import { LoaderService } from 'src/app/loader.service';
-import { AdminDashboardAnayltics } from 'src/app/model/AdminDashboardAnalytics';
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { ClassVO } from 'src/app/model/classVO';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { MyplanDetails } from 'src/app/model/MyPlanDetails';
-import { BellNotificationVO } from 'src/app/model/Notification';
-import { DashboardService } from 'src/app/services/admin/dashboard.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { MyplanService } from 'src/app/services/myplan.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { NotificationDetailsComponent } from '../../../common/header/notification-details/notification-details.component';
+import { LoaderService } from '../../../loader.service';
+import { AdminDashboardAnayltics } from '../../../model/AdminDashboardAnalytics';
+import { assignmentVO } from '../../../model/assignmentVO';
+import { ClassVO } from '../../../model/classVO';
+import { MobileCourseVO } from '../../../model/MobileCourseVO';
+import { MyplanDetails } from '../../../model/MyPlanDetails';
+import { BellNotificationVO } from '../../../model/Notification';
+import { DashboardService } from '../../../services/admin/dashboard.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { MyplanService } from '../../../services/myplan.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'app-institute-admin-dashboard-analytics',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-admin-dashboard-analytics.component.html',
   styleUrl: './institute-admin-dashboard-analytics.component.scss'
 })

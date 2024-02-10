@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { ExpertVO } from 'src/app/model/ExpertVO';
-import { CommonService } from 'src/app/services/common/common.service';
+import { ExpertVO } from '../../../model/ExpertVO';
+import { CommonService } from '../../../services/common/common.service';
 
 @Component({
   selector: 'app-achievers-slider',

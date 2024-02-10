@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ClassVO } from 'src/app/model/classVO';
-import { ClassService } from 'src/app/services/Classes/class.service';
+import { LoaderService } from '../../../../loader.service';
+import { ClassVO } from '../../../../model/classVO';
+import { ClassService } from '../../../../services/Classes/class.service';
 @Component({
   selector: 'app-student-all-webinars',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-all-webinars.component.html',
   styleUrl: './student-all-webinars.component.scss'
 })

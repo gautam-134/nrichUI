@@ -3,8 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-notification-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './notification-details.component.html',
   styleUrl: './notification-details.component.scss'
 })

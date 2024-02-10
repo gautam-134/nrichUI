@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-nrich-legal-contact',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './nrich-legal-contact.component.html',
   styleUrl: './nrich-legal-contact.component.scss'
 })

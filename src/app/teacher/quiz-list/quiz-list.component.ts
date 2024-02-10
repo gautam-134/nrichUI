@@ -8,20 +8,19 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import * as saveAs from 'file-saver';
+import saveAs from 'file-saver';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { MappingPageComponent } from 'src/app/common/mapping-page/mapping-page.component';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { QuizApiService } from 'src/app/services/quiz-api.service';
+import { MappingPageComponent } from '../../common/mapping-page/mapping-page.component';
+import { LoaderService } from '../../loader.service';
+import { MappingType } from '../../model/MappingType';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { QuizApiService } from '../../services/quiz-api.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-quiz-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './quiz-list.component.html',
   styleUrl: './quiz-list.component.scss'
 })

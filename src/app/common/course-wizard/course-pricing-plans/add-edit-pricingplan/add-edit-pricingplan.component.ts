@@ -6,16 +6,15 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { LoaderService } from 'src/app/loader.service';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseWizardService } from 'src/app/services/course/course-wizard.service';
-import { PricingPlanService } from 'src/app/services/pricing-plan.service';
+import { LoaderService } from '../../../../loader.service';
+import { PricingPlanVO } from '../../../../model/PricingPlanVO';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { CourseWizardService } from '../../../../services/course/course-wizard.service';
+import { PricingPlanService } from '../../../../services/pricing-plan.service';
 
 @Component({
   selector: 'app-add-edit-pricingplan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-pricingplan.component.html',
   styleUrl: './add-edit-pricingplan.component.scss'
 })

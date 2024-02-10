@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

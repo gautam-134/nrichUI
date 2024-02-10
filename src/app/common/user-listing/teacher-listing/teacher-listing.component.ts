@@ -3,19 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { LoaderService } from '../../../loader.service';
+import { MappingType } from '../../../model/MappingType';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { InstituteService } from '../../../services/institute/institute.service';
+import { TeacherService } from '../../../services/teacher/teacher.service';
 import { UserFormVO } from '../../add-user/add-user.component';
 import { MappingPageComponent } from '../../mapping-page/mapping-page.component';
 
 @Component({
   selector: 'app-teacher-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-listing.component.html',
   styleUrl: './teacher-listing.component.scss'
 })

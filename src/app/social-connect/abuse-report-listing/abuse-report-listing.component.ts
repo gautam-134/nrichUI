@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../loader.service';
 import { SocialApiService } from '../social-api.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PostReport } from 'src/app/model/PostReportVO';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PostReport } from '../../model/PostReportVO';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-abuse-report-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './abuse-report-listing.component.html',
   styleUrl: './abuse-report-listing.component.scss'
 })

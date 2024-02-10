@@ -1,22 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
 import { SocialApiService } from '../../services/social-api.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-my-profile',
-  standalone: true,
-  imports: [],
   templateUrl: './my-profile.component.html',
-  styleUrl: './my-profile.component.scss'
+  styleUrls: ['./my-profile.component.scss'],
 })
-export class MyFriendsComponent implements OnInit, OnChanges {
-  @Input() myFriends: Friends[] = [];
-  @Input() profileId!: number;
-  roleType!: string;
+export class MyProfileComponent implements OnInit {
+  @Input() myProfile!: MyProfile;
   myProfileId!: number;
   constructor(
     private loader: LoaderService,
@@ -26,23 +22,82 @@ export class MyFriendsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.myProfileId = +AuthService.getUserProfileId;
-    this.roleType = AuthService.getRoleType;
   }
 
-  ngOnChanges(simpleChanges: SimpleChanges) {
-    if (simpleChanges?.['profileId']?.['currentValue'])
-      this.profileId = simpleChanges?.['profileId']?.['currentValue'];
+  accept() {
+    this.loader
+      .showLoader(this.socialApi.acceptFriendRequests(this.myProfile.id))
+      .subscribe({
+        next: (data: ApiResponse) => {
+          this.myProfile.status = 'FRIEND';
+        },
+        error: (error: HttpErrorResponse) => {
+          this.alertService.okErrorAlert(error.error.message);
+        },
+      });
+  }
+  reject() {
+    this.loader
+      .showLoader(this.socialApi.rejectFriendRequests(this.myProfile.id))
+      .subscribe({
+        next: (data: ApiResponse) => {
+          this.myProfile.status = 'NOTFRIEND';
+        },
+        error: (error: HttpErrorResponse) => {
+          this.alertService.okErrorAlert(error.error.message);
+        },
+      });
   }
 
-  unFriend(id: number, i: number) {
-    this.loader.showLoader(this.socialApi.unFriend(id)).subscribe({
-      next: (data: ApiResponse) => {
-        this.socialApi.refreshProfile.next(true);
-        this.myFriends.splice(i, 1);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.alertService.errorAlert(error.error.message);
-      },
-    });
+  handleImageError(event: any) {
+    event.target.src = 'assets/images/profile.png';
   }
+
+  handleCoverImageError(event: any) {
+    event.target.src = 'assets/images/page-img/profile-bg1.jpg';
+  }
+
+  sendFriendRequest() {
+    this.loader
+      .showLoader(this.socialApi.sendFriendRequests(this.myProfile.id))
+      .subscribe({
+        next: (data: ApiResponse) => {
+          this.myProfile.status = 'REQUESTED';
+        },
+        error: (error: HttpErrorResponse) => {
+          this.alertService.errorAlert(error.error.message);
+        },
+      });
+  }
+
+  unFriend() {
+    this.loader
+      .showLoader(this.socialApi.unFriend(this.myProfile.id))
+      .subscribe({
+        next: (data: ApiResponse) => {
+          this.myProfile.status = 'NOTFRIEND';
+        },
+        error: (error: HttpErrorResponse) => {
+          this.alertService.errorAlert(error.error.message);
+        },
+      });
+  }
+}
+
+export class MyProfile {
+  id!: number;
+  name!: string;
+  profileImage!: string;
+  coverImage!: string;
+  noOfPosts!: number;
+  noOfFriends!: number;
+  status!: string;
+  educationQualification!: string;
+  employmentStatus!: string;
+  interest: string[] = [];
+  bio!: string;
+  state!: string;
+  country!: string;
+  dob!: string;
+  gender!: string;
 }

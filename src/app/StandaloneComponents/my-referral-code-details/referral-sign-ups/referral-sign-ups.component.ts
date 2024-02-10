@@ -13,8 +13,7 @@ import { CommonModule2 } from '../../../common/common.module';
 
 @Component({
   selector: 'app-referral-sign-ups',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './referral-sign-ups.component.html',
   styleUrl: './referral-sign-ups.component.scss'
 })

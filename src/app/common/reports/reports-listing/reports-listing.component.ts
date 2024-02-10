@@ -2,16 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
 import { Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { ReportingRecordsVO } from 'src/app/model/ReportingRequest';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { ReportsService } from 'src/app/services/ReportsService/reports.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { ReportingRecordsVO } from '../../../model/ReportingRequest';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { ReportsService } from '../../../services/ReportsService/reports.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 @Component({
   selector: 'app-reports-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './reports-listing.component.html',
   styleUrl: './reports-listing.component.scss'
 })

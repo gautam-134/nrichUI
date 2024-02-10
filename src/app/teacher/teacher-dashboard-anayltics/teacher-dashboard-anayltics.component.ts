@@ -11,23 +11,22 @@ import {
   ApexPlotOptions,
 } from 'ng-apexcharts';
 import { Subscription } from 'rxjs';
-import { NotificationDetailsComponent } from 'src/app/common/header/notification-details/notification-details.component';
-import { LoaderService } from 'src/app/loader.service';
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { ClassVO } from 'src/app/model/classVO';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { BellNotificationVO } from 'src/app/model/Notification';
-import { TeacherDashboardAnayltics } from 'src/app/model/TeacherDashboardAnaytics';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { ClassService } from 'src/app/services/Classes/class.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { NotificationDetailsComponent } from '../../common/header/notification-details/notification-details.component';
+import { LoaderService } from '../../loader.service';
+import { assignmentVO } from '../../model/assignmentVO';
+import { ClassVO } from '../../model/classVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { BellNotificationVO } from '../../model/Notification';
+import { TeacherDashboardAnayltics } from '../../model/TeacherDashboardAnaytics';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { ClassService } from '../../services/Classes/class.service';
+import { NotificationService } from '../../services/notification/notification.service';
+import { TeacherService } from '../../services/teacher/teacher.service';
 
 @Component({
   selector: 'app-teacher-dashboard-anayltics',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-dashboard-anayltics.component.html',
   styleUrl: './teacher-dashboard-anayltics.component.scss'
 })

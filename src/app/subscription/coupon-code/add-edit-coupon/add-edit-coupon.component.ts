@@ -8,15 +8,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { couponVO, RoleModel } from 'src/app/model/coupon.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../../loader.service';
+import { couponVO, RoleModel } from '../../../model/coupon.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-add-edit-coupon',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-coupon.component.html',
   styleUrl: './add-edit-coupon.component.scss'
 })

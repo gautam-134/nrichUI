@@ -1,17 +1,16 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { PrerecordedMaterialVO } from 'src/app/model/PrerecordedModels';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+import { PrerecordedMaterialVO } from '../../../model/PrerecordedModels';
+import { PreRecordedModuleService } from '../../../services/pre-recorded-module.service';
 import { PreviewComponent } from '../../file-management/preview/preview.component';
 import { MatDialog } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
 
 @Component({
   selector: 'app-prerecorded-material-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './prerecorded-material-listing.component.html',
   styleUrl: './prerecorded-material-listing.component.scss'
 })

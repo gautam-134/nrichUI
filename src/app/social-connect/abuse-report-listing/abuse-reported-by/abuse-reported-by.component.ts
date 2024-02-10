@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
 import { SocialApiService } from '../../social-api.service';
-import { ReportAbuseVO } from 'src/app/model/ReportAbuseVO';
+import { ReportAbuseVO } from '../../../model/ReportAbuseVO';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-abuse-reported-by',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './abuse-reported-by.component.html',
   styleUrl: './abuse-reported-by.component.scss'
 })

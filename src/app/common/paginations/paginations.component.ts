@@ -11,8 +11,7 @@ import {
 
 @Component({
   selector: 'app-paginations',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './paginations.component.html',
   styleUrl: './paginations.component.scss',
   encapsulation: ViewEncapsulation.ShadowDom,

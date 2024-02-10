@@ -9,8 +9,7 @@ import { MyProfile } from '../my-profile/my-profile.component';
 
 @Component({
   selector: 'app-about',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

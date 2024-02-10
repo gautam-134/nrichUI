@@ -4,8 +4,7 @@ import {
 
 @Component({
   selector: 'app-create-course-request',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-course-request.component.html',
   styleUrl: './create-course-request.component.scss'
 })

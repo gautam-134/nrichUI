@@ -4,8 +4,7 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-cover-image-crop',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './cover-image-crop.component.html',
   styleUrl: './cover-image-crop.component.scss'
 })

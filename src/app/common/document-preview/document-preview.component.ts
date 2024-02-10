@@ -2,14 +2,13 @@ import { Component, HostListener, Inject, OnInit, ViewChild } from '@angular/cor
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { interval, Subscription } from 'rxjs';
-import { VideoTimeTracking } from 'src/app/model/classVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { VideoTimeTracking } from '../../model/classVO';
+import { AuthService } from '../../services/auth.service';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-document-preview',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './document-preview.component.html',
   styleUrl: './document-preview.component.scss'
 })

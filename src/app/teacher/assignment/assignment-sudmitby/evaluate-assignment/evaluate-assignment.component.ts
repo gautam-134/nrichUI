@@ -7,15 +7,14 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { AssignmentDocumentPreviewComponent } from 'src/app/common/assignment-document-preview/assignment-document-preview.component';
-import { LoaderService } from 'src/app/loader.service';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service';
+import { AssignmentDocumentPreviewComponent } from '../../../../common/assignment-document-preview/assignment-document-preview.component';
+import { LoaderService } from '../../../../loader.service';
+import { AssignmentService } from '../../../../services/assignment/assignment.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-evaluate-assignment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './evaluate-assignment.component.html',
   styleUrl: './evaluate-assignment.component.scss'
 })

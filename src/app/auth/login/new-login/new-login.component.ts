@@ -5,17 +5,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgOtpInputComponent } from 'ng-otp-input';
 import { Subscription, timer } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { InstituteRoles } from 'src/app/enums/InstituteRoles';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { InstituteRoles } from '../../../enums/InstituteRoles';
+import { LoaderService } from '../../../loader.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
 import { SelectInstituteComponent } from '../select-institute/select-institute.component';
-import { Auth } from 'src/app/model/Auth';
+import { Auth } from '../../../model/Auth';
 
 @Component({
   selector: 'app-new-login',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './new-login.component.html',
   styleUrl: './new-login.component.scss'
 })

@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Subject } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { NotificationVO } from 'src/app/model/Notification';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { NotificationVO } from '../../model/Notification';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

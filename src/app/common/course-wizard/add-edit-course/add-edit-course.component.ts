@@ -11,11 +11,11 @@ import {
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { LoaderService } from 'src/app/loader.service';
-import { Course } from 'src/app/model/Course';
-import { AuthService } from 'src/app/services/auth.service';
-import { CourseWizardService } from 'src/app/services/course/course-wizard.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { Course } from '../../../model/Course';
+import { AuthService } from '../../../services/auth.service';
+import { CourseWizardService } from '../../../services/course/course-wizard.service';
+import { CourseService } from '../../../services/course/course.service';
 import Swal from 'sweetalert2';
 
 import {
@@ -29,14 +29,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { lastValueFrom, Subscription } from 'rxjs';
 import { RequestForOtherCategoryComponent } from './request-for-other-category/request-for-other-category.component';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SettingServiceService } from 'src/app/services/setting-service.service';
-import { RazorpayDetails } from 'src/app/model/razorPayDetails';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { SettingServiceService } from '../../../services/setting-service.service';
+import { RazorpayDetails } from '../../../model/razorPayDetails';
 
 @Component({
   selector: 'app-add-edit-course',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-course.component.html',
   styleUrl: './add-edit-course.component.scss'
 })

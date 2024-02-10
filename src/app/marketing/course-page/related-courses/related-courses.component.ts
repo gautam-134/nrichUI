@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
 
 @Component({
   selector: 'app-related-courses',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './related-courses.component.html',
   styleUrl: './related-courses.component.scss'
 })

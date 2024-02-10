@@ -8,15 +8,14 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 
-import { NotifiedInstitutesVO } from 'src/app/model/Notification';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { NotifiedInstitutesVO } from '../../../model/Notification';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'app-notified-institutes',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './notified-institutes.component.html',
   styleUrl: './notified-institutes.component.scss'
 })

@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { classData, ClassRes } from 'src/app/model/classVO';
-import { environment } from 'src/environments/environment';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { classData, ClassRes } from '../../model/classVO';
+import { environment } from '../../../environments/environment';
 import { SwalAlertService } from '../alert/swal-alert.service';
 import { AuthService } from '../auth.service';
 

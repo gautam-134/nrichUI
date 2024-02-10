@@ -14,20 +14,19 @@ import {
 } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { AssignmentDocumentPreviewComponent } from 'src/app/common/assignment-document-preview/assignment-document-preview.component';
-import { LoaderService } from 'src/app/loader.service';
+import { AssignmentDocumentPreviewComponent } from '../../../../../common/assignment-document-preview/assignment-document-preview.component';
+import { LoaderService } from '../../../../../loader.service';
 import {
   assignmentVO,
   CompletedAssignmentList,
-} from 'src/app/model/assignmentVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service';
+} from '../../../../../model/assignmentVO';
+import { SwalAlertService } from '../../../../../services/alert/swal-alert.service';
+import { AssignmentService } from '../../../../../services/assignment/assignment.service';
 
 
 @Component({
   selector: 'app-submit-assignment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './submit-assignment.component.html',
   styleUrl: './submit-assignment.component.scss'
 })

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { DemoClass } from 'src/app/model/DemoClass';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { DemoClass } from '../../../model/DemoClass';
+import { MobileCourseVO } from '../../../model/MobileCourseVO';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-home-courses',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './home-courses.component.html',
   styleUrl: './home-courses.component.scss'
 })

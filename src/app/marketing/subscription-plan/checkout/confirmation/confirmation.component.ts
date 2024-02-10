@@ -1,12 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CheckoutService } from 'src/app/services/checkout.service';
+import { CheckoutService } from '../../../../services/checkout.service';
 
 @Component({
   selector: 'app-confirmation',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.scss'
 })

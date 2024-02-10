@@ -1,17 +1,16 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PostVO } from 'src/app/model/PostVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PostVO } from '../../model/PostVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 import { UserProfile } from '../create-profile/create-profile.component';
 import { SocialApiService } from '../services/social-api.service';
-
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-newsfeed',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './newsfeed.component.html',
   styleUrl: './newsfeed.component.scss'
 })

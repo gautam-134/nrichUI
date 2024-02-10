@@ -3,16 +3,20 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../../loader.service';
+import { CommonModule } from '@angular/common';
+import { BlogsVO } from '../../../model/BlogsVO';
+import { CommonService } from '../../../services/common/common.service';
+import { RouterModule } from '@angular/router';
+import { CommonModule2 } from "../../../common/common.module";
+import { TeacherRegistrationComponent } from '../../../marketing/shared/teacher-registration/teacher-registration.component';
 
 @Component({
-  selector: 'app-blog-info',
-  standalone: true,
-  imports: [],
-  templateUrl: './blog-info.component.html',
-  styleUrl: './blog-info.component.scss'
+    selector: 'app-blog-info',
+    standalone: true,
+    templateUrl: './blog-info.component.html',
+    styleUrl: './blog-info.component.scss',
+    imports: [CommonModule, RouterModule, CommonModule2, TeacherRegistrationComponent]
 })
 export class BlogInfoComponent implements OnInit {
   Id: any;

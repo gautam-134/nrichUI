@@ -4,18 +4,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { LoaderService } from 'src/app/loader.service';
-import { BlogsVO } from 'src/app/model/BlogsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../../loader.service';
+import { BlogsVO } from '../../../model/BlogsVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { CommonService } from '../../../services/common/common.service';
 import { PreviewComponent } from '../../file-management/preview/preview.component';
 import { BlogImageCropperComponent } from '../blog-image-cropper/blog-image-cropper.component';
 
 @Component({
   selector: 'app-add-edit-blog',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-blog.component.html',
   styleUrl: './add-edit-blog.component.scss'
 })

@@ -9,13 +9,12 @@ import {
 import { Router } from '@angular/router';
 import { NgOtpInputComponent } from 'ng-otp-input';
 import { Subscription } from 'rxjs';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss'
 })

@@ -1,15 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { BannerVO } from 'src/app/model/BannerVO';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
-import { BannerService } from 'src/app/services/banner/banner.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { BannerVO } from '../../../model/BannerVO';
+import { CourseCategoryVO } from '../../../model/categories.model';
+import { BannerService } from '../../../services/banner/banner.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-categories',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })

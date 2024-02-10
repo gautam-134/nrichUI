@@ -2,17 +2,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { CrmLeadTrackerVO } from 'src/app/model/CrmLeadTrackerVO';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { UserV2VO } from 'src/app/model/UserV2VO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { CrmLeadTrackerVO } from '../../model/CrmLeadTrackerVO';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { UserV2VO } from '../../model/UserV2VO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CRMService } from '../../services/CRM/crm.service';
 
 @Component({
   selector: 'app-assign-lead',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './assign-lead.component.html',
   styleUrl: './assign-lead.component.scss'
 })

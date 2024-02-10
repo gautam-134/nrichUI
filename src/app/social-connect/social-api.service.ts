@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { StickyNoteVO } from '../model/StickyNoteVO';
 import { ApiResponse } from '../model/ApiResponse';
 import { map } from 'rxjs';

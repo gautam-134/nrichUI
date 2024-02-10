@@ -9,18 +9,17 @@ import {
   ApexTitleSubtitle,
   ApexXAxis,
 } from 'ng-apexcharts';
-import { LoaderService } from 'src/app/loader.service';
-import { CrmDashboardAnalytics } from 'src/app/model/CrmDashboardAnalytics';
-import { CrmFormFieldsVO } from 'src/app/model/CrmFormFieldsVO';
-import { CrmStatus, CrmSubStatus } from 'src/app/model/CrmStatusAndSubStatus';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { CrmDashboardAnalytics } from '../../model/CrmDashboardAnalytics';
+import { CrmFormFieldsVO } from '../../model/CrmFormFieldsVO';
+import { CrmStatus, CrmSubStatus } from '../../model/CrmStatusAndSubStatus';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CRMService } from '../../services/CRM/crm.service';
 
 @Component({
   selector: 'app-institute-admin-dashboard',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-admin-dashboard.component.html',
   styleUrl: './institute-admin-dashboard.component.scss'
 })

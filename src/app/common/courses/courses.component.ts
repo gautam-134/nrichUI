@@ -9,18 +9,17 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, Subject, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CourseService } from 'src/app/services/course/course.service';
-import { SupportService } from 'src/app/services/Support/support.service';
+import { LoaderService } from '../../loader.service';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CourseService } from '../../services/course/course.service';
+import { SupportService } from '../../services/Support/support.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-courses',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })

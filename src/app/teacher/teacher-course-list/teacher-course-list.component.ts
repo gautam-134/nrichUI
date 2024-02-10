@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-teacher-course-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-course-list.component.html',
   styleUrl: './teacher-course-list.component.scss'
 })

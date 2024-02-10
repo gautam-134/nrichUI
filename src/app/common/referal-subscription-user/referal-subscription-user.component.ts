@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-referal-subscription-user',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './referal-subscription-user.component.html',
   styleUrl: './referal-subscription-user.component.scss'
 })

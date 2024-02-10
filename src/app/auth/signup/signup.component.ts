@@ -6,16 +6,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { Profile } from 'src/app/model/Profile';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../loader.service';
+import { Profile } from '../../model/Profile';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })

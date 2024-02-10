@@ -1,20 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { addOnPlan, addOnPlanFeatures } from 'src/app/model/addOn.model';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SubscriptionPricingPlans } from 'src/app/model/subscriptionplan.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { addOnPlan, addOnPlanFeatures } from '../../model/addOn.model';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SubscriptionPricingPlans } from '../../model/subscriptionplan.model';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
-import { AddonFeaturesPreviewComponent } from 'src/app/StandaloneComponents/addon-features-preview/addon-features-preview.component';
+import { AddonFeaturesPreviewComponent } from '../../StandaloneComponents/addon-features-preview/addon-features-preview.component';
 
 @Component({
   selector: 'app-marketing-plans',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './marketing-plans.component.html',
   styleUrl: './marketing-plans.component.scss'
 })

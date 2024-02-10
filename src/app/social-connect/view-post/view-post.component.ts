@@ -5,22 +5,21 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { PostCommentsVO, PostVO } from 'src/app/model/PostVO';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { LoaderService } from '../../loader.service';
+import { PostCommentsVO, PostVO } from '../../model/PostVO';
+import { ApiResponse } from '../../model/ApiResponse';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 import { TimeService } from '../services/time.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { SocialApiService } from '../services/social-api.service';
 import { Location } from '@angular/common';
 import { TakeActionOnReportedPostComponent } from './take-action-on-reported-post/take-action-on-reported-post.component';
 import { MatDialog } from '@angular/material/dialog';
-
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-view-post',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './view-post.component.html',
   styleUrl: './view-post.component.scss'
 })

@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { ApiResponse } from '../../model/ApiResponse';
 import {
   assignmentVO,
   CompletedAssignmentList,
-} from 'src/app/model/assignmentVO';
-import { environment } from 'src/environments/environment';
+} from '../../model/assignmentVO';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

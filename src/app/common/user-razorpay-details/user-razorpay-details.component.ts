@@ -9,8 +9,7 @@ class RazorpayDetails {
 
 @Component({
   selector: 'app-user-razorpay-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './user-razorpay-details.component.html',
   styleUrl: './user-razorpay-details.component.scss'
 })

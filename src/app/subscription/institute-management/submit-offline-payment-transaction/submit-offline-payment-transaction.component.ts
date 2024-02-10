@@ -7,19 +7,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BillingAddressVO } from 'src/app/model/BillingAddressVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CheckoutService } from 'src/app/services/checkout.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../../loader.service';
+import { BillingAddressVO } from '../../../model/BillingAddressVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { CheckoutService } from '../../../services/checkout.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SubscriptionPlanTransactionVO } from 'src/app/model/subscription-PaymentVOs';
+import { SubscriptionPlanTransactionVO } from '../../../model/subscription-PaymentVOs';
 
 
 @Component({
   selector: 'app-submit-offline-payment-transaction',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './submit-offline-payment-transaction.component.html',
   styleUrl: './submit-offline-payment-transaction.component.scss'
 })

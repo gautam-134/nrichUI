@@ -3,8 +3,7 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-image-cropper',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './image-cropper.component.html',
   styleUrl: './image-cropper.component.scss'
 })

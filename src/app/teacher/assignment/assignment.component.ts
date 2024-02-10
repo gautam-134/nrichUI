@@ -3,22 +3,21 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { MappingPageComponent } from 'src/app/common/mapping-page/mapping-page.component';
-import { LoaderService } from 'src/app/loader.service';
+import { MappingPageComponent } from '../../common/mapping-page/mapping-page.component';
+import { LoaderService } from '../../loader.service';
 
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { MappingType } from 'src/app/model/MappingType';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { assignmentVO } from '../../model/assignmentVO';
+import { MappingType } from '../../model/MappingType';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AssignmentService } from '../../services/assignment/assignment.service';
+import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
 import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-assignment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './assignment.component.html',
   styleUrl: './assignment.component.scss'
 })

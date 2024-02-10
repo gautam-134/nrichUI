@@ -3,15 +3,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { ClassConfigurationVO, ScheduleClass } from 'src/app/model/schedule-class-list.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../../loader.service';
+import { ClassConfigurationVO, ScheduleClass } from '../../../model/schedule-class-list.model';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { InstituteService } from '../../../services/institute/institute.service';
 
 @Component({
   selector: 'app-edit-class-configuration',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './edit-class-configuration.component.html',
   styleUrl: './edit-class-configuration.component.scss'
 })

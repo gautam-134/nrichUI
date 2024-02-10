@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AddStickyNoteComponent } from './add-sticky-note/add-sticky-note.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SocialApiService } from '../social-api.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { StickyNoteVO } from 'src/app/model/StickyNoteVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { LoaderService } from 'src/app/loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { StickyNoteVO } from '../../model/StickyNoteVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { LoaderService } from '../../loader.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sticky-notes',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './sticky-notes.component.html',
   styleUrl: './sticky-notes.component.scss'
 })

@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, Observable, debounceTime, of, map } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { CouponList } from 'src/app/model/coupon.model';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { CouponList } from '../../model/coupon.model';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { AddEditCouponComponent } from './add-edit-coupon/add-edit-coupon.component';
 
 @Component({
   selector: 'app-coupon-code',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './coupon-code.component.html',
   styleUrl: './coupon-code.component.scss'
 })

@@ -12,16 +12,15 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { PreviewComponent } from 'src/app/common/file-management/preview/preview.component';
-import { LoaderService } from 'src/app/loader.service';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CategoryService } from 'src/app/services/category/category.service';
+import { PreviewComponent } from '../../../../../common/file-management/preview/preview.component';
+import { LoaderService } from '../../../../../loader.service';
+import { CourseCategoryVO } from '../../../../../model/categories.model';
+import { SwalAlertService } from '../../../../../services/alert/swal-alert.service';
+import { CategoryService } from '../../../../../services/category/category.service';
 
 @Component({
   selector: 'app-create-sub-sub-category',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-sub-sub-category.component.html',
   styleUrl: './create-sub-sub-category.component.scss'
 })

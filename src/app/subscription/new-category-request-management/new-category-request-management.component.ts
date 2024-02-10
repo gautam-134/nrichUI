@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { RequestForOtherCategoryComponent } from 'src/app/common/course-wizard/add-edit-course/request-for-other-category/request-for-other-category.component';
-import { LoaderService } from 'src/app/loader.service';
-import { CategoryRequestVO } from 'src/app/model/CategoryRequestVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CategoryService } from 'src/app/services/category/category.service';
+import { RequestForOtherCategoryComponent } from '../../common/course-wizard/add-edit-course/request-for-other-category/request-for-other-category.component';
+import { LoaderService } from '../../loader.service';
+import { CategoryRequestVO } from '../../model/CategoryRequestVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CategoryService } from '../../services/category/category.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-category-request-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './new-category-request-management.component.html',
   styleUrl: './new-category-request-management.component.scss'
 })

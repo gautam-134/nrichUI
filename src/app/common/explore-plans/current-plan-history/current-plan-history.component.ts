@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Currentplan } from 'src/app/model/current-plan.model';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { Currentplan } from '../../../model/current-plan.model';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-current-plan-history',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './current-plan-history.component.html',
   styleUrl: './current-plan-history.component.scss'
 })

@@ -9,15 +9,14 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
-import { CommonService } from 'src/app/services/common/common.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../loader.service';
+import { CourseCategoryVO } from '../../model/categories.model';
+import { CommonService } from '../../services/common/common.service';
+import { CourseService } from '../../services/course/course.service';
 
 @Component({
   selector: 'app-course-selection',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-selection.component.html',
   styleUrl: './course-selection.component.scss'
 })

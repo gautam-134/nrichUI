@@ -6,13 +6,13 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { BillingAddressVO } from 'src/app/model/BillingAddressVO';
-import { FAQVo } from 'src/app/model/Faq';
-import { SubscriptionPlanVO } from 'src/app/model/SubscriptionPlanVO';
-import { addOnPlan } from 'src/app/model/addOn.model';
-import { SubscriptionPlanOrderRequest } from 'src/app/model/subscription-PaymentVOs';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { BillingAddressVO } from '../../model/BillingAddressVO';
+import { FAQVo } from '../../model/Faq';
+import { SubscriptionPlanVO } from '../../model/SubscriptionPlanVO';
+import { addOnPlan } from '../../model/addOn.model';
+import { SubscriptionPlanOrderRequest } from '../../model/subscription-PaymentVOs';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

@@ -10,12 +10,11 @@ import {
   ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-video-player',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './video-player.component.html',
   styleUrl: './video-player.component.scss'
 })

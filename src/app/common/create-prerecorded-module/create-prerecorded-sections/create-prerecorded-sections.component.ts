@@ -8,21 +8,20 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
 import {
   MaterialUploadingCount,
   PrerecordedMaterialVO,
   PrerecordedModuleVO,
   PrerecordedSectionVO,
-} from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+} from '../../../model/PrerecordedModels';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { PreRecordedModuleService } from '../../../services/pre-recorded-module.service';
 
 @Component({
   selector: 'app-create-prerecorded-sections',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-prerecorded-sections.component.html',
   styleUrl: './create-prerecorded-sections.component.scss'
 })

@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { FAQVo } from 'src/app/model/Faq';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { FAQVo } from '../../model/Faq';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 import { AddFaqsComponent } from '../add-faqs/add-faqs.component';
 
 @Component({
   selector: 'app-faq-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './faq-listing.component.html',
   styleUrl: './faq-listing.component.scss'
 })

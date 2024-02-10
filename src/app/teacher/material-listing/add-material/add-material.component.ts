@@ -9,20 +9,19 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { PreviewComponent } from 'src/app/common/file-management/preview/preview.component';
-import { MappingPageComponent } from 'src/app/common/mapping-page/mapping-page.component';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { MappingType } from 'src/app/model/MappingType';
-import { UploadMaterial } from 'src/app/model/UploadMaterial';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { PreviewComponent } from '../../../common/file-management/preview/preview.component';
+import { MappingPageComponent } from '../../../common/mapping-page/mapping-page.component';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { MappingType } from '../../../model/MappingType';
+import { UploadMaterial } from '../../../model/UploadMaterial';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { InstituteService } from '../../../services/institute/institute.service';
 // import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-material',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-material.component.html',
   styleUrl: './add-material.component.scss'
 })

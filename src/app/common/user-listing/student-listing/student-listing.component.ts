@@ -3,20 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { LoaderService } from '../../../loader.service';
+import { MappingType } from '../../../model/MappingType';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { InstituteService } from '../../../services/institute/institute.service';
+import { StudentService } from '../../../services/student/student.service';
 import Swal from 'sweetalert2';
 import { UserFormVO } from '../../add-user/add-user.component';
 import { MappingPageComponent } from '../../mapping-page/mapping-page.component';
 
 @Component({
   selector: 'app-student-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-listing.component.html',
   styleUrl: './student-listing.component.scss'
 })

@@ -2,14 +2,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgOtpInputComponent } from 'ng-otp-input';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-otp',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './otp.component.html',
   styleUrl: './otp.component.scss'
 })

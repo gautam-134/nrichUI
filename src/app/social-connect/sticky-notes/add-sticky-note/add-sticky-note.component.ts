@@ -3,15 +3,14 @@ import { StickyNotesComponent } from '../sticky-notes.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SocialApiService } from '../../social-api.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { StickyNoteVO } from 'src/app/model/StickyNoteVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { LoaderService } from 'src/app/loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { StickyNoteVO } from '../../../model/StickyNoteVO';
+import { AuthService } from '../../../services/auth.service';
+import { LoaderService } from '../../../loader.service';
 
 @Component({
   selector: 'app-add-sticky-note',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-sticky-note.component.html',
   styleUrl: './add-sticky-note.component.scss'
 })

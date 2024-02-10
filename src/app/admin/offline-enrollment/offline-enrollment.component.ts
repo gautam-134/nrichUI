@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { OfflineEnrollmentApplication } from 'src/app/model/OfflineEnrollmentApplication';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { OfflineEnrollmentApplication } from '../../model/OfflineEnrollmentApplication';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { InstituteService } from '../../services/institute/institute.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-offline-enrollment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './offline-enrollment.component.html',
   styleUrl: './offline-enrollment.component.scss'
 })

@@ -6,13 +6,11 @@ import {
   Output,
 } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-teacher',
-  standalone: true,
-  imports: [],
   templateUrl: './teacher.component.html',
-  styleUrl: './teacher.component.scss'
+  styleUrl: './teacher.component.scss',
+  
 })
 export class TeacherComponent implements OnInit {
   @Output('desktopHamburgerClick')

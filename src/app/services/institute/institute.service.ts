@@ -1,26 +1,26 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { InstituteFormVO } from 'src/app/common/add-edit-institute/add-edit-institute.component';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { Data } from 'src/app/model/BatchMappingVO';
-import { CourseDTO } from 'src/app/model/CourseVO';
-import { InquiryFormVO } from 'src/app/model/InquiryFormVO';
-import { ClassMaterialDTO } from 'src/app/model/MappingList';
-import { FetchClassAndMaterial } from 'src/app/model/Material';
-import { SubjectMappingVO } from 'src/app/model/SubjectMappingVO';
-import { TopicMappingVO } from 'src/app/model/TopicMappingVO';
-import { TeachersListRes } from 'src/app/model/feature-home-teacher.model';
-import { FetchMaterialMapping } from 'src/app/model/material-mapping-list';
+import { InstituteFormVO } from '../../common/add-edit-institute/add-edit-institute.component';
+import { ApiResponse } from '../../model/ApiResponse';
+import { Data } from '../../model/BatchMappingVO';
+import { CourseDTO } from '../../model/CourseVO';
+import { InquiryFormVO } from '../../model/InquiryFormVO';
+import { ClassMaterialDTO } from '../../model/MappingList';
+import { FetchClassAndMaterial } from '../../model/Material';
+import { SubjectMappingVO } from '../../model/SubjectMappingVO';
+import { TopicMappingVO } from '../../model/TopicMappingVO';
+import { TeachersListRes } from '../../model/feature-home-teacher.model';
+import { FetchMaterialMapping } from '../../model/material-mapping-list';
 import {
   BlueJeansMetaData,
   ClassConfigurationVO,
   ScheduleClassVO,
-} from 'src/app/model/schedule-class-list.model';
-import { environment } from 'src/environments/environment';
+} from '../../model/schedule-class-list.model';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
-import { UploadMaterial } from 'src/app/model/UploadMaterial';
-import { InstituteAdminDetailsChangingHistoryVO } from 'src/app/model/InstituteAdminDetailsChangingHistoryVO';
+import { UploadMaterial } from '../../model/UploadMaterial';
+import { InstituteAdminDetailsChangingHistoryVO } from '../../model/InstituteAdminDetailsChangingHistoryVO';
 
 @Injectable({
   providedIn: 'root',

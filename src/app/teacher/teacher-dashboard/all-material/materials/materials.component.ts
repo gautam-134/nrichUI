@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { PreviewComponent } from 'src/app/common/file-management/preview/preview.component';
-import { LoaderService } from 'src/app/loader.service';
-import { classMaterialVO } from 'src/app/model/ClassMaterialVO';
-import { StudentService } from 'src/app/services/student/student.service';
-import { MaterialPreviewComponent } from 'src/app/student/student-enrollment/student-dashboard-info/student-material/material-preview/material-preview.component';
+import { PreviewComponent } from '../../../../common/file-management/preview/preview.component';
+import { LoaderService } from '../../../../loader.service';
+import { classMaterialVO } from '../../../../model/ClassMaterialVO';
+import { StudentService } from '../../../../services/student/student.service';
+import { MaterialPreviewComponent } from '../../../../student/student-enrollment/student-dashboard-info/student-material/material-preview/material-preview.component';
 
 @Component({
   selector: 'app-materials',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './materials.component.html',
   styleUrl: './materials.component.scss'
 })

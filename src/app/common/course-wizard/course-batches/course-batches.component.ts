@@ -1,15 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BatchVO } from 'src/app/model/BatchVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { BatchService } from 'src/app/services/batch.service';
-import { CourseWizardService } from 'src/app/services/course/course-wizard.service';
+import { BatchVO } from '../../../model/BatchVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { BatchService } from '../../../services/batch.service';
+import { CourseWizardService } from '../../../services/course/course-wizard.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-course-batches',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-batches.component.html',
   styleUrl: './course-batches.component.scss'
 })

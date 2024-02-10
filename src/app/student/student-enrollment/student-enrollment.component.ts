@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Observable, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { StudentService } from 'src/app/services/student/student.service';
+import { LoaderService } from '../../loader.service';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-student-enrollment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-enrollment.component.html',
   styleUrl: './student-enrollment.component.scss'
 })

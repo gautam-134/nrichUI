@@ -1,16 +1,15 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { debounceTime, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ContactCourses } from 'src/app/model/ContactCourses';
-import { InquiryForm } from 'src/app/model/InquiryFormVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../../loader.service';
+import { ContactCourses } from '../../../model/ContactCourses';
+import { InquiryForm } from '../../../model/InquiryFormVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-contact-us',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.scss'
 })

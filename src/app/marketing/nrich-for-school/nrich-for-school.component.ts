@@ -1,14 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 
 
 @Component({
   selector: 'app-nrich-for-school',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './nrich-for-school.component.html',
   styleUrl: './nrich-for-school.component.scss'
 })

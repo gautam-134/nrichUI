@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { TeachersList } from 'src/app/model/feature-home-teacher.model';
+import { TeachersList } from '../../model/feature-home-teacher.model';
 
 @Component({
   selector: 'app-educator-slider',

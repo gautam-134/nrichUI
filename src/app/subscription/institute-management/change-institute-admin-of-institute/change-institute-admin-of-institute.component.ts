@@ -3,16 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, take, timer } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { InstituteAdminDetails } from 'src/app/model/InstituteAdminDetails';
-import { InstituteAdminDetailsChangingHistoryVO } from 'src/app/model/InstituteAdminDetailsChangingHistoryVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../../loader.service';
+import { InstituteAdminDetails } from '../../../model/InstituteAdminDetails';
+import { InstituteAdminDetailsChangingHistoryVO } from '../../../model/InstituteAdminDetailsChangingHistoryVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { InstituteService } from '../../../services/institute/institute.service';
 
 @Component({
   selector: 'app-change-institute-admin-of-institute',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './change-institute-admin-of-institute.component.html',
   styleUrl: './change-institute-admin-of-institute.component.scss'
 })

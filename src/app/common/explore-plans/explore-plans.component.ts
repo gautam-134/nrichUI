@@ -1,19 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SubscriptionPlanTransactionHistory } from 'src/app/model/Subscription';
-import { addOnPlan, addOnPlanFeatures } from 'src/app/model/addOn.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SubscriptionPlanTransactionHistory } from '../../model/Subscription';
+import { addOnPlan, addOnPlanFeatures } from '../../model/addOn.model';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AddonFeaturesPreviewComponent } from 'src/app/StandaloneComponents/addon-features-preview/addon-features-preview.component';
-import { LoaderService } from 'src/app/loader.service';
+import { AddonFeaturesPreviewComponent } from '../../StandaloneComponents/addon-features-preview/addon-features-preview.component';
+import { LoaderService } from '../../loader.service';
 
 @Component({
   selector: 'app-explore-plans',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './explore-plans.component.html',
   styleUrl: './explore-plans.component.scss'
 })

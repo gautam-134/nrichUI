@@ -5,18 +5,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { CourseReviewsAndRatingsVO } from 'src/app/model/CourseReviewsAndRatingsVO';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { teacherDetails } from 'src/app/model/teacher-info';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { CourseReviewsAndRatingsVO } from '../../model/CourseReviewsAndRatingsVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { teacherDetails } from '../../model/teacher-info';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
+import { TeacherService } from '../../services/teacher/teacher.service';
 import { TeacherReviewsComponent } from './teacher-reviews/teacher-reviews.component';
 
 @Component({
   selector: 'app-teacher-profile',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-profile.component.html',
   styleUrl: './teacher-profile.component.scss'
 })

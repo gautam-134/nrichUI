@@ -2,8 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-institute-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-list.component.html',
   styleUrl: './institute-list.component.scss'
 })

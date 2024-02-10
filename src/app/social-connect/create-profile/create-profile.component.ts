@@ -2,19 +2,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { BlogImageCropperComponent } from 'src/app/common/blog-listing/blog-image-cropper/blog-image-cropper.component';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { BlogImageCropperComponent } from '../../common/blog-listing/blog-image-cropper/blog-image-cropper.component';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CommonService } from '../../services/common/common.service';
 import { SocialApiService } from '../services/social-api.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-
+import { AuthService } from '../../services/auth.service';
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-create-profile',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-profile.component.html',
   styleUrl: './create-profile.component.scss'
 })

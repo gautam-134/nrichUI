@@ -1,18 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { addOnPlan, addOnPlanFeatures } from 'src/app/model/addOn.model';
+import { addOnPlan, addOnPlanFeatures } from '../../../../model/addOn.model';
 import {
   planlist,
   SubscriptionPlanTransactionVO,
-} from 'src/app/model/subscription-PaymentVOs';
-import { CheckoutService } from 'src/app/services/checkout.service';
-import { AddonFeaturesPreviewComponent } from 'src/app/StandaloneComponents/addon-features-preview/addon-features-preview.component';
+} from '../../../../model/subscription-PaymentVOs';
+import { CheckoutService } from '../../../../services/checkout.service';
+import { AddonFeaturesPreviewComponent } from '../../../../StandaloneComponents/addon-features-preview/addon-features-preview.component';
 
 @Component({
   selector: 'app-payment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })

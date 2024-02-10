@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { ExpertVO } from 'src/app/model/ExpertVO';
-import { CommonService } from 'src/app/services/common/common.service';
+import { ExpertVO } from '../../../model/ExpertVO';
+import { CommonService } from '../../../services/common/common.service';
 
 @Component({
   selector: 'app-experts',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './experts.component.html',
   styleUrl: './experts.component.scss'
 })

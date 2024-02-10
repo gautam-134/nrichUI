@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { AuthService } from '../../services/auth.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-nrich-for-institute',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './nrich-for-institute.component.html',
   styleUrl: './nrich-for-institute.component.scss'
 })

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClassVO } from 'src/app/model/classVO';
+import { ClassVO } from '../../../model/classVO';
 
 
 @Component({
   selector: 'app-all-material',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './all-material.component.html',
   styleUrl: './all-material.component.scss'
 })

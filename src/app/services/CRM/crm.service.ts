@@ -1,15 +1,15 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 import { map } from 'rxjs';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
 import {
   crmLeadComments,
   CrmLeadTrackerVO,
-} from 'src/app/model/CrmLeadTrackerVO';
-import { FacebookLeadData } from 'src/app/crm/facebook-leads/facebook-leads.component';
+} from '../../model/CrmLeadTrackerVO';
+import { FacebookLeadData } from '../../crm/facebook-leads/facebook-leads.component';
 
 @Injectable({
   providedIn: 'root',

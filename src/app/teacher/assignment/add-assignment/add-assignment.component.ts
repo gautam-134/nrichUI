@@ -17,20 +17,19 @@ import {
 } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import * as moment from 'moment';
-import { AssignmentDocumentPreviewComponent } from 'src/app/common/assignment-document-preview/assignment-document-preview.component';
-import { MappingPageComponent } from 'src/app/common/mapping-page/mapping-page.component';
-import { LoaderService } from 'src/app/loader.service';
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { MappingType } from 'src/app/model/MappingType';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service';
+import moment from 'moment';
+import { AssignmentDocumentPreviewComponent } from '../../../common/assignment-document-preview/assignment-document-preview.component';
+import { MappingPageComponent } from '../../../common/mapping-page/mapping-page.component';
+import { LoaderService } from '../../../loader.service';
+import { assignmentVO } from '../../../model/assignmentVO';
+import { MappingType } from '../../../model/MappingType';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AssignmentService } from '../../../services/assignment/assignment.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-assignment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-assignment.component.html',
   styleUrl: './add-assignment.component.scss'
 })

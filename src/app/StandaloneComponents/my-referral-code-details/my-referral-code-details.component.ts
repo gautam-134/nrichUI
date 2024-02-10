@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 import { ReferralDashboardComponent, ReferralSignups, ReferralsRewards } from './referral-dashboard/referral-dashboard.component';
 

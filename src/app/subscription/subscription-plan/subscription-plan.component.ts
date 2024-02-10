@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, Observable, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { SubscriptionPricingPlans } from 'src/app/model/subscriptionplan.model';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { SubscriptionPricingPlans } from '../../model/subscriptionplan.model';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { AddEditPlanComponent } from './add-edit-plan/add-edit-plan.component';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { ApiResponse } from '../../model/ApiResponse';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 @Component({
   selector: 'app-subscription-plan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './subscription-plan.component.html',
   styleUrl: './subscription-plan.component.scss'
 })

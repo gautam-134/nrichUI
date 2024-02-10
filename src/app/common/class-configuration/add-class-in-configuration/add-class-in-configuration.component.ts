@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, ElementRef, EventEmitter, Inject, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ScheduleClassVO } from '../../../model/schedule-class-list.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import moment from 'moment';
+import { LoaderService } from '../../../loader.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { InstituteService } from '../../../services/institute/institute.service';
 
 @Component({
   selector: 'app-add-class-in-configuration',
-  standalone: true,
-  imports: [],
   templateUrl: './add-class-in-configuration.component.html',
   styleUrl: './add-class-in-configuration.component.scss'
 })

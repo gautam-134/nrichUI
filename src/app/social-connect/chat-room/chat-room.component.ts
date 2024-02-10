@@ -8,21 +8,21 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+// import { Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { RxStompService } from '../services/rx-stomp.service';
 import { SocialApiService } from '../services/social-api.service';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-chat-room',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './chat-room.component.html',
   styleUrl: './chat-room.component.scss'
 })

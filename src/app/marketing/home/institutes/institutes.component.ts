@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { InsitutionVO } from 'src/app/model/InstitutionVO';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { InsitutionVO } from '../../../model/InstitutionVO';
+import { InstituteService } from '../../../services/institute/institute.service';
 
 @Component({
   selector: 'app-institutes',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institutes.component.html',
   styleUrl: './institutes.component.scss'
 })

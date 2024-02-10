@@ -14,24 +14,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import * as moment from 'moment';
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
+import moment from 'moment';
+import { LoaderService } from '../../loader.service';
+import { MappingType } from '../../model/MappingType';
 import {
   BlueJeansMetaData,
   ScheduleClass,
-} from 'src/app/model/schedule-class-list.model';
-import { TeacherList } from 'src/app/model/teacher-info';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+} from '../../model/schedule-class-list.model';
+import { TeacherList } from '../../model/teacher-info';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { InstituteService } from '../../services/institute/institute.service';
+import { TeacherService } from '../../services/teacher/teacher.service';
 import Swal from 'sweetalert2';
 import { ClassMappingPageComponent } from '../class-mapping-page/class-mapping-page.component';
 
 @Component({
   selector: 'app-create-edit-class-configuration',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-edit-class-configuration.component.html',
   styleUrl: './create-edit-class-configuration.component.scss'
 })

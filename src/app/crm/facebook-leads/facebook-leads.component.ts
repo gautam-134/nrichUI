@@ -12,15 +12,14 @@ import {
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { CRMService } from 'src/app/services/CRM/crm.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { FacebookLeadsService } from 'src/app/services/facebook-leads.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { CRMService } from '../../services/CRM/crm.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { FacebookLeadsService } from '../../services/facebook-leads.service';
 
 @Component({
   selector: 'app-facebook-leads',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './facebook-leads.component.html',
   styleUrl: './facebook-leads.component.scss'
 })

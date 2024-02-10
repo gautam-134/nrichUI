@@ -3,8 +3,7 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-lms-crousal',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './lms-crousal.component.html',
   styleUrl: './lms-crousal.component.scss'
 })

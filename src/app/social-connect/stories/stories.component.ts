@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialApiService } from '../services/social-api.service';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { ApiResponse } from '../../model/ApiResponse';
 import { HttpErrorResponse } from '@angular/common/http';
-import { PostVO } from 'src/app/model/PostVO';
+import { PostVO } from '../../model/PostVO';
 import { TimeService } from '../services/time.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-
+import { AuthService } from '../../services/auth.service';
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-stories',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.scss'
 })

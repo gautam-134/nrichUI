@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { CourseCategoryVO, FetchCategories } from 'src/app/model/categories.model';
-import { CategoryRequestVO } from 'src/app/model/CategoryRequestVO';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { CourseCategoryVO, FetchCategories } from '../../model/categories.model';
+import { CategoryRequestVO } from '../../model/CategoryRequestVO';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
-import { CourseReviewsAndRatingsVO } from 'src/app/model/CourseReviewsAndRatingsVO';
+import { CourseReviewsAndRatingsVO } from '../../model/CourseReviewsAndRatingsVO';
 
 @Component({
   selector: 'app-review-slider',

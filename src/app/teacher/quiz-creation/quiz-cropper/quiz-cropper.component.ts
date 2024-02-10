@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 
 @Component({
   selector: 'app-quiz-cropper',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './quiz-cropper.component.html',
   styleUrl: './quiz-cropper.component.scss'
 })

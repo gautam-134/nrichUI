@@ -1,11 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../../../services/auth.service';
 
 @Component({
   selector: 'app-material-preview',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './material-preview.component.html',
   styleUrl: './material-preview.component.scss'
 })

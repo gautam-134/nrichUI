@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClipboardService } from 'ngx-clipboard';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-coupon-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './coupon-details.component.html',
   styleUrl: './coupon-details.component.scss'
 })

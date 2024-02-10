@@ -1,16 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { addOnPlan } from 'src/app/model/addOn.model';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SubscriptionPlanTransactionHistory } from 'src/app/model/Subscription';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { addOnPlan } from '../../model/addOn.model';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SubscriptionPlanTransactionHistory } from '../../model/Subscription';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 
 @Component({
   selector: 'app-temp-plans',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './temp-plans.component.html',
   styleUrl: './temp-plans.component.scss'
 })

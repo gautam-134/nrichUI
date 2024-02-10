@@ -1,20 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
 import {
   ReportingCriteriaFieldValuesVO,
   ReportingCriteriaFieldVO,
   ReportingCriteriaVO,
   ReportingNameVO,
-} from 'src/app/model/ReportingCriteriaVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { ReportsService } from 'src/app/services/ReportsService/reports.service';
+} from '../../../model/ReportingCriteriaVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { ReportsService } from '../../../services/ReportsService/reports.service';
 
 @Component({
   selector: 'app-generate-report',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './generate-report.component.html',
   styleUrl: './generate-report.component.scss'
 })

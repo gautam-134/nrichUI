@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { BatchList } from 'src/app/model/BatchMappingVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { BatchList } from '../../model/BatchMappingVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-batches',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './batches.component.html',
   styleUrl: './batches.component.scss'
 })

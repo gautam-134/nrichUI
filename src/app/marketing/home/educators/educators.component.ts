@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TeachersList } from 'src/app/model/feature-home-teacher.model';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { TeachersList } from '../../../model/feature-home-teacher.model';
+import { TeacherService } from '../../../services/teacher/teacher.service';
 
 @Component({
   selector: 'app-educators',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './educators.component.html',
   styleUrl: './educators.component.scss'
 })

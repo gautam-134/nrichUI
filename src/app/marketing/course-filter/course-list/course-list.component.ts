@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
 
 @Component({
   selector: 'app-course-list',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.scss'
 })

@@ -66,7 +66,7 @@ import { ScreenMappingComponent } from './screen-mapping/screen-mapping.componen
   imports: [
     CommonModule,
     AdminRoutingModule,
-    CommonModule2,
+    // CommonModule2,
     MatButtonModule,
     FormsModule,
     MatSnackBarModule,

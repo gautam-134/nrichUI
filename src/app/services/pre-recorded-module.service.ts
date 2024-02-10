@@ -8,7 +8,7 @@ import {
   VideoTimeTracking,
 } from '../model/PrerecordedModels';
 import { AuthService } from './auth.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { ApiResponse } from '../model/ApiResponse';
 import { BehaviorSubject } from 'rxjs';
 

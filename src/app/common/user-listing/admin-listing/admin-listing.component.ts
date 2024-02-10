@@ -2,16 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../../loader.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { InstituteService } from '../../../services/institute/institute.service';
 import { UserFormVO } from '../../add-user/add-user.component';
 
 @Component({
   selector: 'app-admin-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './admin-listing.component.html',
   styleUrl: './admin-listing.component.scss'
 })

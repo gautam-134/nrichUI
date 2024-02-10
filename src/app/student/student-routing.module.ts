@@ -11,7 +11,7 @@ import { StudentDashboardInfoComponent } from './student-enrollment/student-dash
 import { StudentEnrollmentComponent } from './student-enrollment/student-enrollment.component';
 import { StudentComponent } from './student.component';
 import { QuizPreviewComponent } from '../teacher/quiz-creation/quiz-preview/quiz-preview.component';
-import { PurchaseHistoryComponent } from './purchase-history/purchase-history/purchase-history.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 const routes: Routes = [
   {

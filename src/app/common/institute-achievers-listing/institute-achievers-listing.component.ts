@@ -9,17 +9,16 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { ExpertVO } from 'src/app/model/ExpertVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
+import { LoaderService } from '../../loader.service';
+import { ExpertVO } from '../../model/ExpertVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-institute-achievers-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-achievers-listing.component.html',
   styleUrl: './institute-achievers-listing.component.scss'
 })

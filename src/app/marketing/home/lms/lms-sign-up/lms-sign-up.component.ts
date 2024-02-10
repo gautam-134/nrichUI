@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, Observable, Subscription, debounceTime, map, of } from 'rxjs';
-import { searchResult } from 'src/app/model/Search';
-import { CommonService } from 'src/app/services/common/common.service';
+import { searchResult } from '../../../../model/Search';
+import { CommonService } from '../../../../services/common/common.service';
 
 @Component({
   selector: 'app-lms-sign-up',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './lms-sign-up.component.html',
   styleUrl: './lms-sign-up.component.scss'
 })

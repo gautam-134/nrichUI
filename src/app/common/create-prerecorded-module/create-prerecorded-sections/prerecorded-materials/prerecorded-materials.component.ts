@@ -17,15 +17,14 @@ import { Subscription } from 'rxjs';
 import {
   MaterialUploadingCount,
   PrerecordedMaterialVO,
-} from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { FileCheckService } from 'src/app/services/file-check.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+} from '../../../../model/PrerecordedModels';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { FileCheckService } from '../../../../services/file-check.service';
+import { PreRecordedModuleService } from '../../../../services/pre-recorded-module.service';
 
 @Component({
   selector: 'app-prerecorded-materials',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './prerecorded-materials.component.html',
   styleUrl: './prerecorded-materials.component.scss'
 })

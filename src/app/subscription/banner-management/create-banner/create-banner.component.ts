@@ -1,18 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { BannerVO } from 'src/app/model/BannerVO';
+import { BannerVO } from '../../../model/BannerVO';
 import { BannerCropDialogComponent } from './banner-crop-dialog/banner-crop-dialog.component';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
 import { Router } from '@angular/router';
-import { BannerService } from 'src/app/services/banner/banner.service';
+import { BannerService } from '../../../services/banner/banner.service';
 
 @Component({
   selector: 'app-create-banner',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-banner.component.html',
   styleUrl: './create-banner.component.scss'
 })

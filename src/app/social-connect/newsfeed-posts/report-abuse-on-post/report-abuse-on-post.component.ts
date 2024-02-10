@@ -2,18 +2,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { ReportAbuseVO } from 'src/app/model/ReportAbuseVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { ReportAbuseVO } from '../../../model/ReportAbuseVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
 import { SocialApiService } from '../../social-api.service';
 import { NewsfeedPostsComponent } from '../newsfeed-posts.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-report-abuse-on-post',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './report-abuse-on-post.component.html',
   styleUrl: './report-abuse-on-post.component.scss'
 })

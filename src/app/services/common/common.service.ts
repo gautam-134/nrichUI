@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, shareReplay } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { BlogsRes, BlogsVO } from 'src/app/model/BlogsVO';
-import { ClassMappingVO, CourseBatchMapVO } from 'src/app/model/CourseBatchMapVO';
-import { ExpertVO } from 'src/app/model/ExpertVO';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { BlogsRes, BlogsVO } from '../../model/BlogsVO';
+import { ClassMappingVO, CourseBatchMapVO } from '../../model/CourseBatchMapVO';
+import { ExpertVO } from '../../model/ExpertVO';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

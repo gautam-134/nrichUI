@@ -8,19 +8,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTeacherComponent } from 'src/app/common/add-teacher/add-teacher.component';
-import { LoaderService } from 'src/app/loader.service';
-import { BatchVO } from 'src/app/model/BatchVO';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { BatchService } from 'src/app/services/batch.service';
-import { CourseWizardService } from 'src/app/services/course/course-wizard.service';
+import { AddTeacherComponent } from '../../../../common/add-teacher/add-teacher.component';
+import { LoaderService } from '../../../../loader.service';
+import { BatchVO } from '../../../../model/BatchVO';
+import { PricingPlanVO } from '../../../../model/PricingPlanVO';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { BatchService } from '../../../../services/batch.service';
+import { CourseWizardService } from '../../../../services/course/course-wizard.service';
 
 
 @Component({
   selector: 'app-add-edit-batches',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-batches.component.html',
   styleUrl: './add-edit-batches.component.scss'
 })

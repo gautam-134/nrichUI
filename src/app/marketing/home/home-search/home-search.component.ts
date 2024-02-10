@@ -1,13 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject, Subscription } from 'rxjs';
-import { searchResult } from 'src/app/model/Search';
-import { CommonService } from 'src/app/services/common/common.service';
+import { searchResult } from '../../../model/Search';
+import { CommonService } from '../../../services/common/common.service';
 
 @Component({
   selector: 'app-home-search',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './home-search.component.html',
   styleUrl: './home-search.component.scss'
 })

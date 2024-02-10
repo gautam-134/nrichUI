@@ -4,8 +4,7 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-team-slider',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './team-slider.component.html',
   styleUrl: './team-slider.component.scss'
 })

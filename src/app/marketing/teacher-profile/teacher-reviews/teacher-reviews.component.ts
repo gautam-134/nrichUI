@@ -4,14 +4,13 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { LoaderService } from '../../../loader.service';
+import { TeacherService } from '../../../services/teacher/teacher.service';
 
 
 @Component({
   selector: 'app-teacher-reviews',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-reviews.component.html',
   styleUrl: './teacher-reviews.component.scss'
 })

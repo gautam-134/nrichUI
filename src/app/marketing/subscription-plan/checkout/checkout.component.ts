@@ -10,27 +10,26 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { addOnPlan } from 'src/app/model/addOn.model';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { BillingAddressVO } from 'src/app/model/BillingAddressVO';
+import { LoaderService } from '../../../loader.service';
+import { addOnPlan } from '../../../model/addOn.model';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { BillingAddressVO } from '../../../model/BillingAddressVO';
 import {
   planlist,
   SubscriptionPlanOrderRequest,
   SubscriptionPlanTransactionVO,
-} from 'src/app/model/subscription-PaymentVOs';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CheckoutService } from 'src/app/services/checkout.service';
-import { MyplanService } from 'src/app/services/myplan.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+} from '../../../model/subscription-PaymentVOs';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { CheckoutService } from '../../../services/checkout.service';
+import { MyplanService } from '../../../services/myplan.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 import { Order } from '../../course-page/buy-course/buy-course.component';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClassVO } from 'src/app/model/classVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { ClassService } from 'src/app/services/Classes/class.service';
-import { WatsappService } from 'src/app/services/watsApp/watsapp.service';
+import { ClassVO } from '../../../../model/classVO';
+import { AuthService } from '../../../../services/auth.service';
+import { ClassService } from '../../../../services/Classes/class.service';
+import { WatsappService } from '../../../../services/watsApp/watsapp.service';
 
 @Component({
   selector: 'app-admin-classes',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './admin-classes.component.html',
   styleUrl: './admin-classes.component.scss'
 })

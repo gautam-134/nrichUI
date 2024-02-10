@@ -5,8 +5,7 @@ import {
 
 @Component({
   selector: 'app-table-paginator',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './table-paginator.component.html',
   styleUrl: './table-paginator.component.scss'
 })

@@ -8,8 +8,7 @@ import {
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-crm',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './crm.component.html',
   styleUrl: './crm.component.scss'
 })

@@ -2,20 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { CourseReviewsAndRatingsVO } from 'src/app/model/CourseReviewsAndRatingsVO';
-import { CourseVO } from 'src/app/model/CourseVO';
-import { DemoClass } from 'src/app/model/DemoClass';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { CourseReviewsAndRatingsVO } from '../../model/CourseReviewsAndRatingsVO';
+import { CourseVO } from '../../model/CourseVO';
+import { DemoClass } from '../../model/DemoClass';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { PricingPlanVO } from '../../model/PricingPlanVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CourseService } from '../../services/course/course.service';
 import { ReviewsComponent } from '../shared/reviews/reviews.component';
 
 @Component({
   selector: 'app-course-page',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-page.component.html',
   styleUrl: './course-page.component.scss'
 })

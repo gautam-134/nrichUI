@@ -2,16 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { CrmStatus, CrmSubStatus } from 'src/app/model/CrmStatusAndSubStatus';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { CrmStatus, CrmSubStatus } from '../../model/CrmStatusAndSubStatus';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CRMService } from '../../services/CRM/crm.service';
 
 @Component({
   selector: 'app-follow-up-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './follow-up-listing.component.html',
   styleUrl: './follow-up-listing.component.scss'
 })

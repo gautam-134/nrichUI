@@ -6,7 +6,6 @@ import { CourseSelectionComponent } from './course-selection/course-selection.co
 import { HomeComponent } from './home/home.component';
 import { InstitutePageComponent } from './institute-page/institute-page.component';
 import { MarketingRoutingModule } from './marketing-routing.module';
-import { MarketingComponent } from './marketing.component';
 import { MarketingFooterComponent } from './shared/marketing-footer/marketing-footer.component';
 import { MarketingHeaderComponent } from './shared/marketing-header/marketing-header.component';
 import { NavigationMenuComponent } from './shared/navigation-menu/navigation-menu.component';
@@ -40,7 +39,6 @@ import { HighlightsComponent } from './shared/highlights/highlights.component';
 import { InquiryFormComponent } from './shared/inquiry-form/inquiry-form.component';
 import { InstituteSliderComponent } from './shared/institute-slider/institute-slider.component';
 import { ReviewSliderComponent } from './shared/review-slider/review-slider.component';
-import { TeacherRegistrationComponent } from './shared/teacher-registration/teacher-registration.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -52,7 +50,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { CommonModule2 } from '../common/common.module';
-import { BlogInfoComponent } from './blogs-list/blog-info/blog-info.component';
 import { BlogsListComponent } from './blogs-list/blogs-list.component';
 import { BuyCourseComponent } from './course-page/buy-course/buy-course.component';
 import { ReviewsComponent } from './shared/reviews/reviews.component';
@@ -114,7 +111,6 @@ import { ScrollableDivDirective } from '../directives/scrollable-div.directive';
 
 @NgModule({
   declarations: [
-    MarketingComponent,
     MarketingHeaderComponent,
     MarketingFooterComponent,
     NavigationMenuComponent,
@@ -135,7 +131,7 @@ import { ScrollableDivDirective } from '../directives/scrollable-div.directive';
     ExpertsComponent,
     FaqComponent,
     BlogsComponent,
-    TeacherRegistrationComponent,
+
     InquiryFormComponent,
     CourseVideoComponent,
     PricingPlansComponent,
@@ -159,7 +155,6 @@ import { ScrollableDivDirective } from '../directives/scrollable-div.directive';
     BuyCourseComponent,
     ReviewsComponent,
     BlogsListComponent,
-    BlogInfoComponent,
     WebinarSliderComponent,
     SubscriptionPlanComponent,
     CheckoutComponent,

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { ClassVO } from 'src/app/model/classVO';
+import { assignmentVO } from '../../model/assignmentVO';
+import { ClassVO } from '../../model/classVO';
 
 @Component({
   selector: 'app-student-dashboard-info',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-dashboard-info.component.html',
   styleUrl: './student-dashboard-info.component.scss'
 })

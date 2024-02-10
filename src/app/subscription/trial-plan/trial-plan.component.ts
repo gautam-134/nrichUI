@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Triallist } from 'src/app/model/coupon.model';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { Triallist } from '../../model/coupon.model';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { AddEditTrialplanComponent } from './add-edit-trialplan/add-edit-trialplan.component';
 
 @Component({
   selector: 'app-trial-plan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './trial-plan.component.html',
   styleUrl: './trial-plan.component.scss'
 })

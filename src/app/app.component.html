@@ -1,2 +1,4 @@
-<!-- app.component.html -->
 <router-outlet></router-outlet>
+<app-loader *ngIf="showLoader"></app-loader>
+<app-whatsapp *ngIf="isWhatsAppEnabled"></app-whatsapp>
+<a href="" target="_blank" referrerpolicy="origin" id="meetingLink" style="display:none">Test</a>

@@ -8,21 +8,20 @@ import {
   ViewChild,
 } from '@angular/core';
 import { saveAs } from 'file-saver';
-import { LoaderService } from 'src/app/loader.service';
-import { S3FileInfo, S3StorageDetails } from 'src/app/model/S3StorageDetails';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { S3FileInfo, S3StorageDetails } from '../../model/S3StorageDetails';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import Swal from 'sweetalert2';
 
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 import { PreviewComponent } from './preview/preview.component';
 
 @Component({
   selector: 'app-file-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './file-management.component.html',
   styleUrl: './file-management.component.scss'
 })

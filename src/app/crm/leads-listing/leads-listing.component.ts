@@ -3,21 +3,20 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
+import { LoaderService } from '../../loader.service';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CRMService } from '../../services/CRM/crm.service';
 import { AssignLeadComponent } from '../assign-lead/assign-lead.component';
-import { CrmStatus, CrmSubStatus } from 'src/app/model/CrmStatusAndSubStatus';
+import { CrmStatus, CrmSubStatus } from '../../model/CrmStatusAndSubStatus';
 import { FacebookLeadsComponent } from '../facebook-leads/facebook-leads.component';
 import { SelectionModel } from '@angular/cdk/collections';
-import { UserV2VO } from 'src/app/model/UserV2VO';
+import { UserV2VO } from '../../model/UserV2VO';
 
 @Component({
   selector: 'app-leads-listing',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './leads-listing.component.html',
   styleUrl: './leads-listing.component.scss'
 })

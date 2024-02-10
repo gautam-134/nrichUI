@@ -2,21 +2,20 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SupportService } from 'src/app/services/Support/support.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SupportService } from '../../services/Support/support.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CommonService } from '../../services/common/common.service';
+import { InstituteService } from '../../services/institute/institute.service';
 import { CoverImageCropComponent } from '../cover-image-crop/cover-image-crop.component';
 import { InstituteImageCropComponent } from '../institute-image-crop/institute-image-crop.component';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-edit-institute',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-edit-institute.component.html',
   styleUrl: './add-edit-institute.component.scss'
 })

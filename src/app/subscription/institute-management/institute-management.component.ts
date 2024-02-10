@@ -2,15 +2,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, Observable, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { InsitutionVO } from 'src/app/model/InstitutionVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { InsitutionVO } from '../../model/InstitutionVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-institute-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-management.component.html',
   styleUrl: './institute-management.component.scss'
 })

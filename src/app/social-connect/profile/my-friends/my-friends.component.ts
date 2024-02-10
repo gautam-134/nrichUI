@@ -6,17 +6,16 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
 import { SocialApiService } from '../../services/social-api.service';
 import { Friends } from '../../suggested-friends/suggested-friends.component';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-my-friends',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './my-friends.component.html',
   styleUrl: './my-friends.component.scss'
 })

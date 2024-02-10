@@ -2,22 +2,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { NotificationDetailsComponent } from 'src/app/common/header/notification-details/notification-details.component';
-import { LoaderService } from 'src/app/loader.service';
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { ClassVO } from 'src/app/model/classVO';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { BellNotificationVO } from 'src/app/model/Notification';
-import { StudentDashboardCount } from 'src/app/model/StudentDashboardCount';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { NotificationDetailsComponent } from '../../common/header/notification-details/notification-details.component';
+import { LoaderService } from '../../loader.service';
+import { assignmentVO } from '../../model/assignmentVO';
+import { ClassVO } from '../../model/classVO';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { BellNotificationVO } from '../../model/Notification';
+import { StudentDashboardCount } from '../../model/StudentDashboardCount';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification/notification.service';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

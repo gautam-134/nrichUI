@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BannerVO } from 'src/app/model/BannerVO';
+import { BannerVO } from '../../model/BannerVO';
 import { AuthService } from '../auth.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { environment } from '../../../environments/environment';
 import { map } from 'rxjs';
 
 @Injectable({

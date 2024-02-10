@@ -2,20 +2,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { InstituteRoles } from 'src/app/enums/InstituteRoles';
-import { LoaderService } from 'src/app/loader.service';
-import { Roles } from 'src/app/model/Roles';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { RolesService } from 'src/app/services/roles/roles.service';
-import { SupportService } from 'src/app/services/Support/support.service';
+import { InstituteRoles } from '../../enums/InstituteRoles';
+import { LoaderService } from '../../loader.service';
+import { Roles } from '../../model/Roles';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { RolesService } from '../../services/roles/roles.service';
+import { SupportService } from '../../services/Support/support.service';
 import { AddEditRolesComponent } from '../add-edit-roles/add-edit-roles.component';
 
 @Component({
   selector: 'app-roles',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './roles.component.html',
   styleUrl: './roles.component.scss'
 })

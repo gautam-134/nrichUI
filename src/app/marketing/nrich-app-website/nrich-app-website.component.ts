@@ -1,11 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nrich-app-website',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './nrich-app-website.component.html',
   styleUrl: './nrich-app-website.component.scss'
 })

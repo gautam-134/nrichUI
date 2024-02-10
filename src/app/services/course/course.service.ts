@@ -1,16 +1,16 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { BatchRes } from 'src/app/model/BatchVO';
-import { FetchCategories } from 'src/app/model/categories.model';
-import { Course } from 'src/app/model/Course';
-import { CourseReviewsAndRatingsRes } from 'src/app/model/CourseReviewsAndRatingsVO';
-import { CourseRes } from 'src/app/model/CourseVO';
-import { DemoClassRes } from 'src/app/model/DemoClass';
-import { MobileCoursesRes } from 'src/app/model/MobileCourseVO';
-import { PricingPlanRes } from 'src/app/model/PricingPlanVO';
-import { environment } from 'src/environments/environment';
+import { ApiResponse } from '../../model/ApiResponse';
+import { BatchRes } from '../../model/BatchVO';
+import { FetchCategories } from '../../model/categories.model';
+import { Course } from '../../model/Course';
+import { CourseReviewsAndRatingsRes } from '../../model/CourseReviewsAndRatingsVO';
+import { CourseRes } from '../../model/CourseVO';
+import { DemoClassRes } from '../../model/DemoClass';
+import { MobileCoursesRes } from '../../model/MobileCourseVO';
+import { PricingPlanRes } from '../../model/PricingPlanVO';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({

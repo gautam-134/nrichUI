@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { Currentplan } from 'src/app/model/current-plan.model';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
-import { environment } from 'src/environments/environment';
+import { LoaderService } from '../../loader.service';
+import { Currentplan } from '../../model/current-plan.model';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-current-subscription-plan',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './current-subscription-plan.component.html',
   styleUrl: './current-subscription-plan.component.scss'
 })

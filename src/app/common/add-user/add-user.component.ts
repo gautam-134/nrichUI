@@ -5,20 +5,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { LoaderService } from 'src/app/loader.service';
-import { MappingType } from 'src/app/model/MappingType';
-import { SupportDetails } from 'src/app/model/SupportDetails';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { SupportService } from 'src/app/services/Support/support.service';
+import { LoaderService } from '../../loader.service';
+import { MappingType } from '../../model/MappingType';
+import { SupportDetails } from '../../model/SupportDetails';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
+import { SupportService } from '../../services/Support/support.service';
 import { ImageCropDialogComponent } from '../image-crop-dialog/image-crop-dialog.component';
 import { MappingPageComponent } from '../mapping-page/mapping-page.component';
 
 @Component({
   selector: 'app-add-user',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.scss'
 })

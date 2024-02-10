@@ -8,15 +8,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { BannerVO } from 'src/app/model/BannerVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { BannerService } from 'src/app/services/banner/banner.service';
+import { LoaderService } from '../../loader.service';
+import { BannerVO } from '../../model/BannerVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { BannerService } from '../../services/banner/banner.service';
 
 @Component({
   selector: 'app-banner-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './banner-management.component.html',
   styleUrl: './banner-management.component.scss'
 })

@@ -2,22 +2,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
-import { LoaderService } from 'src/app/loader.service';
-import { CrmFormFieldsVO } from 'src/app/model/CrmFormFieldsVO';
-import { InstituteLeadsVO } from 'src/app/model/InstituteLeadsVO';
-import { UserCsvVO, CsvUploadRecordsVO } from 'src/app/model/UserCsvVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CRMService } from 'src/app/services/CRM/crm.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { CrmFormFieldsVO } from '../../model/CrmFormFieldsVO';
+import { InstituteLeadsVO } from '../../model/InstituteLeadsVO';
+import { UserCsvVO, CsvUploadRecordsVO } from '../../model/UserCsvVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { CRMService } from '../../services/CRM/crm.service';
+import { InstituteService } from '../../services/institute/institute.service';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { saveAs } from 'file-saver';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bulk-leads-upload',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './bulk-leads-upload.component.html',
   styleUrl: './bulk-leads-upload.component.scss'
 })

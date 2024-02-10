@@ -1,16 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PostVO } from 'src/app/model/PostVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PostVO } from '../../model/PostVO';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 import { SocialApiService } from '../services/social-api.service';
-
+// import { Inject } from '@angular/core';
 @Component({
   selector: 'app-events',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
 })

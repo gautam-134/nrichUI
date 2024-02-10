@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { LoaderService } from '../../loader.service';
+import { StudentService } from '../../services/student/student.service';
 import { saveAs } from 'file-saver';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 
 @Component({
   selector: 'app-purchase-history',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './purchase-history.component.html',
   styleUrl: './purchase-history.component.scss'
 })

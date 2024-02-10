@@ -8,7 +8,7 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { UserInstitutes } from '../auth/login/select-institute/select-institute.component';
 import { UserFormVO } from '../common/add-user/add-user.component';
 import { ApiResponse } from '../model/ApiResponse';

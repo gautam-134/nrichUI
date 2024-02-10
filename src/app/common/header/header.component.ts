@@ -11,22 +11,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription, debounceTime, map, of } from 'rxjs';
-import { UserInstitutes } from 'src/app/auth/login/select-institute/select-institute.component';
-import { LoaderService } from 'src/app/loader.service';
-import { Auth } from 'src/app/model/Auth';
-import { MyplanDetails } from 'src/app/model/MyPlanDetails';
-import { BellNotificationVO } from 'src/app/model/Notification';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { MyplanService } from 'src/app/services/myplan.service';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { UserInstitutes } from '../../auth/login/select-institute/select-institute.component';
+import { LoaderService } from '../../loader.service';
+import { Auth } from '../../model/Auth';
+import { MyplanDetails } from '../../model/MyPlanDetails';
+import { BellNotificationVO } from '../../model/Notification';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { MyplanService } from '../../services/myplan.service';
+import { NotificationService } from '../../services/notification/notification.service';
 import { PlanDetailsComponent } from '../plan-details/plan-details.component';
 import { NotificationDetailsComponent } from './notification-details/notification-details.component';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

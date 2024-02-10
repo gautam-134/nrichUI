@@ -1,17 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { Roles } from 'src/app/model/Roles';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { RolesService } from 'src/app/services/roles/roles.service';
+import { LoaderService } from '../../loader.service';
+import { Roles } from '../../model/Roles';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { RolesService } from '../../services/roles/roles.service';
 import Swal from 'sweetalert2';
 import { RolesComponent } from '../roles/roles.component';
 
 @Component({
   selector: 'app-add-edit-roles',
-  standalone: true,
-  imports: [],
   templateUrl: './add-edit-roles.component.html',
   styleUrl: './add-edit-roles.component.scss'
 })

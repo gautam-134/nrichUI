@@ -1,6 +1,6 @@
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { SubscriptionService } from '../../../services/subscription/subscription.service';
 const DEFAULT_DURATION = 300;
 @Component({
   selector: 'app-faq',

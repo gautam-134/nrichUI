@@ -6,12 +6,11 @@ import {
   AfterViewInit,
   SimpleChanges,
 } from '@angular/core';
-import { SupportDetails } from 'src/app/model/SupportDetails';
+import { SupportDetails } from '../../model/SupportDetails';
 
 @Component({
   selector: 'app-support',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './support.component.html',
   styleUrl: './support.component.scss'
 })

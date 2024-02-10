@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClassVO } from 'src/app/model/classVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { ClassService } from 'src/app/services/Classes/class.service';
+import { ClassVO } from '../../../../model/classVO';
+import { AuthService } from '../../../../services/auth.service';
+import { ClassService } from '../../../../services/Classes/class.service';
 
 @Component({
   selector: 'app-student-all-classes',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-all-classes.component.html',
   styleUrl: './student-all-classes.component.scss'
 })

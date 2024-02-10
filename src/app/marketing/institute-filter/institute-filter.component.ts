@@ -9,16 +9,15 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { LoaderService } from '../../loader.service';
+import { CourseCategoryVO } from '../../model/categories.model';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { CommonService } from '../../services/common/common.service';
+import { CourseService } from '../../services/course/course.service';
 
 @Component({
   selector: 'app-institute-filter',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './institute-filter.component.html',
   styleUrl: './institute-filter.component.scss'
 })

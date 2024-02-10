@@ -1,9 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { BatchVO } from 'src/app/model/BatchVO';
-import { Course } from 'src/app/model/Course';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
+import { BatchVO } from '../../model/BatchVO';
+import { Course } from '../../model/Course';
+import { PricingPlanVO } from '../../model/PricingPlanVO';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
 

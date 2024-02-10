@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
 
 @Component({
   selector: 'app-admin-enrollment',
-  standalone: true,
-  imports: [],
   templateUrl: './admin-enrollment.component.html',
   styleUrl: './admin-enrollment.component.scss'
 })

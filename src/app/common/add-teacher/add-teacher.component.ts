@@ -8,16 +8,15 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoaderService } from 'src/app/loader.service';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
+import { LoaderService } from '../../loader.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
 import { UserFormVO } from '../add-user/add-user.component';
 
 @Component({
   selector: 'app-add-teacher',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-teacher.component.html',
   styleUrl: './add-teacher.component.scss'
 })

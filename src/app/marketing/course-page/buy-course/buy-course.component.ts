@@ -2,20 +2,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { Auth } from 'src/app/model/Auth';
-import { BatchVO } from 'src/app/model/BatchVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { BuyCourseService } from 'src/app/services/Buycourse/buy-course.service';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { Auth } from '../../../model/Auth';
+import { BatchVO } from '../../../model/BatchVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { BuyCourseService } from '../../../services/Buycourse/buy-course.service';
 
-import { CourseService } from 'src/app/services/course/course.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-buy-course',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './buy-course.component.html',
   styleUrl: './buy-course.component.scss'
 })

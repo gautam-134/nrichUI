@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { CourseCategoryVO } from 'src/app/model/categories.model';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CategoryService } from 'src/app/services/category/category.service';
+import { LoaderService } from '../../../../loader.service';
+import { CourseCategoryVO } from '../../../../model/categories.model';
+import { SwalAlertService } from '../../../../services/alert/swal-alert.service';
+import { CategoryService } from '../../../../services/category/category.service';
 import Swal from 'sweetalert2';
 import { CreateSubSubCategoryComponent } from './create-sub-sub-category/create-sub-sub-category.component';
 
 @Component({
   selector: 'app-sub-sub-category-management',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './sub-sub-category-management.component.html',
   styleUrl: './sub-sub-category-management.component.scss'
 })

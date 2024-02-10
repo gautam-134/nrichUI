@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { teacherDetails } from 'src/app/model/teacher-info';
+import { teacherDetails } from '../../model/teacher-info';
 
 @Component({
   selector: 'app-teacher-profile-highlight',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-profile-highlight.component.html',
   styleUrl: './teacher-profile-highlight.component.scss'
 })

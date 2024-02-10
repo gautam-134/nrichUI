@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, Observable, debounceTime, map, of } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { addOnPlan } from 'src/app/model/addOn.model';
-import { SubscriptionService } from 'src/app/services/subscription/subscription.service';
+import { LoaderService } from '../../loader.service';
+import { addOnPlan } from '../../model/addOn.model';
+import { SubscriptionService } from '../../services/subscription/subscription.service';
 import { AddEditAddonnsComponent } from './add-edit-addonns/add-edit-addonns.component';
-import { ApiResponse } from 'src/app/model/ApiResponse';
+import { ApiResponse } from '../../model/ApiResponse';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
 
 @Component({
   selector: 'app-add-onn',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './add-onn.component.html',
   styleUrl: './add-onn.component.scss'
 })

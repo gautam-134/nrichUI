@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InstituteDetails } from 'src/app/model/institute-details';
+import { InstituteDetails } from '../../model/institute-details';
 
 @Component({
   selector: 'app-highlights',

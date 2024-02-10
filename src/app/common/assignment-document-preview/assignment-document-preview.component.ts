@@ -3,8 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-assignment-document-preview',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './assignment-document-preview.component.html',
   styleUrl: './assignment-document-preview.component.scss'
 })

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, map, Observable, of, Subject } from 'rxjs';
-import { LoaderService } from 'src/app/loader.service';
-import { MobileCourseVO } from 'src/app/model/MobileCourseVO';
-import { TeacherService } from 'src/app/services/teacher/teacher.service';
+import { LoaderService } from '../../loader.service';
+import { MobileCourseVO } from '../../model/MobileCourseVO';
+import { TeacherService } from '../../services/teacher/teacher.service';
 
 @Component({
   selector: 'app-teacher-dashboard',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './teacher-dashboard.component.html',
   styleUrl: './teacher-dashboard.component.scss'
 })

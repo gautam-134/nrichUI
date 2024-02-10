@@ -1,16 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { AllUsers } from 'src/app/model/AllUsers';
-import { MasterService } from 'src/app/services/master/master.service';
+import { LoaderService } from '../../../../loader.service';
+import { AllUsers } from '../../../../model/AllUsers';
+import { MasterService } from '../../../../services/master/master.service';
 
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
 import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-student-details',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './student-details.component.html',
   styleUrl: './student-details.component.scss'
 })

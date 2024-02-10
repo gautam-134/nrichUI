@@ -2,19 +2,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 import {
   ClassMappingVO,
   CourseBatchMapVO,
-} from 'src/app/model/CourseBatchMapVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { ClassService } from 'src/app/services/Classes/class.service';
-import { CommonService } from 'src/app/services/common/common.service';
+} from '../../../model/CourseBatchMapVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { ClassService } from '../../../services/Classes/class.service';
+import { CommonService } from '../../../services/common/common.service';
 
 @Component({
   selector: 'app-material-class-mapping',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './material-class-mapping.component.html',
   styleUrl: './material-class-mapping.component.scss'
 })

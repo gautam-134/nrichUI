@@ -5,14 +5,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { debounceTime, Subject } from 'rxjs';
-import { ContactCourses } from 'src/app/model/ContactCourses';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { ContactCourses } from '../../../model/ContactCourses';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-school-contact-us',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './school-contact-us.component.html',
   styleUrl: './school-contact-us.component.scss'
 })

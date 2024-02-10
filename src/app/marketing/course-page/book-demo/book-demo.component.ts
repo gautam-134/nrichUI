@@ -13,17 +13,16 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { LoaderService } from 'src/app/loader.service';
+import { LoaderService } from '../../../loader.service';
 
-import { DemoClass } from 'src/app/model/DemoClass';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { CourseService } from 'src/app/services/course/course.service';
+import { DemoClass } from '../../../model/DemoClass';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
+import { CourseService } from '../../../services/course/course.service';
 
 @Component({
   selector: 'app-book-demo',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './book-demo.component.html',
   styleUrl: './book-demo.component.scss'
 })

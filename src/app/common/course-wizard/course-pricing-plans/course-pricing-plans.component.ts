@@ -1,16 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { PricingPlanVO } from 'src/app/model/PricingPlanVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { CourseWizardService } from 'src/app/services/course/course-wizard.service';
-import { PricingPlanService } from 'src/app/services/pricing-plan.service';
+import { LoaderService } from '../../../loader.service';
+import { PricingPlanVO } from '../../../model/PricingPlanVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { CourseWizardService } from '../../../services/course/course-wizard.service';
+import { PricingPlanService } from '../../../services/pricing-plan.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-course-pricing-plans',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './course-pricing-plans.component.html',
   styleUrl: './course-pricing-plans.component.scss'
 })

@@ -1,16 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PrerecordedModuleVO, VideoTimeTracking } from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { PrerecordedModuleVO, VideoTimeTracking } from '../../model/PrerecordedModels';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { PreRecordedModuleService } from '../../services/pre-recorded-module.service';
 
 @Component({
   selector: 'app-prerecordedpreview',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './prerecordedpreview.component.html',
   styleUrl: './prerecordedpreview.component.scss'
 })

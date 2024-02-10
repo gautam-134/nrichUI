@@ -14,7 +14,7 @@ import { RazorpayDetails } from '../model/razorPayDetails';
 import { SwalAlertService } from '../services/alert/swal-alert.service';
 import { AuthService } from '../services/auth.service';
 import { SettingServiceService } from '../services/setting-service.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { ClipboardService } from 'ngx-clipboard';
 import Swal from 'sweetalert2';
 

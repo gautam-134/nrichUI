@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { assignmentVO } from 'src/app/model/assignmentVO';
-import { AuthService } from 'src/app/services/auth.service';
-import { StudentService } from 'src/app/services/student/student.service';
+import { assignmentVO } from '../../../../model/assignmentVO';
+import { AuthService } from '../../../../services/auth.service';
+import { StudentService } from '../../../../services/student/student.service';
 
 @Component({
   selector: 'app-assigment',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './assigment.component.html',
   styleUrl: './assigment.component.scss'
 })

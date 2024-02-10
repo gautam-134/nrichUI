@@ -1,18 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { PostVO } from 'src/app/model/PostVO';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from '../../../loader.service';
+import { ApiResponse } from '../../../model/ApiResponse';
+import { PostVO } from '../../../model/PostVO';
+import { SwalAlertService } from '../../../services/alert/swal-alert.service';
+import { AuthService } from '../../../services/auth.service';
 import { UserProfile } from '../../create-profile/create-profile.component';
 import { SocialApiService } from '../../services/social-api.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-timeline',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss'
 })

@@ -2,24 +2,23 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoaderService } from 'src/app/loader.service';
-import { ApiResponse } from 'src/app/model/ApiResponse';
-import { MappingType } from 'src/app/model/MappingType';
+import { LoaderService } from '../../loader.service';
+import { ApiResponse } from '../../model/ApiResponse';
+import { MappingType } from '../../model/MappingType';
 import {
   PrerecordedModuleVO,
   PrerecordedSectionVO,
-} from 'src/app/model/PrerecordedModels';
-import { SwalAlertService } from 'src/app/services/alert/swal-alert.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { InstituteService } from 'src/app/services/institute/institute.service';
-import { PreRecordedModuleService } from 'src/app/services/pre-recorded-module.service';
+} from '../../model/PrerecordedModels';
+import { SwalAlertService } from '../../services/alert/swal-alert.service';
+import { AuthService } from '../../services/auth.service';
+import { InstituteService } from '../../services/institute/institute.service';
+import { PreRecordedModuleService } from '../../services/pre-recorded-module.service';
 import { MappingPageComponent } from '../mapping-page/mapping-page.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-prerecorded-module',
-  standalone: true,
-  imports: [],
+   
   templateUrl: './create-prerecorded-module.component.html',
   styleUrl: './create-prerecorded-module.component.scss'
 })
